@@ -2,7 +2,7 @@ import "./App.css";
 
 import React from "react";
 import AuthContext from "context/auth";
-import { Navbar, Login, Register } from "components"
+import { Navbar, Login, Register, Home } from "components"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" />
           <Route path="/login" element={ <Login /> }/>
           <Route path="/register" element={ <Register />} />
-          <Route path="/home" />
+          <Route path="/home" element={ <Home /> }/>
         </Routes>
         </BrowserRouter>
       </div>

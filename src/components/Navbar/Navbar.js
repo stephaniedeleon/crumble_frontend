@@ -20,9 +20,6 @@ export default function Navbar() {
               <Nav.Link as={Link} to="/home">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/home">
-                Main
-              </Nav.Link>
             </Nav>
             <div className="d-flex ">
               <Link to="/login">
