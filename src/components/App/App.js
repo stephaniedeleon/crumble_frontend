@@ -2,8 +2,8 @@ import "./App.css";
 
 import React from "react";
 import AuthContext from "context/auth";
-import { Navbar } from "components"
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Navbar, Login, Register } from "components"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -11,13 +11,13 @@ function App() {
       <div className="App">
         <BrowserRouter>
         <Navbar />
-
-        <Switch>
+        
+        <Routes>
           <Route path="/" />
-          <Route path="/login" />
-          <Route path="/register" />
+          <Route path="/login" element={ <Login /> }/>
+          <Route path="/register" element={ <Register />} />
           <Route path="/home" />
-        </Switch>
+        </Routes>
         </BrowserRouter>
       </div>
     </AuthContext.Provider>
