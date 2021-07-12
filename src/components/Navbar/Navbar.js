@@ -13,7 +13,7 @@ export default function Navbar() {
     <div className="NavBar">
       <NavBar expand="lg" bg="light">
         <Container>
-          <NavBar.Brand as={ Link } to="/home">LOGO</NavBar.Brand>
+          <NavBar.Brand as={ Link } to="/">LOGO</NavBar.Brand>
           <NavBar.Toggle aria-controls="NavBarScroll" />
           <NavBar.Collapse>
             <Nav className="ml-auto my-2 mr-5" NavBarScroll>
