@@ -1,7 +1,7 @@
 import "./Register.css"
 
 import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap"
-
+import { useState } from "react"
 
 export default function Register () {
     
