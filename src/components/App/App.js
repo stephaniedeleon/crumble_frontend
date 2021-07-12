@@ -1,23 +1,26 @@
 import "./App.css";
 
 import React from "react";
-import { Navbar } from "components"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AuthContext from "context/auth";
+import { Navbar, Login, Register } from "components"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Navbar />
-
-      <Routes>
-        <Route path="/" />
-        <Route path="/login" />
-        <Route path="/register" />
-        <Route path="/home" />
-      </Routes>
-      </BrowserRouter>
-    </div>
+    <AuthContext.Provider value={{ /*  all the values you want to share throughout the app */ }}>
+      <div className="App">
+        <BrowserRouter>
+        <Navbar />
+        
+        <Routes>
+          <Route path="/" />
+          <Route path="/login" element={ <Login /> }/>
+          <Route path="/register" element={ <Register />} />
+          <Route path="/home" />
+        </Routes>
+        </BrowserRouter>
+      </div>
+    </AuthContext.Provider>
   );
 }
 
