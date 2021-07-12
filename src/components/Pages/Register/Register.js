@@ -1,49 +1,92 @@
-import "./Register.css"
+import "./Register.css";
 
-import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap"
-import { useState } from "react"
+import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap";
+import { useRegister } from "hooks/useRegister";
 
-export default function Register () {
-    
-    return (
-        <div className="Register">
-            <Container>
-                <Form>
-                    <FormGroup>
-                        <FormLabel>First Name</FormLabel>
-                        <Form.Control type="text" placeholder="First Name" />
-                    </FormGroup>
+export default function Register() {
+  const {
+    isProcessing,
+    errors,
+    form,
+    handleOnTextChange,
+    handleOnClickSubmit,
+  } = useRegister();
 
-                    <FormGroup>
-                        <FormLabel>Last Name</FormLabel>
-                        <Form.Control type="text" placeholder="Last Name" />
-                    </FormGroup>
+  return (
+    <div className="Register">
+      <Container>
+        <Form onSubmit={handleOnClickSubmit}>
+          <FormGroup>
+            <FormLabel>First Name</FormLabel>
+            <Form.Control
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              onChange={handleOnTextChange}
+              value={form.firstName}
+              required
+            />
+          </FormGroup>
 
-                    <FormGroup>
-                        <FormLabel>Email</FormLabel>
-                        <Form.Control type="email" placeholder="Email" />
-                    </FormGroup>
+          <FormGroup>
+            <FormLabel>Last Name</FormLabel>
+            <Form.Control
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              onChange={handleOnTextChange}
+              value={form.lastName}
+              required
+            />
+          </FormGroup>
 
-                    <FormGroup>
-                        <FormLabel>Password</FormLabel>
-                        <Form.Control type="password" placeholder="Password" />
-                    </FormGroup>
+          <FormGroup>
+            <FormLabel>Email</FormLabel>
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleOnTextChange}
+              value={form.email}
+              required
+            />
+          </FormGroup>
 
-                    <FormGroup>
-                        <FormLabel>Confirm Password</FormLabel>
-                        <Form.Control type="password" placeholder="Confirm Password" />
-                    </FormGroup>
+          <FormGroup>
+            <FormLabel>Password</FormLabel>
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleOnTextChange}
+              value={form.password}
+              required
+            />
+          </FormGroup>
 
-                    <FormGroup>
-                        <Form.Check type="checkbox" label="Agree To Terms and Services" />
-                    </FormGroup>
+          <FormGroup>
+            <FormLabel>Confirm Password</FormLabel>
+            <Form.Control
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              onChange={handleOnTextChange}
+              value={form.confirmPassword}
+              required
+            />
+          </FormGroup>
 
-                    <Button>
-                        Login
-                    </Button>
-                    
-                </Form>
-            </Container>
-        </div>
-    )
+          <FormGroup>
+            <Form.Check
+              type="checkbox"
+              label="Agree To Terms and Services"
+              required
+            />
+          </FormGroup>
+
+          <Button type="submit">Login</Button>
+        </Form>
+      </Container>
+    </div>
+  );
 }
