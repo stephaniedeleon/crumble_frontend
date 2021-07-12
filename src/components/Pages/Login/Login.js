@@ -1,9 +1,12 @@
 import "./Login.css"
 
-import { Form, FormControl, FormGroup, FormLabel, Button, Container, Col, Row } from "react-bootstrap"
+import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap"
+import { useState } from "react"
 
 
 export default function Login () {
+
+    
 
     return (
         <div className="Login">
@@ -19,12 +22,8 @@ export default function Login () {
                         <Form.Control type="password" placeholder="Enter Password" />
                     </FormGroup>
 
-                    <FormGroup>
-                        <Form.Check type="checkbox" label="Agree To Terms and Services"  />
-                    </FormGroup>
-
                     <Button>
-                        Submit
+                        Register
                     </Button>
                     
                 </Form>
