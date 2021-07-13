@@ -1,24 +1,20 @@
 import "./Navbar.css";
 
-import {
-  Nav,
-  Navbar as NavBar,
-  Container,
-  Button
-} from "react-bootstrap";
+import { Nav, Navbar as NavBar, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
 
 export default function Navbar({ clearAppState }) {
-
-  const { user, setUser } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   return (
     <div className="NavBar">
       <NavBar expand="lg" bg="light">
         <Container>
-          <NavBar.Brand as={ Link } to="/">LOGO</NavBar.Brand>
+          <NavBar.Brand as={Link} to="/">
+            LOGO
+          </NavBar.Brand>
           <NavBar.Toggle aria-controls="NavBarScroll" />
           <NavBar.Collapse>
             <Nav className="ml-auto my-2 mr-5" NavBarScroll>
@@ -27,9 +23,11 @@ export default function Navbar({ clearAppState }) {
               </Nav.Link>
             </Nav>
             <div className="d-flex">
-              {user?.email ? 
-                  <Button className="mr-2" onClick={clearAppState}>Log Out</Button>
-              :
+              {user?.email ? (
+                <Button className="mr-2" onClick={clearAppState}>
+                  Log Out
+                </Button>
+              ) : (
                 <>
                   <Link to="/login">
                     <Button className="mr-2">Login</Button>
@@ -38,8 +36,7 @@ export default function Navbar({ clearAppState }) {
                     <Button>Register</Button>
                   </Link>
                 </>
-              }
-              
+              )}
             </div>
           </NavBar.Collapse>
         </Container>
