@@ -1,13 +1,16 @@
 import "./App.css";
 
-import React from "react";
+import React, { useState } from "react";
 import AuthContext from "context/auth";
 import { Navbar, Login, Register, Home } from "components"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+
+  const [user, setUser] = useState()
+
   return (
-    <AuthContext.Provider value={{ /*  all the values you want to share throughout the app */ }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       <div className="App">
         <BrowserRouter>
         <Navbar />

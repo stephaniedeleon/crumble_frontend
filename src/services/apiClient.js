@@ -28,6 +28,15 @@ class ApiClient {
         }
     }
 
+    //Authentication
+    async login() {
+
+    }
+
+    async register() {
+        
+    }
+
     //Main tabs
 
     async listMaintabs() {

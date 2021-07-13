@@ -1,34 +1,42 @@
-import "./Login.css"
+import "./Login.css";
 
-import { Form, FormControl, FormGroup, FormLabel, Button, Container, Col, Row } from "react-bootstrap"
+import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap";
+import { useLogin } from "hooks/useLogin";
 
+export default function Login() {
+  const { form, handleOnTextChange, handleOnClickSubmit } = useLogin();
 
-export default function Login () {
+  return (
+    <div className="Login">
+      <Container className="px-5">
+        <Form onSubmit={handleOnClickSubmit}>
+          <FormGroup>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Enter Email"
+              onChange={handleOnTextChange}
+              value={form.email}
+              required
+            />
+          </FormGroup>
 
-    return (
-        <div className="Login">
-            <Container className="px-5">
-                <Form>
-                    <FormGroup>
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter Email" />
-                    </FormGroup>
+          <FormGroup>
+            <FormLabel>Password</FormLabel>
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Enter Password"
+              onChange={handleOnTextChange}
+              value={form.password}
+              required
+            />
+          </FormGroup>
 
-                    <FormGroup>
-                        <FormLabel>Password</FormLabel>
-                        <Form.Control type="password" placeholder="Enter Password" />
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Form.Check type="checkbox" label="Agree To Terms and Services"  />
-                    </FormGroup>
-
-                    <Button>
-                        Submit
-                    </Button>
-                    
-                </Form>
-            </Container>
-        </div>
-    )
+          <Button type="submit">Register</Button>
+        </Form>
+      </Container>
+    </div>
+  );
 }
