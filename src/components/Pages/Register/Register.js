@@ -5,8 +5,6 @@ import { useRegister } from "hooks/useRegister";
 
 export default function Register() {
   const {
-    isProcessing,
-    errors,
     form,
     handleOnTextChange,
     handleOnClickSubmit,

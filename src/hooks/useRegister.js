@@ -41,8 +41,28 @@ export const useRegister = () => {
     setForm((oldForm) => ({ ...oldForm, [evt.target.name]: evt.target.value }))
   }
 
-  const handleOnClickSubmit = (evt) => {
+  const handleOnClickSubmit = async (evt) => {
+    evt.preventDefault()
+    setIsProcessing(true)
+    setErrors((err) => ({ ...err, form: null }))
 
+    const { data, error } = await apiClient.register({
+        firstName: form.firstName,
+        lastName: form.lastName,
+        email: form.email,
+        password: form.password
+    })
+
+    if (error) 
+        setErrors((err) => ({ ...err, form: error}))
+
+    if (data) {
+        setUser(data.user)
+        apiClient.setToken(data.token)
+        localStorage.setItem("token", data.token)
+    }
+
+    setIsProcessing(false)
   }
 
   return {
