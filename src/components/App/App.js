@@ -13,7 +13,7 @@ function App() {
     <AuthContext.Provider value={{ user, setUser }}>
       <div className="App">
         <BrowserRouter>
-          <Navbar />
+          <Navbar clearAppState={clearAppState} />
 
           <Routes>
             <Route path="/" />
