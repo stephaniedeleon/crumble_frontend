@@ -1,12 +1,18 @@
 import "./Navbar.css";
 
 import { Nav, Navbar as NavBar, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
 
 export default function Navbar({ clearAppState }) {
   const { user } = useContext(AuthContext);
+
+  const { navigate } = useNavigate()
+  const handleOnLogout = () => {
+    clearAppState()
+    navigate("/")
+  }
 
   return (
     <div className="NavBar">
@@ -24,7 +30,7 @@ export default function Navbar({ clearAppState }) {
             </Nav>
             <div className="d-flex">
               {user?.email ? (
-                <Button className="mr-2" onClick={clearAppState}>
+                <Button className="mr-2" onClick={handleOnLogout}>
                   Log Out
                 </Button>
               ) : (
