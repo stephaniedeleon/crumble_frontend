@@ -59,6 +59,7 @@ export const useRegister = () => {
       setAuthenticated(true);
       await apiClient.setToken(data.token);
       localStorage.setItem("token", data.token);
+      navigate("/home");
     }
 
     setIsProcessing(false);

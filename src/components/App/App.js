@@ -10,7 +10,7 @@ import apiClient from "services/apiClient";
 function App() {
 
   const [maintabs, setMaintabs] = useState([]);
-  const { user, setUser, setErrors, authenticated, setAuthenticated } = useApp();
+  const { user, setUser, authenticated, setAuthenticated } = useApp();
 
   //adds a new maintab to list of maintabs
   const addMaintab = (newMaintab) => {
