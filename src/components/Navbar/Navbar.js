@@ -1,12 +1,23 @@
 import "./Navbar.css";
 
 import { Nav, Navbar as NavBar, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
+import apiClient from "services/apiClient";
 
-export default function Navbar({ handleOnLogout }) {
-  const { user } = useContext(AuthContext);
+export default function Navbar() {
+  const { user, setUser, setAuthenticated } = useContext(AuthContext);
+
+  const navigate = useNavigate()
+
+   //handles logout
+    const handleOnLogout = async () => {
+      setUser({});
+      setAuthenticated(false);
+      await apiClient.logout();
+      navigate("/")
+    };
 
   return (
     <div className="NavBar">
