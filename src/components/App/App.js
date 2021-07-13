@@ -9,14 +9,20 @@ import { useApp } from "hooks/useApp";
 function App() {
 
   const [maintabs, setMaintabs] = useState([]);
+  
 
-  const { user, error, setUser, clearAppState } = useApp();
+  const { user, setUser, authenticated, setAuthenticated, handleOnLogout } = useApp();
+
+  //adds a new maintab to list of maintabs
+  const addMaintab = (newMaintab) => {
+    setMaintabs((oldMaintabs) => [newMaintab, ...oldMaintabs])
+  }
 
   return (
-    <AuthContext.Provider value={{ user, setUser, maintabs }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs }}>
       <div className="App">
         <BrowserRouter>
-          <Navbar clearAppState={clearAppState} />
+          <Navbar handleOnLogout={handleOnLogout} />
 
           <Routes>
             <Route path="/" />

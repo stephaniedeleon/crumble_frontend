@@ -9,7 +9,7 @@ import apiClient from "services/apiClient";
 
 export default function Home({ setMaintabs }) {
 
-    const { maintabs } = useContext(AuthContext);
+    const { maintabs, user, authenticated } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
@@ -29,7 +29,7 @@ export default function Home({ setMaintabs }) {
 
       fetchMaintabs();
   
-    }, [setMaintabs]); 
+    }, [setMaintabs, user, authenticated]); 
 
 
     return (

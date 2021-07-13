@@ -1,45 +1,51 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import apiClient from "services/apiClient";
+import AuthContext from "context/auth";
 
 
 
 export const useApp = () => {
 
-    const [user, setUser] = useState()
-    const [error, setError] = useState(null);
-    const [initialized, setInitialized] = useState(false);
+    const [user, setUser] = useState();
+    const [errors, setErrors] = useState(null);
+    const [authenticated, setAuthenticated] = useState(false);
   
+    // const navigate = useNavigate();
   
+    //persists logged in user
     useEffect(() => {
-      const initApp = async () => {
+      const fetchAuthedUser = async () => {
         const { data, error } = await apiClient.fetchUserFromToken();
-        if (error) setError(error);
-        if (data) setUser(data.user);
-  
-        setInitialized(true);
+        if (error) setErrors(error);
+        if (data?.user) setUser(data.user);
+        setAuthenticated(true);
       };
   
       const token = localStorage.getItem("token");
       if (token) {
         apiClient.setToken(token);
-        initApp();
+        fetchAuthedUser();
       } else {
-        setInitialized(true);
+        setAuthenticated(false);
       }
     }, []);
   
-  
-    const clearAppState = () => {
+    //handles logout
+    const handleOnLogout = async () => {
       setUser({});
-      setError(null);
-      apiClient.logout()
+      setErrors(null);
+      setAuthenticated(false);
+      await apiClient.logout();
+      // navigate("/");
     };
 
     return {
         user,
-        initialized,
-        error,
+        errors,
+        authenticated,
+        setAuthenticated,
         setUser,
-        clearAppState,
+        handleOnLogout,
     }
 }
