@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
 
-export default function Navbar({ clearAppState }) {
+export default function Navbar({ handleOnLogout }) {
   const { user } = useContext(AuthContext);
 
   return (
@@ -24,7 +24,7 @@ export default function Navbar({ clearAppState }) {
             </Nav>
             <div className="d-flex">
               {user?.email ? (
-                <Button className="mr-2" onClick={clearAppState}>
+                <Button className="mr-2" onClick={handleOnLogout}>
                   Log Out
                 </Button>
               ) : (

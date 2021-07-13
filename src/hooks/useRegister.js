@@ -5,7 +5,7 @@ import AuthContext from "context/auth";
 
 export const useRegister = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, setAuthenticated } = useContext(AuthContext);
   const [isProcessing, setIsProcessing] = useState();
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
@@ -54,8 +54,9 @@ export const useRegister = () => {
 
     if (error) setErrors((err) => ({ ...err, form: error }));
 
-    if (data) {
+    if (data?.user) {
       setUser(data.user);
+      setAuthenticated(true);
       await apiClient.setToken(data.token);
       localStorage.setItem("token", data.token);
     }

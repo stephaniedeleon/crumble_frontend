@@ -1,25 +1,34 @@
 import "./App.css";
 
-import React from "react";
+import React, { useState } from "react";
 import AuthContext from "context/auth";
 import { Navbar, Login, Register, Home } from "components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useApp } from "hooks/useApp";
 
 function App() {
-  const { user, error, setUser, clearAppState } = useApp();
+
+  const [maintabs, setMaintabs] = useState([]);
+  
+
+  const { user, setUser, authenticated, setAuthenticated, handleOnLogout } = useApp();
+
+  //adds a new maintab to list of maintabs
+  const addMaintab = (newMaintab) => {
+    setMaintabs((oldMaintabs) => [newMaintab, ...oldMaintabs])
+  }
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs }}>
       <div className="App">
         <BrowserRouter>
-          <Navbar clearAppState={clearAppState} />
+          <Navbar handleOnLogout={handleOnLogout} />
 
           <Routes>
             <Route path="/" />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home setMaintabs={setMaintabs} />} />
           </Routes>
         </BrowserRouter>
       </div>

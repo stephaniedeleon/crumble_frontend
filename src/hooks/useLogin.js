@@ -5,7 +5,7 @@ import AuthContext from "context/auth";
 
 export const useLogin = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, setAuthenticated } = useContext(AuthContext);
   const [isProcessing, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
@@ -44,10 +44,12 @@ export const useLogin = () => {
       setErrors((err) => ({ ...err, form: error }));
     }
 
-    if (data) {
+    if (data?.user) {
       setUser(data.user);
+      setAuthenticated(true);
       apiClient.setToken(data.token);
       localStorage.setItem("token", data.token);
+      navigate("/home");
     }
 
     setIsProcessing(false);
