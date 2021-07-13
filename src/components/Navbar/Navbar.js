@@ -7,7 +7,7 @@ import { useContext } from "react";
 import apiClient from "services/apiClient";
 
 export default function Navbar() {
-  const { user, setUser, setAuthenticated } = useContext(AuthContext);
+  const { user, setUser, setAuthenticated, authenticated } = useContext(AuthContext);
 
   const navigate = useNavigate()
 
@@ -34,7 +34,7 @@ export default function Navbar() {
               </Nav.Link>
             </Nav>
             <div className="d-flex">
-              {user?.email ? (
+              {authenticated ? (
                 <Button className="mr-2" onClick={handleOnLogout}>
                   Log Out
                 </Button>
