@@ -32,6 +32,7 @@ export const useApp = () => {
     const clearAppState = () => {
       setUser({});
       setError(null);
+      apiClient.signout()
     };
 
     return {
