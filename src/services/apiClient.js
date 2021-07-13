@@ -50,9 +50,9 @@ class ApiClient {
         return await this.request({ endpoint: "auth/register", method: "POST", data: credentials })
     }
 
-    async signout () {
-        this.setToken(null)
-        localStorage.setItem("token", "")
+    async logout() {
+        this.token = null;
+        localStorage.setItem(this.tokenName, "")
     }
 
 
