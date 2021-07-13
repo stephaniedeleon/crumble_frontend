@@ -7,8 +7,13 @@ import {
   Button
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AuthContext from "context/auth";
+import { useContext } from "react";
 
-export default function Navbar() {
+export default function Navbar({ clearAppState }) {
+
+  const { user, setUser } = useContext(AuthContext)
+
   return (
     <div className="NavBar">
       <NavBar expand="lg" bg="light">
@@ -21,13 +26,20 @@ export default function Navbar() {
                 Home
               </Nav.Link>
             </Nav>
-            <div className="d-flex ">
-              <Link to="/login">
-                <Button className="mr-2">Login</Button>
-              </Link>
-              <Link to="/register">
-                <Button>Register</Button>
-              </Link>
+            <div className="d-flex">
+              {user?.email ? 
+                  <Button className="mr-2" onClick={clearAppState}>Log Out</Button>
+              :
+                <>
+                  <Link to="/login">
+                    <Button className="mr-2">Login</Button>
+                  </Link>
+                  <Link to="/register">
+                    <Button>Register</Button>
+                  </Link>
+                </>
+              }
+              
             </div>
           </NavBar.Collapse>
         </Container>
