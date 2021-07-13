@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import apiClient from "services/apiClient";
 
 
@@ -36,6 +36,7 @@ export const useApp = () => {
 
     return {
         user,
+        initialized,
         error,
         setUser,
         clearAppState,

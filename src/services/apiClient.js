@@ -6,7 +6,7 @@ class ApiClient {
 
         this.remoteHostUrl = remoteHostUrl;
         this.token = null;
-        this.tokenName = "life_tracker_token";
+        this.tokenName = "token";
     }
 
     //utility method...
@@ -28,13 +28,31 @@ class ApiClient {
         }
     }
 
+    //Token
+
+    setToken (token) {
+        this.token = token
+        localStorage.setItem(this.tokenName, this.token)
+    }
+
+    async fetchUserFromToken () {
+        return await this.request({ endpoint: "auth/me", method: "GET" })
+    }
+
+
     //Authentication
     async login(credentials) {
-        return await this.request({ endpoint: "/auth/login", method: "POST", data: credentials })
+        return await this.request({ endpoint: "auth/login", method: "POST", data: credentials })
     }
 
     async register(credentials) {
-        return await this.request({ endpoint: "/auth/login", method: "POST", data: credentials })
+        console.log("REGISTER")
+        return await this.request({ endpoint: "auth/register", method: "POST", data: credentials })
+    }
+
+    async signout () {
+        this.setToken(null)
+        localStorage.setItem("token", "")
     }
 
 
@@ -57,4 +75,4 @@ class ApiClient {
     } 
 }
 
-export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001");
+export default new ApiClient("http://localhost:3001");

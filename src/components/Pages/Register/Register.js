@@ -82,7 +82,7 @@ export default function Register() {
             />
           </FormGroup>
 
-          <Button type="submit">Login</Button>
+          <Button type="submit">Register</Button>
         </Form>
       </Container>
     </div>

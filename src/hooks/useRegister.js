@@ -56,7 +56,7 @@ export const useRegister = () => {
 
     if (data) {
       setUser(data.user);
-      apiClient.setToken(data.token);
+      await apiClient.setToken(data.token);
       localStorage.setItem("token", data.token);
     }
 
