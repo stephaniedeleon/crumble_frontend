@@ -36,23 +36,23 @@ class ApiClient {
     }
 
     async fetchUserFromToken () {
-        return await this.request({ endpoint: "auth/me", method: "GET" })
+        return await this.request({ endpoint: "auth/me/", method: "GET" })
     }
 
 
     //Authentication
     async login(credentials) {
-        return await this.request({ endpoint: "auth/login", method: "POST", data: credentials })
+        return await this.request({ endpoint: "auth/login/", method: "POST", data: credentials })
     }
 
     async register(credentials) {
         console.log("REGISTER")
-        return await this.request({ endpoint: "auth/register", method: "POST", data: credentials })
+        return await this.request({ endpoint: "auth/register/", method: "POST", data: credentials })
     }
 
-    async signout () {
-        this.setToken(null)
-        localStorage.setItem("token", "")
+    async logout() {
+        this.token = null;
+        localStorage.setItem(this.tokenName, "")
     }
 
 
@@ -75,4 +75,4 @@ class ApiClient {
     } 
 }
 
-export default new ApiClient("http://localhost:3001");
+export default new ApiClient("http://localhost:3002");
