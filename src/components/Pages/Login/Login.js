@@ -34,7 +34,7 @@ export default function Login() {
             />
           </FormGroup>
 
-          <Button type="submit">Register</Button>
+          <Button type="submit">Login</Button>
         </Form>
       </Container>
     </div>
