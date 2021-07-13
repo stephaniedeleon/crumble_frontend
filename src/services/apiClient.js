@@ -27,6 +27,33 @@ class ApiClient {
             return { data: null, error: errorResponse || String(error) };
         }
     }
+
+    //Authentication
+    async login() {
+
+    }
+
+    async register() {
+        
+    }
+
+    //Main tabs
+
+    async listMaintabs() {
+        return await this.request({ endpoint: "maintabs", method: "GET" });
+    }
+
+    async createMaintab(details) { 
+        return await this.request({ endpoint: "maintabs/create/", method: "POST", data: details });
+    }
+
+    async getMaintab() {
+        return await this.request({ endpoint: "maintabs/:maintabId", method: "GET" });
+    }
+
+    async deleteMaintab() { 
+        return await this.request({ endpoint: "maintabs/:maintabId", method: "DELETE" });
+    } 
 }
 
 export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001");

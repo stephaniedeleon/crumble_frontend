@@ -1,18 +1,29 @@
 import "./App.css";
 
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import AuthContext from "context/auth";
+import { Navbar, Login, Register, Home } from "components"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+
+  const [user, setUser] = useState()
+
   return (
-    <div className="App">
-      <BrowserRouter>
+    <AuthContext.Provider value={{ user, setUser }}>
+      <div className="App">
+        <BrowserRouter>
+        <Navbar />
         
         <Routes>
-          
+          <Route path="/" />
+          <Route path="/login" element={ <Login /> }/>
+          <Route path="/register" element={ <Register />} />
+          <Route path="/home" element={ <Home /> }/>
         </Routes>
-      </BrowserRouter>
-    </div>
+        </BrowserRouter>
+      </div>
+    </AuthContext.Provider>
   );
 }
 
