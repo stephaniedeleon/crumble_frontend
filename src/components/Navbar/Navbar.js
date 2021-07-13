@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
 
-export default function Navbar({ clearAppState }) {
+export default function Navbar({ handleOnLogout }) {
   const { user } = useContext(AuthContext);
 
   const { navigate } = useNavigate()
