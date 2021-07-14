@@ -1,44 +1,43 @@
 import "./MainTab.css"
 
 import { Card, CloseButton } from "react-bootstrap";
-import { formatDate } from "utils/format";
+import React, { useContext, useState, useEffect } from "react";
+import AuthContext from "context/auth";
+import apiClient from "services/apiClient";
 
 
 export default function MainTab({ key, maintab }) {
 
-    //key - maintab.id
+    const { maintabs, setMaintabs, setErrors, setIsLoading} = useContext(AuthContext);
 
-    // //deletes a maintab to list of maintabs
-    // const deleteMaintab = (maintab) => {
-    //     setMaintabs((oldMaintabs) => [newMaintab, ...oldMaintabs])
-    // }
+    //deletes a maintab to list of maintabs
+    const deleteMaintab = (deletedId) => {
+        setMaintabs(maintabs.filter(filteredMaintab => filteredMaintab.id !== deletedId))
+    }
 
-    // const handleOnDelete = async (event) => {
+    const handleOnDelete = async (event) => {
 
-    //     event.preventDefault();
-    //     setIsLoading(true);
-    //     setErrors((e) => ({ ...e, form: null }));
+        event.preventDefault();
+        setIsLoading(true);
+        setErrors((e) => ({ ...e, form: null }));
 
-    //     const { data, error } = await apiClient.createMaintab({ 
-    //         name: form.name,
-    //     });
+        const { data, error } = await apiClient.deleteMaintab(maintab.id);
 
-    //     if (error) {
-    //         setErrors((e) => ({ ...e, form: error }));
-    //     } else {
-    //         setErrors((e) => ({ ...e, form: null }));
-    //         addMaintab(data);
-    //     } 
+        if (error) {
+            setErrors((e) => ({ ...e, form: error }));
+        } else {
+            setErrors((e) => ({ ...e, form: null }));
+            deleteMaintab(maintab.id);
+        }
 
-    //     setIsLoading(false);
-    // }
+        setIsLoading(false);
+    }
 
     return (
         <div className="MainTab">
             <div className="card">
                 <Card className="maintab">
-                    <CloseButton /> 
-                    {/* onClick={handleOnDelete} */}
+                    <CloseButton onClick={handleOnDelete} /> 
                     <Card.Body>
                         <Card.Title className="maintabName">{maintab.name}</Card.Title>
                     </Card.Body>
