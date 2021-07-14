@@ -1,23 +1,18 @@
 import "./Register.css";
 
-import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap";
+import { Form, FormGroup, FormLabel, FormControl, Button, Container } from "react-bootstrap";
 import { useRegister } from "hooks/useRegister";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Register() {
-  const {
-    form,
-    handleOnTextChange,
-    handleOnClickSubmit,
-  } = useRegister();
+  const { form, errors, handleOnTextChange, handleOnClickSubmit } = useRegister();
 
   return (
     <div className="Register">
       <Container className="card">
         <h2>Sign Up</h2>
-        <br/>
+        <br />
         <Form onSubmit={handleOnClickSubmit}>
-
           <FormGroup>
             <FormLabel className="form-label">Email</FormLabel>
             <Form.Control
@@ -27,9 +22,15 @@ export default function Register() {
               placeholder="Enter a valid email"
               onChange={handleOnTextChange}
               value={form.email}
+              isValid={!errors.email && errors.email !== undefined}
+              isInvalid={errors.email}
               required
             />
           </FormGroup>
+          <FormControl.Feedback>Looks Good!</FormControl.Feedback>
+          <FormControl.Feedback type="isInvalid">
+            {errors.email}
+          </FormControl.Feedback>
 
           <div className="split-input-field">
             <FormGroup>
@@ -41,6 +42,8 @@ export default function Register() {
                 placeholder="First"
                 onChange={handleOnTextChange}
                 value={form.firstName}
+                isValid={!errors.firstName && errors.firstName !== undefined}
+                isInvalid={errors.firstName}
                 required
               />
             </FormGroup>
@@ -54,6 +57,8 @@ export default function Register() {
                 placeholder="Last"
                 onChange={handleOnTextChange}
                 value={form.lastName}
+                isValid={!errors.lastName && errors.lastName !== undefined}
+                isInvalid={errors.lastName}
                 required
               />
             </FormGroup>
@@ -81,6 +86,8 @@ export default function Register() {
               placeholder="Confirm your password"
               onChange={handleOnTextChange}
               value={form.confirmPassword}
+              isValid={!errors.confirmPassword && errors.confirmPassword !== undefined}
+              isInvalid={errors.confirmPassword}
               required
             />
           </FormGroup>
@@ -93,19 +100,22 @@ export default function Register() {
             />
           </FormGroup>
 
-          <Button type="submit" className="register-btn">Register</Button>
-
+          <Button type="submit" className="register-btn">
+            Register
+          </Button>
         </Form>
         <div className="footer">
-            <p>Already have an account? Login <Link to="/login">here.</Link></p>
+          <p>
+            Already have an account? Login <Link to="/login">here.</Link>
+          </p>
         </div>
       </Container>
     </div>
   );
 }
 
-
-{/* <div className="split-input-field">
+{
+  /* <div className="split-input-field">
 <div className="input-field">
   <input type="text" name="firstName" placeholder="First Name" value={form.firstName} onChange={handleOnInputChange} />
   {errors.firstName && <span className="error">{errors.firstName}</span>}
@@ -115,4 +125,5 @@ export default function Register() {
   <input type="text" name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleOnInputChange} />
   {errors.lastName && <span className="error">{errors.lastName}</span>}
 </div>
-</div> */}
+</div> */
+}

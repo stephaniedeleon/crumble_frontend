@@ -18,23 +18,51 @@ export const useRegister = () => {
 
 
   const handleOnTextChange = (evt) => {
-    if (evt.target.name === "email") {
-      if (evt.target.value.indexOf("@") <= 0)
-        setErrors((err) => ({ ...err, email: "Please enter a valid email." }));
-      else setErrors((err) => ({ ...err, email: null }));
-    }
 
-    if (evt.target.name === "confirmPassword") {
-      if (evt.target.value !== form.password)
+    switch(evt.target.name) {
+      case "email":
+        if (evt.target.value.indexOf("@") <= 0)
+          setErrors((err) => ({ ...err, email: "Please enter a valid email." }));
+        else 
+          setErrors((err) => ({ ...err, email: null }));
+        break;
+
+      case "firstName" || "lastName":
+        if (evt.target.value.trim() === "")
+          setErrors((err) => ({ ...err, [evt.target.name]: "Please enter a name."}))
+        else 
+          setErrors((err) => ({ ...err, [evt.target.name]: null }))
+        break;
+
+      case "password":
+        if (form.confirmPassword !== "") {
+          if (evt.target.value !== form.confirmPassword || evt.target.value.trim() === "")
+            setErrors((err) => ({
+              ...err,
+              confirmPassword: "Passwords do not match.",
+            }));
+          else 
+            setErrors((err) => ({ ...err, confirmPassword: null }));
+        }
+        break;
+
+      case "confirmPassword": 
+      if (evt.target.value !== form.password || evt.target.value.trim() === "")
         setErrors((err) => ({
           ...err,
           confirmPassword: "Passwords do not match.",
         }));
-      else setErrors((err) => ({ ...err, confirmPassword: null }));
+      else
+        setErrors((err) => ({ ...err, confirmPassword: null }));
+        break;
+
+      default:
+        break;
     }
 
     setForm((oldForm) => ({ ...oldForm, [evt.target.name]: evt.target.value }));
-  };
+    
+  }
 
   const handleOnClickSubmit = async (evt) => {
     evt.preventDefault();
