@@ -43,11 +43,12 @@ export default function AddMaintab(props) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            addMaintab(data);
+            addMaintab(data.maintab);
         } 
 
         setIsLoading(false);
     }
+
 
     return (
       <Modal

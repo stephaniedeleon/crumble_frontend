@@ -31,7 +31,7 @@ export default function Home() {
     
         if(authenticated) fetchMaintabs();
 
-    }, [setMaintabs, maintabs, user, authenticated]); 
+    }, [setMaintabs, user, authenticated]); //maintabs
 
 
 
