@@ -18,16 +18,10 @@ export default function AddMaintab(props) {
     });
 
 
-    //adds a new maintab to list of maintabs
-    // const addMaintab = (newMaintab) => {
-    //     setMaintabs((oldMaintabs) => [newMaintab, ...oldMaintabs])
-    // }
-
-    // function addMaintab(e) {
-    //     const newMaintab = e.target.value;
-    //     console.log(newMaintab);
-    //     setMaintabs((oldMaintabs) => [newMaintab, ...oldMaintabs])
-    // }
+    // adds a new maintab to list of maintabs
+    const addMaintab = (newMaintab) => {
+        setMaintabs((oldMaintabs) => [newMaintab, ...oldMaintabs]);
+    }
 
 
     const handleOnInputChange = (event) => {
@@ -49,8 +43,7 @@ export default function AddMaintab(props) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            // addMaintab(data);
-            // fetchMaintabs();
+            addMaintab(data);
         } 
 
         setIsLoading(false);
