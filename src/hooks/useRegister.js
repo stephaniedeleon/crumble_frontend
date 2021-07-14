@@ -16,10 +16,6 @@ export const useRegister = () => {
     confirmPassword: "",
   });
 
-  useEffect(() => {
-    //if logged in, send to home
-    if (authenticated) navigate("/home");
-  }, [user, authenticated, navigate]);
 
   const handleOnTextChange = (evt) => {
     if (evt.target.name === "email") {

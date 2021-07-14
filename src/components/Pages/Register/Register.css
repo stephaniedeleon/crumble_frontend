@@ -1,0 +1,75 @@
+.Register {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Register .card {
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 10px;
+    background: white;
+
+    margin: 20px;
+    padding: 24px 36px 0;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+    width: 520px;
+}
+
+.Register .form-label {
+    float: left;
+}
+
+.Register h2 {
+    padding: 16px;
+}
+
+/* .Register .error {
+    color: red;
+} */
+
+.Register .input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.Register .split-input-field {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.Register .input-field-split {
+    width: 214px;
+}
+
+.Register .footer {
+    border-top: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Register .footer a {
+    color: rgb(32, 103, 255);
+}
+
+.Register .register-btn {
+    width: 100%;
+    height: 50px;
+    margin-top: 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}

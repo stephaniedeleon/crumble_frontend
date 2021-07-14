@@ -5,7 +5,7 @@ import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
-// List of main tabs
+// Has the list of maintabs
 
 export default function Home({ setMaintabs }) {
 

@@ -2,6 +2,7 @@ import "./Register.css";
 
 import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap";
 import { useRegister } from "hooks/useRegister";
+import { Link } from 'react-router-dom';
 
 export default function Register() {
   const {
@@ -12,50 +13,59 @@ export default function Register() {
 
   return (
     <div className="Register">
-      <Container>
+      <Container className="card">
+        <h2>Sign Up</h2>
+        <br/>
         <Form onSubmit={handleOnClickSubmit}>
-          <FormGroup>
-            <FormLabel>First Name</FormLabel>
-            <Form.Control
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              onChange={handleOnTextChange}
-              value={form.firstName}
-              required
-            />
-          </FormGroup>
 
           <FormGroup>
-            <FormLabel>Last Name</FormLabel>
-            <Form.Control
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              onChange={handleOnTextChange}
-              value={form.lastName}
-              required
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <FormLabel>Email</FormLabel>
+            <FormLabel className="form-label">Email</FormLabel>
             <Form.Control
               type="email"
               name="email"
-              placeholder="Email"
+              className="input-field"
+              placeholder="Enter a valid email"
               onChange={handleOnTextChange}
               value={form.email}
               required
             />
           </FormGroup>
 
+          <div className="split-input-field">
+            <FormGroup>
+              <FormLabel className="form-label">First Name</FormLabel>
+              <Form.Control
+                type="text"
+                name="firstName"
+                className="input-field-split"
+                placeholder="First"
+                onChange={handleOnTextChange}
+                value={form.firstName}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <FormLabel className="form-label">Last Name</FormLabel>
+              <Form.Control
+                type="text"
+                name="lastName"
+                className="input-field-split"
+                placeholder="Last"
+                onChange={handleOnTextChange}
+                value={form.lastName}
+                required
+              />
+            </FormGroup>
+          </div>
+
           <FormGroup>
-            <FormLabel>Password</FormLabel>
+            <FormLabel className="form-label">Password</FormLabel>
             <Form.Control
               type="password"
               name="password"
-              placeholder="Password"
+              className="input-field"
+              placeholder="Enter a secure password"
               onChange={handleOnTextChange}
               value={form.password}
               required
@@ -63,11 +73,12 @@ export default function Register() {
           </FormGroup>
 
           <FormGroup>
-            <FormLabel>Confirm Password</FormLabel>
+            <FormLabel className="form-label">Confirm Password</FormLabel>
             <Form.Control
               type="password"
               name="confirmPassword"
-              placeholder="Confirm Password"
+              className="input-field"
+              placeholder="Confirm your password"
               onChange={handleOnTextChange}
               value={form.confirmPassword}
               required
@@ -82,9 +93,26 @@ export default function Register() {
             />
           </FormGroup>
 
-          <Button type="submit">Register</Button>
+          <Button type="submit" className="register-btn">Register</Button>
+
         </Form>
+        <div className="footer">
+            <p>Already have an account? Login <Link to="/login">here.</Link></p>
+        </div>
       </Container>
     </div>
   );
 }
+
+
+{/* <div className="split-input-field">
+<div className="input-field">
+  <input type="text" name="firstName" placeholder="First Name" value={form.firstName} onChange={handleOnInputChange} />
+  {errors.firstName && <span className="error">{errors.firstName}</span>}
+</div>
+
+<div className="input-field">
+  <input type="text" name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleOnInputChange} />
+  {errors.lastName && <span className="error">{errors.lastName}</span>}
+</div>
+</div> */}
