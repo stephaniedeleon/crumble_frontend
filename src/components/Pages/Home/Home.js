@@ -1,15 +1,16 @@
 import "./Home.css";
-import { PageHeader, MainTab } from "components";
-import { Link } from 'react-router-dom';
+
+import { Button } from "react-bootstrap";
+import { PageHeader, MainTab, AddMainTab } from "components";
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
 // Has the list of maintabs
 
-export default function Home({ setMaintabs }) {
+export default function Home() {
 
-    const { maintabs, user, authenticated } = useContext(AuthContext);
+    const { maintabs, user, authenticated, setMaintabs } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
@@ -18,37 +19,52 @@ export default function Home({ setMaintabs }) {
   
     //fetches maintabs
     useEffect(() => {
-      const fetchMaintabs = async () => {
-        setIsFetching(true);
-  
-        const { data, error } = await apiClient.listMaintabs();
-        if(data) setMaintabs(data.maintabs);
-        if(error) setError(error);
-  
-        setIsFetching(false);
-      }
+        const fetchMaintabs = async () => {
+            setIsFetching(true);
+      
+            const { data, error } = await apiClient.listMaintabs();
+            if(data) setMaintabs(data.maintabs);
+            if(error) setError(error);
+      
+            setIsFetching(false);
+        }
+    
+        if(authenticated) fetchMaintabs();
 
-      fetchMaintabs();
-  
-    }, [setMaintabs, user, authenticated]); 
+    }, [setMaintabs, maintabs, user, authenticated]); 
 
+
+
+
+    //method to show modal for adding maintab...
+    const [modalShow, setModalShow] = useState(false);
 
     return (
         <div className="Home">
             <PageHeader sectionName={welcome}/>
 
             <div className="home-area">
-            <div className="title">
-                <h3>Your MainTabs...</h3>
-                <Link to='/maintabs/create'>Add MainTab</Link>
-            </div>
-            <br/>
-            <br/>
-            <div className="maintabs">
-                {maintabs.map((maintab) => (
-                    <MainTab key={maintab.id} maintab={maintab} />
-                ))}
-            </div>
+                <div className="title">
+                    <h3>Your MainTabs...</h3>
+                    {/* <Link to='/home/maintabs/create'>
+                        <Button variant="outline-primary" className="create-btn">Add MainTab</Button>
+                    </Link> */}
+                    <Button variant="outline-primary" onClick={() => setModalShow(true)}>
+                        Add MainTab
+                    </Button>
+
+                    <AddMainTab
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
+                </div>
+                <br/>
+                <br/>
+                <div className="maintabs">
+                    {maintabs.map((maintab) => (
+                        <MainTab key={maintab.id} maintab={maintab} />
+                    ))}
+                </div>
             </div>
         </div>
     );

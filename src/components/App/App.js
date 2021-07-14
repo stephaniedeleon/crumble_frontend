@@ -11,13 +11,6 @@ function App() {
   const [maintabs, setMaintabs] = useState([]);
   const { user, setUser, authenticated, setAuthenticated } = useApp();
 
-  //adds a new maintab to list of maintabs
-  const addMaintab = (newMaintab) => {
-    setMaintabs((oldMaintabs) => [newMaintab, ...oldMaintabs])
-  }
-
-
-
   return (
     <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs }}>
       <div className="App">
@@ -28,7 +21,7 @@ function App() {
             <Route path="/" element={<LandingPage />}/>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Home setMaintabs={setMaintabs} />} />
+            <Route path="/home" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </div>
