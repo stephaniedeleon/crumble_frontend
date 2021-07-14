@@ -9,10 +9,8 @@ import { Link } from 'react-router-dom';
 
 export default function AddMaintab(props) {
 
-    const { setMaintabs } = useContext(AuthContext);
+    const { setMaintabs, setErrors, setIsLoading } = useContext(AuthContext);
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [errors, setErrors] = useState({})
     const [form, setForm] = useState({
         name: "",
     });
