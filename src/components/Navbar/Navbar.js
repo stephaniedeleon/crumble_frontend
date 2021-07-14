@@ -11,14 +11,14 @@ export default function Navbar() {
 
   const navigate = useNavigate()
 
-   //handles logout
-    const handleOnLogout = async () => {
-      setUser({});
-      setAuthenticated(false);
-      setMaintabs([]); //clears maintabs
-      await apiClient.logout();
-      navigate("/")
-    };
+  //handles logout
+  const handleOnLogout = async () => {
+    setUser({});
+    setAuthenticated(false);
+    setMaintabs([]); //clears maintabs
+    await apiClient.logout();
+    navigate("/")
+  };
 
   return (
     <div className="NavBar">
