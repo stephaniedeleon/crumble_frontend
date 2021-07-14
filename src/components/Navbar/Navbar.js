@@ -7,7 +7,7 @@ import { useContext } from "react";
 import apiClient from "services/apiClient";
 
 export default function Navbar() {
-  const { user, setUser, setAuthenticated, authenticated } = useContext(AuthContext);
+  const { setUser, authenticated, setAuthenticated, setMaintabs } = useContext(AuthContext);
 
   const navigate = useNavigate()
 
@@ -15,6 +15,7 @@ export default function Navbar() {
     const handleOnLogout = async () => {
       setUser({});
       setAuthenticated(false);
+      setMaintabs([]); //clears maintabs
       await apiClient.logout();
       navigate("/")
     };

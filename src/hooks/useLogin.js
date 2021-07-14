@@ -13,13 +13,6 @@ export const useLogin = () => {
     password: "",
   });
 
-  useEffect(() => {
-    //if user logged in, take to homepage
-    if (authenticated) {
-      navigate("/home");
-    }
-  }, [user, authenticated, navigate]);
-
   const handleOnTextChange = (evt) => {
     if (evt.target.name === "email") {
       if (evt.target.value.indexOf("@") <= 0)

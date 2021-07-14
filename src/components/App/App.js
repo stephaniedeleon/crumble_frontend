@@ -3,9 +3,8 @@ import "./App.css";
 import React, { useState } from "react";
 import AuthContext from "context/auth";
 import { Navbar, Login, Register, Home } from "components";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useApp } from "hooks/useApp";
-import apiClient from "services/apiClient";
 
 function App() {
 
@@ -20,7 +19,7 @@ function App() {
 
 
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />
