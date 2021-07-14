@@ -30,9 +30,15 @@ export default function Navbar() {
           <NavBar.Toggle aria-controls="NavBarScroll" />
           <NavBar.Collapse>
             <Nav className="ml-auto my-2 mr-5" NavBarScroll>
-              <Nav.Link as={Link} to="/home">
+              {authenticated ? (
+                <Nav.Link as={Link} to="/home">
                 Home
-              </Nav.Link>
+                </Nav.Link>
+              ) : ( 
+                <>
+                </>
+              )}
+              
             </Nav>
             <div className="d-flex">
               {authenticated ? (
