@@ -5,7 +5,7 @@ import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
-// List of main tabs
+// Has the list of maintabs
 
 export default function Home({ setMaintabs }) {
 
@@ -13,8 +13,9 @@ export default function Home({ setMaintabs }) {
 
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
+
+    const welcome = "Welcome " + user?.firstName + "!";
   
-    
     //fetches maintabs
     useEffect(() => {
       const fetchMaintabs = async () => {
@@ -34,7 +35,7 @@ export default function Home({ setMaintabs }) {
 
     return (
         <div className="Home">
-            <PageHeader sectionName="Hey user!"/>
+            <PageHeader sectionName={welcome}/>
 
             <div className="home-area">
             <div className="title">

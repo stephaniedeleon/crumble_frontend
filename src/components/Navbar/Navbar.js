@@ -1,12 +1,24 @@
 import "./Navbar.css";
 
 import { Nav, Navbar as NavBar, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
+import apiClient from "services/apiClient";
 
-export default function Navbar({ handleOnLogout }) {
-  const { user } = useContext(AuthContext);
+export default function Navbar() {
+  const { setUser, authenticated, setAuthenticated, setMaintabs } = useContext(AuthContext);
+
+  const navigate = useNavigate()
+
+   //handles logout
+    const handleOnLogout = async () => {
+      setUser({});
+      setAuthenticated(false);
+      setMaintabs([]); //clears maintabs
+      await apiClient.logout();
+      navigate("/")
+    };
 
   return (
     <div className="NavBar">
@@ -23,7 +35,7 @@ export default function Navbar({ handleOnLogout }) {
               </Nav.Link>
             </Nav>
             <div className="d-flex">
-              {user?.email ? (
+              {authenticated ? (
                 <Button className="mr-2" onClick={handleOnLogout}>
                   Log Out
                 </Button>

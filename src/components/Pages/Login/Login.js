@@ -2,20 +2,24 @@ import "./Login.css";
 
 import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap";
 import { useLogin } from "hooks/useLogin";
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const { form, handleOnTextChange, handleOnClickSubmit } = useLogin();
 
   return (
     <div className="Login">
-      <Container className="px-5">
+      <Container className="card">
+        <h2>Login</h2>
+        <br/>
         <Form onSubmit={handleOnClickSubmit}>
           <FormGroup>
-            <Form.Label>Email</Form.Label>
+            <FormLabel className="form-label">Email</FormLabel>
             <Form.Control
               type="email"
               name="email"
-              placeholder="Enter Email"
+              className="input-field"
+              placeholder="user@email.com"
               onChange={handleOnTextChange}
               value={form.email}
               required
@@ -23,19 +27,23 @@ export default function Login() {
           </FormGroup>
 
           <FormGroup>
-            <FormLabel>Password</FormLabel>
+            <FormLabel className="form-label">Password</FormLabel>
             <Form.Control
               type="password"
               name="password"
-              placeholder="Enter Password"
+              className="input-field"
+              placeholder="password"
               onChange={handleOnTextChange}
               value={form.password}
               required
             />
           </FormGroup>
 
-          <Button type="submit">Login</Button>
+          <Button type="submit" className="login-btn">Login</Button>
         </Form>
+        <div className="footer">
+            <p>Don't have an account? Sign up <Link to="/register">here.</Link></p>
+        </div>
       </Container>
     </div>
   );

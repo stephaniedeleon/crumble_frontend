@@ -5,20 +5,13 @@ import AuthContext from "context/auth";
 
 export const useLogin = () => {
   const navigate = useNavigate();
-  const { user, setUser, setAuthenticated } = useContext(AuthContext);
+  const { user, setUser, setAuthenticated, authenticated } = useContext(AuthContext);
   const [isProcessing, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-
-  useEffect(() => {
-    //if user logged in, take to homepage
-    if (user?.email) {
-      navigate("/home");
-    }
-  }, [user, navigate]);
 
   const handleOnTextChange = (evt) => {
     if (evt.target.name === "email") {

@@ -1,16 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
 import apiClient from "services/apiClient";
-import AuthContext from "context/auth";
 
 
 export const useApp = () => {
   const [user, setUser] = useState();
     const [errors, setErrors] = useState(null);
     const [authenticated, setAuthenticated] = useState(false);
-  
-    // const navigate = useNavigate();
-  
+    
     //persists logged in user
     useEffect(() => {
       const fetchAuthedUser = async () => {
@@ -28,22 +24,14 @@ export const useApp = () => {
         setAuthenticated(false);
       }
     }, []);
-  
-    //handles logout
-    const handleOnLogout = async () => {
-      setUser({});
-      setErrors(null);
-      setAuthenticated(false);
-      await apiClient.logout();
-      // navigate("/");
-    };
+
 
     return {
         user,
         errors,
         authenticated,
         setAuthenticated,
+        setErrors,
         setUser,
-        handleOnLogout,
     }
 }
