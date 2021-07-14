@@ -69,8 +69,8 @@ class ApiClient {
         return await this.request({ endpoint: "maintabs/:maintabId", method: "GET" });
     }
 
-    async deleteMaintab(key) { 
-        return await this.request({ endpoint: "maintabs/"+key, method: "DELETE" });
+    async deleteMaintab(maintabId) { 
+        return await this.request({ endpoint: "maintabs/"+maintabId, method: "DELETE" });
     } 
 }
 
