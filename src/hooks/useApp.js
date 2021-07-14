@@ -4,10 +4,8 @@ import apiClient from "services/apiClient";
 import AuthContext from "context/auth";
 
 
-
 export const useApp = () => {
-
-    const [user, setUser] = useState();
+  const [user, setUser] = useState();
     const [errors, setErrors] = useState(null);
     const [authenticated, setAuthenticated] = useState(false);
   
