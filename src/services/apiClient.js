@@ -46,7 +46,6 @@ class ApiClient {
     }
 
     async register(credentials) {
-        console.log("REGISTER")
         return await this.request({ endpoint: "auth/register/", method: "POST", data: credentials })
     }
 
@@ -70,8 +69,8 @@ class ApiClient {
         return await this.request({ endpoint: "maintabs/:maintabId", method: "GET" });
     }
 
-    async deleteMaintab() { 
-        return await this.request({ endpoint: "maintabs/:maintabId", method: "DELETE" });
+    async deleteMaintab(maintabId) { 
+        return await this.request({ endpoint: "maintabs/"+maintabId, method: "DELETE" });
     } 
 }
 
