@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import apiClient from "services/apiClient";
 
-import { SideBar } from "components";
+import { SideBar, PageHeader, Notes, ToDo, Calendar } from "components";
+import { Col, Row } from "react-bootstrap";
 
 export default function TabPage() {
 
@@ -42,7 +43,24 @@ export default function TabPage() {
 
     return (
         <div className="TabPage">
-            <h1>TAB PAGE - {tab.name}</h1>
+            <PageHeader sectionName={tab?.name} />
+
+            <div className="tab-area">
+                <Row>
+                    <Col md={4}>
+                        <Row> 
+                            <ToDo />
+                        </Row>
+                        <Row> 
+                            <Notes />
+                        </Row>
+                    </Col>
+                    <Col md={8}>
+                        <Calendar />
+                    </Col>
+                </Row>
+            </div>
+
         </div>
     );
 }
