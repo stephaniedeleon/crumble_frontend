@@ -5,8 +5,6 @@ import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
-import { Link } from 'react-router-dom';
-
 export default function AddMaintab(props) {
 
     const { setMaintabs, setErrors, setIsLoading } = useContext(AuthContext);

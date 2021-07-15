@@ -5,6 +5,7 @@ import AuthContext from "context/auth";
 import { Navbar, Login, Register, Home, LandingPage } from "components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useApp } from "hooks/useApp";
+import { TabPage } from "components/pages";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/home/:mainId/" element={<TabPage />} />
           </Routes>
         </BrowserRouter>
       </div>
