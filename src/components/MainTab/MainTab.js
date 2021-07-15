@@ -15,7 +15,9 @@ export default function MainTab({ key, maintab }) {
         <div className="MainTab">
             <div className="card">
                     <Card className="maintab">
-                        <CloseButton onClick={() => setModalShow(true)} />
+                        <div className="closeBtn"> 
+                            <CloseButton onClick={() => setModalShow(true)} />
+                        </div>
                         <Link to={`/home/${maintab.id}`} >
                             <Card.Body>
                                 <Card.Title className="maintabName">{maintab.name}</Card.Title>

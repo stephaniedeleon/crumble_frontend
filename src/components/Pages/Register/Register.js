@@ -45,7 +45,6 @@ export default function Register() {
               <Form.Control
                 type="text"
                 name="firstName"
-                className="input-field-split"
                 placeholder="First"
                 onChange={handleOnTextChange}
                 value={form.firstName}
@@ -60,7 +59,6 @@ export default function Register() {
               <Form.Control
                 type="text"
                 name="lastName"
-                className="input-field-split"
                 placeholder="Last"
                 onChange={handleOnTextChange}
                 value={form.lastName}
@@ -127,18 +125,4 @@ export default function Register() {
       </Container>
     </div>
   );
-}
-
-{
-  /* <div className="split-input-field">
-<div className="input-field">
-  <input type="text" name="firstName" placeholder="First Name" value={form.firstName} onChange={handleOnInputChange} />
-  {errors.firstName && <span className="error">{errors.firstName}</span>}
-</div>
-
-<div className="input-field">
-  <input type="text" name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleOnInputChange} />
-  {errors.lastName && <span className="error">{errors.lastName}</span>}
-</div>
-</div> */
 }
