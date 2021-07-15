@@ -4,3 +4,13 @@
     gap: 20px;
     justify-content: center;
 }
+
+.Home .home-area {
+    margin: 20px 110px;
+}
+
+.Home .home-area .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
