@@ -65,8 +65,8 @@ class ApiClient {
         return await this.request({ endpoint: "maintabs/create/", method: "POST", data: details });
     }
 
-    async getMaintab() {
-        return await this.request({ endpoint: "maintabs/:maintabId", method: "GET" });
+    async getMaintab(maintabId) {
+        return await this.request({ endpoint: "maintabs/"+maintabId, method: "GET" });
     }
 
     async deleteMaintab(maintabId) { 
