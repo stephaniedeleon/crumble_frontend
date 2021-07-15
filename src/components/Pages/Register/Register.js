@@ -45,7 +45,6 @@ export default function Register() {
               <Form.Control
                 type="text"
                 name="firstName"
-                className="input-field-split"
                 placeholder="First"
                 onChange={handleOnTextChange}
                 value={form.firstName}
@@ -60,7 +59,6 @@ export default function Register() {
               <Form.Control
                 type="text"
                 name="lastName"
-                className="input-field-split"
                 placeholder="Last"
                 onChange={handleOnTextChange}
                 value={form.lastName}
