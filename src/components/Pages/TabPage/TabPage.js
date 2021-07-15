@@ -43,6 +43,7 @@ export default function TabPage() {
     return (
         <div className="TabPage">
             <h1>TAB PAGE - {tab.name}</h1>
+            <SideBar />
         </div>
     );
 }
