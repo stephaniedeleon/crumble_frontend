@@ -126,17 +126,3 @@ export default function Register() {
     </div>
   );
 }
-
-{
-  /* <div className="split-input-field">
-<div className="input-field">
-  <input type="text" name="firstName" placeholder="First Name" value={form.firstName} onChange={handleOnInputChange} />
-  {errors.firstName && <span className="error">{errors.firstName}</span>}
-</div>
-
-<div className="input-field">
-  <input type="text" name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleOnInputChange} />
-  {errors.lastName && <span className="error">{errors.lastName}</span>}
-</div>
-</div> */
-}
