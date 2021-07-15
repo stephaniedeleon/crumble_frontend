@@ -1,7 +1,8 @@
 import "./MainTab.css"
 
-import { Card, CloseButton } from "react-bootstrap";
+import { Card, CloseButton, Popover, OverlayTrigger, Button } from "react-bootstrap";
 import React, { useContext, useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
@@ -36,12 +37,14 @@ export default function MainTab({ key, maintab }) {
     return (
         <div className="MainTab">
             <div className="card">
-                <Card className="maintab">
-                    <CloseButton onClick={handleOnDelete} /> 
-                    <Card.Body>
-                        <Card.Title className="maintabName">{maintab.name}</Card.Title>
-                    </Card.Body>
-                </Card>
+                <Link to={`/home/${maintab.id}`} >
+                    <Card className="maintab">
+                        <CloseButton onClick={handleOnDelete} /> 
+                        <Card.Body>
+                            <Card.Title className="maintabName">{maintab.name}</Card.Title>
+                        </Card.Body>
+                    </Card>
+                </Link>
             </div>
         </div>
     );
