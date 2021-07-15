@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import apiClient from "services/apiClient";
 
+import { SideBar } from "components";
 
 export default function TabPage() {
 

@@ -1,0 +1,12 @@
+.SideBar {
+    position: fixed;
+}
+
+.my-menu-class {
+    border: solid;
+}
+
+.menuBtn {
+    display: flex;
+    justify-content: flex-start;
+}
