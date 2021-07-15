@@ -2,16 +2,21 @@ import "./Login.css";
 
 import { Form, FormGroup, FormLabel, Button, Container } from "react-bootstrap";
 import { useLogin } from "hooks/useLogin";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Login() {
-  const { form, handleOnTextChange, handleOnClickSubmit } = useLogin();
+  const { form, errors, handleOnTextChange, handleOnClickSubmit } = useLogin();
 
   return (
     <div className="Login">
       <Container className="card">
         <h2>Login</h2>
-        <br/>
+        <br />
+        {errors.form && (
+          <span className="error" style={{ color: "red" }}>
+            {errors.form}
+          </span>
+        )}
         <Form onSubmit={handleOnClickSubmit}>
           <FormGroup>
             <FormLabel className="form-label">Email</FormLabel>
@@ -39,10 +44,14 @@ export default function Login() {
             />
           </FormGroup>
 
-          <Button type="submit" className="login-btn">Login</Button>
+          <Button type="submit" className="login-btn">
+            Login
+          </Button>
         </Form>
         <div className="footer">
-            <p>Don't have an account? Sign up <Link to="/register">here.</Link></p>
+          <p>
+            Don't have an account? Sign up <Link to="/register">here.</Link>
+          </p>
         </div>
       </Container>
     </div>
