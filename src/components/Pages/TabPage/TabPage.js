@@ -41,12 +41,13 @@ export default function TabPage() {
 
     }, [mainId])
 
+
     return (
         <div className="TabPage">
 
-            <SideBar />
-
             <PageHeader sectionName={tab?.name} />
+
+            <SideBar />
 
             <div className="tab-area">
                 <Row>
