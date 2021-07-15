@@ -1,10 +1,11 @@
 import "./LandingPage.css"
+import { PageHeader } from "components";
 
-export default function LandingPage () {
+export default function LandingPage() {
 
     return (
         <div className="LandingPage">
-            <h1>Landing Page</h1>
+            <PageHeader sectionName={LandingPage} />
         </div>
     );
 }
