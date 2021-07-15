@@ -1,11 +1,19 @@
 import "./Register.css";
 
-import { Form, FormGroup, FormLabel, FormControl, Button, Container } from "react-bootstrap";
+import {
+  Form,
+  FormGroup,
+  FormLabel,
+  FormControl,
+  Button,
+  Container,
+} from "react-bootstrap";
 import { useRegister } from "hooks/useRegister";
 import { Link } from "react-router-dom";
 
 export default function Register() {
-  const { form, errors, handleOnTextChange, handleOnClickSubmit } = useRegister();
+  const { form, errors, handleOnTextChange, handleOnClickSubmit } =
+    useRegister();
 
   return (
     <div className="Register">
@@ -27,8 +35,7 @@ export default function Register() {
               required
             />
           </FormGroup>
-          <FormControl.Feedback>Looks Good!</FormControl.Feedback>
-          <FormControl.Feedback type="isInvalid">
+          <FormControl.Feedback type="isInvalid" style={{ color: "red" }}>
             {errors.email}
           </FormControl.Feedback>
 
@@ -86,11 +93,19 @@ export default function Register() {
               placeholder="Confirm your password"
               onChange={handleOnTextChange}
               value={form.confirmPassword}
-              isValid={!errors.confirmPassword && errors.confirmPassword !== undefined}
+              isValid={
+                !errors.confirmPassword && errors.confirmPassword !== undefined
+              }
               isInvalid={errors.confirmPassword}
               required
             />
           </FormGroup>
+          <FormControl.Feedback
+            type="isInvalid"
+            style={{ color: "red" }}
+          >
+            {errors.confirmPassword}
+          </FormControl.Feedback>
 
           <FormGroup>
             <Form.Check

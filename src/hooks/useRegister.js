@@ -27,7 +27,9 @@ export const useRegister = () => {
           setErrors((err) => ({ ...err, email: null }));
         break;
 
-      case "firstName" || "lastName":
+      case "firstName": 
+      case "lastName":
+        console.log(evt.target.name)
         if (evt.target.value.trim() === "")
           setErrors((err) => ({ ...err, [evt.target.name]: "Please enter a name."}))
         else 
