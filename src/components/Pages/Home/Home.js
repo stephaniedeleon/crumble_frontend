@@ -46,9 +46,6 @@ export default function Home() {
             <div className="home-area">
                 <div className="title">
                     <h3>Your MainTabs...</h3>
-                    {/* <Link to='/home/maintabs/create'>
-                        <Button variant="outline-primary" className="create-btn">Add MainTab</Button>
-                    </Link> */}
                     <Button variant="outline-primary" onClick={() => setModalShow(true)}>
                         Add MainTab
                     </Button>

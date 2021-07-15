@@ -11,6 +11,7 @@ export { default as DeleteConfirmation } from "./DeleteConfirmation/DeleteConfir
 export { default as Notes } from "./Notes/Notes";
 export { default as Task } from "./Task/Task";
 export { default as ToDo } from "./ToDo/ToDo";
+export { default as Calendar } from "./Calendar/Calendar";
 
 export { default as Home } from "./pages/Home/Home";
 export { default as LandingPage } from "./pages/LandingPage/LandingPage";

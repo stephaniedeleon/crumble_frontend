@@ -27,10 +27,6 @@
     padding: 16px;
 }
 
-/* .Register .error {
-    color: red;
-} */
-
 .Register .input-field {
     display: flex;
     flex-direction: column;
@@ -44,10 +40,6 @@
     justify-content: center;
     margin-top: 15px;
     gap: 20px;
-}
-
-.Register .input-field-split {
-    width: 214px;
 }
 
 .Register .footer {

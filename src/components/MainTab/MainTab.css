@@ -1,0 +1,10 @@
+.MainTab .card {
+    width: 150px;
+    height: 150px;
+}
+
+.MainTab .card .closeBtn {
+    float: right;
+    padding: 5px;
+    padding-right: 8px;
+}
