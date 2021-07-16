@@ -46,6 +46,7 @@ export default function TabPage() {
         <div className="TabPage">
 
             <PageHeader sectionName={tab?.name} />
+            <SideBar />
 
             <SideBar />
 

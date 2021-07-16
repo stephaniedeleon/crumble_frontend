@@ -1,12 +1,26 @@
 .SideBar {
     position: fixed;
+    transition: opacity 1s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.my-menu-class {
+.my-menu-class.isOpen {
+    opacity: 100%;
+}
+
+.my-menu-class.isClosed {
+    opacity: 0%;
+}
+
+.SideBar .my-menu-class {
     border: solid;
+    border-color: black;
 }
 
-.menuBtn {
+.SideBar .menuBtn {
     display: flex;
     justify-content: flex-start;
+}
+
+.SideBar .bi-chevron-right {
+    font-size: 18px;
 }

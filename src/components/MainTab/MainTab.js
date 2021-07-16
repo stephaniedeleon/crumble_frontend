@@ -14,13 +14,13 @@ export default function MainTab({ key, maintab }) {
     return (
         <div className="MainTab">
             <div className="card">
-                    <Card className="maintab">
+                <Card className="maintab">
                         <div className="closeBtn"> 
                             <CloseButton onClick={() => setModalShow(true)} />
                         </div>
                         <Link to={`/home/${maintab.id}`} >
-                            <Card.Body>
-                                <Card.Title className="maintabName">{maintab.name}</Card.Title>
+                            <Card.Body className="maintabName">
+                                <Card.Title>{maintab.name}</Card.Title>
                             </Card.Body>
                         </Link>
                         <DeleteConfirmation
@@ -28,7 +28,7 @@ export default function MainTab({ key, maintab }) {
                             onHide={() => setModalShow(false)}
                             maintab={maintab}
                         />
-                    </Card>
+                </Card>
             </div>
         </div>
     );
