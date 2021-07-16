@@ -71,7 +71,17 @@ class ApiClient {
 
     async deleteMaintab(maintabId) { 
         return await this.request({ endpoint: "maintabs/"+maintabId, method: "DELETE" });
-    } 
+    }
+    
+    // Subtabs
+
+    async listSubtabsByMain(maintabId) {
+        return await this.request({ endpoints: "subtabs/main/"+maintabId, method: "GET" });
+    }
+
+    async listSubtabsBySubtab(subtabId) {
+        return await this.request({ endpoints: "subtabs/sub/"+subtabId, method: "GET" });
+    }
 }
 
 export default new ApiClient("http://localhost:3002");
