@@ -2,12 +2,16 @@
     position: fixed;
 }
 
-.my-menu-class {
+.SideBar .my-menu-class {
     border: solid;
     border-color: black;
 }
 
-.menuBtn {
+.SideBar .menuBtn {
     display: flex;
     justify-content: flex-start;
+}
+
+.SideBar .bi-chevron-right {
+    font-size: 18px;
 }

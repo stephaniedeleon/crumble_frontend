@@ -45,7 +45,7 @@ export default function SideBar() {
     <div className="SideBar" style={{ width: `${width}px` }}>
       <Row className="mr-0">
         <Col className="menuBtn pr-0">
-          <Button onClick={handleClick}>Click</Button>
+          <Button onClick={handleClick} className="toggleBtn"><i class="bi-chevron-right"></i></Button>
         </Col>
       </Row>
       <Row className="menuContent  mr-0">
