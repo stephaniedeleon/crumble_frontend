@@ -1,11 +1,13 @@
 import "./SideBar.css";
+import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
 import { Button, Col, Row } from "react-bootstrap";
+import { CheckboxTree } from 'react-checkbox-tree'
 import { useSideBar } from "hooks/useSideBar";
 
 export default function SideBar() {
-  const { width, isMenuOpened, handleClick } = useSideBar();
+  const { width, isMenuOpened, nodes, checked, expanded, setChecked, setExpanded, handleClick } = useSideBar();
 
   return (
     <div className="SideBar" style={{ width: `${width}px` }}>
@@ -27,7 +29,14 @@ export default function SideBar() {
               className={"my-menu-class"}
               style={{ fontWeight: "bold", position: "relative" }}
             >
-              This is the canvas menu.
+                This is the canvas menu.
+                {/* <CheckboxTree 
+                    nodes={nodes}
+                    // checked={checked}
+                    // expanded={expanded}
+                    // onCheck={setChecked({ checked })}
+                    // onExpand={setExpanded({ expanded })} 
+                /> */}
             </OffCanvasMenu>
           </OffCanvas>
         </Col>
