@@ -1,5 +1,4 @@
 import "./SideBar.css";
-import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
 import { Button, Col, Row } from "react-bootstrap";
