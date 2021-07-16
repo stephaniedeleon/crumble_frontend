@@ -82,6 +82,18 @@ class ApiClient {
     async listSubtabsBySubtab(subtabId) {
         return await this.request({ endpoints: "subtabs/sub/"+subtabId, method: "GET" });
     }
+
+    async createSubtabFromMain(details) {
+        return await this.request({ endpoint: "subtabs/main/create", method: "POST", data: details });
+    }
+
+    async createSubtabFromSub(details) {
+        return await this.request({ endpoint: "subtabs/sub/create", method: "POST", data: details });
+    }
+
+    async deleteSubtab(subtabId) {
+        return await this.request({ endpoint: "subtabs/"+subtabId, method: "DELETE" });
+    }
 }
 
 export default new ApiClient("http://localhost:3002");

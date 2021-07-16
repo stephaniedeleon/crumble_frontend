@@ -3,7 +3,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
 import { Button, Col, Row } from "react-bootstrap";
-import { CheckboxTree } from 'react-checkbox-tree'
 import { useSideBar } from "hooks/useSideBar";
 
 export default function SideBar() {
