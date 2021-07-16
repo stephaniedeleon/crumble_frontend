@@ -1,9 +1,10 @@
 import "./SideBar.css";
-import 'react-checkbox-tree/lib/react-checkbox-tree.css';
+// import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
 import { Button, Col, Row } from "react-bootstrap";
-import { CheckboxTree } from 'react-checkbox-tree'
+// import { bi-alarm } from "bootstrap-icons";
+// import { CheckboxTree } from 'react-checkbox-tree'
 import { useSideBar } from "hooks/useSideBar";
 
 export default function SideBar() {
@@ -13,7 +14,7 @@ export default function SideBar() {
     <div className="SideBar" style={{ width: `${width}px` }}>
       <Row className="mr-0">
         <Col className="menuBtn pr-0">
-          <Button onClick={handleClick}>Click</Button>
+          <Button onClick={handleClick} className="toggleBtn"><i class="bi-chevron-right"></i></Button>
         </Col>
       </Row>
       <Row className="menuContent  mr-0">
