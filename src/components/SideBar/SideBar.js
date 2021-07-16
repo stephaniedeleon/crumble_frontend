@@ -1,4 +1,5 @@
 import "./SideBar.css";
+import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
 import { Button, Col, Row } from "react-bootstrap";
@@ -58,7 +59,7 @@ export default function SideBar() {
             effect={"overlay"}
           >
             <OffCanvasMenu
-              className={"my-menu-class"}
+              className={`my-menu-class ${isMenuOpened ? "isOpen" : "isClosed"}`}
               style={{
                 fontWeight: "bold",
                 position: "relative",
