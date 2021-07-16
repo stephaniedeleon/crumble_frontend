@@ -1,14 +1,45 @@
 import "./SideBar.css";
-// import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
 import { Button, Col, Row } from "react-bootstrap";
-// import { bi-alarm } from "bootstrap-icons";
-// import { CheckboxTree } from 'react-checkbox-tree'
-import { useSideBar } from "hooks/useSideBar";
+import { TreeView, TreeItem } from "@material-ui/lab";
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import useStyles from "./SideBarStyles"
+import { useSideBar} from "hooks/useSideBar";
+
 
 export default function SideBar() {
-  const { width, isMenuOpened, nodes, checked, expanded, setChecked, setExpanded, handleClick } = useSideBar();
+  const { width, isMenuOpened, handleClick } = useSideBar();
+  const classes = useStyles()
+  
+  const data = {
+    id: 'root',
+    name: 'Parent',
+    children: [
+      {
+        id: '1',
+        name: 'Child - 1',
+      },
+      {
+        id: '3',
+        name: 'Child - 3',
+        children: [
+          {
+            id: '4',
+            name: 'Child - 4',
+          },
+        ],
+      },
+    ],
+  };
+
+  const renderTree = (nodes) => (
+    <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+      {Array.isArray(nodes.children) ? nodes.children.map((node) => renderTree(node)) : null}
+    </TreeItem>
+  );
+  
 
   return (
     <div className="SideBar" style={{ width: `${width}px` }}>
@@ -27,17 +58,21 @@ export default function SideBar() {
             effect={"overlay"}
           >
             <OffCanvasMenu
-              className={"my-menu-class"}
-              style={{ fontWeight: "bold", position: "relative" }}
+              className={`my-menu-class ${isMenuOpened ? "isOpen" : "isClosed"}`}
+              style={{
+                fontWeight: "bold",
+                position: "relative",
+                backgroundColor: "darkblue",
+                color: "white",
+              }}
             >
-                This is the canvas menu.
-                {/* <CheckboxTree 
-                    nodes={nodes}
-                    // checked={checked}
-                    // expanded={expanded}
-                    // onCheck={setChecked({ checked })}
-                    // onExpand={setExpanded({ expanded })} 
-                /> */}
+              <TreeView
+                className={classes.root}
+                defaultCollapseIcon={<ExpandMoreIcon />}
+                defaultExpandIcon={<ChevronRightIcon />}
+              >
+               {renderTree(data)}
+              </TreeView>
             </OffCanvasMenu>
           </OffCanvas>
         </Col>

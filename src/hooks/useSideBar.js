@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 export const useSideBar = () => {
-    const width = 300
+    const width = 200
     const [isMenuOpened, setIsMenuOpened] = useState(false)
     
     const handleClick = () => {
