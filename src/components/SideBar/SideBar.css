@@ -4,6 +4,7 @@
 
 .my-menu-class {
     border: solid;
+    border-color: black;
 }
 
 .menuBtn {
