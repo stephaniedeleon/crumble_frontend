@@ -12,7 +12,7 @@ import { useRegister } from "hooks/useRegister";
 import { Link } from "react-router-dom";
 
 export default function Register() {
-  const { form, errors, handleOnTextChange, handleOnClickSubmit } =
+  const { form, errors, passwordStrength, determineStrength, handleOnTextChange, handleOnClickSubmit } =
     useRegister();
 
   return (
@@ -81,6 +81,13 @@ export default function Register() {
               required
             />
           </FormGroup>
+          <div className={`passwordStrength ${passwordStrength}`}>
+            {form.password && (
+              <span>
+                {passwordStrength}
+              </span>
+            )}
+          </div>
 
           <FormGroup>
             <FormLabel className="form-label">Confirm Password</FormLabel>
