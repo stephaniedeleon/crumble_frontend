@@ -76,11 +76,11 @@ class ApiClient {
     // Subtabs
 
     async listSubtabsByMain(maintabId) {
-        return await this.request({ endpoints: "subtabs/main/"+maintabId, method: "GET" });
+        return await this.request({ endpoint: "subtabs/main/"+maintabId, method: "GET" });
     }
 
     async listSubtabsBySubtab(subtabId) {
-        return await this.request({ endpoints: "subtabs/sub/"+subtabId, method: "GET" });
+        return await this.request({ endpoint: "subtabs/sub/"+subtabId, method: "GET" });
     }
 
     async createSubtabFromMain(details) {
