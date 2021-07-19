@@ -1,9 +1,6 @@
-import { useState } from "react";
 
 
-export const useSideBar = () => {
-    const width = 200
-    const [isMenuOpened, setIsMenuOpened] = useState(false)
+export const useSideBar = ({ setIsMenuOpened }) => {
     
     const handleClick = () => {
         // toggles the menu opened state
@@ -11,8 +8,6 @@ export const useSideBar = () => {
     }
 
     return {
-        width,
-        isMenuOpened,
         handleClick,
     }
 }

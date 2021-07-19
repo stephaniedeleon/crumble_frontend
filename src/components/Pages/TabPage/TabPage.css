@@ -1,3 +1,7 @@
 .TabPage .tab-area {
-    margin: 60px 90px;
+    margin: 60px 10px;
+}
+
+.TabPage .grid-container {
+    display: grid;
 }

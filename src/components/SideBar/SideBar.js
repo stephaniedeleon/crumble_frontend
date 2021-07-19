@@ -9,8 +9,8 @@ import useStyles from "./SideBarStyles"
 import { useSideBar} from "hooks/useSideBar";
 
 
-export default function SideBar() {
-  const { width, isMenuOpened, handleClick } = useSideBar();
+export default function SideBar( { width, setWidth, isMenuOpened, setIsMenuOpened }) {
+  const { handleClick } = useSideBar({ setIsMenuOpened });
   const classes = useStyles()
   
   const data = {
@@ -28,6 +28,25 @@ export default function SideBar() {
           {
             id: '4',
             name: 'Child - 4',
+            children: [
+              {
+                id: '5',
+                name: 'Child-5',
+                children: [
+                  {
+                    id: '6',
+                    name: 'Child-6',
+                    children: [
+                      {
+                        id: '7',
+                        name: 'Child-7',
+                        
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
@@ -39,17 +58,28 @@ export default function SideBar() {
       {Array.isArray(nodes.children) ? nodes.children.map((node) => renderTree(node)) : null}
     </TreeItem>
   );
-  
 
   return (
-    <div className="SideBar" style={{ width: `${width}px` }}>
-      <Row className="mr-0">
-        <Col className="menuBtn pr-0">
-          <Button onClick={handleClick} className="toggleBtn"><i class="bi-chevron-right"></i></Button>
-        </Col>
-      </Row>
-      <Row className="menuContent  mr-0">
-        <Col className="pr-0">
+      <section className={`SideBar ${isMenuOpened ? "open" : "closed"}`} style={{ width: `${isMenuOpened ? `${width}px` : "0px"}`}}>
+          <div className="content-wrapper">
+              <Button onClick={handleClick} className="toggleBtn"><i className="bi-chevron-right"></i></Button>
+
+              <div className={`my-menu-class ${isMenuOpened ? "open" : "closed"}`}>
+                  <div className="cartTitle"></div>
+                  <TreeView
+                    className={classes.root}
+                    defaultCollapseIcon={<ExpandMoreIcon />}
+                    defaultExpandIcon={<ChevronRightIcon />}
+                  >
+                  {renderTree(data)}
+                  </TreeView>
+              </div>
+          </div>
+      </section>
+  );
+}
+
+/*  
           <OffCanvas
             width={width}
             transitionDuration={300}
@@ -75,8 +105,4 @@ export default function SideBar() {
               </TreeView>
             </OffCanvasMenu>
           </OffCanvas>
-        </Col>
-      </Row>
-    </div>
-  );
-}
+*/ 
