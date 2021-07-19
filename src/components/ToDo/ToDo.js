@@ -1,5 +1,7 @@
 import "./ToDo.css";
 
+import { Button } from 'react-bootstrap';
+import { AddSubTab, SubTab } from 'components';
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
@@ -30,21 +32,30 @@ export default function ToDo() {
     
         if(authenticated) fetchSubtabs();
 
-    }, [setSubtabs, user, authenticated]); // subtabs
+    }, [setSubtabs, user, authenticated, mainId]); // subtabs
 
+    const [modalShow, setModalShow] = useState(false);
 
     return (
         <div className="ToDo">
-            This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll. This is an example of using .overflow-auto on an element with set width and height dimensions. By
-            design, this content will vertically scroll.ßåß
+            <div className="title">
+                <Button variant="outline-primary" onClick={() => setModalShow(true)}>
+                    Add Subtab
+                </Button>
+
+                <AddSubTab
+                    mainId={mainId}
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
+            </div>
+            <br />
+            <br />
+            <div className="subtabs">
+                {subtabs.map((subtab) => (
+                    <SubTab key={subtab.id} subtab={subtab} />
+                ))}
+            </div>
         </div>
     );
 }
