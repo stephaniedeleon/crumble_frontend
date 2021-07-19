@@ -8,7 +8,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from "./SideBarStyles"
 import { useSideBar} from "hooks/useSideBar";
 
-
 export default function SideBar() {
   const { width, isMenuOpened, handleClick } = useSideBar();
   const classes = useStyles()

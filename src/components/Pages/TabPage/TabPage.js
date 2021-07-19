@@ -14,7 +14,7 @@ export default function TabPage() {
     const [error, setError] = useState(false);
 
 
-    //Getting maintab details...
+    // Getting maintab details...
     useEffect(() => {
 
         const fetchMainTabById = async() => {
