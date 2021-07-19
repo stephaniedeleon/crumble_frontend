@@ -6,6 +6,7 @@ import AuthContext from "context/auth";
 export const useRegister = () => {
   const navigate = useNavigate();
   const { user, setUser, setAuthenticated, authenticated } = useContext(AuthContext);
+  const [passwordStrength, setPasswordStrength] = useState("")
   const [isProcessing, setIsProcessing] = useState();
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
@@ -29,7 +30,6 @@ export const useRegister = () => {
 
       case "firstName": 
       case "lastName":
-        console.log(evt.target.name)
         if (evt.target.value.trim() === "")
           setErrors((err) => ({ ...err, [evt.target.name]: "Please enter a name."}))
         else 
@@ -46,6 +46,8 @@ export const useRegister = () => {
           else 
             setErrors((err) => ({ ...err, confirmPassword: null }));
         }
+
+        determineStrength(evt.target.value)
         break;
 
       case "confirmPassword": 
@@ -91,10 +93,24 @@ export const useRegister = () => {
     setIsProcessing(false);
   };
 
+  const determineStrength = (password) => {
+    const length = password.length
+
+    if (length < 8) {
+      setPasswordStrength("Weak")
+    } else if (length >= 8 && length <= 13) {
+      setPasswordStrength("Medium")
+    } else {
+      setPasswordStrength("Strong")
+    }
+  }
+
   return {
     isProcessing,
     errors,
     form,
+    passwordStrength,
+    determineStrength,
     handleOnTextChange,
     handleOnClickSubmit,
   };

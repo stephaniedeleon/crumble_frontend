@@ -65,3 +65,15 @@
     cursor: pointer;
     font-size: 16px;
 }
+
+.Register .passwordStrength.Weak {
+    color: red;
+}
+
+.Register .passwordStrength.Medium {
+    color: darkgoldenrod;
+}
+
+.Register .passwordStrength.Strong {
+    color: green;
+}
