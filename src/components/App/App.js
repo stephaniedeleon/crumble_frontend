@@ -2,7 +2,7 @@ import "./App.css";
 
 import React, { useState } from "react";
 import AuthContext from "context/auth";
-import { Navbar, Login, Register, Home, LandingPage } from "components";
+import { Navbar, Login, Register, Home, LandingPage, About } from "components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useApp } from "hooks/useApp";
 import { TabPage } from "components/pages";
@@ -28,6 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/home/:mainId/" element={<TabPage />} />
           </Routes>
         </BrowserRouter>

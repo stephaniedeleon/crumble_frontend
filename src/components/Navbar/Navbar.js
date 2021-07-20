@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <div className="NavBar">
-      <NavBar expand="lg" bg="light">
+      <NavBar clasName="navbar" expand="lg">
         <Container>
           <NavBar.Brand as={Link} to="/">
             LOGO
@@ -30,6 +30,9 @@ export default function Navbar() {
           <NavBar.Toggle aria-controls="NavBarScroll" />
           <NavBar.Collapse>
             <Nav className="ml-auto my-2 mr-5" NavBarScroll>
+              <Nav.Link as={Link} to="/about">
+                About
+              </Nav.Link>
               {authenticated ? (
                 <Nav.Link as={Link} to="/home">
                 Home
