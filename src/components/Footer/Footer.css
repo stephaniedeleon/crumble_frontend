@@ -1,0 +1,80 @@
+.Footer {
+    position: absolute;
+    bottom: 0;
+    background: #fffdec;
+    width: 100%;
+}
+
+.Footer h5 {
+    font-family: 'Playfair Display', serif;
+    padding-bottom: 12px;
+}
+
+.Footer .credits {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+}
+
+.Footer .row {
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 30px;
+}
+
+#footer-col-l,
+#footer-col-m,
+#footer-col-r {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#footer-col-m {
+    border-left: 1px solid #1f78fe;
+    border-right: 1px solid #1f78fe;
+}
+
+#footer-col-m a {
+    text-decoration: none;
+}
+
+.Footer a:hover {
+    color: #1f78fe;
+}
+
+.footer-socials a {
+    cursor: pointer;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.Footer .footer-links a {
+    cursor: pointer;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 1.10rem;
+    text-decoration: none;
+    font-family: 'Hind Vadodara', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+    #footer-col-m {
+        border-right: 0;
+        border-left: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .Footer h5,
+    .signature {
+        display: none;
+    }
+
+    .Footer {
+        padding-top: 0;
+        padding-bottom: 30px;
+    }
+    .Footer .row {
+        padding: 0;
+        padding-bottom: 20px;
+    }
+}

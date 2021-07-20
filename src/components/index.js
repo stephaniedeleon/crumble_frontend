@@ -18,7 +18,8 @@ export { default as Home } from "./pages/Home/Home";
 export { default as About } from "./pages/About/About";
 export { default as LandingPage } from "./pages/LandingPage/LandingPage";
 export { default as TabPage } from "./pages/TabPage/TabPage";
-export { default as SideBar } from "./SideBar/SideBar"
+export { default as SideBar } from "./SideBar/SideBar";
+export { default as Footer } from "./Footer/Footer";
 
 export { default as PageHeader } from "./pages/PageHeader/PageHeader";
 
