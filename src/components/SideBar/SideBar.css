@@ -1,19 +1,21 @@
-.SideBar {
+/* .SideBar {
     position: fixed;
-    transition: opacity 1s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.my-menu-class.isOpen {
-    opacity: 100%;
-}
-
-.my-menu-class.isClosed {
-    opacity: 0%;
+    display: inline;
+    left: 0px;
 }
 
 .SideBar .my-menu-class {
     border: solid;
     border-color: black;
+    display: inline-block;
+    
+    position: fixed;
+    height: 100%;
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.SideBar .my-menu-class.open {
+    width: 100px;
 }
 
 .SideBar .menuBtn {
@@ -23,4 +25,42 @@
 
 .SideBar .bi-chevron-right {
     font-size: 18px;
+} */
+
+
+
+
+
+
+.SideBar {
+    height: 100%;
+    display: block;
+    flex-direction: column;
+    background-color: #d49c6b;
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.SideBar.open {
+    min-width: 180px;
+}
+
+.SideBar.closed {
+    width: 0px;
+}
+
+.SideBar .toggleBtn {
+    /* 0.23, 1, 0.320, 1 */
+    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1)  
+}
+
+.SideBar.open .toggleBtn {
+    transform: rotate(180deg);
+}
+
+.cartTitle {
+    font-size: large;
+}
+
+.my-menu-class.closed {
+    display: none;
 }

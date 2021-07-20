@@ -94,6 +94,11 @@ class ApiClient {
     async deleteSubtab(subtabId) {
         return await this.request({ endpoint: "subtabs/"+subtabId, method: "DELETE" });
     }
+
+    async getDirectoryData(maintabId) {
+        const value = await this.request({ endpoint: "subtabs/"+maintabId+"/directory", method: "GET" })
+        return value.data
+    }
 }
 
 export default new ApiClient("http://localhost:3002");

@@ -1,18 +1,16 @@
 import "./SideBar.css";
 
-import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { TreeView, TreeItem } from "@material-ui/lab";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from "./SideBarStyles"
-import { useSideBar} from "hooks/useSideBar";
 
-export default function SideBar() {
-  const { width, isMenuOpened, handleClick } = useSideBar();
+
+export default function SideBar( { width, setWidth, isMenuOpened, setIsMenuOpened, directory }) {
   const classes = useStyles()
   
-  const data = {
+  const directoryData = {
     id: 'root',
     name: 'Parent',
     children: [
@@ -33,22 +31,40 @@ export default function SideBar() {
     ],
   };
 
+
   const renderTree = (nodes) => (
-    <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
-      {Array.isArray(nodes.children) ? nodes.children.map((node) => renderTree(node)) : null}
+    <TreeItem key={nodes?.id} nodeId={nodes?.id} label={nodes?.name}>
+      {Array.isArray(nodes?.children) ? nodes.children.map((node) => renderTree(node)) : null}
     </TreeItem>
   );
-  
+
+  const handleClick = () => {
+    // toggles the menu opened state
+    setIsMenuOpened((isMenuOpened) => !isMenuOpened)
+}
+
 
   return (
-    <div className="SideBar" style={{ width: `${width}px` }}>
-      <Row className="mr-0">
-        <Col className="menuBtn pr-0">
-          <Button onClick={handleClick} className="toggleBtn"><i class="bi-chevron-right"></i></Button>
-        </Col>
-      </Row>
-      <Row className="menuContent  mr-0">
-        <Col className="pr-0">
+      <section className={`SideBar ${isMenuOpened ? "open" : "closed"}`}>
+          <div className="content-wrapper">
+              <Button onClick={handleClick} className="toggleBtn"><i className="bi-chevron-right"></i></Button>
+
+              <div className={`my-menu-class ${isMenuOpened ? "open" : "closed"}`}>
+                  <div className="cartTitle"></div>
+                  <TreeView
+                    className={classes.root}
+                    defaultCollapseIcon={<ExpandMoreIcon />}
+                    defaultExpandIcon={<ChevronRightIcon />}
+                  >
+                  {renderTree(directory)}
+                  </TreeView>
+              </div>
+          </div>
+      </section>
+  );
+}
+
+/*  
           <OffCanvas
             width={width}
             transitionDuration={300}
@@ -70,12 +86,8 @@ export default function SideBar() {
                 defaultCollapseIcon={<ExpandMoreIcon />}
                 defaultExpandIcon={<ChevronRightIcon />}
               >
-               {renderTree(data)}
+               {renderTree(directoryData)}
               </TreeView>
             </OffCanvasMenu>
           </OffCanvas>
-        </Col>
-      </Row>
-    </div>
-  );
-}
+*/ 
