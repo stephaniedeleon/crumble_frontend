@@ -6,10 +6,10 @@ import { TreeView, TreeItem } from "@material-ui/lab";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from "./SideBarStyles"
-import { useSideBar} from "hooks/useSideBar";
+import { useSideBar } from "hooks/useSideBar";
 
-export default function SideBar() {
-  const { width, isMenuOpened, handleClick } = useSideBar();
+
+export default function SideBar( { width, setWidth, isMenuOpened, setIsMenuOpened }) {
   const classes = useStyles()
   
   const data = {
@@ -58,8 +58,14 @@ export default function SideBar() {
     </TreeItem>
   );
 
+  const handleClick = () => {
+    // toggles the menu opened state
+    setIsMenuOpened((isMenuOpened) => !isMenuOpened)
+}
+
+
   return (
-      <section className={`SideBar ${isMenuOpened ? "open" : "closed"}`} style={{ width: `${isMenuOpened ? `${width}px` : "0px"}`}}>
+      <section className={`SideBar ${isMenuOpened ? "open" : "closed"}`}>
           <div className="content-wrapper">
               <Button onClick={handleClick} className="toggleBtn"><i className="bi-chevron-right"></i></Button>
 

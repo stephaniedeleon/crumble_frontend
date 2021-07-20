@@ -44,6 +44,10 @@
     min-width: 180px;
 }
 
+.SideBar.closed {
+    width: 0px;
+}
+
 .SideBar .toggleBtn {
     /* 0.23, 1, 0.320, 1 */
     transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1)  

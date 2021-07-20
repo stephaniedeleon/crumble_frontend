@@ -41,14 +41,14 @@ export default function TabPage() {
 
     }, [mainId])
 
-    const [width, setWidth] = useState(150)
+    const [width, setWidth] = useState(0)
     const [isMenuOpened, setIsMenuOpened] = useState(false)
 
     return (
         <div className="TabPage">
 
             <PageHeader sectionName={tab?.name} />
-            <div className="grid-container" style={{ gridTemplateColumns: `${isMenuOpened ? `fit-content` : "0px"} auto`}}>
+            <div className="grid-container" style={{ gridTemplateColumns: `${isMenuOpened ? `${width}px` : "0px"} auto`}}>
                 <div className="grid-item">
                     <SideBar width={width} setWidth={setWidth} isMenuOpened={isMenuOpened} setIsMenuOpened={setIsMenuOpened} />
                 </div>
