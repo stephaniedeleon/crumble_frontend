@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import apiClient from "services/apiClient";
 
-import { SideBar, PageHeader, Notes, ToDo, Calendar } from "components";
+import { SideBar, PageHeader, Notes, ToDo, Calendar, Footer } from "components";
 import { Col, Row } from "react-bootstrap";
 
 export default function TabPage() {
@@ -80,6 +80,7 @@ export default function TabPage() {
           </Row>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

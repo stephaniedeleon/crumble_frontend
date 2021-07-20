@@ -1,26 +1,12 @@
-.LandingPage {
-    margin-top: 40px;
-}
-
 .LandingPage .hero {
     width: 55%;
     flex-direction: column;
 }
 
-.LandingPage, .LandingPage .hero {
+.LandingPage .main, .LandingPage .hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* transition: all 0.3s ease 0s; */
-}
-
-/* .LandingPage, .LandingPage .hero:hover {
-    margin-top: -20px;  
-} */
-
-.LandingPage .hero img {
-    height: 400px;
-    /* position: absolute; */
 }
 
 .LandingPage .hero h1 {
@@ -48,7 +34,6 @@
 
     color: #2c4147;
 
-    /* border: 1px solid rgb(203, 203, 203); */
     border-radius: 10px;
     padding: 10px 25px 0px 25px;
     transition: all 0.2s ease 0s;
@@ -56,6 +41,5 @@
 
 .LandingPage .tiles .tile:hover {
     cursor: pointer;
-    /* border: 1px solid #00bdaa; */
     transform: scale(1.1);
 }
