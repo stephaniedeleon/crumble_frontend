@@ -1,7 +1,5 @@
 import "./LandingPage.css"
 
-import {Footer} from "components";
-
 export default function LandingPage() {
 
     return (
@@ -36,8 +34,6 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
-            
-            <Footer />
         </div>
     );
 }

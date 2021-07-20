@@ -1,7 +1,7 @@
 import "./Home.css";
 
 import { Button } from "react-bootstrap";
-import { PageHeader, MainTab, AddMainTab, Footer } from "components";
+import { PageHeader, MainTab, AddMainTab } from "components";
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
@@ -63,8 +63,6 @@ export default function Home() {
                     ))}
                 </div>
             </div>
-            
-            <Footer />
         </div>
     );
 }
