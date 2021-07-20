@@ -6,6 +6,7 @@ export { default as MainTab } from "./MainTab/MainTab";
 export { default as SubTab } from "./SubTab/SubTab";
 
 export { default as AddMainTab } from "./AddMainTab/AddMainTab";
+export { default as AddSubTab } from "./AddSubTab/AddSubTab";
 export { default as DeleteConfirmation } from "./DeleteConfirmation/DeleteConfirmation"; 
 
 export { default as Notes } from "./Notes/Notes";
