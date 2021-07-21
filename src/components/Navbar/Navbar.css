@@ -1,9 +1,13 @@
-.NavBar .navbar {
+/* .NavBar .navbar {
     height: 90px;
-}
+} */
+
+/* #NavBarScroll {
+    background-color: rgb(255, 255, 248);
+} */
 
 .NavBar .links a {
-    margin-left: 20px;
+    margin: 0px 20px;
 }
 
 .NavBar .login-link,
