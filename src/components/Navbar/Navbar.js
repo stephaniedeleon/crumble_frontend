@@ -13,55 +13,51 @@ export default function Navbar() {
 
   //handles logout
   const handleOnLogout = async () => {
-    setUser({});
-    setAuthenticated(false);
-    setMaintabs([]); //clears maintabs
-    await apiClient.logout();
-    navigate("/")
+      setUser({});
+      setAuthenticated(false);
+      setMaintabs([]); //clears maintabs
+      await apiClient.logout();
+      navigate("/")
   };
 
   return (
-    <div className="NavBar">
-      <NavBar clasName="navbar" expand="lg">
-        <Container>
-          <NavBar.Brand as={Link} to="/">
-            LOGO
-          </NavBar.Brand>
-          <NavBar.Toggle aria-controls="NavBarScroll" />
-          <NavBar.Collapse>
-            <Nav className="ml-auto my-2 mr-5" NavBarScroll>
-              <Nav.Link as={Link} to="/about">
-                About
-              </Nav.Link>
-              {authenticated ? (
-                <Nav.Link as={Link} to="/home">
-                Home
-                </Nav.Link>
-              ) : ( 
-                <>
-                </>
-              )}
-              
-            </Nav>
-            <div className="d-flex">
-              {authenticated ? (
-                <Button className="mr-2" onClick={handleOnLogout}>
-                  Log Out
-                </Button>
-              ) : (
-                <>
-                  <Link to="/login">
-                    <Button className="mr-2">Login</Button>
-                  </Link>
-                  <Link to="/register">
-                    <Button>Register</Button>
-                  </Link>
-                </>
-              )}
-            </div>
-          </NavBar.Collapse>
-        </Container>
-      </NavBar>
-    </div>
+      <div className="NavBar">
+          <NavBar clasName="navbar" expand="lg">
+              <Container>
+                  <NavBar.Brand as={Link} to="/">
+                    PlannerLogo
+                  </NavBar.Brand>
+
+                  <NavBar.Toggle aria-controls="NavBarScroll" />
+
+                  <NavBar.Collapse className="links">
+                      <Nav className="ml-auto" NavBarScroll>
+                          <Nav.Link className="reg-link" as={Link} to="/about">
+                            About
+                          </Nav.Link>
+                          {authenticated ? (
+                            <>
+                              <Nav.Link className="reg-link" as={Link} to="/home">
+                                Home
+                              </Nav.Link>
+                              <Nav.Link className="logout" onClick={handleOnLogout}>
+                                Log Out
+                              </Nav.Link>
+                            </>
+                          ) : ( 
+                            <>
+                              <Nav.Link className="login-link" as={Link} to="/login">
+                                  Login
+                              </Nav.Link>
+                              <Nav.Link className="register-link" as={Link} to="/register">
+                                  Register
+                              </Nav.Link>
+                            </>
+                          )}
+                      </Nav>
+                  </NavBar.Collapse>
+              </Container>
+          </NavBar>
+      </div>
   );
 }

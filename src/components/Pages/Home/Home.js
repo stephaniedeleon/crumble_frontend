@@ -1,7 +1,7 @@
 import "./Home.css";
 
-import { Button } from "react-bootstrap";
-import { PageHeader, MainTab, AddMainTab, Footer } from "components";
+import { Button, Carousel } from "react-bootstrap";
+import { PageHeader, MainTab, AddMainTab } from "components";
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
@@ -41,7 +41,18 @@ export default function Home() {
 
     return (
         <div className="Home">
-            <PageHeader sectionName={welcome}/>
+            <Carousel className="carousel">
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src="https://images.unsplash.com/flagged/photo-1574512468809-d05a4fd197fd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                        alt="productivity pic"
+                    />
+                    <Carousel.Caption className="carousel-caption">
+                        <h3>{welcome}</h3>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
 
             <div className="home-area">
                 <div className="title">
@@ -63,8 +74,6 @@ export default function Home() {
                     ))}
                 </div>
             </div>
-            
-            <Footer />
         </div>
     );
 }
