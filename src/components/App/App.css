@@ -8,4 +8,5 @@
     min-height: 100vh;
     flex-direction: column;
     position: relative;
+    background-color: rgb(255, 255, 248);
 }
