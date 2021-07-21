@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
       <div className="NavBar">
-          <NavBar clasName="navbar" expand="lg">
+          <NavBar clasName="navbar" expand="md">
               <Container>
                   <NavBar.Brand as={Link} to="/">
                     PlannerLogo
@@ -30,7 +30,7 @@ export default function Navbar() {
 
                   <NavBar.Toggle aria-controls="NavBarScroll" />
 
-                  <NavBar.Collapse className="links">
+                  <NavBar.Collapse className="links" id="NavBarScroll">
                       <Nav className="ml-auto" NavBarScroll>
                           <Nav.Link className="reg-link" as={Link} to="/about">
                             About
