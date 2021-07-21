@@ -15,7 +15,6 @@ export default function TabPage() {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [directory, setDirectory] = useState();
 
-
   // Getting maintab details...
   useEffect(() => {
     const fetchMainTabById = async () => {
