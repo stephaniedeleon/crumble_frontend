@@ -1,3 +1,24 @@
 .NavBar .navbar {
     height: 90px;
 }
+
+.NavBar .links a {
+    margin-left: 20px;
+}
+
+.NavBar .login-link,
+.NavBar .register-link, 
+.NavBar .logout {
+    font-family: "Varela", serif;
+    font-size: 15px;
+    border-radius: 4px;
+    /* padding: 8px 14px; */
+    border: 1px solid #8C3F0D;
+    transition: all 0.2s ease 0.2s;
+}
+
+.NavBar .login-link:hover,
+.NavBar .register-link:hover,
+.NavBar .logout:hover {
+    border-radius: 12px;
+}
