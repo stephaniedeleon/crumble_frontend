@@ -1,7 +1,7 @@
 .Footer {
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
-    background: #fffdec;
+    /* background: #fffdec; */
     width: 100%;
 }
 
@@ -30,16 +30,17 @@
 }
 
 #footer-col-m {
-    border-left: 1px solid #1f78fe;
-    border-right: 1px solid #1f78fe;
+    border-left: 1px solid #B48125;
+    border-right: 1px solid #B48125;
 }
 
 #footer-col-m a {
     text-decoration: none;
+    color: black;
 }
 
 .Footer a:hover {
-    color: #1f78fe;
+    color: #B48125;
 }
 
 .footer-socials a {

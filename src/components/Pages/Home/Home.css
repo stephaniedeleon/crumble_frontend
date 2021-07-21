@@ -1,8 +1,24 @@
+.Home .carousel-caption {
+    left: 30%;
+    top: 13%;
+    cursor: pointer;
+    opacity: 80%;
+    transition: transform .3s;
+    width: 40%;
+    color: black
+}
+
+.Home .carousel img {
+    height: 400px;
+    opacity: 30%;
+}
+
 .Home .maintabs {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    height: 550px;
 }
 
 .Home .home-area {
