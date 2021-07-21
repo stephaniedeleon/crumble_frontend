@@ -16,14 +16,25 @@ export default function ToDo() {
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
 
-    const { mainId } = useParams();
+    const { mainId, subId } = useParams();
 
     // fetches subtabs
     useEffect(() => {
         const fetchSubtabs = async () => {
             setIsFetching(true);
-      
-            const { data, error } = await apiClient.listSubtabsByMain(parseInt(mainId));
+
+            let result;
+            
+            if (parseInt(subId) === 0) {
+                result = await apiClient.listSubtabsByMain(parseInt(mainId));
+            } else {
+                result = await apiClient.listSubtabsBySubtab(parseInt(subId));
+            }
+            
+            const { data, error } = result;
+
+            console.log(result);
+
             if(data) setSubtabs(data.subtabs);
             if(error) setError(error);
       
@@ -32,7 +43,7 @@ export default function ToDo() {
     
         if(authenticated) fetchSubtabs();
 
-    }, [setSubtabs, user, authenticated, mainId]); // subtabs
+    }, [setSubtabs, user, authenticated, mainId, subId]); // subtabs
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -45,6 +56,7 @@ export default function ToDo() {
 
                 <AddSubTab
                     mainId={mainId}
+                    subId={subId}
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                 />
@@ -53,7 +65,7 @@ export default function ToDo() {
             <br />
             <div className="subtabs">
                 {subtabs.map((subtab) => (
-                    <SubTab key={subtab.id} subtab={subtab} />
+                    <SubTab key={subtab.id} subtab={subtab} mainId={mainId} />
                 ))}
             </div>
         </div>
