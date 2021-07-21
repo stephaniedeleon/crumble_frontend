@@ -1,6 +1,7 @@
 import "./Footer.css"
 
 import { Link } from "react-router-dom";
+import { ExternalLink } from 'react-external-link';
 
 export default function Footer() {
     return (
@@ -8,18 +9,16 @@ export default function Footer() {
             <div class="row align-items-center">
                 <div id="footer-col-l" class="col-md-4">
                     <h5>Let's get acquainted_</h5>
-                    <div class="footer-socials">
-                        <h4>
-                            {/* <a role="link" aria-label="Navigate to Stephanie's LinkedIn Page"
-                                href="https://www.linkedin.com/in/stephanie-de-leon-a902b717a/ " target="_blank "
-                                rel="noopener noreferrer "><i class="bi bi- bi-linkedin"></i></a>
-                            <a role="link" aria-label="Send an Email to Love, Panini"
-                                href="mailto:withlovepanini@gmail.com " target="_blank " rel="noopener noreferrer "><i
-                                    class="bi bi-envelope"></i></a>
-                            <a role="link" aria-label="Navigate to Stephanie's GitHub Page"
-                                href="https://github.com/stephaniedeleon " target="_blank " rel="noopener noreferrer "><i
-                                    class="bi bi-github"></i></a> */}
-                        </h4>
+                    <div class="footer-links">
+                        <ExternalLink href="https://www.linkedin.com/in/gevork-manukyan-235385199/"> 
+                        <i class="bi-linkedin"/> G
+                        </ExternalLink>
+                        <ExternalLink href="https://www.linkedin.com/in/abhirajchatterjee/"> 
+                            <i class="bi-linkedin"/> A
+                        </ExternalLink>
+                        <ExternalLink href="https://www.linkedin.com/in/stephanie-de-leon-a902b717a/"> 
+                            <i class="bi-linkedin"/> P
+                        </ExternalLink>
                     </div>
                 </div>
                 <div id="footer-col-m" class="col-md-4">
@@ -34,9 +33,12 @@ export default function Footer() {
                 <div id="footer-col-r" class="col-md-4">
                     <h5>Looking for more?_</h5>
                     <div class="footer-links">
-                        {/* <a role="navigation" aria-label="Go to about page" href="pages/about.html">About</a>
-                        <a role="navigation" aria-label="Go to blog page for articles" href="pages/blog.html">The Blog</a>
-                        <a role="navigation" aria-label="Go to projects page" href="pages/projects.html">Projects</a> */}
+                        <ExternalLink href="https://github.com/CourseHeroGrp1/planner_api"> 
+                            <i class="bi-github"/> api
+                        </ExternalLink>
+                        <ExternalLink href="https://github.com/CourseHeroGrp1/planner_frontend"> 
+                            <i class="bi-github"/> frontend
+                        </ExternalLink>
                     </div>
                 </div>
             </div>
