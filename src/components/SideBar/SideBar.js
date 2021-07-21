@@ -9,27 +9,6 @@ import useStyles from "./SideBarStyles"
 
 export default function SideBar( { width, setWidth, isMenuOpened, setIsMenuOpened, directory }) {
   const classes = useStyles()
-  
-  const directoryData = {
-    id: 'root',
-    name: 'Parent',
-    children: [
-      {
-        id: '1',
-        name: 'Child - 1',
-      },
-      {
-        id: '3',
-        name: 'Child - 3',
-        children: [
-          {
-            id: '4',
-            name: 'Child - 4',
-          },
-        ],
-      },
-    ],
-  };
 
 
   const renderTree = (nodes) => (

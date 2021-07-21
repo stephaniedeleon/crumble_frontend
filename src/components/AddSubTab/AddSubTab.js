@@ -15,7 +15,7 @@ export default function AddSubTab(props) {
 
     // adds a new a sutab to list of subtabs
     const addSubtab = (newSubtab) => {
-        setSubtabs((oldSubtabs) => [newSubtab, ...oldSubtabs]);
+        setSubtabs((oldSubtabs) => [...oldSubtabs, newSubtab]);
     }
 
     const handleOnInputChange = (event) => {

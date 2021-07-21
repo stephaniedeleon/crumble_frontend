@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 // Has the list of subtabs and tasks
 
-export default function ToDo() {
+export default function ToDo({ directory, setDirectory }) {
 
     const { subtabs, user, authenticated, setSubtabs } = useContext(AuthContext);
 
@@ -32,7 +32,7 @@ export default function ToDo() {
     
         if(authenticated) fetchSubtabs();
 
-    }, [setSubtabs, user, authenticated, mainId]); // subtabs
+    }, [setSubtabs, user, authenticated, mainId, directory]); // subtabs
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -47,6 +47,7 @@ export default function ToDo() {
                     mainId={mainId}
                     show={modalShow}
                     onHide={() => setModalShow(false)}
+                    directory={directory} setDirectory={setDirectory}
                 />
             </div>
             <br />
