@@ -29,7 +29,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/home/:mainId/" element={<TabPage />} />
+            <Route path="/home/:mainId/:subId" element={<TabPage />} />
           </Routes>
 
           <Footer />
