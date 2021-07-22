@@ -15,7 +15,6 @@ export default function TabPage() {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [directory, setDirectory] = useState();
 
-
   // Getting maintab details...
   useEffect(() => {
     const fetchMainTabById = async () => {
@@ -32,7 +31,7 @@ export default function TabPage() {
 
         // Get directory data to use for sidebar
         const result = await apiClient.getDirectoryData(mainId);
-        setDirectory(result.directoryData);
+        setDirectory(result?.directoryData);
 
       } catch (err) {
         console.log({ err });

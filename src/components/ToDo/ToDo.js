@@ -9,21 +9,30 @@ import { useParams } from 'react-router-dom';
 
 // Has the list of subtabs and tasks
 
-export default function ToDo() {
+export default function ToDo({ directory, setDirectory }) {
 
     const { subtabs, user, authenticated, setSubtabs } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
 
-    const { mainId } = useParams();
+    const { mainId, subId } = useParams();
 
     // fetches subtabs
     useEffect(() => {
         const fetchSubtabs = async () => {
             setIsFetching(true);
-      
-            const { data, error } = await apiClient.listSubtabsByMain(parseInt(mainId));
+
+            let result;
+            
+            if (parseInt(subId) === 0) {
+                result = await apiClient.listSubtabsByMain(parseInt(mainId));
+            } else {
+                result = await apiClient.listSubtabsBySubtab(parseInt(subId));
+            }
+            
+            const { data, error } = result;
+
             if(data) setSubtabs(data.subtabs);
             if(error) setError(error);
       
@@ -32,7 +41,7 @@ export default function ToDo() {
     
         if(authenticated) fetchSubtabs();
 
-    }, [setSubtabs, user, authenticated, mainId]); // subtabs
+    }, [setSubtabs, user, authenticated, mainId, subId]); // subtabs
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -45,15 +54,17 @@ export default function ToDo() {
 
                 <AddSubTab
                     mainId={mainId}
+                    subId={subId}
                     show={modalShow}
                     onHide={() => setModalShow(false)}
+                    directory={directory} setDirectory={setDirectory}
                 />
             </div>
             <br />
             <br />
             <div className="subtabs">
                 {subtabs.map((subtab) => (
-                    <SubTab key={subtab.id} subtab={subtab} />
+                    <SubTab key={subtab.id} subtab={subtab} mainId={mainId} />
                 ))}
             </div>
         </div>

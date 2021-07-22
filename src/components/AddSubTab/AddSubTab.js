@@ -15,7 +15,7 @@ export default function AddSubTab(props) {
 
     // adds a new a sutab to list of subtabs
     const addSubtab = (newSubtab) => {
-        setSubtabs((oldSubtabs) => [newSubtab, ...oldSubtabs]);
+        setSubtabs((oldSubtabs) => [...oldSubtabs, newSubtab]);
     }
 
     const handleOnInputChange = (event) => {
@@ -28,12 +28,25 @@ export default function AddSubTab(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        const { data, error } = await apiClient.createSubtabFromMain({
-            main_id: props.mainId,
-            subtab: {
-                name: form.name,
-            }
-        });
+        let result;
+
+        if (parseInt(props.subId) === 0) {
+            result = await apiClient.createSubtabFromMain({
+                main_id: parseInt(props.mainId),
+                subtab: {
+                    name: form.name,
+                }
+            });
+        } else {
+            result = await apiClient.createSubtabFromSub({
+                sub_id: parseInt(props.subId),
+                subtab: {
+                    name: form.name,
+                }
+            })
+        }
+
+        const { data, error } = result;
 
         if (error) {
             setErrors((e) => ({ ...e, form: error })); 
