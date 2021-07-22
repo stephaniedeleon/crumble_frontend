@@ -138,6 +138,16 @@ class ApiClient {
         return await this.request({ endpoint: "tasks/unmark/"+taskId, method: "PUT" });
     }
 
+    // Calendar Events
+
+    async listEventsByMaintab(maintabId) {
+        return await this.request({ endpoint: "calendar/main/"+maintabId, method: "GET" });
+    }
+
+    async listEventsBySubtab(subtabId) {
+        return await this.request({ endpoint: "calendar/sub/"+subtabId, method: "GET" });
+    }
+
 }
 
 export default new ApiClient("http://localhost:3002");
