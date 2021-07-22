@@ -95,10 +95,49 @@ class ApiClient {
         return await this.request({ endpoint: "subtabs/"+subtabId, method: "DELETE" });
     }
 
+    async markSubtab(subtabId) {
+        return await this.request({ endpoint: "subtabs/mark/"+subtabId, method: "PUT" });
+    }
+
+    async unmarkSubtab(subtabId) {
+        return await this.request({ endpoint: "subtabs/unmark/"+subtabId, method: "PUT" });
+    }
+
     async getDirectoryData(maintabId) {
         const value = await this.request({ endpoint: "subtabs/"+maintabId+"/directory", method: "GET" })
         return value.data
     }
+
+    // Tasks
+
+    async listTasksByMain(maintabId) {
+        return await this.request({ endpoint: "tasks/main/"+maintabId, method: "GET" });
+    }
+
+    async listTasksBySubtab(subtabId) {
+        return await this.request({ endpoint: "tasks/sub/"+subtabId, method: "GET" });
+    }
+
+    async createTaskFromMain(details) {
+        return await this.request({ endpoint: "tasks/main/create", method: "POST", data: details });
+    }
+
+    async createTaskFromSub(details) {
+        return await this.request({ endpoint: "tasks/sub/create", method: "POST", data: details });
+    }
+
+    async deleteTask(taskId) {
+        return await this.request({ endpoint: "tasks/"+taskId, method: "DELETE" });
+    }
+
+    async markTask(taskId) {
+        return await this.request({ endpoint: "tasks/mark/"+taskId, method: "PUT" });
+    }
+
+    async unmarkTask(taskId) {
+        return await this.request({ endpoint: "tasks/unmark/"+taskId, method: "PUT" });
+    }
+
 }
 
 export default new ApiClient("http://localhost:3002");
