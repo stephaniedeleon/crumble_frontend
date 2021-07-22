@@ -70,11 +70,11 @@ export default function TabPage() {
                 <ToDo />
               </Row>
               <Row>
-                <Notes />
+                <Calendar />
               </Row>
             </Col>
             <Col md={8}>
-              <Calendar />
+              <Notes />
             </Col>
           </Row>
         </div>
