@@ -25,32 +25,44 @@ export default function Navbar() {
           <NavBar clasName="navbar" expand="md">
               <Container>
                   <NavBar.Brand as={Link} to="/">
-                    PlannerLogo
+                    <h5>
+                      PlannerLogo
+                    </h5>
                   </NavBar.Brand>
 
-                  <NavBar.Toggle aria-controls="NavBarScroll" />
+                  <NavBar.Toggle className="my-4" aria-controls="NavBarScroll" />
 
                   <NavBar.Collapse className="links" id="NavBarScroll">
-                      <Nav className="ml-auto" NavBarScroll>
-                          <Nav.Link className="reg-link" as={Link} to="/about">
-                            About
+                      <Nav className="ml-auto py-4" NavBarScroll>
+                          <Nav.Link as={Link} to="/about">
+                            <h6 className="linkText">
+                              About
+                            </h6>
                           </Nav.Link>
                           {authenticated ? (
                             <>
-                              <Nav.Link className="reg-link" as={Link} to="/home">
-                                Home
+                              <Nav.Link as={Link} to="/home">
+                                <h6 className="linkText">
+                                  Home
+                                </h6>
                               </Nav.Link>
-                              <Nav.Link className="logout" onClick={handleOnLogout}>
-                                Log Out
+                              <Nav.Link onClick={handleOnLogout}>
+                                <h6 className="linkBtn">
+                                  Log Out
+                                </h6>
                               </Nav.Link>
                             </>
                           ) : ( 
                             <>
-                              <Nav.Link className="login-link" as={Link} to="/login">
+                              <Nav.Link as={Link} to="/login">
+                                <h6 className="linkBtn">
                                   Login
+                                </h6>
                               </Nav.Link>
-                              <Nav.Link className="register-link" as={Link} to="/register">
+                              <Nav.Link as={Link} to="/register">
+                                <h6 className="linkBtn">
                                   Register
+                                </h6>
                               </Nav.Link>
                             </>
                           )}
