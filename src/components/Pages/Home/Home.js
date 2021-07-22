@@ -1,7 +1,7 @@
 import "./Home.css";
 
 import { Button } from "react-bootstrap";
-import { PageHeader, MainTab, AddMainTab } from "components";
+import { MainTab, AddMainTab } from "components";
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
@@ -23,7 +23,7 @@ export default function Home() {
             setIsFetching(true);
       
             const { data, error } = await apiClient.listMaintabs();
-            if(data) setMaintabs(data.maintabs);
+            if(data) setMaintabs(data?.maintabs);
             if(error) setError(error);
       
             setIsFetching(false);
@@ -32,8 +32,6 @@ export default function Home() {
         if(authenticated) fetchMaintabs();
 
     }, [setMaintabs, user, authenticated]); //maintabs
-
-
 
 
     //method to show modal for adding maintab...
