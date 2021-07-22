@@ -1,24 +1,32 @@
-.NavBar .navbar {
-    height: 90px;
-}
-
-.NavBar .links a {
-    margin-left: 20px;
-}
-
-.NavBar .login-link,
-.NavBar .register-link, 
-.NavBar .logout {
+.NavBar .links .linkText,
+.NavBar .links .linkBtn {
     font-family: "Varela", serif;
-    font-size: 15px;
+    font-size: 16.5px;
+    font-weight: 300;
+    color: #254832;
+    margin: 0;
+}
+
+/* this is temp until we have a logo */
+.NavBar h5 {
+    color: #254832;
+    font-weight: 400;
+    margin: 0;
+}
+
+.NavBar h6 {
+    padding: 6px 10px;
+}
+
+.NavBar .linkBtn {
+    padding: 6px 10px;
     border-radius: 4px;
-    /* padding: 8px 14px; */
     border: 1px solid #8C3F0D;
     transition: all 0.2s ease 0.2s;
 }
 
-.NavBar .login-link:hover,
-.NavBar .register-link:hover,
-.NavBar .logout:hover {
-    border-radius: 12px;
+.NavBar .linkBtn:hover {
+    background-color: #47825b;
+    color: white;
+    border-color: #47825b;
 }

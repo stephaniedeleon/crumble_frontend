@@ -1,6 +1,6 @@
 import "./MainTab.css"
 
-import { Card, CloseButton } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import React, { useState } from "react";
 import { DeleteConfirmation } from "components";
 import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ export default function MainTab({ key, maintab }) {
             <div className="card">
                 <Card className="maintab">
                         <div className="closeBtn"> 
-                            <CloseButton onClick={() => setModalShow(true)} />
+                            <i class="bi-x" onClick={() => setModalShow(true)}></i>
                         </div>
                         <Link to={`/home/${maintab.id}/0`} >
                             <Card.Body className="maintabName">

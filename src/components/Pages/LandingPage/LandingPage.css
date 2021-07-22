@@ -1,6 +1,7 @@
 .LandingPage .hero {
     width: 55%;
     flex-direction: column;
+    font-family: 'Playfair Display', serif;
 }
 
 .LandingPage .main, .LandingPage .hero {
@@ -11,10 +12,14 @@
 
 .LandingPage .hero h1 {
     font-size: 60px;
+    font-weight: 400;
+    color: #254832;
 }
 
 .LandingPage .hero p {
     font-size: 24px;
+    font-weight: 300;
+    color: #325D41;
 }
 
 .LandingPage .tiles {
@@ -32,7 +37,7 @@
     margin-top: 60px;
     margin-bottom: 60px;
 
-    color: #2c4147;
+    color: #254832;
 
     border-radius: 10px;
     padding: 10px 25px 0px 25px;
@@ -41,5 +46,6 @@
 
 .LandingPage .tiles .tile:hover {
     cursor: pointer;
+    color: #8C3F0D;
     transform: scale(1.1);
 }

@@ -5,7 +5,7 @@ export default function About() {
 
     return (
         <div className="About">
-            <PageHeader sectionName="About"/>
+            <PageHeader sectionName="About us"/>
         </div>
     );
 }

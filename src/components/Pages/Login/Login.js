@@ -45,7 +45,7 @@ export default function Login() {
           </FormGroup>
 
           <Button type="submit" className="login-btn">
-            Login
+            login
           </Button>
         </Form>
         <div className="footer">
