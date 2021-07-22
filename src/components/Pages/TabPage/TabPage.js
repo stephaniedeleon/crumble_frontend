@@ -31,6 +31,7 @@ export default function TabPage() {
 
         // Get directory data to use for sidebar
         const result = await apiClient.getDirectoryData(mainId);
+
         setDirectory(result.directoryData);
 
       } catch (err) {
