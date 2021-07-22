@@ -14,11 +14,12 @@ function App() {
 
   const [maintabs, setMaintabs] = useState([]);
   const [subtabs, setSubtabs] = useState([]);
+  const [tasks, setTasks] = useState([])
 
   const { user, setUser, authenticated, setAuthenticated } = useApp();
 
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, setErrors, setIsLoading }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, setErrors, setIsLoading }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />
