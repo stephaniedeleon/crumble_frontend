@@ -45,6 +45,7 @@ export default function Register() {
               <Form.Control
                 type="text"
                 name="firstName"
+                className="input-field"
                 placeholder="First"
                 onChange={handleOnTextChange}
                 value={form.firstName}
@@ -59,6 +60,7 @@ export default function Register() {
               <Form.Control
                 type="text"
                 name="lastName"
+                className="input-field"
                 placeholder="Last"
                 onChange={handleOnTextChange}
                 value={form.lastName}
@@ -114,6 +116,8 @@ export default function Register() {
 
           <FormGroup>
             <Form.Check
+              id="agreeBox"
+              defaultValue="#563d7c"
               type="checkbox"
               label="Agree To Terms and Services"
               required

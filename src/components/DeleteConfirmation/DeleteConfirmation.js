@@ -48,13 +48,13 @@ export default function MainTab(props) {
                 <Modal.Title>Delete Confirmation</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                Are you sure you want to delete this main tab?
+                Are you sure you want to delete the main tab: {maintab.name}?
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.onHide}>
                     Cancel
                 </Button>
-                <Button type="submit" onClick={handleOnDelete}>Delete MainTab</Button>
+                <Button type="submit" onClick={handleOnDelete}>Delete {maintab.name}</Button>
             </Modal.Footer>
         </Modal>
     );
