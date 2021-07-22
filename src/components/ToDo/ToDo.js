@@ -9,15 +9,14 @@ import { useParams } from 'react-router-dom';
 
 // Has the list of subtabs and tasks
 
-export default function ToDo({ directory, setDirectory }) {
+export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
     const { subtabs, tasks, user, authenticated, setSubtabs, setTasks } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
 
-    const { mainId, subId } = useParams();
-
+    
     // fetches subtabs
     useEffect(() => {
         const fetchSubtabs = async () => {

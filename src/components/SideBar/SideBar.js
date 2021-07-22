@@ -7,7 +7,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from "./SideBarStyles"
 
 
-export default function SideBar( { width, setWidth, isMenuOpened, setIsMenuOpened, directory }) {
+export default function SideBar( { isMenuOpened, setIsMenuOpened, directory }) {
   const classes = useStyles()
 
 
@@ -42,31 +42,3 @@ export default function SideBar( { width, setWidth, isMenuOpened, setIsMenuOpene
       </section>
   );
 }
-
-/*  
-          <OffCanvas
-            width={width}
-            transitionDuration={300}
-            isMenuOpened={isMenuOpened}
-            position={"left"}
-            effect={"overlay"}
-          >
-            <OffCanvasMenu
-              className={`my-menu-class ${isMenuOpened ? "isOpen" : "isClosed"}`}
-              style={{
-                fontWeight: "bold",
-                position: "relative",
-                backgroundColor: "darkblue",
-                color: "white",
-              }}
-            >
-              <TreeView
-                className={classes.root}
-                defaultCollapseIcon={<ExpandMoreIcon />}
-                defaultExpandIcon={<ChevronRightIcon />}
-              >
-               {renderTree(directoryData)}
-              </TreeView>
-            </OffCanvasMenu>
-          </OffCanvas>
-*/ 

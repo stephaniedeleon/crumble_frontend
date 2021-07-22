@@ -1,15 +1,23 @@
 import "./MainTab.css"
 
 import { Card } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { DeleteConfirmation } from "components";
 import { Link } from 'react-router-dom';
+import AuthContext from "context/auth";
 
 
 export default function MainTab({ key, maintab }) {
 
     //method to show modal for deleting confirmation...
     const [modalShow, setModalShow] = useState(false);
+
+    const { setTabNavigationStack } = useContext(AuthContext)
+
+    //prepares the navigation stack for use
+    const prepareStack = () => {
+        setTabNavigationStack(['root'])
+    }
 
     return (
         <div className="MainTab">
@@ -18,7 +26,7 @@ export default function MainTab({ key, maintab }) {
                         <div className="closeBtn"> 
                             <i class="bi-x" onClick={() => setModalShow(true)}></i>
                         </div>
-                        <Link to={`/home/${maintab.id}/0`} >
+                        <Link to={`/home/${maintab.id}/0`} onClick={prepareStack} >
                             <Card.Body className="maintabName">
                                 <Card.Title>{maintab.name}</Card.Title>
                             </Card.Body>
