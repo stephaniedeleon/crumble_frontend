@@ -61,7 +61,7 @@ export default function Navbar() {
                               </Nav.Link>
                               <Nav.Link as={Link} to="/register">
                                 <h6 className="linkBtn">
-                                  Register
+                                  Sign up
                                 </h6>
                               </Nav.Link>
                             </>
