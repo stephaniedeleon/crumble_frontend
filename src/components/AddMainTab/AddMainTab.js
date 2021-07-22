@@ -40,6 +40,7 @@ export default function AddMaintab(props) {
         } else {
             setErrors((e) => ({ ...e, form: null }));
             addMaintab(data.maintab);
+            setForm({name: ""});
         } 
 
         setIsLoading(false);

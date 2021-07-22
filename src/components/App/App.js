@@ -14,6 +14,7 @@ function App() {
 
   const [maintabs, setMaintabs] = useState([]);
   const [subtabs, setSubtabs] = useState([]);
+  const [tasks, setTasks] = useState([])
 
   const [tabNavigationStack, setTabNavigationStack] = useState([])
   // adds id of subtab you are navigating into to stack
@@ -31,7 +32,7 @@ function App() {
   const { user, setUser, authenticated, setAuthenticated } = useApp();
 
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, setErrors, setIsLoading }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, setErrors, setIsLoading }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />
