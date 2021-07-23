@@ -19,7 +19,7 @@ export default function TabPage() {
   const [directory, setDirectory] = useState({});
   
   const { mainId, subId } = useParams();
-  const { tabNavigationStack, setTabNavigationStack } = useContext(AuthContext);
+  const { setTabNavigationStack } = useContext(AuthContext);
 
 
   // Getting tab details...
@@ -81,6 +81,8 @@ export default function TabPage() {
             setIsMenuOpened={setIsMenuOpened}
             directory={directory}
             setDirectory={setDirectory}
+            mainId={mainId}
+            setTabNavigationStack={setTabNavigationStack}
           />
         </div>
         <div className="grid-item tab-area">
