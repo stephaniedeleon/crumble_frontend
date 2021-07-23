@@ -58,7 +58,7 @@ export default function DeleteEvent(props) {
                 </Button>
                 <Button type="submit" onClick={handleOnDelete}>
                     Delete {event.event_name}
-                å</Button>
+                </Button>
             </Modal.Footer>
         </Modal>
     );
