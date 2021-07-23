@@ -19,7 +19,7 @@ export default function TabPage() {
   const [directory, setDirectory] = useState({});
   
   const { mainId, subId } = useParams();
-  const { setTabNavigationStack } = useContext(AuthContext);
+  const { setTabNavigationStack, user } = useContext(AuthContext);
 
 
   // Getting tab details...
@@ -33,6 +33,8 @@ export default function TabPage() {
 
           const { data } = await apiClient.getMaintab(mainId);
 
+          console.log("main - ", data);
+
           if (data?.maintab) {
             setTab(data.maintab);
           } else {
@@ -42,6 +44,8 @@ export default function TabPage() {
       } else {
 
           const { data } = await apiClient.getSubtab(parseInt(subId));
+
+          console.log("sub - ", data);
           
           if (data?.subtab) {
             setTab(data.subtab);
@@ -60,7 +64,7 @@ export default function TabPage() {
 
     fetchTabById();
 
-  }, [mainId, setTabNavigationStack, subId]);
+  }, [mainId, setTabNavigationStack, subId, user]);
 
 
 
