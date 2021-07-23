@@ -1,10 +1,10 @@
 .ToDo {
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #b48125;
-  border-radius: 10px;
-  height: 25vh;
-  overflow-y: auto;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #B48125;
+    border-radius: 10px;
+    height: 28vh;
+    overflow-y: auto;
 }
 
 .ToDo .title {
