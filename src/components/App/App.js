@@ -9,14 +9,18 @@ import { TabPage } from "components/pages";
 
 function App() {
 
+  const { user, setUser, authenticated, setAuthenticated } = useApp();
+
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState({})
 
   const [maintabs, setMaintabs] = useState([]);
   const [subtabs, setSubtabs] = useState([]);
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState([]);
+  const [events, setEvents] = useState([]);
 
   const [tabNavigationStack, setTabNavigationStack] = useState([])
+
   // adds id of subtab you are navigating into to stack
   const digIntoTab = (newId) => {
     setTabNavigationStack((oldStack) => [...oldStack, newId])
@@ -29,10 +33,8 @@ function App() {
   }
 
 
-  const { user, setUser, authenticated, setAuthenticated } = useApp();
-
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, setErrors, setIsLoading }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, events, setEvents, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, setErrors, setIsLoading }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />

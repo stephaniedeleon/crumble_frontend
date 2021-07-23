@@ -2,7 +2,7 @@ import "./MainTab.css"
 
 import { Card } from "react-bootstrap";
 import React, { useContext, useState } from "react";
-import { DeleteConfirmation } from "components";
+import { DeleteMaintab } from "components";
 import { Link } from 'react-router-dom';
 import AuthContext from "context/auth";
 
@@ -31,7 +31,7 @@ export default function MainTab({ key, maintab }) {
                                 <Card.Title>{maintab.name}</Card.Title>
                             </Card.Body>
                         </Link>
-                        <DeleteConfirmation
+                        <DeleteMaintab
                             show={modalShow}
                             onHide={() => setModalShow(false)}
                             maintab={maintab}

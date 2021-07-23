@@ -7,7 +7,7 @@ import { useContext } from "react";
 import apiClient from "services/apiClient";
 
 export default function Navbar() {
-  const { setUser, authenticated, setAuthenticated, setMaintabs } = useContext(AuthContext);
+  const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents } = useContext(AuthContext);
 
   const navigate = useNavigate()
 
@@ -16,6 +16,9 @@ export default function Navbar() {
       setUser({});
       setAuthenticated(false);
       setMaintabs([]); //clears maintabs
+      setSubtabs([]); //clears subtabs
+      setTasks([]); //clears tasks
+      setEvents([]); //clears calendar
       await apiClient.logout();
       navigate("/")
   };
@@ -24,10 +27,9 @@ export default function Navbar() {
       <div className="NavBar">
           <NavBar clasName="navbar" expand="md">
               <Container>
-                  <NavBar.Brand as={Link} to="/">
-                    <h5>
-                      PlannerLogo
-                    </h5>
+                  <NavBar.Brand as={Link} to="/" className="logo">
+                    <img src="https://img.icons8.com/bubbles/70/000000/edit.png" alt="planner logo" className="d-inline-block align-top" />
+                    Planner
                   </NavBar.Brand>
 
                   <NavBar.Toggle className="my-4" aria-controls="NavBarScroll" />

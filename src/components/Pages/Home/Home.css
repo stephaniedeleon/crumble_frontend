@@ -18,14 +18,16 @@
 }
 
 .Home .caption {
-    padding-top: 140px;
+    padding-top: 125px;
     text-align: center;
 }
 
 .Home .caption h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 40px;
+    /* font-size: 40px; */
     opacity: 100%;
+    font-weight: 600;
+    font-size: 45px;
 }
 
 .Home .title {

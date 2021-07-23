@@ -26,7 +26,12 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory }) {
   return (
       <section className={`SideBar ${isMenuOpened ? "open" : "closed"}`}>
           <div className="content-wrapper">
-              <Button onClick={handleClick} className="toggleBtn"><i className="bi-chevron-right"></i></Button>
+              {/* <Button onClick={handleClick} className="toggleBtn">
+                <i className="bi-chevron-right"></i>
+              </Button> */}
+              <div onClick={handleClick} className="toggleBtn">
+                <i class="bi-arrow-right-square"></i>
+              </div>
 
               <div className={`my-menu-class ${isMenuOpened ? "open" : "closed"}`}>
                   <div className="cartTitle"></div>

@@ -75,6 +75,10 @@ class ApiClient {
     
     // Subtabs
 
+    async getSubtab(subtabId) {
+        return await this.request({ endpoint: "subtabs/"+subtabId, method: "GET" });
+    }
+
     async listSubtabsByMain(maintabId) {
         return await this.request({ endpoint: "subtabs/main/"+maintabId, method: "GET" });
     }
@@ -136,6 +140,28 @@ class ApiClient {
 
     async unmarkTask(taskId) {
         return await this.request({ endpoint: "tasks/unmark/"+taskId, method: "PUT" });
+    }
+
+    // Calendar Events
+
+    async listEventsByMaintab(maintabId) {
+        return await this.request({ endpoint: "calendar/main/"+maintabId, method: "GET" });
+    }
+
+    async listEventsBySubtab(subtabId) {
+        return await this.request({ endpoint: "calendar/sub/"+subtabId, method: "GET" });
+    }
+
+    async createEventForMain(details) { 
+        return await this.request({ endpoint: "calendar/main/create", method: "POST", data: details });
+    }
+
+    async createEventForSub(details) { 
+        return await this.request({ endpoint: "calendar/sub/create", method: "POST", data: details });
+    }
+
+    async deleteEvent(eventId) {
+        return await this.request({ endpoint: "calendar/"+eventId, method: "DELETE" });
     }
 
 }

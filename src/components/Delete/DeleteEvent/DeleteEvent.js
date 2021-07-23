@@ -1,21 +1,23 @@
-import "./DeleteConfirmation.css"
+import "./DeleteEvent.css"
 
 import { Button, Modal } from "react-bootstrap";
 import React, { useContext } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
+import { formatDate } from "utils/format";
 
 
-export default function MainTab(props) {
+export default function DeleteEvent(props) {
 
-    const { maintabs, setMaintabs, setErrors, setIsLoading} = useContext(AuthContext);
+    const { events, setEvents, setErrors, setIsLoading} = useContext(AuthContext);
 
-    const maintab = props.maintab;
+    const event = props.event;
+    const event_id = parseInt(event.id);
 
 
-    //deletes a maintab to list of maintabs
-    const deleteMaintab = (deletedId) => {
-        setMaintabs(maintabs.filter(filteredMaintab => filteredMaintab.id !== deletedId))
+    //deletes an event from list of events
+    const deleteEvent = (deletedId) => {
+        setEvents(events.filter(filteredEvent => filteredEvent.id !== deletedId));
     }
     
 
@@ -25,13 +27,13 @@ export default function MainTab(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        const { data, error } = await apiClient.deleteMaintab(maintab.id);
+        const { data, error } = await apiClient.deleteEvent(event_id);
 
         if (error) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            deleteMaintab(maintab.id);
+            deleteEvent(event_id);
         }
 
         setIsLoading(false);
@@ -48,13 +50,15 @@ export default function MainTab(props) {
                 <Modal.Title>Delete Confirmation</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                Are you sure you want to delete the main tab: {maintab.name}?
+                Are you sure you want to delete the event: {event.event_name} on {formatDate(event.date)}?
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.onHide}>
                     Cancel
                 </Button>
-                <Button type="submit" onClick={handleOnDelete}>Delete {maintab.name}</Button>
+                <Button type="submit" onClick={handleOnDelete}>
+                    Delete {event.event_name}
+                å</Button>
             </Modal.Footer>
         </Modal>
     );

@@ -107,6 +107,7 @@ export default function AddSubTab(props) {
         } else {
             setErrors((e) => ({ ...e, form: null }));
             addSubtab(data.subtab);
+            setForm({name: ""});
         }
 
         setIsLoading(false);

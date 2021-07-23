@@ -7,12 +7,27 @@
     margin: 0;
 }
 
+
 /* this is temp until we have a logo */
 .NavBar h5 {
     color: #254832;
     font-weight: 400;
     margin: 0;
 }
+
+/* this is temp until we have a logo */
+.NavBar .logo {
+    color: #254832;
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .NavBar h6 {
     padding: 6px 10px;

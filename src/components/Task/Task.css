@@ -1,0 +1,17 @@
+.Task #checkbox {
+}
+
+.Task #taskName {
+    background-color: white;
+    color: #325D41;
+}
+
+/* .Task .delete i {
+    font-size: 20px;
+    color: rgb(109, 109, 109);
+}
+
+.Task .delete i:hover {
+    cursor: pointer;
+    color: #8C3F0D;
+} */

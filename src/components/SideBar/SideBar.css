@@ -29,18 +29,16 @@
 
 
 
-
-
-
 .SideBar {
     height: 100%;
     display: block;
     flex-direction: column;
-    background-color: #d49c6b;
     transition: all 0.2s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .SideBar.open {
+    border: 1px solid #8C3F0D;
+    border-radius: 4px;
     min-width: 180px;
 }
 
@@ -48,12 +46,37 @@
     width: 0px;
 }
 
-.SideBar .toggleBtn {
+.SideBar .toggleBtn i {
+    margin-top: 25px;
+    margin-left: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    color: #254832;
+    /* border-color: #8C3F0D; */
+    /* background-color: transparent; */
+    box-shadow: none;
+
     /* 0.23, 1, 0.320, 1 */
     transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1)  
 }
 
-.SideBar.open .toggleBtn {
+.SideBar .toggleBtn i {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.SideBar .toggleBtn i:hover {
+    /* background-color: #47825b; */
+    color: #8C3F0D;
+    /* border-color: #47825b; */
+}
+
+.SideBar.open .toggleBtn i {
+    margin-top: 0px;
+    margin-right: 10px;
+    float: right;
+
     transform: rotate(180deg);
 }
 

@@ -1,0 +1,35 @@
+.Event .eventItem {
+    margin: 8px 0px;
+    border-radius: 5px;
+    padding: 4px 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #fffdf6;
+}
+
+.Event .eventItem .details p {
+    text-align: left;
+    margin: 0;
+}
+
+.Event .eventItem .details .eventName {
+    color: #254832;
+}
+
+.Event .eventItem .details .eventDate {
+    font-size: 14px;
+    color: #325D41;
+}
+
+.Event .eventItem .delete i {
+    font-size: 20px;
+    color: rgb(109, 109, 109);
+}
+
+.Event .eventItem .delete i:hover {
+    cursor: pointer;
+    color: #8C3F0D;
+}

@@ -24,8 +24,8 @@ export default function SubTab(props) {
     return (
         <div className="SubTab">
             <InputGroup className="mb-3">
-                <InputGroup.Checkbox checked={completed} onChange={handleChange} />
-                <FormControl style={{ textAlign: "left" }} as={Link} to={`/home/${props.mainId}/${props.subtab.id}`} onClick={() => digIntoTab(props.subtab.id)} > {props.subtab.name} </FormControl>
+                <InputGroup.Checkbox id="checkbox" checked={completed} onChange={handleChange} />
+                <FormControl id="subtabName" as={Link} to={`/home/${props.mainId}/${props.subtab.id}`} onClick={() => digIntoTab(props.subtab.id)} > {props.subtab.name} </FormControl>
             </InputGroup>
         </div>
     );
