@@ -1,4 +1,4 @@
-import "./DeleteConfirmation.css"
+import "./DeleteMaintab.css"
 
 import { Button, Modal } from "react-bootstrap";
 import React, { useContext } from "react";
@@ -6,14 +6,14 @@ import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
 
-export default function MainTab(props) {
+export default function DeleteMaintab(props) {
 
     const { maintabs, setMaintabs, setErrors, setIsLoading} = useContext(AuthContext);
 
     const maintab = props.maintab;
 
 
-    //deletes a maintab to list of maintabs
+    //deletes a maintab from list of maintabs
     const deleteMaintab = (deletedId) => {
         setMaintabs(maintabs.filter(filteredMaintab => filteredMaintab.id !== deletedId))
     }
