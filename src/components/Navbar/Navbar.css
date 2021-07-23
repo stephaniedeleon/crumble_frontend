@@ -1,7 +1,6 @@
-/* .NavBar .navbar {
-    margin-left: 40px;
-    margin-right: 40px;
-} */
+.NavBar .navbar {
+    user-select: none;
+}
 
 .NavBar .links .linkText,
 .NavBar .links .linkBtn {

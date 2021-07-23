@@ -47,7 +47,7 @@ export default function Calendar() {
 
   return (
     <div className="Calendar">
-      <div className="title" style={{ userSelect: "none" }}>
+      <div className="title">
         <div className="compName">
           <h6>Calendar</h6>
         </div>
@@ -63,8 +63,6 @@ export default function Calendar() {
           onHide={() => setModalShow(false)}
         />
       </div>
-
-      <br />
 
       <div className="calendar-area">
         <ListGroup variant="flush">

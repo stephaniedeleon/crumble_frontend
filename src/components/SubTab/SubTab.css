@@ -4,16 +4,6 @@
     justify-content: space-between;
 }
 
-/* .SubTab .details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} */
-
-/* .SubTab #checkbox {
-    height: 24px;
-} */
-
 .SubTab #subtabName {
     transition: all 0.4s ease 0s;
     text-align: left;
@@ -25,10 +15,9 @@
     color: #8C3F0D;
 }
 
-/* .SubTab #subtabName:hover {
-    background-color: white;
-} */
-
+.SubTab #subtabName a:hover {
+    color: #2A3A30;
+}
 
 .SubTab .delete i {
     font-size: 20px;

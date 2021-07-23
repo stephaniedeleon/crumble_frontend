@@ -3,7 +3,7 @@ import "./Notes.css";
 export default function Notes() {
   return (
     <div className="Notes">
-      <div className="title" style={{ userSelect: "none" }}>
+      <div className="title">
         <div className="compName">
           <h6>Notes</h6>
         </div>
