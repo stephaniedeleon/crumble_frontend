@@ -12,6 +12,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
+    margin-bottom: 20px;
 }
 
 .Calendar .title .compName h6 {
@@ -21,10 +23,10 @@
 
 .Calendar .title .addBtn i  {
     font-size: 25px;
-    color: #325D41;
+    color: #256a3c;
 }
 
 .Calendar .title .addBtn i:hover {
-    color: #8C3F0D;
+    color: #2A3A30;
     cursor: pointer;
 }
