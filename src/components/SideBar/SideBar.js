@@ -13,7 +13,14 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
 
   const navigateToSubtab = (subId) => {
     setTabNavigationStack((oldStack) => [...oldStack, subId])
-    navigate(`/home/${parseInt(mainId)}/${subId}`);
+    
+    let correctSubid;
+    if (subId === 'root')
+      correctSubid = 0;
+    else 
+      correctSubid = subId
+       
+    navigate(`/home/${parseInt(mainId)}/${correctSubid}`);
   }
 
   const renderTree = (nodes) => (
