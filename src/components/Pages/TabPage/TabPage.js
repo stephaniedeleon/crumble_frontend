@@ -42,8 +42,6 @@ export default function TabPage() {
       } else {
 
           const { data } = await apiClient.getSubtab(parseInt(subId));
-
-          console.log(data);
           
           if (data?.subtab) {
             setTab(data.subtab);
