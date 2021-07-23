@@ -5,7 +5,6 @@ import { AddSubTab, SubTab, AddTask, Task } from 'components';
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
-import { useParams } from 'react-router-dom';
 
 // Has the list of subtabs and tasks
 
