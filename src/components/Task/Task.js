@@ -3,6 +3,7 @@ import "./Task.css"
 import { useState } from 'react';
 import { InputGroup, FormControl } from 'react-bootstrap';
 import apiClient from "services/apiClient";
+import { DeleteTask } from "components";
 
 export default function Task(props) {
 
@@ -16,12 +17,27 @@ export default function Task(props) {
 
     }
 
+    //method to show modal for deleting confirmation...
+    const [modalShow, setModalShow] = useState(false);
+    const task = props.task;
+
     return (
         <div className="Task">
             <InputGroup className="mb-3">
-                <InputGroup.Checkbox id="checkbox" checked={completed} onChange={handleChange} />
-                <FormControl id="taskName" value={props.task.details} disabled/>
+                <div className="details">
+                    <InputGroup.Checkbox id="checkbox" checked={completed} onChange={handleChange} />
+                    <FormControl id="taskName" value={task.details} disabled/>
+                </div>
+                <div className="delete">
+                    <i class="bi-x" onClick={() => setModalShow(true)}></i>
+                </div>
             </InputGroup>
+
+            <DeleteTask
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                task={task}
+            />
         </div>
     ); 
 }

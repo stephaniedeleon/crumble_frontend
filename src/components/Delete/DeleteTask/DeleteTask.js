@@ -1,21 +1,21 @@
-import "./DeleteSubtab.css"
+import "./DeleteTask.css"
 
 import { Button, Modal } from "react-bootstrap";
 import React, { useContext } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
-export default function DeleteSubtab(props) {
+export default function DeleteTask(props) {
 
-    const { subtabs, setSubtabs, setErrors, setIsLoading} = useContext(AuthContext);
+    const { tasks, setTasks, setErrors, setIsLoading} = useContext(AuthContext);
 
-    const subtab = props.subtab;
-    const subtab_id = parseInt(subtab.id);
+    const task = props.task;
+    const task_id = parseInt(task.id);
 
 
     //deletes a task from list of tasks
-    const deleteSubtab = (deletedId) => {
-        setSubtabs(subtabs.filter(filteredSubtab => filteredSubtab.id !== deletedId));
+    const deleteTask = (deletedId) => {
+        setTasks(tasks.filter(filteredTask => filteredTask.id !== deletedId));
     }
     
 
@@ -25,13 +25,13 @@ export default function DeleteSubtab(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        const { data, error } = await apiClient.deleteSubtab(subtab_id);
+        const { data, error } = await apiClient.deleteTask(task_id);
 
         if (error) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            deleteSubtab(subtab_id);
+            deleteTask(task_id);
         }
 
         setIsLoading(false);
@@ -48,14 +48,14 @@ export default function DeleteSubtab(props) {
                 <Modal.Title>Delete Confirmation</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                Are you sure you want to delete the subtab: {subtab.name}?
+                Are you sure you want to delete the task: {task.details}?
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.onHide}>
                     Cancel
                 </Button>
                 <Button type="submit" onClick={handleOnDelete}>
-                    Delete {subtab.name}
+                    Delete {task.details}
                 </Button>
             </Modal.Footer>
         </Modal>
