@@ -24,7 +24,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
   }
 
   const renderTree = (nodes) => (
-    <TreeItem key={nodes?.id} nodeId={nodes?.id} label={nodes?.name} onLabelClick={() => navigateToSubtab(nodes?.id)}>
+    <TreeItem key={nodes?.id} nodeId={nodes?.id} label={nodes?.name} onLabelClick={() => navigateToSubtab(nodes?.id)} style={{ userSelect: "none" }}>
       {Array.isArray(nodes?.children) ? nodes.children.map((node) => renderTree(node)) : null}
     </TreeItem>
   );
