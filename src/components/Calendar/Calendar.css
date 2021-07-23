@@ -2,4 +2,5 @@
     margin: 10px;
     border: 1px solid black;
     height: 25vh;
+    overflow-y: scroll;
 }

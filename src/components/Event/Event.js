@@ -1,7 +1,7 @@
 import "./Event.css"
 
 import { ListGroup } from "react-bootstrap";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { DeleteEvent } from "components";
 import { formatDate } from "utils/format";
 
@@ -10,7 +10,6 @@ export default function Event({ key, event }) {
 
     //method to show modal for deleting confirmation...
     const [modalShow, setModalShow] = useState(false);
-
 
     return (
         <div className="MainTab">

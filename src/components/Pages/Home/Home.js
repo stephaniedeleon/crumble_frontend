@@ -6,7 +6,6 @@ import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
-// Has the list of maintabs
 
 export default function Home() {
 
@@ -31,7 +30,7 @@ export default function Home() {
     
         if(authenticated) fetchMaintabs();
 
-    }, [setMaintabs, user, authenticated]); //maintabs
+    }, [setMaintabs, user, authenticated]);
 
 
     //method to show modal for adding maintab...

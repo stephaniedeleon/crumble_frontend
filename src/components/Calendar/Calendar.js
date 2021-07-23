@@ -42,10 +42,10 @@ export default function Calendar() {
             fetchEvents();
         }
 
-    }, [authenticated, mainId, setEvents, subId]);
+    }, [authenticated, user, mainId, setEvents, subId]);
 
 
-    //method to show modal for adding maintab...
+    //method to show modal for adding event...
     const [modalShow, setModalShow] = useState(false);
 
     return (
