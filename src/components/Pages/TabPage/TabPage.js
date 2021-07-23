@@ -1,49 +1,68 @@
 import "./TabPage.css";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
 import { SideBar, PageHeader, Notes, ToDo, Calendar } from "components";
 import { Col, Row } from "react-bootstrap";
 
+
+
 export default function TabPage() {
   
-  const { mainId } = useParams();
   const [tab, setTab] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [width, setWidth] = useState(200);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
-  const [directory, setDirectory] = useState();
+  const [directory, setDirectory] = useState({});
+  
+  const { mainId, subId } = useParams();
+  const { tabNavigationStack, setTabNavigationStack } = useContext(AuthContext);
 
 
-  // Getting maintab details...
+  // Getting tab details...
   useEffect(() => {
-    const fetchMainTabById = async () => {
+    const fetchTabById = async () => {
+
       setIsLoading(true);
 
-      try {
-        const { data } = await apiClient.getMaintab(mainId);
+      
+      if (parseInt(subId) === 0) {
 
-        if (data?.maintab) {
-          setTab(data.maintab);
-        } else {
-          setError("Tab not found");
-        }
+          const { data } = await apiClient.getMaintab(mainId);
 
-        // Get directory data to use for sidebar
-        const result = await apiClient.getDirectoryData(mainId);
-        setDirectory(result?.directoryData);
+          if (data?.maintab) {
+            setTab(data.maintab);
+          } else {
+            setError("Tab not found");
+          }
 
-      } catch (err) {
-        console.log({ err });
+      } else {
+
+          const { data } = await apiClient.getSubtab(parseInt(subId));
+
+          console.log(data);
+          
+          if (data?.subtab) {
+            setTab(data.subtab);
+          } else {
+            setError("Tab not found");
+          }
       }
+      
+      // Get directory data to use for sidebar
+      const result = await apiClient.getDirectoryData(mainId);
+      setDirectory(result?.directoryData);
+
 
       setIsLoading(false);
     };
 
-    fetchMainTabById();
-  }, [mainId]);
+    fetchTabById();
+
+  }, [mainId, setTabNavigationStack, subId]);
 
 
 
@@ -63,13 +82,14 @@ export default function TabPage() {
             isMenuOpened={isMenuOpened}
             setIsMenuOpened={setIsMenuOpened}
             directory={directory}
+            setDirectory={setDirectory}
           />
         </div>
         <div className="grid-item tab-area">
           <Row>
             <Col md={4}>
               <Row>
-                <ToDo />
+                <ToDo mainId={mainId} subId={subId} directory={directory} />
               </Row>
               <Row>
                 <Calendar />

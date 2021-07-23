@@ -17,10 +17,23 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [events, setEvents] = useState([]);
 
+  const [tabNavigationStack, setTabNavigationStack] = useState([])
+  // adds id of subtab you are navigating into to stack
+  const digIntoTab = (newId) => {
+    setTabNavigationStack((oldStack) => [...oldStack, newId])
+  }
+
+  // removes id of subtab you are navigating out of from stack
+  const moveOutTab = (removeId) => {
+    const newStack = tabNavigationStack.filter(id => id !== removeId)
+    setTabNavigationStack(newStack)
+  }
+
+
   const { user, setUser, authenticated, setAuthenticated } = useApp();
 
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, events, setEvents, setErrors, setIsLoading }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, events, setEvents, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, setErrors, setIsLoading }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />

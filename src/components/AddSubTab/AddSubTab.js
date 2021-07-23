@@ -7,7 +7,7 @@ import apiClient from "services/apiClient";
 
 export default function AddSubTab(props) {
 
-    const { setSubtabs, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setSubtabs, setErrors, setIsLoading, tabNavigationStack,  } = useContext(AuthContext);
 
     const [form, setForm] = useState({
         name: '',
@@ -15,8 +15,62 @@ export default function AddSubTab(props) {
 
     // adds a new a sutab to list of subtabs
     const addSubtab = (newSubtab) => {
-        setSubtabs((oldSubtabs) => [...oldSubtabs, newSubtab]);
+        setSubtabs((oldSubtabs) => [newSubtab, ...oldSubtabs]);
+        updateDirectory(newSubtab);
     }
+
+    /** Adds subtab to front end directory */
+    const updateDirectory = (newSubtab) => {
+
+        const configuredNewSubtab = directoryConfiguration(newSubtab)
+        const index = tabNavigationStack.length - 1
+        let currentSubtabId = tabNavigationStack[index]
+
+        if (currentSubtabId !== 'root') {
+            const targetObject = findTargetSubtab(props.directory, currentSubtabId)
+            targetObject?.children.unshift(configuredNewSubtab)
+        } else { 
+            props.directory.children.unshift(configuredNewSubtab)
+        }
+    }
+
+    const findTargetSubtab = (searchObject, targetId) => {
+
+        const targetObject = searchObject.children.find(element => element.id === targetId)
+
+        if (targetObject !== undefined)
+            return targetObject;
+
+        let result;
+        searchObject.children.forEach((element) => {
+            result = findTargetSubtab(element, targetId)
+
+            if (result !== null)
+                return result;
+        })
+
+        return null;
+    }
+
+    /** Configures subtab returned from api call to match directory data structure */
+    const directoryConfiguration = (newSubtab) => {
+        return {
+            id: newSubtab.id,
+            name: newSubtab.name,
+            children: []
+        }
+    }
+
+    // /** Returns the array index of target child */
+    // const findCorrectChild = (childrenArray, targetId) => {
+    //     let goalIndex = -1
+    //     childrenArray.forEach((element, index) => {
+    //         if (element.id === targetId)
+    //             goalIndex = index;
+    //     })
+
+    //     return goalIndex;
+    // }
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
