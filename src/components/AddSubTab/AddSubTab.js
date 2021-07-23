@@ -34,6 +34,7 @@ export default function AddSubTab(props) {
         }
     }
 
+    /** Finds and returns the object whose child must be added to */
     const findTargetSubtab = (searchObject, targetId) => {
 
         const targetObject = searchObject.children.find(element => element.id === targetId)
@@ -42,12 +43,14 @@ export default function AddSubTab(props) {
             return targetObject;
 
         let result;
-        searchObject.children.forEach((element) => {
-            result = findTargetSubtab(element, targetId)
+        let currentElement;
+        for (let index = 0; index < searchObject.children.length; index++) {
+            currentElement = searchObject.children[index]
+            result = findTargetSubtab(currentElement, targetId)
 
-            if (result !== null)
+            if (result !== null && result !== undefined)
                 return result;
-        })
+        }
 
         return null;
     }
@@ -60,17 +63,6 @@ export default function AddSubTab(props) {
             children: []
         }
     }
-
-    // /** Returns the array index of target child */
-    // const findCorrectChild = (childrenArray, targetId) => {
-    //     let goalIndex = -1
-    //     childrenArray.forEach((element, index) => {
-    //         if (element.id === targetId)
-    //             goalIndex = index;
-    //     })
-
-    //     return goalIndex;
-    // }
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
