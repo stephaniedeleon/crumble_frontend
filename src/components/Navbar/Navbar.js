@@ -25,8 +25,8 @@ export default function Navbar() {
 
   return (
       <div className="NavBar">
-          <NavBar className="navbar" expand="md">
-              <Container>
+          <NavBar expand="md">
+              <Container className="navbar">
                   <NavBar.Brand as={Link} to="/" className="logo">
                     <img src="https://img.icons8.com/bubbles/70/000000/edit.png" alt="planner logo" className="d-inline-block align-top" />
                     Planner
