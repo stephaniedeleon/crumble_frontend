@@ -1,4 +1,13 @@
-.Task #checkbox {
+.Task #task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Task .details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .Task #taskName {
@@ -6,7 +15,7 @@
     color: #325D41;
 }
 
-/* .Task .delete i {
+.Task .delete i {
     font-size: 20px;
     color: rgb(109, 109, 109);
 }
@@ -14,4 +23,4 @@
 .Task .delete i:hover {
     cursor: pointer;
     color: #8C3F0D;
-} */
+}

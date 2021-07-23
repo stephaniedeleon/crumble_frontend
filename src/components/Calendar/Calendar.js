@@ -21,6 +21,7 @@ export default function Calendar() {
     useEffect(() => {
 
         const fetchEvents = async () => {
+            setEvents([]); //clears
             setIsFetching(true);
 
             let result;
