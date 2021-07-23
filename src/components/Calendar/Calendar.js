@@ -4,8 +4,9 @@ import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 import { AddEvent, Event } from "components";
-import { Button, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { Divider } from "@material-ui/core";
 
 export default function Calendar() {
 
@@ -51,17 +52,27 @@ export default function Calendar() {
     return (
         <div className="Calendar">
 
-            <Button variant="outline-success" onClick={() => setModalShow(true)}>
-                Add event
-            </Button>
+            <div className="title">
 
-            <AddEvent
-                mainId={mainId}
-                subId={subId}
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+                <div className="compName">
+                    <h6>Calendar</h6>
+                </div>
+
+                <div className="addBtn">
+                    <i class="bi-calendar-plus" onClick={() => setModalShow(true)}></i>
+                </div>
+
+                <AddEvent
+                    mainId={mainId}
+                    subId={subId}
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
+
+            </div>
+
             <br />
+
             <div className="calendar-area">
                 <ListGroup variant="flush">
                     {events.map((event) => (

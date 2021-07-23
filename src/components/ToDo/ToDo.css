@@ -1,6 +1,46 @@
 .ToDo {
-  margin: 10px;
-  border: 1px solid black;
-  height: 25vh;
-  overflow-y: scroll;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #B48125;
+    border-radius: 10px;
+    height: 25vh;
+    overflow-y: scroll;
+}
+
+.ToDo .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ToDo .title .compName h6 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.ToDo .title .addBtns {
+  font-size: 26px;
+  display: flex;
+}
+
+
+.ToDo .title .addSubBtn i  {
+  padding-right: 15px;
+  color: #8C3F0D;
+}
+
+.ToDo .title .addSubBtn i:hover {
+  color: #325D41;
+  cursor: pointer;
+}
+
+
+.ToDo .title .addTaskBtn i  {
+    color: #325D41;
+}
+
+.ToDo .title .addTaskBtn i:hover {
+    color: #8C3F0D;
+    cursor: pointer;
 }

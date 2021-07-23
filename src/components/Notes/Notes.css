@@ -1,6 +1,31 @@
 .Notes {
     margin: 10px;
     margin-left: 20px;
-    border: 1px solid black;
+    padding: 20px 40px; /* 20 px */
+    border: 1px solid #B48125;
+    border-radius: 10px;
     height: 52vh;
+    overflow-y: scroll;
+}
+
+.Notes .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Notes .title .compName h6 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.Notes .title .addBtn i  {
+    font-size: 25px;
+    color: #325D41;
+}
+
+.Notes .title .addBtn i:hover {
+    color: #8C3F0D;
+    cursor: pointer;
 }

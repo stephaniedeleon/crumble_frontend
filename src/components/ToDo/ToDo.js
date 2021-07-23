@@ -1,6 +1,6 @@
 import "./ToDo.css";
 
-import { Button } from 'react-bootstrap';
+import { } from 'react-bootstrap';
 import { AddSubTab, SubTab, AddTask, Task } from 'components';
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
@@ -70,12 +70,20 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
     return (
         <div className="ToDo">
             <div className="title">
-                <Button variant="outline-primary" onClick={() => setModalShow(true)}>
-                    Add Subtab
-                </Button>
-                <Button variant="outline-success" onClick={() => setTaskModalShow(true)}>
-                    Add Task
-                </Button>
+
+                <div className="compName">
+                    <h6>ToDo</h6>
+                </div>
+
+                <div className="addBtns">
+                    <div className="addSubBtn" onClick={() => setModalShow(true)}>
+                        <i class="bi-folder-plus"></i>
+                    </div>
+                    <div className="addTaskBtn" onClick={() => setTaskModalShow(true)}>
+                        {/* <i class="bi-card-checklist"></i> */}
+                        <i class="bi-check2-square"></i>
+                    </div>
+                </div>
 
                 <AddSubTab
                     mainId={mainId}

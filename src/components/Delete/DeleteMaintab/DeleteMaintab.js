@@ -54,7 +54,9 @@ export default function DeleteMaintab(props) {
                 <Button variant="secondary" onClick={props.onHide}>
                     Cancel
                 </Button>
-                <Button type="submit" onClick={handleOnDelete}>Delete {maintab.name}</Button>
+                <Button type="submit" onClick={handleOnDelete}>
+                    Delete {maintab.name}
+                </Button>
             </Modal.Footer>
         </Modal>
     );

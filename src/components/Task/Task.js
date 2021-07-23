@@ -19,8 +19,8 @@ export default function Task(props) {
     return (
         <div className="Task">
             <InputGroup className="mb-3">
-                <InputGroup.Checkbox checked={completed} onChange={handleChange} />
-                <FormControl value={props.task.details} readOnly/>
+                <InputGroup.Checkbox id="checkbox" checked={completed} onChange={handleChange} />
+                <FormControl id="taskName" value={props.task.details} disabled/>
             </InputGroup>
         </div>
     ); 
