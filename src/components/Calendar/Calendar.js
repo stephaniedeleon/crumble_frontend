@@ -3,7 +3,8 @@ import "./Calendar.css"
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
-import {} from "components";
+import { AddEvent, Event } from "components";
+import { Button, ListGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 export default function Calendar() {
@@ -12,7 +13,6 @@ export default function Calendar() {
 
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
-    // const [modalShow, setModalShow] = useState(false);
 
     const { mainId, subId } = useParams();
 
@@ -45,13 +45,29 @@ export default function Calendar() {
     }, [authenticated, mainId, setEvents, subId]);
 
 
+    //method to show modal for adding maintab...
+    const [modalShow, setModalShow] = useState(false);
+
     return (
         <div className="Calendar">
-            Calendar
+
+            <Button variant="outline-success" onClick={() => setModalShow(true)}>
+                Add event
+            </Button>
+
+            <AddEvent
+                mainId={mainId}
+                subId={subId}
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+            <br />
             <div className="calendar-area">
-                {events.map((event) => (
-                    <p>{event.event_name}</p>
-                ))}
+                <ListGroup variant="flush">
+                    {events.map((event) => (
+                        <Event key={event.id} event={event} />
+                    ))}
+                </ListGroup>
             </div>
         </div>
     );
