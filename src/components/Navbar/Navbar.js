@@ -7,7 +7,7 @@ import { useContext } from "react";
 import apiClient from "services/apiClient";
 
 export default function Navbar() {
-  const { setUser, authenticated, setAuthenticated, setMaintabs } = useContext(AuthContext);
+  const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents } = useContext(AuthContext);
 
   const navigate = useNavigate()
 
@@ -16,6 +16,9 @@ export default function Navbar() {
       setUser({});
       setAuthenticated(false);
       setMaintabs([]); //clears maintabs
+      setSubtabs([]); //clears subtabs
+      setTasks([]); //clears tasks
+      setEvents([]); //clears calendar
       await apiClient.logout();
       navigate("/")
   };

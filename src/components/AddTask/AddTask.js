@@ -10,7 +10,7 @@ export default function AddTask(props) {
     const { setTasks, setErrors, setIsLoading } = useContext(AuthContext);
 
     const [form, setForm] = useState({
-        details: '',
+        details: "",
     });
 
     // adds a new task to list of tasks
@@ -52,7 +52,8 @@ export default function AddTask(props) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            addTask(data.task);
+            addTask(data?.task);
+            setForm({details: ""});
         }
 
         setIsLoading(false);
