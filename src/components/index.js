@@ -11,7 +11,9 @@ export { default as AddTask } from './AddTask/AddTask';
 export { default as AddEvent } from './AddEvent/AddEvent';
 
 export { default as DeleteMaintab } from "./Delete/DeleteMaintab/DeleteMaintab"; 
-export { default as DeleteEvent } from "./Delete/DeleteEvent/DeleteEvent"; 
+export { default as DeleteEvent } from "./Delete/DeleteEvent/DeleteEvent";
+export { default as DeleteTask } from "./Delete/DeleteTask/DeleteTask";
+export { default as DeleteSubtab } from "./Delete/DeleteSubtab/DeleteSubtab";
 
 export { default as Notes } from "./Notes/Notes";
 export { default as Task } from "./Task/Task";
