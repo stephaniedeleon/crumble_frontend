@@ -8,7 +8,6 @@ import { SideBar, PageHeader, Notes, ToDo, Calendar } from "components";
 import { Col, Row } from "react-bootstrap";
 
 
-
 export default function TabPage() {
   
   const [tab, setTab] = useState({});
@@ -78,16 +77,16 @@ export default function TabPage() {
         }}
       >
         <div className="grid-item">
-          <SideBar
-            width={width}
-            setWidth={setWidth}
-            isMenuOpened={isMenuOpened}
-            setIsMenuOpened={setIsMenuOpened}
-            directory={directory}
-            setDirectory={setDirectory}
-            mainId={mainId}
-            setTabNavigationStack={setTabNavigationStack}
-          />
+            <SideBar
+              width={width}
+              setWidth={setWidth}
+              isMenuOpened={isMenuOpened}
+              setIsMenuOpened={setIsMenuOpened}
+              directory={directory}
+              setDirectory={setDirectory}
+              mainId={mainId}
+              setTabNavigationStack={setTabNavigationStack}
+            />
         </div>
         <div className="grid-item tab-area">
           <Row>
