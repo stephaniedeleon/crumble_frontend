@@ -44,3 +44,7 @@
     color: #8C3F0D;
     cursor: pointer;
 }
+
+.ToDo .task-area {
+  margin: 0 5px; 
+}

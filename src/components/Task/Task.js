@@ -1,7 +1,7 @@
 import "./Task.css"
 
 import { useState } from 'react';
-import { InputGroup, FormControl } from 'react-bootstrap';
+import { InputGroup, Alert } from 'react-bootstrap';
 import apiClient from "services/apiClient";
 import { DeleteTask } from "components";
 
@@ -23,15 +23,30 @@ export default function Task(props) {
 
     return (
         <div className="Task">
-            <InputGroup className="mb-3">
+            {/* <InputGroup className="mb-3">
                 <div className="details">
                     <InputGroup.Checkbox id="checkbox" checked={completed} onChange={handleChange} />
-                    <FormControl id="taskName" value={task.details} disabled/>
+                    <Alert id="taskName">
+                        {task.details}
+                    </Alert>
                 </div>
+
                 <div className="delete">
                     <i class="bi-x" onClick={() => setModalShow(true)}></i>
                 </div>
-            </InputGroup>
+            </InputGroup> */}
+
+            <div class="custom-control custom-checkbox" id="task">
+                <input type="checkbox" class="custom-control-input" id={task.id} checked={completed} onChange={handleChange} />
+                <label class="custom-control-label" for={task.id} id="taskName">
+                    <span className="details">
+                        {task.details}
+                    </span>
+                </label>
+                <div className="delete">
+                    <i class="bi-x" onClick={() => setModalShow(true)}></i>
+                </div>
+            </div>
 
             <DeleteTask
                 show={modalShow}

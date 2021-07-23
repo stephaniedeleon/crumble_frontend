@@ -20,6 +20,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
     // fetches subtabs
     useEffect(() => {
         const fetchSubtabs = async () => {
+            setSubtabs([]); //clears
             setIsFetching(true);
 
             let result;
@@ -39,6 +40,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
         }
 
         const fetchTasks = async () => {
+            setTasks([]); //clears
             setIsFetching(true);
 
             let result;
@@ -100,9 +102,10 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
                     onHide={() => setTaskModalShow(false)}
                 />
             </div>
+
             <br />
-            <br />
-            <div className="subtabs">
+            
+            <div className="task-area">
                 {subtabs.map((subtab) => (
                     <SubTab key={subtab.id} subtab={subtab} mainId={mainId} />
                 ))}
