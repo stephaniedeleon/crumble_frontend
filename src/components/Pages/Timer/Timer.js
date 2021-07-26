@@ -14,9 +14,11 @@ export default function Timer () {
     // Reference variable for setInterval function
     const [timerInterval, setTimerInterval] = useState(null)
 
-    const [circleDasharray, setCircleDasharray] = useState("hello")
+    const [circleDasharray, setCircleDasharray] = useState("")
+    const [remainingPathColor, setRemainingPathColor] = useState(`green`)
+
     const RADIUS = 45
-    const LENGTH = 2 * Math.PI * RADIUS
+    const LENGTH = Math.round(2 * Math.PI * RADIUS)
 
 
     
@@ -64,7 +66,18 @@ export default function Timer () {
             })
         }
 
+        const setColor = () => {
+            if (timeLeft <= Math.max(timeLimit * 0.04))
+                setRemainingPathColor("red")
+            else if (timeLeft > Math.max(timeLimit * 0.04) && timeLeft <= Math.max(timeLimit * 0.20))
+                setRemainingPathColor("orange")
+            else 
+                setRemainingPathColor("green")
+        }
+
         updateClock()
+        setColor()
+        
         if (timeLeft <= 0) 
             stopTimer()
 
@@ -76,8 +89,6 @@ export default function Timer () {
         return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
     }
 
-    let remainingPathColor = "green";
-
     return (
         <div className="Timer">
             <div className="base-timer">
@@ -87,7 +98,7 @@ export default function Timer () {
                         
                         <path
                             strokeDasharray="283"
-                            className={`base-timer-path-remaining`}
+                            className={`base-timer-path-remaining ${remainingPathColor}`}
                             d="
                                 M 50, 50
                                 m -45, 0

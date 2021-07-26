@@ -48,3 +48,14 @@
     stroke: currentColor;
 }
 
+.base-timer-path-remaining.green {
+    color: rgb(65, 184, 131);
+}
+
+.base-timer-path-remaining.orange {
+    color: orange;
+}
+
+.base-timer-path-remaining.red {
+    color: red;
+}
