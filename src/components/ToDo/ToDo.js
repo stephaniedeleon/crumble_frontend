@@ -68,7 +68,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
   return (
     <div className="ToDo">
-      <div className="title" style={{ userSelect: "none" }}>
+      <div className="title">
         <div className="compName">
           <h6>ToDo</h6>
         </div>
@@ -99,8 +99,6 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
           onHide={() => setTaskModalShow(false)}
         />
       </div>
-
-      <br />
 
       <div className="task-area">
         {subtabs.map((subtab) => (

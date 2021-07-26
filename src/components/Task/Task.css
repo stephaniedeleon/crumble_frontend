@@ -11,7 +11,8 @@
 }
 
 .Task #taskName {
-    color: #325D41;
+    /* color: #2f7e49; */
+    color: #256a3c;
 }
 
 .Task .delete i {

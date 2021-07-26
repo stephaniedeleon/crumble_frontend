@@ -13,6 +13,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
+    margin-bottom: 20px;
 }
 
 .Notes .title .compName h6 {
@@ -22,10 +24,10 @@
 
 .Notes .title .addBtn i  {
     font-size: 25px;
-    color: #325D41;
+    color: #256a3c;
 }
 
 .Notes .title .addBtn i:hover {
-    color: #8C3F0D;
+    color: #2A3A30;
     cursor: pointer;
 }

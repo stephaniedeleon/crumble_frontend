@@ -12,6 +12,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
+  margin-bottom: 20px;
 }
 
 .ToDo .title .compName h6 {
@@ -30,16 +32,16 @@
 }
 
 .ToDo .title .addSubBtn i:hover {
-  color: #325d41;
+  color: #2A3A30;
   cursor: pointer;
 }
 
 .ToDo .title .addTaskBtn i {
-  color: #325d41;
+  color: #256a3c;
 }
 
 .ToDo .title .addTaskBtn i:hover {
-  color: #8c3f0d;
+  color: #2A3A30;
   cursor: pointer;
 }
 
