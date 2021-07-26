@@ -1,4 +1,3 @@
-import { colors } from "@material-ui/core"
 import { useEffect, useState } from "react"
 import "./Timer.css"
 
@@ -7,12 +6,14 @@ import "./Timer.css"
 export default function Timer () {
 
     // Starting Time
-    const [timeLimit, setTimeLimit] = useState(10)
+    const [timeLimit, setTimeLimit] = useState(20)
     const [timePassed, setTimePassed] = useState(0)
     // Time Remaining
     const [timeLeft, setTimeLeft] = useState(0)
     // Reference variable for setInterval function
     const [timerInterval, setTimerInterval] = useState(null)
+    // Stores the clock state (started, paused, stopped)
+    const [clockStatus, setClockStatus] = useState("stopped")
 
     const [circleDasharray, setCircleDasharray] = useState("")
     const [remainingPathColor, setRemainingPathColor] = useState(`green`)
@@ -35,6 +36,7 @@ export default function Timer () {
 
     const startTimer = () => {
 
+        setClockStatus("started")
         setTimerInterval(
             setInterval(() => {
 
@@ -46,6 +48,7 @@ export default function Timer () {
     const stopTimer = () => {
         clearInterval(timerInterval)
         // setTimePassed(0)
+        setClockStatus("stopped")
     }
 
     /** Update the timer on page */
@@ -114,9 +117,12 @@ export default function Timer () {
                     {formatTimeLeft(timeLeft)}
                 </span>
 
-                <button onClick={startTimer}>start</button>
-                <button onClick={stopTimer}>stop</button>
-
+                <h6 className={`clockBtn startBtn ${clockStatus === 'started' ? "hidden" : ""}`} onClick={startTimer}>
+                    Start
+                </h6>
+                <h6 className={`clockBtn stopBtn ${clockStatus === 'stopped' ? "hidden" : ""}`} onClick={stopTimer}>
+                    Stop
+                </h6>
             </div>
         </div>
     )
