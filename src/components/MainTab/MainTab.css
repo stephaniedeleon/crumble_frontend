@@ -10,25 +10,46 @@
     transition: all 0.4s ease 0s;
 }
 
-.MainTab .card .closeBtn i {
-    font-size: 22px;
-    float: right;
-    padding: 3px;
-    padding-right: 8px;
-    color: rgb(109, 109, 109);
-}
-
-.MainTab .card .closeBtn i:hover {
-    color: #8C3F0D;
-}
-
 .MainTab .card a {
     text-decoration: none;
-    color:#325D41;
+    color: #325D41;
 }
 
 .MainTab .card:hover {
     cursor: pointer;
     border: 1px solid #B48125;
     transform: scale(1.04);
+}
+
+.MainTab .maintabName {
+    padding-top: 15px;
+}
+
+.MainTab #dropdown-options {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+
+    color: rgb(109, 109, 109);
+    font-size: 22px;
+    float: right;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+.MainTab #dropdown-options:hover {
+    color: #8C3F0D;
+}
+
+.MainTab #dropdown-options:after {
+    display: none;
+}
+
+.MainTab #options {
+    background-color: #fffdf6;
+}
+
+.MainTab #option:hover {
+    color: #8C3F0D;
+    background-color: #fffbf3;
 }

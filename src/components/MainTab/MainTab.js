@@ -1,16 +1,17 @@
 import "./MainTab.css"
 
-import { Card } from "react-bootstrap";
+import { Card, Dropdown } from "react-bootstrap";
 import React, { useContext, useState } from "react";
-import { DeleteMaintab } from "components";
+import { DeleteMaintab, UpdateMaintab } from "components";
 import { Link } from 'react-router-dom';
 import AuthContext from "context/auth";
 
 
 export default function MainTab({ key, maintab }) {
 
-    //method to show modal for deleting confirmation...
-    const [modalShow, setModalShow] = useState(false);
+    //method to show modal for deleting confirmation and editing...
+    const [deleteModalShow, setDeleteModalShow] = useState(false);
+    const [editModalShow, setEditModalShow] = useState(false);
 
     const { setTabNavigationStack } = useContext(AuthContext)
 
@@ -19,23 +20,45 @@ export default function MainTab({ key, maintab }) {
         setTabNavigationStack(['root'])
     }
 
+
     return (
         <div className="MainTab">
             <div className="card">
+
                 <Card className="maintab">
-                        <div className="closeBtn"> 
-                            <i class="bi-x" onClick={() => setModalShow(true)}></i>
-                        </div>
-                        <Link to={`/home/${maintab.id}/0`} onClick={prepareStack} >
-                            <Card.Body className="maintabName">
-                                <Card.Title>{maintab.name}</Card.Title>
-                            </Card.Body>
-                        </Link>
-                        <DeleteMaintab
-                            show={modalShow}
-                            onHide={() => setModalShow(false)}
-                            maintab={maintab}
-                        />
+
+                    <Dropdown>
+                        <Dropdown.Toggle id="dropdown-options">
+                            <i class= "bi-three-dots-vertical"></i>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu id="options">
+                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                Delete
+                            </Dropdown.Item>
+                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
+                                Edit
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+                    <Link to={`/home/${maintab.id}/0`} onClick={prepareStack} >
+                        <Card.Body className="maintabName">
+                            <Card.Title>{maintab.name}</Card.Title>
+                        </Card.Body>
+                    </Link>
+
+                    <DeleteMaintab
+                        show={deleteModalShow}
+                        onHide={() => setDeleteModalShow(false)}
+                        maintab={maintab}
+                    />
+
+                    <UpdateMaintab
+                        show={editModalShow}
+                        onHide={() => setEditModalShow(false)}
+                        maintab={maintab}
+                    />      
                 </Card>
             </div>
         </div>
