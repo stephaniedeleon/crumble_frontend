@@ -48,6 +48,11 @@ export default function Navbar() {
                                   Home
                                 </h6>
                               </Nav.Link>
+                              <Nav.Link as={Link} to="/timer">
+                                <h6 className="linkText">
+                                  Timer
+                                </h6>
+                              </Nav.Link>
                               <Nav.Link onClick={handleOnLogout}>
                                 <h6 className="linkBtn">
                                   Log Out
