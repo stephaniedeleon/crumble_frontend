@@ -13,7 +13,7 @@ export default function TabPage() {
   const [tab, setTab] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [width, setWidth] = useState(200);
+  const [width, setWidth] = useState(180);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [directory, setDirectory] = useState({});
   
