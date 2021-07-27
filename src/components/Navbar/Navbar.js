@@ -5,9 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
 import apiClient from "services/apiClient";
+import TimerContext from "context/timer";
+import { useTimer } from "hooks/useTimer";
 
 export default function Navbar() {
-  const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents } = useContext(AuthContext);
+  const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents,  } = useContext(AuthContext);
+  const { timerVariables } = useContext(TimerContext)
+  const { formatTimeLeft } = useTimer();
 
   const navigate = useNavigate()
 
@@ -22,6 +26,9 @@ export default function Navbar() {
       await apiClient.logout();
       navigate("/")
   };
+
+  const RADIUS = 10
+  const LENGTH = Math.round(2 * Math.PI * RADIUS);
 
   return (
       <div className="NavBar">
@@ -49,9 +56,48 @@ export default function Navbar() {
                                 </h6>
                               </Nav.Link>
                               <Nav.Link as={Link} to="/timer">
-                                <h6 className="linkText">
-                                  Timer
-                                </h6>
+                                {timerVariables.timerStatus === "started" || timerVariables.timerStatus === "paused" ?
+                                  <div className="base-timer">
+                                    <svg
+                                      className="base-timer-svg"
+                                      viewBox="0 0 100 100"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <g className="base-timer-circle">
+                                        <circle
+                                          className="base-timer-path-elapsed"
+                                          cx="50%"
+                                          cy="50%"
+                                          r={RADIUS.toString()}
+                                          style={timerVariables.timeLeft === 0 ? { color: "red" } : { color: "grey" }}
+                                        />
+                            
+                                        <path
+                                          strokeDasharray="283"
+                                          className={`base-timer-path-remaining ${timerVariables.remainingPathColor}`}
+                                          d="
+                                                            M 50, 50
+                                                            m -45, 0
+                                                            a 45,45 0 1,0 90,0
+                                                            a 45,45 0 1,0 -90,0
+                                                        "
+                                          style={{
+                                            strokeDasharray: timerVariables.circleDasharray,
+                                            strokeLinecap: "none",
+                                          }}
+                                        ></path>
+                                      </g>
+                                    </svg>
+                            
+                                    <span class="base-timer-label">{formatTimeLeft(timerVariables.timeLeft)}</span>
+                            
+                                    
+                                  </div>
+                                :
+                                  <h6 className="linkText">
+                                    Timer
+                                  </h6>
+                                }
                               </Nav.Link>
                               <Nav.Link onClick={handleOnLogout}>
                                 <h6 className="linkBtn">
@@ -73,6 +119,8 @@ export default function Navbar() {
                               </Nav.Link>
                             </>
                           )}
+
+                          
                       </Nav>
                   </NavBar.Collapse>
               </Container>
