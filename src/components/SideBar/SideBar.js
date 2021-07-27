@@ -11,7 +11,8 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
   const classes = useStyles()
   const navigate = useNavigate()
 
-  const navigateToSubtab = (subId) => {
+  const navigateToSubtab = (event, subId) => {
+    event.preventDefault()
     setTabNavigationStack((oldStack) => [...oldStack, subId])
     
     let correctSubid;
@@ -24,7 +25,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
   }
 
   const renderTree = (nodes) => (
-    <TreeItem key={nodes?.id} nodeId={nodes?.id} label={nodes?.name} onLabelClick={() => navigateToSubtab(nodes?.id)} style={{ userSelect: "none" }}>
+    <TreeItem className="treeItem" key={nodes?.id} nodeId={nodes?.id} label={nodes?.name} onLabelClick={(event) => navigateToSubtab(event, nodes?.id)} style={{ userSelect: "none" }}>
       {Array.isArray(nodes?.children) ? nodes.children.map((node) => renderTree(node)) : null}
     </TreeItem>
   );

@@ -1,6 +1,6 @@
 import './AddSubTab.css';
 
-import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
+import { Modal, Form, FormGroup, FormLabel, Button, FormControl } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
