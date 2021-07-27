@@ -172,6 +172,10 @@ class ApiClient {
         return await this.request({ endpoint: "calendar/"+eventId, method: "DELETE" });
     }
 
+    async updateEvent(eventId, details) { 
+        return await this.request({ endpoint: "calendar/"+eventId, method: "PUT", data: details });
+    }
+
 }
 
 export default new ApiClient("http://localhost:3002");
