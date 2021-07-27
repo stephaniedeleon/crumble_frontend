@@ -78,10 +78,15 @@ export default function UpdateEvent(props) {
 
             const { data, error } = result;
 
+            const event = data.event;
+
             if (error) {
                 setErrors((e) => ({ ...e, form: error }));
             } else {
                 setErrors((e) => ({ ...e, form: null }));
+                setForm ({  event_name: event.event_name,
+                            date: formatDateForInputDisplay(event.date)
+                        });
                 updateEvent(event_id);
             } 
         }
