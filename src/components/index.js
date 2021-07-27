@@ -17,6 +17,7 @@ export { default as DeleteSubtab } from "./Delete/DeleteSubtab/DeleteSubtab";
 
 export { default as UpdateMaintab } from "./Update/UpdateMaintab/UpdateMaintab";
 export { default as UpdateSubtab } from "./Update/UpdateSubtab/UpdateSubtab";
+export { default as UpdateEvent } from "./Update/UpdateEvent/UpdateEvent";
 
 export { default as Notes } from "./Notes/Notes";
 export { default as Task } from "./Task/Task";
