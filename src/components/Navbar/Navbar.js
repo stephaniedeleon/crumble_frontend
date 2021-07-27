@@ -10,8 +10,7 @@ import { useTimer } from "hooks/useTimer";
 
 export default function Navbar() {
   const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents,  } = useContext(AuthContext);
-  const { timerVariables } = useContext(TimerContext)
-  const { formatTimeLeft } = useTimer();
+  const { timerVariables, formatTimeLeft } = useContext(TimerContext)
 
   const navigate = useNavigate()
 
@@ -27,8 +26,7 @@ export default function Navbar() {
       navigate("/")
   };
 
-  const RADIUS = 10
-  const LENGTH = Math.round(2 * Math.PI * RADIUS);
+  const radius = 45
 
   return (
       <div className="NavBar">
@@ -68,7 +66,7 @@ export default function Navbar() {
                                           className="base-timer-path-elapsed"
                                           cx="50%"
                                           cy="50%"
-                                          r={RADIUS.toString()}
+                                          r={radius.toString()}
                                           style={timerVariables.timeLeft === 0 ? { color: "red" } : { color: "grey" }}
                                         />
                             
@@ -76,11 +74,11 @@ export default function Navbar() {
                                           strokeDasharray="283"
                                           className={`base-timer-path-remaining ${timerVariables.remainingPathColor}`}
                                           d="
-                                                            M 50, 50
-                                                            m -45, 0
-                                                            a 45,45 0 1,0 90,0
-                                                            a 45,45 0 1,0 -90,0
-                                                        "
+                                                M 50, 50
+                                                m -45, 0
+                                                a 45,45 0 1,0 90,0
+                                                a 45,45 0 1,0 -90,0
+                                            "
                                           style={{
                                             strokeDasharray: timerVariables.circleDasharray,
                                             strokeLinecap: "none",

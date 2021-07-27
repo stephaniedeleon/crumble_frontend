@@ -9,15 +9,10 @@ export default function Timer() {
     timeLimit,
     timePassed,
     timeLeft,
-    timerInterval,
     timerStatus,
     circleDasharray,
     remainingPathColor,
-    setTimeLimit,
-    setTimePassed,
     setTimeLeft,
-    setTimerInterval,
-    setTimerStatus,
     setCircleDasharray,
     setRemainingPathColor,
   } = timerVariables;
@@ -27,35 +22,35 @@ export default function Timer() {
   const LENGTH = Math.round(2 * Math.PI * RADIUS);
 
 
-  /** Update the timer on page */
-  useEffect(() => {
-    const updateClock = () => {
-      setTimeLeft(timeLimit - timePassed);
-      setCircleDasharray((array) => {
-        let dasharrayValue = (calculateTimeFraction() * LENGTH).toFixed(0);
-        array = `${dasharrayValue >= 0 ? dasharrayValue : 0}, ${LENGTH.toFixed(
-          0
-        )}`;
+//   /** Update the timer on page */
+//   useEffect(() => {
+//     const updateClock = () => {
+//       setTimeLeft(timeLimit - timePassed);
+//       setCircleDasharray((array) => {
+//         let dasharrayValue = (calculateTimeFraction() * LENGTH).toFixed(0);
+//         array = `${dasharrayValue >= 0 ? dasharrayValue : 0}, ${LENGTH.toFixed(
+//           0
+//         )}`;
 
-        return array;
-      });
-    };
+//         return array;
+//       });
+//     };
 
-    const setColor = () => {
-      if (timeLeft <= Math.max(timeLimit * 0.04)) setRemainingPathColor("red");
-      else if (
-        timeLeft > Math.max(timeLimit * 0.04) &&
-        timeLeft <= Math.max(timeLimit * 0.2)
-      )
-        setRemainingPathColor("orange");
-      else setRemainingPathColor("green");
-    };
+//     const setColor = () => {
+//       if (timeLeft <= Math.max(timeLimit * 0.04)) setRemainingPathColor("red");
+//       else if (
+//         timeLeft > Math.max(timeLimit * 0.04) &&
+//         timeLeft <= Math.max(timeLimit * 0.2)
+//       )
+//         setRemainingPathColor("orange");
+//       else setRemainingPathColor("green");
+//     };
 
-    updateClock();
-    setColor();
+//     updateClock();
+//     setColor();
 
-    if (timeLeft <= 0) stopTimer();
-  }, [timeLimit, timeLeft, timePassed, LENGTH]);
+//     if (timeLeft <= 0) stopTimer();
+//   }, [timeLimit, timeLeft, timePassed, LENGTH]);
 
 
   return (
@@ -79,11 +74,11 @@ export default function Timer() {
               strokeDasharray="283"
               className={`base-timer-path-remaining ${remainingPathColor}`}
               d="
-                                M 50, 50
-                                m -45, 0
-                                a 45,45 0 1,0 90,0
-                                a 45,45 0 1,0 -90,0
-                            "
+                    M 50, 50
+                    m -45, 0
+                    a 45,45 0 1,0 90,0
+                    a 45,45 0 1,0 -90,0
+                "
               style={{
                 strokeDasharray: circleDasharray,
                 strokeLinecap: "none",
