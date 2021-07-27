@@ -63,7 +63,6 @@ export default function TabPage() {
   }, [mainId, setTabNavigationStack, subId]);
 
 
-
   return (
     <div className="TabPage">
       <PageHeader sectionName={tab?.name} />

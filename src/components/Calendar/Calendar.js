@@ -6,7 +6,7 @@ import apiClient from "services/apiClient";
 import { AddEvent, Event } from "components";
 import { ListGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { Divider } from "@material-ui/core";
+// import { Divider } from "@material-ui/core";
 
 export default function Calendar() {
 

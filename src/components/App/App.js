@@ -34,7 +34,7 @@ function App() {
 
 
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, events, setEvents, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, setErrors, setIsLoading }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, events, setEvents, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, errors, setErrors, isLoading, setIsLoading }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />

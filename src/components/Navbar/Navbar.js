@@ -25,17 +25,17 @@ export default function Navbar() {
 
   return (
       <div className="NavBar">
-          <NavBar clasName="navbar" expand="md">
+          <NavBar className="navbar" expand="md">
               <Container>
                   <NavBar.Brand as={Link} to="/" className="logo">
                     <img src="https://img.icons8.com/bubbles/70/000000/edit.png" alt="planner logo" className="d-inline-block align-top" />
                     Planner
                   </NavBar.Brand>
 
-                  <NavBar.Toggle className="my-4" aria-controls="NavBarScroll" />
+                  <NavBar.Toggle className="my-4" />
 
-                  <NavBar.Collapse className="links" id="NavBarScroll">
-                      <Nav className="ml-auto py-4" NavBarScroll>
+                  <NavBar.Collapse className="links">
+                      <Nav className="ml-auto py-4">
                           <Nav.Link as={Link} to="/about">
                             <h6 className="linkText">
                               About
