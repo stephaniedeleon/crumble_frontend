@@ -7,14 +7,21 @@ import apiClient from "services/apiClient";
 
 export default function UpdateMaintab(props) {
 
-    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { maintabs, setErrors, setIsLoading } = useContext(AuthContext);
 
     const maintab = props.maintab;
+
+
+    //update maintab in list of maintabs
+    const updateMaintab = (updatedId) => {
+        let found = maintabs.find(foundMaintab => foundMaintab.id === updatedId);
+        found.name = form.name;
+    }
+
 
     const [form, setForm] = useState({
         name: "",
     });
-
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
@@ -35,6 +42,7 @@ export default function UpdateMaintab(props) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
+            updateMaintab(maintab.id);
             setForm({name: ""});
         } 
 
