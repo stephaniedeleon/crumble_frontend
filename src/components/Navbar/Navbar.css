@@ -61,6 +61,7 @@
 .NavBar .base-timer {
     height: 50px;
     width: 50px;
+    display: grid;
 }
 
 .NavBar .base-timer-circle {
@@ -74,7 +75,8 @@
 }
 
 .NavBar .base-timer-label {
-    font-size: 18px;
+    transform: translateY(-12px);
+    font-size: 16px;
 }
 
 .NavBar .base-timer-path-remaining {
@@ -101,4 +103,8 @@
 
 .NavBar .base-timer-path-remaining.red {
     color: red;
+}
+
+.hidden {
+    display: none;
 }

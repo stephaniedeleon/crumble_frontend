@@ -40,66 +40,70 @@ export default function Navbar() {
                   <NavBar.Toggle className="my-4" aria-controls="NavBarScroll" />
 
                   <NavBar.Collapse className="links" id="NavBarScroll">
+                      <Nav className={`ml-auto ${timerVariables.timerStatus === "stopped" ? "hidden" : ""}`}>
+                        <Nav.Link as={Link} to="/timer">
+                          <div className="timerContainer">
+                            <div className="base-timer linkText">
+                              <svg
+                                className="base-timer-svg"
+                                viewBox="0 0 100 100"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g className="base-timer-circle">
+                                  <circle
+                                    className="base-timer-path-elapsed"
+                                    cx="50%"
+                                    cy="50%"
+                                    r={RADIUS.toString()}
+                                    style={timerVariables.timeLeft === 0 ? { color: "red" } : { color: "grey" }}
+                                  />
+                      
+                                  <path
+                                    strokeDasharray="283"
+                                    className={`base-timer-path-remaining ${timerVariables.remainingPathColor}`}
+                                    d="
+                                          M 50, 50
+                                          m -45, 0
+                                          a 45,45 0 1,0 90,0
+                                          a 45,45 0 1,0 -90,0
+                                      "
+                                    style={{
+                                      strokeDasharray: timerVariables.circleDasharray,
+                                      strokeLinecap: "none",
+                                    }}
+                                  ></path>
+                                </g>
+                              </svg>
+
+                              <span class="base-timer-label">
+                                {formatTimeLeft(timerVariables.timeLeft)}
+                              </span>
+                            </div>
+                          </div>
+                        </Nav.Link>
+                      </Nav>
                       <Nav className="ml-auto py-4" NavBarScroll>
-                          <Nav.Link as={Link} to="/about">
-                            <h6 className="linkText">
-                              About
-                            </h6>
-                          </Nav.Link>
                           {authenticated ? (
                             <>
-                              <Nav.Link as={Link} to="/home">
-                                <h6 className="linkText">
-                                  Home
-                                </h6>
-                              </Nav.Link>
                               <Nav.Link as={Link} to="/timer">
                                 {timerVariables.timerStatus === "started" || timerVariables.timerStatus === "paused" ?
-
-                                <div className="timerContainer">
-                                  <div className="base-timer linkText">
-                                    <svg
-                                      className="base-timer-svg"
-                                      viewBox="0 0 100 100"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <g className="base-timer-circle">
-                                        <circle
-                                          className="base-timer-path-elapsed"
-                                          cx="50%"
-                                          cy="50%"
-                                          r={RADIUS.toString()}
-                                          style={timerVariables.timeLeft === 0 ? { color: "red" } : { color: "grey" }}
-                                        />
-                            
-                                        <path
-                                          strokeDasharray="283"
-                                          className={`base-timer-path-remaining ${timerVariables.remainingPathColor}`}
-                                          d="
-                                                M 50, 50
-                                                m -45, 0
-                                                a 45,45 0 1,0 90,0
-                                                a 45,45 0 1,0 -90,0
-                                            "
-                                          style={{
-                                            strokeDasharray: timerVariables.circleDasharray,
-                                            strokeLinecap: "none",
-                                          }}
-                                        ></path>
-                                      </g>
-                                    </svg>
-
-                                    <span class="base-timer-label">
-                                      {formatTimeLeft(timerVariables.timeLeft)}
-                                    </span>
-                                  </div>
-                                </div>
-
+                                  <>
+                                  </>
                                 :
                                   <h6 className="linkText">
                                     Timer
                                   </h6>
                                 }
+                              </Nav.Link>
+                              <Nav.Link as={Link} to="/home">
+                                <h6 className="linkText">
+                                  Home
+                                </h6>
+                              </Nav.Link>
+                              <Nav.Link as={Link} to="/about">
+                                <h6 className="linkText">
+                                  About
+                                </h6>
                               </Nav.Link>
                               <Nav.Link onClick={handleOnLogout}>
                                 <h6 className="linkBtn">
@@ -109,6 +113,11 @@ export default function Navbar() {
                             </>
                           ) : ( 
                             <>
+                            <Nav.Link as={Link} to="/about">
+                              <h6 className="linkText">
+                                About
+                              </h6>
+                            </Nav.Link>
                               <Nav.Link as={Link} to="/login">
                                 <h6 className="linkBtn">
                                   Login
