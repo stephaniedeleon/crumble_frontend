@@ -73,6 +73,10 @@ class ApiClient {
         return await this.request({ endpoint: "maintabs/"+maintabId, method: "DELETE" });
     }
     
+    async updateMaintab(maintabId, details) { 
+        return await this.request({ endpoint: "maintabs/"+maintabId, method: "PUT", data: details });
+    }
+    
     // Subtabs
 
     async getSubtab(subtabId) {
