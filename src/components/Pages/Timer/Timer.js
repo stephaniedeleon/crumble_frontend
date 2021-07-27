@@ -6,7 +6,7 @@ import "./Timer.css"
 export default function Timer () {
 
     // Starting Time
-    const [timeLimit, setTimeLimit] = useState(20)
+    const [timeLimit, setTimeLimit] = useState(120)
     const [timePassed, setTimePassed] = useState(0)
     // Time Remaining
     const [timeLeft, setTimeLeft] = useState(0)
@@ -45,9 +45,14 @@ export default function Timer () {
         )
     }
 
+    const pauseTimer = () => {
+        clearInterval(timerInterval)
+        setClockStatus("paused")
+    }
+
     const stopTimer = () => {
         clearInterval(timerInterval)
-        // setTimePassed(0)
+        setTimePassed(0)
         setClockStatus("stopped")
     }
 
@@ -119,6 +124,9 @@ export default function Timer () {
 
                 <h6 className={`clockBtn startBtn ${clockStatus === 'started' ? "hidden" : ""}`} onClick={startTimer}>
                     Start
+                </h6>
+                <h6 className={`clockBtn pauseBtn ${clockStatus === 'stopped' || clockStatus === 'paused' ? "hidden" : ""}`} onClick={pauseTimer}>
+                    Pause
                 </h6>
                 <h6 className={`clockBtn stopBtn ${clockStatus === 'stopped' ? "hidden" : ""}`} onClick={stopTimer}>
                     Stop
