@@ -15,6 +15,9 @@ export const useTimer = () => {
 
     const [circleDasharray, setCircleDasharray] = useState("");
     const [remainingPathColor, setRemainingPathColor] = useState(`green`);
+    
+    const RADIUS = 45;
+    const LENGTH = Math.round(2 * Math.PI * RADIUS);
 
     const timerVariables = {
         timeLimit,
@@ -24,6 +27,7 @@ export const useTimer = () => {
         timerStatus,
         circleDasharray,
         remainingPathColor,
+        RADIUS,
         setTimeLimit,
         setTimePassed,
         setTimeLeft,
@@ -32,9 +36,6 @@ export const useTimer = () => {
         setCircleDasharray,
         setRemainingPathColor
       };
-
-      const RADIUS = 45;
-      const LENGTH = Math.round(2 * Math.PI * RADIUS);
 
       /** Update the timer on page */
       useEffect(() => {

@@ -26,7 +26,7 @@ export default function Navbar() {
       navigate("/")
   };
 
-  const radius = 45
+  const RADIUS = 45
 
   return (
       <div className="NavBar">
@@ -55,7 +55,9 @@ export default function Navbar() {
                               </Nav.Link>
                               <Nav.Link as={Link} to="/timer">
                                 {timerVariables.timerStatus === "started" || timerVariables.timerStatus === "paused" ?
-                                  <div className="base-timer">
+
+                                <div className="timerContainer">
+                                  <div className="base-timer linkText">
                                     <svg
                                       className="base-timer-svg"
                                       viewBox="0 0 100 100"
@@ -66,7 +68,7 @@ export default function Navbar() {
                                           className="base-timer-path-elapsed"
                                           cx="50%"
                                           cy="50%"
-                                          r={radius.toString()}
+                                          r={RADIUS.toString()}
                                           style={timerVariables.timeLeft === 0 ? { color: "red" } : { color: "grey" }}
                                         />
                             
@@ -86,11 +88,13 @@ export default function Navbar() {
                                         ></path>
                                       </g>
                                     </svg>
-                            
-                                    <span class="base-timer-label">{formatTimeLeft(timerVariables.timeLeft)}</span>
-                            
-                                    
+
+                                    <span class="base-timer-label">
+                                      {formatTimeLeft(timerVariables.timeLeft)}
+                                    </span>
                                   </div>
+                                </div>
+
                                 :
                                   <h6 className="linkText">
                                     Timer

@@ -3,54 +3,15 @@ import "./Timer.css";
 import TimerContext from "context/timer";
 
 export default function Timer() {
-  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction } = useContext(TimerContext);
+  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer } = useContext(TimerContext);
 
   const {
-    timeLimit,
-    timePassed,
     timeLeft,
     timerStatus,
     circleDasharray,
     remainingPathColor,
-    setTimeLeft,
-    setCircleDasharray,
-    setRemainingPathColor,
+    RADIUS,
   } = timerVariables;
-
-
-  const RADIUS = 45;
-  const LENGTH = Math.round(2 * Math.PI * RADIUS);
-
-
-//   /** Update the timer on page */
-//   useEffect(() => {
-//     const updateClock = () => {
-//       setTimeLeft(timeLimit - timePassed);
-//       setCircleDasharray((array) => {
-//         let dasharrayValue = (calculateTimeFraction() * LENGTH).toFixed(0);
-//         array = `${dasharrayValue >= 0 ? dasharrayValue : 0}, ${LENGTH.toFixed(
-//           0
-//         )}`;
-
-//         return array;
-//       });
-//     };
-
-//     const setColor = () => {
-//       if (timeLeft <= Math.max(timeLimit * 0.04)) setRemainingPathColor("red");
-//       else if (
-//         timeLeft > Math.max(timeLimit * 0.04) &&
-//         timeLeft <= Math.max(timeLimit * 0.2)
-//       )
-//         setRemainingPathColor("orange");
-//       else setRemainingPathColor("green");
-//     };
-
-//     updateClock();
-//     setColor();
-
-//     if (timeLeft <= 0) stopTimer();
-//   }, [timeLimit, timeLeft, timePassed, LENGTH]);
 
 
   return (
