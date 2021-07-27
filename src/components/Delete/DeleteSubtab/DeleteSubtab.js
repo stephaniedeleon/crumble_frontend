@@ -14,8 +14,9 @@ export default function DeleteSubtab(props) {
 
 
     //deletes a task from list of tasks
-    const deleteSubtab = (deletedId) => {
-        setSubtabs(subtabs.filter(filteredSubtab => filteredSubtab.id !== deletedId));
+    const deleteSubtab = (deleteSubtab) => {
+        setSubtabs(subtabs.filter(filteredSubtab => filteredSubtab.id !== deleteSubtab.id));
+        props.updateDirectory("delete", deleteSubtab)
     }
     
 
@@ -31,7 +32,7 @@ export default function DeleteSubtab(props) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            deleteSubtab(subtab_id);
+            deleteSubtab(data.subtab);
         }
 
         setIsLoading(false);
