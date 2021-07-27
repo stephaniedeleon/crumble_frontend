@@ -2,6 +2,7 @@ import "./UpdateEvent.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
+import { formatDateForInputDisplay } from "utils/format";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
@@ -12,24 +13,36 @@ export default function UpdateEvent(props) {
     const calEvent = props.event;
     const event_id = parseInt(calEvent.id);
 
+    const [form, setForm] = useState({
+        event_name: calEvent.event_name,
+        date: formatDateForInputDisplay(calEvent.date),
+    });
+
 
     //update event in list of events
     const updateEvent = (updatedId) => {
+
         let found = events.find(foundEvent => foundEvent.id === updatedId);
-        found.event_name = form.event_name;
-        found.date = form.date;
+
+        if (form.event_name !== "" && form.date !== "") {
+
+            found.event_name = form.event_name;
+            found.date = form.date;
+
+        } else if (form.event_name === "") { //if name is empty, it will not change the name
+
+            found.date = form.date;
+
+        } else if (form.date === "") { //if date is empty, it will not change the date
+            
+            found.event_name = form.event_name;
+
+        }
     }
-
-
-    const [form, setForm] = useState({
-        event_name: "",
-        date: "",
-    });
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     }
-
 
     const handleOnSubmit = async (event) => {
 
@@ -37,67 +50,87 @@ export default function UpdateEvent(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        const { data, error } = await apiClient.updateEvent(event_id, {
-            event_name: form.event_name,
-            date: form.date
-        });
+        let result;
 
-        if (error) {
-            setErrors((e) => ({ ...e, form: error }));
-        } else {
-            setErrors((e) => ({ ...e, form: null }));
-            updateEvent(event_id);
-            setForm({ event_name: "",
-                        date: "",});
-        } 
+        if (form.event_name !== "" && form.date !== "") {
+
+            result = await apiClient.updateEvent(event_id, {
+                event_name: form.event_name,
+                date: form.date
+            });
+
+        } else if (form.event_name === "") { //if name is empty, it will not change the name
+
+            result = await apiClient.updateEvent(event_id, {
+                date: form.date
+            });
+
+        } else if (form.date === "") { //if date is empty, it will not change the date
+
+            result = await apiClient.updateEvent(event_id, {
+                event_name: form.event_name
+            });
+
+        }
+
+        // runs if result is not null
+        if (result) {
+
+            const { data, error } = result;
+
+            if (error) {
+                setErrors((e) => ({ ...e, form: error }));
+            } else {
+                setErrors((e) => ({ ...e, form: null }));
+                updateEvent(event_id);
+            } 
+        }
 
         setIsLoading(false);
     }
 
 
     return (
-      <Modal
+        <Modal
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-      >
-        <Form onSubmit={handleOnSubmit}>
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Edit Event
-                </Modal.Title>
-            </Modal.Header>
+        >
+            <Form onSubmit={handleOnSubmit}>
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Event
+                    </Modal.Title>
+                </Modal.Header>
 
-            <Modal.Body>
-                <FormGroup>
-                    <FormLabel className="form-label">New name of event</FormLabel>
-                    <Form.Control
-                        type="text"
-                        name="event_name"
-                        className="input-field"
-                        placeholder={calEvent.event_name}
-                        onChange={handleOnInputChange}
-                        value={form.event_name}
-                        required
-                    />
+                <Modal.Body>
+                    <FormGroup>
+                        <FormLabel className="form-label">Name of event</FormLabel>
+                        <Form.Control
+                            type="text"
+                            name="event_name"
+                            className="input-field"
+                            onChange={handleOnInputChange}
+                            value={form.event_name}
+                        />
 
-                    <div className="input-field">
-                        <label htmlFor="date">Due Date</label>
-                        <input type="datetime-local"
+                        <FormLabel className="form-label">Date of event</FormLabel>
+                        <Form.Control
+                            type="datetime-local"
                             name="date"
-                            // placeholder={calEvent.date}
-                            value={form.date} 
-                            onChange={handleOnInputChange} />
-                    </div>
-                </FormGroup>
-            </Modal.Body>
+                            className="input-field"
+                            onChange={handleOnInputChange}
+                            value={form.date}
+                        />
+                    </FormGroup>
+                </Modal.Body>
 
-            <Modal.Footer> 
-                <Button type="submit" onClick={props.onHide}>Save</Button>
-            </Modal.Footer>
-        </Form>
+                <Modal.Footer> 
+                    <Button type="submit" onClick={props.onHide}>Save</Button>
+                </Modal.Footer>
+            </Form>
 
-      </Modal>
+        </Modal>
     );
 }
