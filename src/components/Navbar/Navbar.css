@@ -1,3 +1,7 @@
+.NavBar .navbar {
+    user-select: none;
+}
+
 .NavBar .links .linkText,
 .NavBar .links .linkBtn {
     font-family: "Varela", serif;

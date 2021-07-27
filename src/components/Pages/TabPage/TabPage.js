@@ -8,18 +8,17 @@ import { SideBar, PageHeader, Notes, ToDo, Calendar } from "components";
 import { Col, Row } from "react-bootstrap";
 
 
-
 export default function TabPage() {
   
   const [tab, setTab] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [width, setWidth] = useState(200);
+  const [width, setWidth] = useState(180);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [directory, setDirectory] = useState({});
   
   const { mainId, subId } = useParams();
-  const { tabNavigationStack, setTabNavigationStack } = useContext(AuthContext);
+  const { setTabNavigationStack, user } = useContext(AuthContext);
 
 
   // Getting tab details...
@@ -33,6 +32,8 @@ export default function TabPage() {
 
           const { data } = await apiClient.getMaintab(mainId);
 
+          console.log("main - ", data);
+
           if (data?.maintab) {
             setTab(data.maintab);
           } else {
@@ -42,6 +43,8 @@ export default function TabPage() {
       } else {
 
           const { data } = await apiClient.getSubtab(parseInt(subId));
+
+          console.log("sub - ", data);
           
           if (data?.subtab) {
             setTab(data.subtab);
@@ -60,7 +63,7 @@ export default function TabPage() {
 
     fetchTabById();
 
-  }, [mainId, setTabNavigationStack, subId]);
+  }, [mainId, setTabNavigationStack, subId, user]);
 
 
   return (
@@ -73,14 +76,16 @@ export default function TabPage() {
         }}
       >
         <div className="grid-item">
-          <SideBar
-            width={width}
-            setWidth={setWidth}
-            isMenuOpened={isMenuOpened}
-            setIsMenuOpened={setIsMenuOpened}
-            directory={directory}
-            setDirectory={setDirectory}
-          />
+            <SideBar
+              width={width}
+              setWidth={setWidth}
+              isMenuOpened={isMenuOpened}
+              setIsMenuOpened={setIsMenuOpened}
+              directory={directory}
+              setDirectory={setDirectory}
+              mainId={mainId}
+              setTabNavigationStack={setTabNavigationStack}
+            />
         </div>
         <div className="grid-item tab-area">
           <Row>

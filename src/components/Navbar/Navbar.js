@@ -25,8 +25,8 @@ export default function Navbar() {
 
   return (
       <div className="NavBar">
-          <NavBar className="navbar" expand="md">
-              <Container>
+          <NavBar expand="md">
+              <Container className="navbar">
                   <NavBar.Brand as={Link} to="/" className="logo">
                     <img src="https://img.icons8.com/bubbles/70/000000/edit.png" alt="planner logo" className="d-inline-block align-top" />
                     Planner
@@ -46,6 +46,11 @@ export default function Navbar() {
                               <Nav.Link as={Link} to="/home">
                                 <h6 className="linkText">
                                   Home
+                                </h6>
+                              </Nav.Link>
+                              <Nav.Link as={Link} to="/timer">
+                                <h6 className="linkText">
+                                  Timer
                                 </h6>
                               </Nav.Link>
                               <Nav.Link onClick={handleOnLogout}>

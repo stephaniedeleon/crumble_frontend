@@ -13,11 +13,11 @@ export default function Footer() {
                         <ExternalLink href="https://www.linkedin.com/in/gevork-manukyan-235385199/"> 
                         <i className="bi-linkedin"/> G
                         </ExternalLink>
+                        <ExternalLink href="https://www.linkedin.com/in/stephanie-de-leon-a902b717a/"> 
+                            <i class="bi-linkedin"/> S
+                        </ExternalLink>
                         <ExternalLink href="https://www.linkedin.com/in/abhirajchatterjee/"> 
                             <i className="bi-linkedin"/> A
-                        </ExternalLink>
-                        <ExternalLink href="https://www.linkedin.com/in/stephanie-de-leon-a902b717a/"> 
-                            <i className="bi-linkedin"/> P
                         </ExternalLink>
                     </div>
                 </div>
@@ -26,7 +26,7 @@ export default function Footer() {
                         {/* <img src="images/favicon.ico" alt="Love, Panini small logo" style="max-height: 3.2rem;">
                         <img class="signature" src="images/closing.png" alt="Love, Panini signature"
                             style="max-height: 4.3rem;"> */}
-                        <div className="credits">Coded with care by G.A.P.</div>
+                        <div className="credits">Coded with care by G.S.A.</div>
 
                     </Link>
                 </div>

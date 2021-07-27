@@ -1,6 +1,6 @@
 import "./Event.css"
 
-import { ListGroup, Row, Col } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import React, { useState } from "react";
 import { DeleteEvent } from "components";
 import { formatDate } from "utils/format";

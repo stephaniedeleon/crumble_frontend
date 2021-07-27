@@ -1,18 +1,25 @@
-.SubTab #checkbox {
+.SubTab #subtab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .SubTab #subtabName {
     transition: all 0.4s ease 0s;
     text-align: left;
     background-color: #fffdf6;
+    cursor: pointer;
+}
+
+.SubTab #subtabName a {
     color: #8C3F0D;
 }
 
-/* .SubTab #subtabName:hover {
-    background-color: white;
-} */
+.SubTab #subtabName a:hover {
+    color: #2A3A30;
+}
 
-/* .SubTab .delete i {
+.SubTab .delete i {
     font-size: 20px;
     color: rgb(109, 109, 109);
 }
@@ -20,4 +27,4 @@
 .SubTab .delete i:hover {
     cursor: pointer;
     color: #8C3F0D;
-} */
+}

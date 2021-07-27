@@ -16,12 +16,12 @@
 }
 
 .Event .eventItem .details .eventName {
-    color: #254832;
+    color: #8c3f0d;
 }
 
 .Event .eventItem .details .eventDate {
     font-size: 14px;
-    color: #325D41;
+    color: #256a3c;
 }
 
 .Event .eventItem .delete i {

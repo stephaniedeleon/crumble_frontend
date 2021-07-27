@@ -1,22 +1,24 @@
 .ToDo {
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #B48125;
-    border-radius: 10px;
-    height: 25vh;
-    overflow-y: scroll;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #B48125;
+  border-radius: 10px;
+  height: 28vh;
+  overflow-y: auto;
 }
 
 .ToDo .title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  margin-bottom: 20px;
 }
 
 .ToDo .title .compName h6 {
-    font-size: 20px;
-    margin: 0;
+  font-size: 20px;
+  margin: 0;
 }
 
 .ToDo .title .addBtns {
@@ -24,23 +26,25 @@
   display: flex;
 }
 
-
-.ToDo .title .addSubBtn i  {
+.ToDo .title .addSubBtn i {
   padding-right: 15px;
   color: #8C3F0D;
 }
 
 .ToDo .title .addSubBtn i:hover {
-  color: #325D41;
+  color: #2A3A30;
   cursor: pointer;
 }
 
-
-.ToDo .title .addTaskBtn i  {
-    color: #325D41;
+.ToDo .title .addTaskBtn i {
+  color: #256a3c;
 }
 
 .ToDo .title .addTaskBtn i:hover {
-    color: #8C3F0D;
-    cursor: pointer;
+  color: #2A3A30;
+  cursor: pointer;
+}
+
+.ToDo .task-area {
+  margin: 0 5px;
 }
