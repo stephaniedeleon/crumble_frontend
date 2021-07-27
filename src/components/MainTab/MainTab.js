@@ -20,7 +20,6 @@ export default function MainTab({ key, maintab }) {
         setTabNavigationStack(['root'])
     }
 
-
     return (
         <div className="MainTab">
             <div className="card">
