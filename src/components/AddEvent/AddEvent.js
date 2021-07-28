@@ -103,14 +103,16 @@ export default function AddEvent(props) {
                         value={form.event_name}
                         required
                     />
-                    <div className="input-field">
-                        <label htmlFor="date">Due Date</label>
-                        <input type="datetime-local"
-                            name="date"
-                            placeholder="mm/dd/yyyy, --:-- --"
-                            value={form.date} 
-                            onChange={handleOnInputChange} />
-                    </div>
+
+                    <FormLabel className="form-label">Date of event</FormLabel>
+                    <Form.Control
+                        type="datetime-local"
+                        name="date"
+                        className="input-field"
+                        onChange={handleOnInputChange}
+                        value={form.date}
+                        required
+                    />
                 </FormGroup>
             </Modal.Body>
 

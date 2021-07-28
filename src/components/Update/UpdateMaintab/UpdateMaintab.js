@@ -11,16 +11,19 @@ export default function UpdateMaintab(props) {
 
     const maintab = props.maintab;
 
-
     //update maintab in list of maintabs
     const updateMaintab = (updatedId) => {
+
         let found = maintabs.find(foundMaintab => foundMaintab.id === updatedId);
-        found.name = form.name;
+
+        if (form.name !== "") { //if name is empty, it will not change the name
+            found.name = form.name;
+        }
     }
 
 
     const [form, setForm] = useState({
-        name: "",
+        name: maintab.name
     });
 
     const handleOnInputChange = (event) => {
@@ -34,17 +37,30 @@ export default function UpdateMaintab(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        const { data, error } = await apiClient.updateMaintab(maintab.id, { 
-            name: form.name,
-        });
+        let result;
 
-        if (error) {
-            setErrors((e) => ({ ...e, form: error }));
-        } else {
-            setErrors((e) => ({ ...e, form: null }));
-            updateMaintab(maintab.id);
-            setForm({name: ""});
-        } 
+        if (form.name !== "") { //if name is empty, it will not change the name
+            result = await apiClient.updateMaintab(maintab.id, { 
+                name: form.name,
+            });
+        }
+
+        if (result) {
+            const { data, error } = result;
+
+            const dbMaintab = data.maintab;
+
+            if (error) {
+                setErrors((e) => ({ ...e, form: error }));
+            } else {
+                setErrors((e) => ({ ...e, form: null }));
+                setForm ({  name: dbMaintab.name });
+                updateMaintab(maintab.id);
+            } 
+
+        } else { //if name is empty, it will set the name in form to current maintab name
+            setForm ({  name: maintab.name });
+        }
 
         setIsLoading(false);
     }
@@ -68,13 +84,11 @@ export default function UpdateMaintab(props) {
                 <FormGroup>
                     <FormLabel className="form-label">New name of main tab</FormLabel>
                     <Form.Control
-                    type="text"
-                    name="name"
-                    className="input-field"
-                    placeholder={maintab.name}
-                    onChange={handleOnInputChange}
-                    value={form.name}
-                    required
+                        type="text"
+                        name="name"
+                        className="input-field"
+                        onChange={handleOnInputChange}
+                        value={form.name}
                     />
                 </FormGroup>
             </Modal.Body>
