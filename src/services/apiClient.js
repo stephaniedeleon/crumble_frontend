@@ -72,7 +72,7 @@ class ApiClient {
     async deleteMaintab(maintabId) { 
         return await this.request({ endpoint: "maintabs/"+maintabId, method: "DELETE" });
     }
-    
+
     async updateMaintab(maintabId, details) { 
         return await this.request({ endpoint: "maintabs/"+maintabId, method: "PUT", data: details });
     }
@@ -101,6 +101,10 @@ class ApiClient {
 
     async deleteSubtab(subtabId) {
         return await this.request({ endpoint: "subtabs/"+subtabId, method: "DELETE" });
+    }
+
+    async updateSubtab(subtabId, details) { 
+        return await this.request({ endpoint: "subtabs/"+subtabId, method: "PUT", data: details });
     }
 
     async markSubtab(subtabId) {
@@ -138,6 +142,10 @@ class ApiClient {
         return await this.request({ endpoint: "tasks/"+taskId, method: "DELETE" });
     }
 
+    async updateTask(taskId, details) { 
+        return await this.request({ endpoint: "tasks/"+taskId, method: "PUT", data: details });
+    }
+
     async markTask(taskId) {
         return await this.request({ endpoint: "tasks/mark/"+taskId, method: "PUT" });
     }
@@ -168,6 +176,10 @@ class ApiClient {
         return await this.request({ endpoint: "calendar/"+eventId, method: "DELETE" });
     }
 
+    async updateEvent(eventId, details) { 
+        return await this.request({ endpoint: "calendar/"+eventId, method: "PUT", data: details });
+    }
+
     // Notes
 
     async listNotesByMaintab(maintabId) {
@@ -189,7 +201,7 @@ class ApiClient {
     async deleteNote(noteId) {
         return await this.request({ endpoint: "notes/"+noteId, method: "DELETE" });
     }
-
+    
 }
 
 export default new ApiClient("http://localhost:3002");

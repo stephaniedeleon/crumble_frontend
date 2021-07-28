@@ -20,7 +20,6 @@ export default function MainTab({ key, maintab }) {
         setTabNavigationStack(['root'])
     }
 
-
     return (
         <div className="MainTab">
             <div className="card">
@@ -33,11 +32,11 @@ export default function MainTab({ key, maintab }) {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu id="options">
-                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                Delete
-                            </Dropdown.Item>
                             <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
                                 Edit
+                            </Dropdown.Item>
+                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                Delete
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

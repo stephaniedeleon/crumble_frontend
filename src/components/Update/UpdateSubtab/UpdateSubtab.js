@@ -1,32 +1,32 @@
-import "./UpdateMaintab.css"
+import "./UpdateSubtab.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
-export default function UpdateMaintab(props) {
+export default function UpdateSubtab(props) {
 
-    const { maintabs, setErrors, setIsLoading } = useContext(AuthContext);
+    const { subtabs, setErrors, setIsLoading } = useContext(AuthContext);
 
-    const maintab = props.maintab;
+    const subtab = props.subtab;
 
     const [form, setForm] = useState({
-        name: maintab.name
+        name: subtab.name,
     });
 
 
-    //update maintab in list of maintabs
-    const updateMaintab = (updatedId) => {
+    //update subtab in list of subtabs
+    const updateSubtab = (updatedId) => {
 
-        let found = maintabs.find(foundMaintab => foundMaintab.id === updatedId);
+        let found = subtabs.find(foundSubtab => foundSubtab.id === updatedId);
 
         if (form.name !== "") { //if name is empty, it will not change the name
             found.name = form.name;
         }
     }
 
-    
+
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     }
@@ -41,7 +41,7 @@ export default function UpdateMaintab(props) {
         let result;
 
         if (form.name !== "") { //if name is empty, it will not change the name
-            result = await apiClient.updateMaintab(maintab.id, { 
+            result = await apiClient.updateSubtab(subtab.id, { 
                 name: form.name,
             });
         }
@@ -49,19 +49,20 @@ export default function UpdateMaintab(props) {
         if (result) {
             const { data, error } = result;
 
-            const dbMaintab = data.maintab;
+            const dbSubtab = data.subtab;
 
             if (error) {
                 setErrors((e) => ({ ...e, form: error }));
             } else {
                 setErrors((e) => ({ ...e, form: null }));
-                setForm ({  name: dbMaintab.name });
-                updateMaintab(maintab.id);
+                setForm({ name: dbSubtab.name });
+                updateSubtab(subtab.id);
             } 
 
         } else { //if name is empty, it will set the name in form to current maintab name
-            setForm ({  name: maintab.name });
+            setForm ({  name: subtab.name });
         }
+
 
         setIsLoading(false);
     }
@@ -77,13 +78,13 @@ export default function UpdateMaintab(props) {
         <Form onSubmit={handleOnSubmit}>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit MainTab
+                    Edit Subtab
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <FormGroup>
-                    <FormLabel className="form-label">New name of main tab</FormLabel>
+                    <FormLabel className="form-label">New name of sub tab</FormLabel>
                     <Form.Control
                         type="text"
                         name="name"
