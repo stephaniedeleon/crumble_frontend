@@ -9,7 +9,7 @@ class ApiClient {
         this.tokenName = "token";
     }
 
-    //utility method...
+    // utility method...
     async request({ endpoint, method = `GET`, data = {} }) {
         const url = `${this.remoteHostUrl}/${endpoint}`;
         const headers = {
@@ -28,7 +28,7 @@ class ApiClient {
         }
     }
 
-    //Token
+    // Token
 
     setToken (token) {
         this.token = token
@@ -55,7 +55,7 @@ class ApiClient {
     }
 
 
-    //Main tabs
+    // Main Tabs
 
     async listMaintabs() {
         return await this.request({ endpoint: "maintabs", method: "GET" });
@@ -166,6 +166,28 @@ class ApiClient {
 
     async deleteEvent(eventId) {
         return await this.request({ endpoint: "calendar/"+eventId, method: "DELETE" });
+    }
+
+    // Notes
+
+    async listNotesByMaintab(maintabId) {
+        return await this.request({ endpoint: "notes/main/"+maintabId, method: "GET" });
+    }
+
+    async listNotesBySubtab(subtabId) {
+        return await this.request({ endpoint: "notes/sub/"+subtabId, method: "GET" });
+    }
+
+    async createNoteFromMain(details) {
+        return await this.request({ endpoint: "notes/main/create", method: "POST", data: details });
+    }
+
+    async createNoteFromSub(details) {
+        return await this.request({ endpoint: "notes/sub/create", method: "POST", data: details });
+    }
+
+    async deleteNote(noteId) {
+        return await this.request({ endpoint: "notes/"+noteId, method: "DELETE" });
     }
 
 }

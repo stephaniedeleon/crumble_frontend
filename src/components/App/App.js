@@ -18,6 +18,7 @@ function App() {
   const [subtabs, setSubtabs] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [events, setEvents] = useState([]);
+  const [notes, setNotes] = useState([])
 
   const [tabNavigationStack, setTabNavigationStack] = useState([])
 
@@ -34,7 +35,7 @@ function App() {
 
 
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, events, setEvents, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, errors, setErrors, isLoading, setIsLoading }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated, maintabs, setMaintabs, subtabs, setSubtabs, tasks, setTasks, events, setEvents, notes, setNotes, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, errors, setErrors, isLoading, setIsLoading }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />
