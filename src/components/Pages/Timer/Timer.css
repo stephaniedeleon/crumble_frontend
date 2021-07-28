@@ -1,11 +1,15 @@
+.Timer {
+    height: 90vh;
+    display: grid;
+}
+
 .Timer .base-timer {
     position: relative;
     height: 400px;
     width: 400px;
 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    justify-self: center;
+    align-self: center;
 }
 
 .Timer .base-timer-circle {
@@ -62,11 +66,13 @@
 
 
 .Timer .clockBtn {
+    display: inline-block;
     width: 86px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
     padding: 6px 10px;
+
     border-radius: 4px;
     border: 1px solid #8C3F0D;
     transition: all 0.2s ease 0.2s;
@@ -85,6 +91,13 @@
 }
 
 .Timer .clockBtn.stopBtn:hover {
+    background-color: #8c1c0d;
+    color: white;
+    border-color: #8c1c0d;
+    cursor: pointer;
+}
+
+.Timer .clockBtn.pauseBtn:hover {
     background-color: #8C3F0D;
     color: white;
     border-color: #8C3F0D;

@@ -49,3 +49,62 @@
     color: white;
     border-color: #47825b;
 }
+
+
+/* TIMER */
+
+.NavBar .timerContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.NavBar .base-timer {
+    height: 50px;
+    width: 50px;
+    display: grid;
+}
+
+.NavBar .base-timer-circle {
+    fill: none;
+    stroke: none;
+}
+
+.NavBar .base-timer-path-elapsed {
+    stroke-width: 10px;
+    stroke: currentColor;
+}
+
+.NavBar .base-timer-label {
+    transform: translateY(-12px);
+    font-size: 16px;
+}
+
+.NavBar .base-timer-path-remaining {
+
+    /* same as grey ring */
+    stroke-width: 10px;
+
+    /* makes sure animation starts at top of circle */
+    transform: rotate(90deg);
+    transform-origin: center;
+
+    transition: 1s linear all;
+
+    stroke: currentColor;
+}
+
+.NavBar .base-timer-path-remaining.green {
+    color: rgb(65, 184, 131);
+}
+
+.NavBar .base-timer-path-remaining.orange {
+    color: orange;
+}
+
+.NavBar .base-timer-path-remaining.red {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}

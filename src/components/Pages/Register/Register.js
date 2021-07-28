@@ -32,6 +32,7 @@ export default function Register() {
               value={form.email}
               isValid={!errors.email && errors.email !== undefined}
               isInvalid={errors.email}
+              autoFocus
               required
             />
           </FormGroup>

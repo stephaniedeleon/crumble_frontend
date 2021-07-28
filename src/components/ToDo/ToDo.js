@@ -9,7 +9,7 @@ import apiClient from "services/apiClient";
 // Has the list of subtabs and tasks
 
 export default function ToDo({ directory, setDirectory, mainId, subId }) {
-  const { subtabs, tasks, user, authenticated, setSubtabs, setTasks } =
+  const { subtabs, tasks, user, authenticated, setSubtabs, setTasks, tabNavigationStack } =
     useContext(AuthContext);
 
   const [error, setError] = useState(null);
@@ -66,6 +66,75 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   const [modalShow, setModalShow] = useState(false);
   const [taskModalShow, setTaskModalShow] = useState(false);
 
+
+
+    /** Adds subtab to front end directory (action: "add", "delete", "update") */
+    const updateDirectory = (action, newSubtab) => {
+
+      action = action.toLowerCase()
+      const configuredNewSubtab = directoryConfiguration(newSubtab)
+
+      const index = tabNavigationStack.length - 1
+      let currentSubtabId = tabNavigationStack[index]
+
+      switch (action) {
+        case "add": 
+
+          if (currentSubtabId !== 'root') {
+              const targetObject = findTargetSubtab(directory, currentSubtabId)
+              targetObject?.children.unshift(configuredNewSubtab)
+          } else { 
+              directory.children.unshift(configuredNewSubtab)
+          }
+          break;
+
+        case "delete": 
+          if (currentSubtabId !== 'root') {
+              const targetObject = findTargetSubtab(directory, currentSubtabId)
+              targetObject?.children.splice(currentSubtabId, 1)
+          } else { 
+              directory.children.splice(currentSubtabId, 1)
+          }
+          break;
+
+        case "update": 
+          break;
+
+        default:
+          break;
+      } 
+  }
+
+  /** Finds and returns the object whose child must be added to */
+  const findTargetSubtab = (searchObject, targetId) => {
+
+      const targetObject = searchObject.children.find(element => element.id === targetId)
+
+      if (targetObject !== undefined)
+          return targetObject;
+
+      let result;
+      let currentElement;
+      for (let index = 0; index < searchObject.children.length; index++) {
+          currentElement = searchObject.children[index]
+          result = findTargetSubtab(currentElement, targetId)
+
+          if (result !== null && result !== undefined)
+              return result;
+      }
+
+      return null;
+  }
+
+  /** Configures subtab returned from api call to match directory data structure */
+  const directoryConfiguration = (newSubtab) => {
+      return {
+          id: newSubtab.id,
+          name: newSubtab.name,
+          children: []
+      }
+  }
+
   return (
     <div className="ToDo">
       <div className="title">
@@ -90,6 +159,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
           onHide={() => setModalShow(false)}
           directory={directory}
           setDirectory={setDirectory}
+          updateDirectory={updateDirectory}
         />
 
         <AddTask
@@ -102,7 +172,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
       <div className="task-area">
         {subtabs.map((subtab) => (
-          <SubTab key={subtab.id} subtab={subtab} mainId={mainId} />
+          <SubTab key={subtab.id} subtab={subtab} mainId={mainId} updateDirectory={updateDirectory} />
         ))}
         {tasks.map((task) => (
           <Task key={task.id} task={task} mainId={mainId} />
