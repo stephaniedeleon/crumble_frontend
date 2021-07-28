@@ -39,14 +39,23 @@ export default function SubTab(props) {
                 </label>
                 <div className="delete">
                     <i class="bi-x" onClick={() => setDeleteModalShow(true)}></i>
+                    {/* <i class="bi-pencil" onClick={() => setEditModalShow(true)}></i> */}
                 </div>
             </div>
+
+            {/* onClick={() => setEditModalShow(true)} */}
 
             <DeleteSubtab
                 show={deleteModalShow}
                 onHide={() => setDeleteModalShow(false)}
                 subtab={subtab}
                 updateDirectory={props.updateDirectory}
+            />
+
+            <UpdateSubtab
+                show={editModalShow}
+                onHide={() => setEditModalShow(false)}
+                subtab={subtab}
             />
         </div>
     );

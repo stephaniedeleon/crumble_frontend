@@ -11,17 +11,21 @@ export default function UpdateSubtab(props) {
 
     const subtab = props.subtab;
 
+    const [form, setForm] = useState({
+        name: subtab.name,
+    });
+
 
     //update subtab in list of subtabs
     const updateSubtab = (updatedId) => {
+
         let found = subtabs.find(foundSubtab => foundSubtab.id === updatedId);
-        found.name = form.name;
+
+        if (form.name !== "") { //if name is empty, it will not change the name
+            found.name = form.name;
+        }
     }
 
-
-    const [form, setForm] = useState({
-        name: "",
-    });
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
@@ -34,17 +38,31 @@ export default function UpdateSubtab(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        const { data, error } = await apiClient.updateSubtab(subtab.id, { 
-            name: form.name,
-        });
+        let result;
 
-        if (error) {
-            setErrors((e) => ({ ...e, form: error }));
-        } else {
-            setErrors((e) => ({ ...e, form: null }));
-            updateSubtab(subtab.id);
-            setForm({name: ""});
-        } 
+        if (form.name !== "") { //if name is empty, it will not change the name
+            result = await apiClient.updateSubtab(subtab.id, { 
+                name: form.name,
+            });
+        }
+
+        if (result) {
+            const { data, error } = result;
+
+            const dbSubtab = data.subtab;
+
+            if (error) {
+                setErrors((e) => ({ ...e, form: error }));
+            } else {
+                setErrors((e) => ({ ...e, form: null }));
+                setForm({ name: dbSubtab.name });
+                updateSubtab(subtab.id);
+            } 
+
+        } else { //if name is empty, it will set the name in form to current maintab name
+            setForm ({  name: subtab.name });
+        }
+
 
         setIsLoading(false);
     }
@@ -68,13 +86,11 @@ export default function UpdateSubtab(props) {
                 <FormGroup>
                     <FormLabel className="form-label">New name of sub tab</FormLabel>
                     <Form.Control
-                    type="text"
-                    name="name"
-                    className="input-field"
-                    placeholder={subtab.name}
-                    onChange={handleOnInputChange}
-                    value={form.name}
-                    required
+                        type="text"
+                        name="name"
+                        className="input-field"
+                        onChange={handleOnInputChange}
+                        value={form.name}
                     />
                 </FormGroup>
             </Modal.Body>

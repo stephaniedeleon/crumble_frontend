@@ -142,6 +142,10 @@ class ApiClient {
         return await this.request({ endpoint: "tasks/"+taskId, method: "DELETE" });
     }
 
+    async updateTask(taskId, details) { 
+        return await this.request({ endpoint: "tasks/"+taskId, method: "PUT", data: details });
+    }
+
     async markTask(taskId) {
         return await this.request({ endpoint: "tasks/mark/"+taskId, method: "PUT" });
     }
