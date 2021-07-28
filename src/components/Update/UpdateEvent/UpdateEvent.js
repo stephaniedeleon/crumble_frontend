@@ -85,7 +85,7 @@ export default function UpdateEvent(props) {
             } else {
                 setErrors((e) => ({ ...e, form: null }));
                 setForm ({  event_name: dbEvent.event_name,
-                            date: formatDateForInputDisplay(event.date)
+                            date: formatDateForInputDisplay(calEvent.date)
                         });
                 updateEvent(event_id);
             } 

@@ -1,32 +1,32 @@
-import "./UpdateMaintab.css"
+import "./UpdateTask.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
-export default function UpdateMaintab(props) {
+export default function UpdateTask(props) {
 
-    const { maintabs, setErrors, setIsLoading } = useContext(AuthContext);
+    const { tasks, setErrors, setIsLoading } = useContext(AuthContext);
 
-    const maintab = props.maintab;
+    const task = props.task;
 
     const [form, setForm] = useState({
-        name: maintab.name
+        details: task.details,
     });
 
 
-    //update maintab in list of maintabs
-    const updateMaintab = (updatedId) => {
+    //update task in list of tasks
+    const updateTask = (updatedId) => {
 
-        let found = maintabs.find(foundMaintab => foundMaintab.id === updatedId);
+        let found = tasks.find(foundTask => foundTask.id === updatedId);
 
-        if (form.name !== "") { //if name is empty, it will not change the name
-            found.name = form.name;
+        if (form.details !== "") { //if details is empty, it will not change the details
+            found.details = form.details;
         }
     }
 
-    
+
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     }
@@ -40,27 +40,27 @@ export default function UpdateMaintab(props) {
 
         let result;
 
-        if (form.name !== "") { //if name is empty, it will not change the name
-            result = await apiClient.updateMaintab(maintab.id, { 
-                name: form.name,
+        if (form.details !== "") { //if details is empty, it will not change the details
+            result = await apiClient.updateTask(task.id, { 
+                details: form.details,
             });
         }
 
         if (result) {
             const { data, error } = result;
 
-            const dbMaintab = data.maintab;
+            const dbTask = data.task;
 
             if (error) {
                 setErrors((e) => ({ ...e, form: error }));
             } else {
                 setErrors((e) => ({ ...e, form: null }));
-                setForm ({  name: dbMaintab.name });
-                updateMaintab(maintab.id);
+                setForm({ details: dbTask.details });
+                updateTask(task.id);
             } 
 
-        } else { //if name is empty, it will set the name in form to current maintab name
-            setForm ({  name: maintab.name });
+        } else { //if details is empty, it will set the details in form to current task details
+            setForm ({  details: task.details });
         }
 
         setIsLoading(false);
@@ -77,19 +77,19 @@ export default function UpdateMaintab(props) {
         <Form onSubmit={handleOnSubmit}>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit MainTab
+                    Edit Task
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <FormGroup>
-                    <FormLabel className="form-label">New name of main tab</FormLabel>
+                    <FormLabel className="form-label">New details of task</FormLabel>
                     <Form.Control
                         type="text"
-                        name="name"
+                        name="details"
                         className="input-field"
                         onChange={handleOnInputChange}
-                        value={form.name}
+                        value={form.details}
                     />
                 </FormGroup>
             </Modal.Body>
