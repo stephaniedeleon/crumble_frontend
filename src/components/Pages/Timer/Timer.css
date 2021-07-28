@@ -1,109 +1,149 @@
 .Timer {
-    height: 90vh;
-    display: grid;
+  height: 90vh;
+  display: grid;
 }
 
 .Timer .base-timer {
-    position: relative;
-    height: 400px;
-    width: 400px;
+  position: relative;
+  height: 400px;
+  width: 400px;
 
-    justify-self: center;
-    align-self: center;
+  justify-self: center;
+  align-self: center;
 }
 
 .Timer .base-timer-circle {
-    fill: none;
-    stroke: none;
+  fill: none;
+  stroke: none;
 }
 
 .Timer .base-timer-path-elapsed {
-    stroke-width: 7px;
-    stroke: currentColor;
+  stroke-width: 7px;
+  stroke: currentColor;
 }
 
 .Timer .base-timer-label {
-    position: absolute;
+  position: absolute;
 
-    /*Should match parent container*/
-    height: 400px;
-    width: 400px;
+  /*Should match parent container*/
+  height: 400px;
+  width: 400px;
 
-    top: 0px;
+  top: 0px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    font-size: 72px;
+  font-size: 72px;
 }
 
 .Timer .base-timer-path-remaining {
+  /* same as grey ring */
+  stroke-width: 7px;
 
-    /* same as grey ring */
-    stroke-width: 7px;
+  /* makes sure animation starts at top of circle */
+  transform: rotate(90deg);
+  transform-origin: center;
 
-    /* makes sure animation starts at top of circle */
-    transform: rotate(90deg);
-    transform-origin: center;
+  transition: 1s linear all;
 
-    transition: 1s linear all;
-
-    stroke: currentColor;
+  stroke: currentColor;
 }
 
 .Timer .base-timer-path-remaining.green {
-    color: rgb(65, 184, 131);
+  color: rgb(65, 184, 131);
 }
 
 .Timer .base-timer-path-remaining.orange {
-    color: orange;
+  color: orange;
 }
 
 .Timer .base-timer-path-remaining.red {
-    color: red;
+  color: red;
 }
-
 
 .Timer .clockBtn {
-    display: inline-block;
-    width: 86px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    padding: 6px 10px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  padding: 6px 10px;
 
-    border-radius: 4px;
-    border: 1px solid #8C3F0D;
-    transition: all 0.2s ease 0.2s;
+  border-radius: 4px;
+  border: 1px solid #8c3f0d;
+  
+  font-family: "Varela", serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: #254832;
+  cursor: pointer;
 
-    font-family: "Varela", serif;
-    font-size: 16.5px;
-    font-weight: 300;
-    color: #254832;
+  box-shadow: 1px 7.3px 0px 0px rgba(0,0,0,0.61);
+  
+  transition: all 0.2s ease;
+  /* transition-property: background-color, color, border-color, transform;
+  transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
+  transition-timing-function: ease, ease, ease, ease;
+  transition-delay: 0s, 0s, 0s, 0.2s; */
+  /* transition: all 0.2s ease; */
 }
 
-.Timer .clockBtn.startBtn:hover {
-    background-color: #47825b;
-    color: white;
-    border-color: #47825b;
-    cursor: pointer;
+
+.Timer .clockBtn.paused:active {
+    transform: translateY(5px);
+    box-shadow: none;
 }
 
-.Timer .clockBtn.stopBtn:hover {
-    background-color: #8c1c0d;
-    color: white;
-    border-color: #8c1c0d;
-    cursor: pointer;
+.Timer .clockBtn.stopped:active {
+    box-shadow: none;
+    transform: translateY(5px);
 }
 
-.Timer .clockBtn.pauseBtn:hover {
-    background-color: #8C3F0D;
-    color: white;
-    border-color: #8C3F0D;
-    cursor: pointer;
+.Timer .clockBtn.started {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+.Timer .clockBtn.stopped:hover {
+  background-color: #47825b;
+  color: white;
+  border-color: #47825b;
+}
+
+.Timer .clockBtn.started:hover {
+  background-color: #8c1c0d;
+  color: white;
+  border-color: #8c1c0d;
+}
+
+.Timer .clockBtn.paused:hover {
+  background-color: #8c3f0d;
+  color: white;
+  border-color: #8c3f0d;
+}
+
+.Timer .btnTextContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 60px;
+    bottom: 0px;
+
+    transition: all;
+}
+
+.Timer .clockBtn.paused:active .btnTextContainer {
+    box-shadow: none;
+    /* height: 55px; */
+}
+
+.Timer .clockBtn.clockBtn.started .btnTextContainer {
+    box-shadow: none;
+    /* height: 55px; */
 }
 
 .Timer .hidden {
-    display: none;
+  display: none;
 }

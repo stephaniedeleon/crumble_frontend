@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./Timer.css";
 import TimerContext from "context/timer";
 
@@ -13,6 +13,14 @@ export default function Timer() {
     RADIUS,
   } = timerVariables;
 
+  const toggleButton = () => {
+    if (timerStatus === 'stopped' || timerStatus === 'paused') {
+      startTimer()
+    }
+    else if (timerStatus === 'started') {
+      pauseTimer()
+    }
+  }
 
   return (
     <div className="Timer">
@@ -48,16 +56,33 @@ export default function Timer() {
           </g>
         </svg>
 
-        <span class="base-timer-label">{formatTimeLeft(timeLeft)}</span>
+        <span class="base-timer-label" style={{ userSelect: 'none' }}>{formatTimeLeft(timeLeft)}</span>
 
         <h6
+          className={`clockBtn ${timerStatus}`}
+          onClick={toggleButton}
+          style={{ userSelect: 'none' }}
+        >
+          <div className="btnTextContainer">
+            {timerStatus === 'started' ?
+              "Pause"
+              :
+              "Start"
+            }
+          </div>
+        </h6>
+
+        {/* <h6
           className={`clockBtn startBtn ${
             timerStatus === "started" ? "hidden" : ""
           }`}
           onClick={startTimer}
         >
-          Start
+          <div className="btnTextContainer">
+            Start
+          </div>
         </h6>
+
         <h6
           className={`clockBtn pauseBtn ${
             timerStatus === "stopped" || timerStatus === "paused"
@@ -66,16 +91,21 @@ export default function Timer() {
           }`}
           onClick={pauseTimer}
         >
-          Pause
+          <div className="btnTextContainer">
+            Pause
+          </div>
         </h6>
+
         <h6
           className={`clockBtn stopBtn ${
             timerStatus === "stopped" ? "hidden" : ""
           }`}
           onClick={stopTimer}
         >
-          Stop
-        </h6>
+          <div className="btnTextContainer">
+            Stop
+          </div>
+        </h6> */}
       </div>
     </div>
   );
