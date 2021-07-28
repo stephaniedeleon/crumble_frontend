@@ -34,6 +34,7 @@ function App() {
   const [subtabs, setSubtabs] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [events, setEvents] = useState([]);
+  const [notes, setNotes] = useState([])
 
 
   /** TAB NAVIGATION */
@@ -71,6 +72,8 @@ function App() {
         setTasks,
         events,
         setEvents,
+        notes,
+        setNotes,
         tabNavigationStack,
         setTabNavigationStack,
         digIntoTab,

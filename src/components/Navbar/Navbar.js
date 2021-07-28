@@ -37,7 +37,7 @@ export default function Navbar() {
                     Planner
                   </NavBar.Brand>
 
-                  <NavBar.Toggle className="my-4" aria-controls="NavBarScroll" />
+                  <NavBar.Toggle className="my-4" />
 
                   <NavBar.Collapse className="links" id="NavBarScroll">
                       <Nav className={`ml-auto ${timerVariables.timerStatus === "stopped" ? "hidden" : ""}`}>
