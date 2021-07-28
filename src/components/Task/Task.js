@@ -24,7 +24,20 @@ export default function Task(props) {
     const task = props.task;
 
     return (
-        <div className="Task">
+        <div className="Task" style={{ userSelect: "none" }}>
+            {/* <InputGroup className="mb-3">
+                <div className="details">
+                    <InputGroup.Checkbox id="checkbox" checked={completed} onChange={handleChange} />
+                    <Alert id="taskName">
+                        {task.details}
+                    </Alert>
+                </div>
+
+                <div className="delete">
+                    <i class="bi-x" onClick={() => setModalShow(true)}></i>
+                </div>
+            </InputGroup> */}
+
             <div class="custom-control custom-checkbox" id="task">
                 <input type="checkbox" class="custom-control-input" id={`task` + task.id} checked={completed} onChange={handleChange} />
                 <label class="custom-control-label" for={`task` + task.id} id="taskName">

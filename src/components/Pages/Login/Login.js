@@ -27,6 +27,7 @@ export default function Login() {
               placeholder="user@email.com"
               onChange={handleOnTextChange}
               value={form.email}
+              autoFocus
               required
             />
           </FormGroup>

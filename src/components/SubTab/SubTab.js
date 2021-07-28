@@ -49,6 +49,7 @@ export default function SubTab(props) {
                 show={deleteModalShow}
                 onHide={() => setDeleteModalShow(false)}
                 subtab={subtab}
+                updateDirectory={props.updateDirectory}
             />
 
             <UpdateSubtab
