@@ -11,6 +11,11 @@ export default function UpdateMaintab(props) {
 
     const maintab = props.maintab;
 
+    const [form, setForm] = useState({
+        name: maintab.name
+    });
+
+
     //update maintab in list of maintabs
     const updateMaintab = (updatedId) => {
 
@@ -21,11 +26,7 @@ export default function UpdateMaintab(props) {
         }
     }
 
-
-    const [form, setForm] = useState({
-        name: maintab.name
-    });
-
+    
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     }
