@@ -24,52 +24,32 @@ export default function Task(props) {
     const task = props.task;
 
     return (
-        <div className="Task" style={{ userSelect: "none" }}>
-            {/* <InputGroup className="mb-3">
-                <div className="details">
-                    <InputGroup.Checkbox id="checkbox" checked={completed} onChange={handleChange} />
-                    <Alert id="taskName">
-                        {task.details}
-                    </Alert>
-                </div>
+        <div className="Task">
 
-                <div className="delete">
-                    <i class="bi-x" onClick={() => setModalShow(true)}></i>
-                </div>
-            </InputGroup> */}
-
-            <div class="custom-control custom-checkbox" id="task">
-                <input type="checkbox" class="custom-control-input" id={`task` + task.id} checked={completed} onChange={handleChange} />
-                <label class="custom-control-label" for={`task` + task.id} id="taskName">
-                    <div className="details">
-                        {task.details}
-                    </div>
+            <div class="task">
+                <label class="container">
+                    <input type="checkbox" checked={completed} onChange={handleChange} />
+                    <span class="checkmark"></span>
+                    <h6>{task.details}</h6>
                 </label>
-                <div className="delete">
-                    {/* <i class="bi-pencil" onClick={() => setEditModalShow(true)}></i> */}
-                    <i class="bi-x" onClick={() => setDeleteModalShow(true)}></i>
 
-                    {/* <i class="bi-pencil-square" onClick={() => setEditModalShow(true)}></i>
-                    <i class="bi-x-square" onClick={() => setDeleteModalShow(true)}></i> */}
+                <div class="actions">
+                    <Dropdown>
+                        <Dropdown.Toggle id="dropdown-options">
+                            <i class= "bi-three-dots"></i>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu id="options">
+                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
+                                <i class="bi-pencil-square"/> Edit
+                            </Dropdown.Item>
+                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                <i class="bi-trash"/> Delete
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
-
-                {/* <Dropdown id="dropdown">
-                    <Dropdown.Toggle id="dropdown-options">
-                        <i class= "bi-three-dots"></i>
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu id="options">
-                        <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                            Edit
-                        </Dropdown.Item>
-                        <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                            Delete
-                        </Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown> */}
             </div>
-
-            {/* onClick={() => setEditModalShow(true)} */}
 
             <DeleteTask
                 show={deleteModalShow}

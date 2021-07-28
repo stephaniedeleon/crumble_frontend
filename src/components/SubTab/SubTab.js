@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from "context/auth";
 import { useContext } from "react";
 import { DeleteSubtab, UpdateSubtab } from "components";
+import { Dropdown } from "react-bootstrap";
 import apiClient from "services/apiClient";
  
 export default function SubTab(props) {
@@ -29,21 +30,37 @@ export default function SubTab(props) {
 
     return (
         <div className="SubTab">
-            
-            <div class="custom-control custom-checkbox" id="subtab">
-                <input type="checkbox" class="custom-control-input" id={`subtab` + subtab.id} checked={completed} onChange={handleChange} />
-                <label class="custom-control-label" for={`subtab` + subtab.id} id="subtabName" >
-                    <Link to={`/home/${props.mainId}/${subtab.id}`} onClick={() => digIntoTab(subtab.id)} className="details" >
-                        <i class="bi-folder"></i> {subtab.name}
-                    </Link> 
+
+            <div class="subtab">
+                <label class="container">
+                    <input type="checkbox" checked={completed} onChange={handleChange} />
+                    <span class="checkmark"></span>
+                    <h6>
+                        <i class="bi-folder"/>
+                        <Link to={`/home/${props.mainId}/${subtab.id}`} onClick={() => digIntoTab(subtab.id)} className="details" >
+                            {subtab.name}
+                        </Link>
+                    </h6>
                 </label>
-                <div className="delete">
-                    <i class="bi-x" onClick={() => setDeleteModalShow(true)}></i>
-                    {/* <i class="bi-pencil" onClick={() => setEditModalShow(true)}></i> */}
+
+                <div class="actions">
+                    <Dropdown>
+                        <Dropdown.Toggle id="dropdown-options">
+                            <i class= "bi-three-dots"></i>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu id="options">
+                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
+                                <i class="bi-pencil-square"/> Edit
+                            </Dropdown.Item>
+                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                <i class="bi-trash"/> Delete
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
             </div>
 
-            {/* onClick={() => setEditModalShow(true)} */}
 
             <DeleteSubtab
                 show={deleteModalShow}

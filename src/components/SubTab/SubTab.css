@@ -1,30 +1,144 @@
-.SubTab #subtab {
+.SubTab .subtab {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.SubTab #subtabName {
-    transition: all 0.4s ease 0s;
-    text-align: left;
-    background-color: #fffdf6;
-    cursor: pointer;
+
+.SubTab .actions {
+    display: none;
 }
 
-.SubTab #subtabName a {
+.SubTab .container:hover + .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SubTab .actions:hover {
+    display: contents;
+}
+
+
+/** Checkbox Component */
+
+/* The container */
+.SubTab .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+
+    margin: 0;
+    padding: 5px 0px;
+
+    color: #256a3c;
+}
+
+.SubTab .bi-folder {
+    padding-right: 5px;
+}
+
+.SubTab .container a {
     color: #8C3F0D;
 }
 
-.SubTab #subtabName a:hover {
-    color: #2A3A30;
+.SubTab .container h6 {
+    color: #8C3F0D;
+    margin-left: 25px;
+    margin-bottom: 0;
 }
 
-.SubTab .delete i {
-    font-size: 20px;
+/* Hide the browser's default checkbox */
+.SubTab .container input {
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.SubTab .checkmark {
+    position: absolute;
+    left: 0;
+    height: 16.45px;
+    width: 16.45px;
+
+    background-color: white;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 4px;
+}
+
+/* On mouse-over */
+.SubTab .container:hover input ~ .checkmark {
+    background-color: #fffbf3;
+}
+
+/* When the checkbox is checked */
+.SubTab .container input:checked ~ .checkmark {
+    border: 1px solid #B48125;
+    background-color: #B48125;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.SubTab .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.SubTab .container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.SubTab .container .checkmark:after {
+    left: 5px;
+    top: 1.8px;
+    width: 4.5px;
+    height: 7.5px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+/** Dropdown */
+
+.SubTab #dropdown-options {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+
     color: rgb(109, 109, 109);
+    font-size: 19px;
+    float: right;
 }
 
-.SubTab .delete i:hover {
-    cursor: pointer;
+.SubTab #dropdown-options:hover {
     color: #8C3F0D;
+}
+
+.SubTab #dropdown-options:after {
+    display: none;
+}
+
+.SubTab #options {
+    background-color: #fffdf6;
+}
+
+.SubTab #option i {
+    margin-right: 4px;
+}
+
+.SubTab #option:hover {
+    color: #8C3F0D;
+    background-color: #fffbf3;
 }
