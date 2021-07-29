@@ -10,7 +10,7 @@ import { useTimer } from "hooks/useTimer";
 
 export default function Navbar() {
   const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents,  } = useContext(AuthContext);
-  const { timerVariables, formatTimeLeft } = useContext(TimerContext)
+  const { timerVariables, formatTimeLeft, stopTimer } = useContext(TimerContext)
 
   const navigate = useNavigate()
 
@@ -22,6 +22,7 @@ export default function Navbar() {
       setSubtabs([]); //clears subtabs
       setTasks([]); //clears tasks
       setEvents([]); //clears calendar
+      stopTimer();  //clears timer
       await apiClient.logout();
       navigate("/")
   };
