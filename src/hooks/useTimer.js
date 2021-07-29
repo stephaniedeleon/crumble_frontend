@@ -4,7 +4,7 @@ export const useTimer = () => {
 
 
     // Starting Time
-    const [timeLimit, setTimeLimit] = useState(20);
+    const [timeLimit, setTimeLimit] = useState(200);
     const [timePassed, setTimePassed] = useState(0);
     // Time Remaining
     const [timeLeft, setTimeLeft] = useState(0);
