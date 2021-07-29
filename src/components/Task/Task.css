@@ -5,6 +5,8 @@
 }
 
 
+/** Hover effect */
+
 .Task .actions {
     display: none;
 }
@@ -108,6 +110,7 @@
     border: none;
     box-shadow: none;
     padding: 0;
+    margin-right: 5px;
 
     color: rgb(109, 109, 109);
     font-size: 19px;
