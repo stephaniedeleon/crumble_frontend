@@ -21,8 +21,10 @@
 .modal .input-field {
     background-color: #fffdf6;
     box-shadow: none;
-    /* border-color: #47825b; */
+    border-color: #47825b;
     color: #325D41;
+
+    margin-bottom: 15px;
 }
 
 .modal-button {

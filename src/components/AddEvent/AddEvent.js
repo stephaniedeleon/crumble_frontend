@@ -103,7 +103,6 @@ export default function AddEvent(props) {
                         value={form.event_name}
                         required
                     />
-
                     <FormLabel className="form-label">Date of event</FormLabel>
                     <Form.Control
                         type="datetime-local"

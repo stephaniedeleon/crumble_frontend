@@ -41,12 +41,13 @@ export default function Home() {
             <div className="parallax">
                 <div className="caption">
                     <h3>{welcome}</h3>
+                    <h4>What's your focus today?</h4>
                 </div>
             </div>
 
             <div className="home-area">
                 <div className="title">
-                    <h3>Your MainTabs...</h3>
+                    <h3>{user?.firstName + `'s MainTabs`}</h3>
                     <Button className="addBtn" onClick={() => setModalShow(true)}>
                         Add MainTab
                     </Button>
