@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import "./Timer.css";
 import TimerContext from "context/timer";
 
@@ -13,7 +13,7 @@ export default function Timer() {
     RADIUS,
   } = timerVariables;
 
-  const toggleButton = () => {
+  const toggleButton = (event) => {
     if (timerStatus === 'stopped' || timerStatus === 'paused') {
       startTimer()
     }
@@ -21,6 +21,7 @@ export default function Timer() {
       pauseTimer()
     }
   }
+
 
   return (
     <div className="Timer">
@@ -58,55 +59,28 @@ export default function Timer() {
 
         <span class="base-timer-label" style={{ userSelect: 'none' }}>{formatTimeLeft(timeLeft)}</span>
 
-        <h6
-          className={`clockBtn ${timerStatus}`}
-          onClick={toggleButton}
-          style={{ userSelect: 'none' }}
-        >
-          <div className="btnTextContainer">
-            {timerStatus === 'started' ?
-              "Pause"
-              :
-              "Start"
-            }
-          </div>
-        </h6>
+        <div className="controlBtns">
+          <h6
+            className={`clockBtn ${timerStatus}`}
+            onClick={toggleButton}
+            style={{ userSelect: 'none' }}
+          >
+            <div className="btnTextContainer">
+              {timerStatus === 'started' ?
+                "Pause"
+                :
+                "Start"
+              }
+            </div>
+          </h6>
 
-        {/* <h6
-          className={`clockBtn startBtn ${
-            timerStatus === "started" ? "hidden" : ""
-          }`}
-          onClick={startTimer}
-        >
-          <div className="btnTextContainer">
-            Start
+          <div className={`resetButton ${timerStatus}`}>
+            <i class="bi-skip-end-fill"></i>
           </div>
-        </h6>
 
-        <h6
-          className={`clockBtn pauseBtn ${
-            timerStatus === "stopped" || timerStatus === "paused"
-              ? "hidden"
-              : ""
-          }`}
-          onClick={pauseTimer}
-        >
-          <div className="btnTextContainer">
-            Pause
-          </div>
-        </h6>
-
-        <h6
-          className={`clockBtn stopBtn ${
-            timerStatus === "stopped" ? "hidden" : ""
-          }`}
-          onClick={stopTimer}
-        >
-          <div className="btnTextContainer">
-            Stop
-          </div>
-        </h6> */}
+        </div>
       </div>
+      
     </div>
   );
 }

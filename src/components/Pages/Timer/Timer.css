@@ -1,6 +1,7 @@
 .Timer {
   height: 90vh;
   display: grid;
+  background-color: rgb(237, 238, 238);
 }
 
 .Timer .base-timer {
@@ -63,6 +64,10 @@
   color: red;
 }
 
+.Timer .controlBtns {
+  margin-top: 40px;
+}
+
 .Timer .clockBtn {
   display: inline-block;
   margin-left: auto;
@@ -112,23 +117,23 @@
 }
 
 .Timer .clockBtn.started:hover {
-  background-color: #8c1c0d;
+  background-color: rgb(236, 78, 78);
   color: white;
-  border-color: #8c1c0d;
+  border-color: rgb(235, 61, 61);
 }
 
 .Timer .clockBtn.paused:hover {
-  background-color: #8c3f0d;
+  background-color: rgb(65, 184, 131);
   color: white;
-  border-color: #8c3f0d;
+  border-color: #47825b;
 }
 
 .Timer .btnTextContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
-    height: 60px;
+    width: 120px;
+    height: 30px;
     bottom: 0px;
 
     transition: all;
@@ -136,14 +141,78 @@
 
 .Timer .clockBtn.paused:active .btnTextContainer {
     box-shadow: none;
-    /* height: 55px; */
 }
 
 .Timer .clockBtn.clockBtn.started .btnTextContainer {
     box-shadow: none;
-    /* height: 55px; */
+}
+
+
+.Timer .resetButton {
+  display: inline-block;
+  position: absolute;
+  width: 50px;
+  font-size: 36px;
+  margin-left: 60px;
+  /* margin-left: 7.8vh; */
+  margin-top: 6px;
+  border-radius: 100%;
+  opacity: 0%;
+
+  transition: all 0.7s ease;
+}
+
+.Timer .resetButton.started {
+  opacity: 100%;
+}
+
+.Timer .resetButton:hover {
+  cursor: pointer;
+  background-color: rgb(216, 214, 214);
+}
+
+.Timer .resetButton i {
+  transition: all 0.3s ease;
 }
 
 .Timer .hidden {
   display: none;
+}
+
+
+
+@media all and (max-width: 450px) {
+  .Timer .base-timer {
+    height: 300px;
+    width: 300px;
+  }
+  
+  .Timer .base-timer-label {
+    height: 300px;
+    width: 300px;
+
+    font-size: 48px;
+  }
+
+  .Timer .resetButton {
+    margin-left: 40px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .Timer .base-timer {
+    height: 250px;
+    width: 250px;
+  }
+  
+  .Timer .base-timer-label {
+    height: 250px;
+    width: 250px;
+ 
+    font-size: 48px;
+  }
+
+  .Timer .resetButton {
+    margin-left: 18px;
+  }
 }
