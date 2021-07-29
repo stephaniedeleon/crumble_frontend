@@ -31,3 +31,22 @@
     color: #2A3A30;
     cursor: pointer;
 }
+
+
+/** Notes */
+
+/* .Notes .card {
+    border: 1px solid #256a3c;
+} */
+
+.Notes .accordion>.card>.card-header {
+    background-color: #fffbf3;
+    color: #8C3F0D;
+}
+
+.Notes .card-body {
+    background-color: #FFFDF6;
+    border-top: 1px solid rgba(0,0,0,.125);
+    color: #254832;
+}
+

@@ -76,7 +76,7 @@ export default function AddMaintab(props) {
                     />
                 </FormGroup>
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide}>Add MainTab</Button>
+                    <Button type="submit" onClick={props.onHide} className="button">Add MainTab</Button>
                 </div>
             </Modal.Body>
         </Form>

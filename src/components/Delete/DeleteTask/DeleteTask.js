@@ -53,10 +53,10 @@ export default function DeleteTask(props) {
                     Are you sure you want to delete the task: {task.details}?
                     
                     <div className="modal-button">
-                        <Button variant="secondary" onClick={props.onHide}>
+                        <Button onClick={props.onHide} className="del-button">
                             Cancel
                         </Button>
-                        <Button type="submit" onClick={handleOnDelete}>
+                        <Button type="submit" onClick={handleOnDelete} className="button">
                             Delete {task.details}
                         </Button>
                     </div>

@@ -55,10 +55,10 @@ export default function DeleteEvent(props) {
                     Are you sure you want to delete the event: {event.event_name} on {formatDate(event.date)}?
                     
                     <div className="modal-button">
-                        <Button variant="secondary" onClick={props.onHide}>
+                        <Button onClick={props.onHide} className="del-button">
                             Cancel
                         </Button>
-                        <Button type="submit" onClick={handleOnDelete}>
+                        <Button type="submit" onClick={handleOnDelete} className="button">
                             Delete {event.event_name}
                         </Button>
                     </div>

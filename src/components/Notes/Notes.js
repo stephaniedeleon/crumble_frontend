@@ -1,6 +1,6 @@
 import "./Notes.css";
 
-import {} from 'react-bootstrap';
+import { Accordion } from 'react-bootstrap';
 import { AddNote, Note } from 'components';
 import React, { useContext, useState, useEffect } from 'react';
 import AuthContext from 'context/auth';
@@ -60,11 +60,11 @@ export default function Notes({ mainId, subId }) {
         />
       </div>
 
-      {/*<div className="notes-area">
+      <Accordion>
         {notes.map((note) => (
           <Note key={note.id} note={note} mainId={mainId} />
         ))}
-        </div>*/}
+      </Accordion>
     </div>
   );
 }

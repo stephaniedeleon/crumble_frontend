@@ -88,7 +88,11 @@
     background-color: transparent;
 }
 
-.Register .register-btn:hover {
+
+.Register .register-btn:hover,
+.Register .register-btn:active,
+.Register .register-btn:focus,
+.Register .register-btn:focus:active {
     background-color: #47825b;
     color: white;
     border-color: #47825b;
