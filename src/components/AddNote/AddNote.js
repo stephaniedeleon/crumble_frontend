@@ -2,7 +2,7 @@ import './AddNote.css';
 
 import { Modal, Form, FormGroup, FormLabel, Button } from 'react-bootstrap';
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import React, { useState, useContext } from 'react';
 import AuthContext from 'context/auth';
@@ -34,37 +34,39 @@ export default function AddNote(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        console.log(editorState);
+        form.details = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
 
-        // let result;
+        // console.log(convertFromRaw(test));
 
-        // if (parseInt(props.subId) === 0) {
-        //     result = await apiClient.createNoteFromMain({
-        //         main_id: parseInt(props.mainId),
-        //         note: {
-        //             title: form.title,
-        //             details: form.details,
-        //         }
-        //     });
-        // } else {
-        //     result = await apiClient.createNoteFromSub({
-        //         sub_id: parseInt(props.subId),
-        //         note: {
-        //             title: form.title,
-        //             details: form.details,
-        //         }
-        //     })
-        // }
+        let result;
 
-        // const { data, error } = result;
+        if (parseInt(props.subId) === 0) {
+            result = await apiClient.createNoteFromMain({
+                main_id: parseInt(props.mainId),
+                note: {
+                    title: form.title,
+                    details: form.details,
+                }
+            });
+        } else {
+            result = await apiClient.createNoteFromSub({
+                sub_id: parseInt(props.subId),
+                note: {
+                    title: form.title,
+                    details: form.details,
+                }
+            })
+        }
 
-        // if (error) {
-        //     setErrors((e) => ({ ...e, form: error }));
-        // } else {
-        //     setErrors((e) => ({ ...e, form: null }));
-        //     addNote(data?.note);
-        //     setForm({ title: "", details: "" });
-        // }
+        const { data, error } = result;
+
+        if (error) {
+            setErrors((e) => ({ ...e, form: error }));
+        } else {
+            setErrors((e) => ({ ...e, form: null }));
+            addNote(data?.note);
+            setForm({ title: "", details: "" });
+        }
 
         setIsLoading(false);
     }
