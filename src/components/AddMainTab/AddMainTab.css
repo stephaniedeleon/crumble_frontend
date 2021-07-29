@@ -31,7 +31,7 @@
    text-align: right;
 }
 
-.modal-area Button {
+.modal-button .button {
     /* width: 120px; */
     margin-left: 10px;
     border-radius: 4px;
@@ -44,8 +44,26 @@
     background-color: transparent;
 }
 
-.modal-area Button:hover {
+.modal-button .button:hover,
+.modal-button .button:active,
+.modal-button .button:focus, 
+.modal-button .button:focus:active {
     background-color: #47825b;
     color: white;
     border-color: #47825b;
+}
+
+.modal-button .del-button {
+    background-color: transparent;
+    color: rgb(101, 101, 101);
+    border-color: rgb(109, 109, 109);
+}
+
+.modal-button .del-button:hover,
+.modal-button .del-button:active,
+.modal-button .del-button:focus, 
+.modal-button .del-button:focus:active {
+    background-color: rgb(109, 109, 109);
+    color: white;
+    border-color: rgb(109, 109, 109);
 }

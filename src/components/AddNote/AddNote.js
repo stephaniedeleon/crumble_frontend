@@ -104,7 +104,7 @@ export default function AddNote(props) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button type="submit" onClick={props.onHide}> Add Note </Button>
+                    <Button type="submit" onClick={props.onHide} className="button"> Add Note </Button>
                 </Modal.Footer>
             </Form>
         </Modal>

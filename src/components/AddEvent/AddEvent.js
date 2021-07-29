@@ -114,7 +114,7 @@ export default function AddEvent(props) {
                     />
                 </FormGroup>
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide}>Add Event</Button>
+                    <Button type="submit" onClick={props.onHide} className="button">Add Event</Button>
                 </div>
             </Modal.Body>
         </Form>
