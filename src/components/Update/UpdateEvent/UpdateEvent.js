@@ -130,7 +130,7 @@ export default function UpdateEvent(props) {
                         />
                     </FormGroup>
                     <div className="modal-button">
-                        <Button type="submit" onClick={props.onHide}>Save</Button>
+                        <Button type="submit" onClick={props.onHide} className="button">Save</Button>
                     </div>
                 </Modal.Body>
             </Form>

@@ -86,7 +86,7 @@ export default function AddTask(props) {
                         />
                     </FormGroup>
                     <div className="modal-button">
-                        <Button type="submit" onClick={props.onHide}>Add Task</Button>
+                        <Button type="submit" onClick={props.onHide} className="button">Add Task</Button>
                     </div>
                 </Modal.Body>
             </Form> 

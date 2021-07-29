@@ -15,7 +15,7 @@ export default function Event({ key, event }) {
     return (
         <div className="Event">
             <ListGroup.Item className="eventItem">
-                <div className="details" id="option" onClick={() => setEditModalShow(true)}>
+                <div className="details" onClick={() => setEditModalShow(true)}>
                     <p className="eventName">{event.event_name}</p>
                     <p className="eventDate">{formatDate(event.date)}</p>  
                 </div>

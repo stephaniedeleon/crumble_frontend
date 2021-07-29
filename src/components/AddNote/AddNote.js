@@ -2,7 +2,7 @@ import './AddNote.css';
 
 import { Modal, Form, FormGroup, FormLabel, Button } from 'react-bootstrap';
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import React, { useState, useContext } from 'react';
 import AuthContext from 'context/auth';
@@ -34,37 +34,39 @@ export default function AddNote(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        console.log(editorState);
+        form.details = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
 
-        // let result;
+        // console.log(convertFromRaw(test));
 
-        // if (parseInt(props.subId) === 0) {
-        //     result = await apiClient.createNoteFromMain({
-        //         main_id: parseInt(props.mainId),
-        //         note: {
-        //             title: form.title,
-        //             details: form.details,
-        //         }
-        //     });
-        // } else {
-        //     result = await apiClient.createNoteFromSub({
-        //         sub_id: parseInt(props.subId),
-        //         note: {
-        //             title: form.title,
-        //             details: form.details,
-        //         }
-        //     })
-        // }
+        let result;
 
-        // const { data, error } = result;
+        if (parseInt(props.subId) === 0) {
+            result = await apiClient.createNoteFromMain({
+                main_id: parseInt(props.mainId),
+                note: {
+                    title: form.title,
+                    details: form.details,
+                }
+            });
+        } else {
+            result = await apiClient.createNoteFromSub({
+                sub_id: parseInt(props.subId),
+                note: {
+                    title: form.title,
+                    details: form.details,
+                }
+            })
+        }
 
-        // if (error) {
-        //     setErrors((e) => ({ ...e, form: error }));
-        // } else {
-        //     setErrors((e) => ({ ...e, form: null }));
-        //     addNote(data?.note);
-        //     setForm({ title: "", details: "" });
-        // }
+        const { data, error } = result;
+
+        if (error) {
+            setErrors((e) => ({ ...e, form: error }));
+        } else {
+            setErrors((e) => ({ ...e, form: null }));
+            addNote(data?.note);
+            setForm({ title: "", details: "" });
+        }
 
         setIsLoading(false);
     }
@@ -73,6 +75,7 @@ export default function AddNote(props) {
         <Modal 
             {...props}
             size="lg"
+            className="AddNote"
             centered
         >
             <Form onSubmit={handleOnSubmit} className="modal-area">
@@ -96,14 +99,13 @@ export default function AddNote(props) {
                         />
                     </FormGroup>
                     <br />
-                    <div style={{ border: "1px solid black", padding: "10px", minHeight: "400px" }}>
+                    <div className="editor">
                         <Editor editorState={editorState} onEditorStateChange={setEditorState} />
                     </div>
+                    <div className="modal-button">
+                        <Button type="submit" onClick={props.onHide} className="button"> Add Note </Button>
+                    </div>
                 </Modal.Body>
-
-                <Modal.Footer>
-                    <Button type="submit" onClick={props.onHide}> Add Note </Button>
-                </Modal.Footer>
             </Form>
         </Modal>
     );

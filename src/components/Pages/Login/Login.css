@@ -69,7 +69,10 @@
     background-color: transparent;
 }
 
-.Login .login-btn:hover {
+.Login .login-btn:hover,
+.Login .login-btn:active,
+.Login .login-btn:focus,
+.Login .login-btn:focus:active {
     background-color: #47825b;
     color: white;
     border-color: #47825b;
