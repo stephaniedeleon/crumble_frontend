@@ -68,7 +68,7 @@ export default function AddSubTab(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-        <Form onSubmit={handleOnSubmit}>
+        <Form onSubmit={handleOnSubmit} className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Create a new sub tab
@@ -88,11 +88,10 @@ export default function AddSubTab(props) {
                         required
                     />
                 </FormGroup>
+                <div className="modal-button">
+                    <Button type="submit" onClick={props.onHide}>Add SubTab</Button>
+                </div>
             </Modal.Body>
-
-            <Modal.Footer> 
-                <Button type="submit" onClick={props.onHide}>Add SubTab</Button>
-            </Modal.Footer>
         </Form>
 
       </Modal>
