@@ -37,28 +37,28 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
 
 
   return (
-      <section className={`SideBar ${isMenuOpened ? "" : "closed"}`}>
-          <div className={`content-wrapper`}>
-              <div className="toggleBtn">
-                {isMenuOpened ? 
+      <div className={`SideBar ${isMenuOpened ? "" : "closed"}`}>
+        <div className={`content-wrapper`}>
+            <div className="toggleBtn">
+              {isMenuOpened ? 
                   <i class="bi-arrow-left-square" onClick={handleClick}></i>
-                :
-                  <i class="bi-list" onClick={handleClick}></i>
-                  // <i class="bi-arrow-right-square" onClick={handleClick}></i>
-                }
-              </div>
+              :
+                <i class="bi-list" onClick={handleClick}></i>
+                // <i class="bi-arrow-right-square" onClick={handleClick}></i>
+              }
+            </div>
 
-              <div className={`my-menu-class`}>
-                  <div className="cartTitle"></div>
-                  <TreeView
-                    className={classes.root}
-                    defaultCollapseIcon={<ExpandMoreIcon />}
-                    defaultExpandIcon={<ChevronRightIcon />}
-                  >
-                  {renderTree(directory)}
-                  </TreeView>
-              </div>
-          </div>
-      </section>
+            <div className={`my-menu-class`}>
+                <div className="cartTitle"></div>
+                <TreeView
+                  className={classes.root}
+                  defaultCollapseIcon={<ExpandMoreIcon />}
+                  defaultExpandIcon={<ChevronRightIcon />}
+                >
+                {renderTree(directory)}
+                </TreeView>
+            </div>
+        </div>
+      </div>
   );
 }
