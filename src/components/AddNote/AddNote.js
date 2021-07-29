@@ -75,6 +75,7 @@ export default function AddNote(props) {
         <Modal 
             {...props}
             size="lg"
+            className="AddNote"
             centered
         >
             <Form onSubmit={handleOnSubmit} className="modal-area">
@@ -98,14 +99,13 @@ export default function AddNote(props) {
                         />
                     </FormGroup>
                     <br />
-                    <div style={{ border: "1px solid black", padding: "10px", minHeight: "400px" }}>
+                    <div className="editor">
                         <Editor editorState={editorState} onEditorStateChange={setEditorState} />
                     </div>
+                    <div className="modal-button">
+                        <Button type="submit" onClick={props.onHide} className="button"> Add Note </Button>
+                    </div>
                 </Modal.Body>
-
-                <Modal.Footer className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button"> Add Note </Button>
-                </Modal.Footer>
             </Form>
         </Modal>
     );

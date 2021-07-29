@@ -45,9 +45,7 @@
 }
 
 .Home .title .addBtn:hover,
-.Home .title .addBtn:active,
-.Home .title .addBtn:focus,
-.Home .title .addBtn:focus:active {
+.Home .title .addBtn:active {
     background-color: #47825b;
     color: white;
     border-color: #47825b;
