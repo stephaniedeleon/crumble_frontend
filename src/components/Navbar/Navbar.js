@@ -1,12 +1,11 @@
 import "./Navbar.css";
 
-import { Nav, Navbar as NavBar, Container, Button } from "react-bootstrap";
+import { Nav, Navbar as NavBar, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
 import apiClient from "services/apiClient";
 import TimerContext from "context/timer";
-import { useTimer } from "hooks/useTimer";
 
 export default function Navbar() {
   const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents,  } = useContext(AuthContext);
