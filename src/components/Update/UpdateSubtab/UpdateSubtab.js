@@ -75,7 +75,7 @@ export default function UpdateSubtab(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
       >
-        <Form onSubmit={handleOnSubmit}>
+        <Form onSubmit={handleOnSubmit} className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Edit Subtab
@@ -93,11 +93,10 @@ export default function UpdateSubtab(props) {
                         value={form.name}
                     />
                 </FormGroup>
+                <div className="modal-button">
+                    <Button type="submit" onClick={props.onHide}>Save</Button>
+                </div>
             </Modal.Body>
-
-            <Modal.Footer> 
-                <Button type="submit" onClick={props.onHide}>Save</Button>
-            </Modal.Footer>
         </Form>
 
       </Modal>

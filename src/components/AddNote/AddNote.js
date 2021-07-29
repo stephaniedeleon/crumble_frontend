@@ -75,7 +75,7 @@ export default function AddNote(props) {
             size="lg"
             centered
         >
-            <Form onSubmit={handleOnSubmit}>
+            <Form onSubmit={handleOnSubmit} className="modal-area">
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Create a new note

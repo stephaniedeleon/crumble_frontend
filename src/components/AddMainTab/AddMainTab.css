@@ -1,0 +1,49 @@
+/** Affects all modals */
+
+.modal-area {
+    background-color: rgb(255, 255, 248);
+    color: #2A3A30;
+}
+
+.modal-header .close {
+    margin: 0;
+    padding: 0;
+    padding-right: 5px;
+    text-align: right;
+    font-size: 23px;
+}
+
+.modal-header .close:hover {
+    color: #8C3F0D;
+    background-color: transparent;
+}
+
+.modal .input-field {
+    background-color: #fffdf6;
+    box-shadow: none;
+    /* border-color: #47825b; */
+    color: #325D41;
+}
+
+.modal-button {
+   text-align: right;
+}
+
+.modal-area Button {
+    /* width: 120px; */
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: none;
+
+    color: #254832;
+    border-color: #8C3F0D;
+    background-color: transparent;
+}
+
+.modal-area Button:hover {
+    background-color: #47825b;
+    color: white;
+    border-color: #47825b;
+}

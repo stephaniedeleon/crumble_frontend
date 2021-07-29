@@ -65,7 +65,7 @@ export default function AddTask(props) {
             size="lg"
             centered
         >
-            <Form onSubmit={handleOnSubmit}>
+            <Form onSubmit={handleOnSubmit} className="modal-area">
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Create a new task
@@ -85,11 +85,10 @@ export default function AddTask(props) {
                             required
                         />
                     </FormGroup>
+                    <div className="modal-button">
+                        <Button type="submit" onClick={props.onHide}>Add Task</Button>
+                    </div>
                 </Modal.Body>
-
-                <Modal.Footer> 
-                    <Button type="submit" onClick={props.onHide}>Add Task</Button>
-                </Modal.Footer>
             </Form> 
         </Modal>
     )
