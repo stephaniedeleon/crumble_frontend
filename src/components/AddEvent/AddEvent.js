@@ -84,7 +84,7 @@ export default function AddEvent(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
       >
-        <Form onSubmit={handleOnSubmit}>
+        <Form onSubmit={handleOnSubmit} className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Create a new event
@@ -103,7 +103,6 @@ export default function AddEvent(props) {
                         value={form.event_name}
                         required
                     />
-
                     <FormLabel className="form-label">Date of event</FormLabel>
                     <Form.Control
                         type="datetime-local"
@@ -114,11 +113,10 @@ export default function AddEvent(props) {
                         required
                     />
                 </FormGroup>
+                <div className="modal-button">
+                    <Button type="submit" onClick={props.onHide}>Add Event</Button>
+                </div>
             </Modal.Body>
-
-            <Modal.Footer> 
-                <Button type="submit" onClick={props.onHide}>Add Event</Button>
-            </Modal.Footer>
         </Form>
 
       </Modal>

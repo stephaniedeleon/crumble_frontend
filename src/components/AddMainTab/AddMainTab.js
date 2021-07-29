@@ -55,7 +55,7 @@ export default function AddMaintab(props) {
             aria-labelledby="Add-maintab-modal"
             centered
       >
-        <Form onSubmit={handleOnSubmit}>
+        <Form onSubmit={handleOnSubmit} className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="Add-maintab-modal">
                     Create a new main tab
@@ -75,11 +75,10 @@ export default function AddMaintab(props) {
                         required
                     />
                 </FormGroup>
+                <div className="modal-button">
+                    <Button type="submit" onClick={props.onHide}>Add MainTab</Button>
+                </div>
             </Modal.Body>
-
-            <Modal.Footer> 
-                <Button type="submit" onClick={props.onHide}>Add MainTab</Button>
-            </Modal.Footer>
         </Form>
 
       </Modal>
