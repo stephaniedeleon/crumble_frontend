@@ -4,6 +4,9 @@
     justify-content: space-between;
 }
 
+.SubTab .subtab:hover {
+    background-color: #fffbf3;
+}
 
 /** Hover effect */
 
@@ -118,6 +121,7 @@
     border: none;
     box-shadow: none;
     padding: 0;
+    margin-right: 5px;
 
     color: rgb(109, 109, 109);
     font-size: 19px;

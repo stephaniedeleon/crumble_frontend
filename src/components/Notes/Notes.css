@@ -33,15 +33,18 @@
 }
 
 
-/** Notes */
-
-/* .Notes .card {
-    border: 1px solid #256a3c;
-} */
+/** Accordion Notes */
 
 .Notes .accordion>.card>.card-header {
-    background-color: #fffbf3;
+    background-color: #fffbf1;
+    color: #216036;
+    user-select: none;
+}
+
+.Notes .accordion>.card>.card-header:hover {
+    cursor: pointer;
     color: #8C3F0D;
+    background-color: #fffbf3;
 }
 
 .Notes .card-body {
