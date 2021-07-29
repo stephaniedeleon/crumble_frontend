@@ -1,0 +1,256 @@
+.Timer {
+ display: grid;
+}
+
+.Timer .timer-grid {
+  display: grid;
+  width: fit-content;
+  margin: 25px 0px;
+  padding: 30px;
+
+  border: 2px solid #8c3f0d;
+  border-radius: 5px;
+
+  gap: 20px 0px;
+  justify-self: center;
+  align-self: center;
+}
+
+.Timer .options-pagination {
+  display: flex;
+  padding-bottom: 9px;
+
+  justify-content: space-around;
+  border-bottom: 1px solid #8c3f0d;
+}
+
+.Timer .pagination-button {
+  padding: 3px 5px;
+
+  font-family: "Varela", serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #254832;
+  cursor: pointer;
+
+  border: 1px solid #8c3f0d;
+  border-radius: 5px;
+  /* background-color: aqua; */
+  box-shadow: 1px 3.3px 0px 0px rgba(0,0,0,0.61);
+
+  transition: all 0.1s linear;
+}
+
+.Timer .pagination-button:active,
+.Timer .pagination-button.clicked {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.Timer .base-timer {
+  position: relative;
+  height: 400px;
+  width: 400px;
+
+  justify-self: center;
+  align-self: center;
+}
+
+.Timer .base-timer-circle {
+  fill: none;
+  stroke: none;
+}
+
+.Timer .base-timer-path-elapsed {
+  stroke-width: 7px;
+  stroke: currentColor;
+}
+
+.Timer .base-timer-label {
+  position: absolute;
+
+  /*Should match parent container*/
+  height: 400px;
+  width: 400px;
+
+  top: 0px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 72px;
+}
+
+.Timer .base-timer-path-remaining {
+  /* same as grey ring */
+  stroke-width: 7px;
+
+  /* makes sure animation starts at top of circle */
+  transform: rotate(90deg);
+  transform-origin: center;
+
+  transition: 1s linear all;
+
+  stroke: currentColor;
+}
+
+.Timer .base-timer-path-remaining.green {
+  color: rgb(65, 184, 131);
+}
+
+.Timer .base-timer-path-remaining.orange {
+  color: orange;
+}
+
+.Timer .base-timer-path-remaining.red {
+  color: red;
+}
+
+
+.Timer .controlBtns {
+  
+}
+
+.Timer .clockBtn {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  padding: 6px 10px;
+
+  border-radius: 5px;
+  border: 1px solid #8c3f0d;
+  
+  font-family: "Varela", serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: #254832;
+  cursor: pointer;
+
+  box-shadow: 1px 5.8px 0px 0px rgba(0,0,0,0.61);
+  
+  transition: all 0.2s ease;
+  /* transition-property: background-color, color, border-color, transform;
+  transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
+  transition-timing-function: ease, ease, ease, ease;
+  transition-delay: 0s, 0s, 0s, 0.2s; */
+  /* transition: all 0.2s ease; */
+}
+
+
+.Timer .clockBtn.paused:active,
+.Timer .clockBtn.stopped:active,
+.Timer .clockBtn.started {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+.Timer .clockBtn.stopped:hover {
+  background-color: rgb(65, 184, 131);
+  color: white;
+  border-color: #47825b;
+}
+
+.Timer .clockBtn.started:hover {
+  background-color: rgb(236, 78, 78);
+  color: white;
+  border-color: rgb(235, 61, 61);
+}
+
+.Timer .clockBtn.paused:hover {
+  background-color: rgb(65, 184, 131);
+  color: white;
+  border-color: #47825b;
+}
+
+.Timer .btnTextContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 30px;
+    bottom: 0px;
+
+    transition: all;
+}
+
+.Timer .clockBtn.paused:active .btnTextContainer,
+.Timer .clockBtn.clockBtn.started .btnTextContainer {
+    box-shadow: none;
+}
+
+.Timer .resetButton {
+  width: 50px;
+  font-size: 36px;
+  margin-top: 6px;
+  margin-left: 60px;
+  border-radius: 100%;
+  opacity: 0%;
+  position: relative;
+
+  display: inline-block;
+  position: absolute;
+
+  transition: all 0.7s ease, transform 0s linear;
+  
+}
+
+.Timer .resetButton.started {
+  opacity: 100%;
+}
+
+.Timer .resetButton:hover {
+  cursor: pointer;
+  background-color: rgb(216, 214, 214);
+}
+
+.Timer .resetButton:active {
+  transform: translateY(2px);
+}
+
+.Timer .resetButton i {
+  transition: all 0.3s ease;
+}
+
+.Timer .hidden {
+  display: none;
+}
+
+
+
+@media all and (max-width: 450px) {
+  .Timer .base-timer {
+    height: 300px;
+    width: 300px;
+  }
+  
+  .Timer .base-timer-label {
+    height: 300px;
+    width: 300px;
+
+    font-size: 48px;
+  }
+
+  .Timer .resetButton {
+    margin-left: 40px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .Timer .base-timer {
+    height: 250px;
+    width: 250px;
+  }
+  
+  .Timer .base-timer-label {
+    height: 250px;
+    width: 250px;
+ 
+    font-size: 48px;
+  }
+
+  .Timer .resetButton {
+    margin-left: 18px;
+  }
+}

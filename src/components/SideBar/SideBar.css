@@ -1,66 +1,70 @@
-/* .SideBar {
-    position: fixed;
-    display: inline;
-    left: 0px;
-}
-
-.SideBar .my-menu-class {
-    border: solid;
-    border-color: black;
-    display: inline-block;
-    
-    position: fixed;
-    height: 100%;
-    transition: all 0.2s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.SideBar .my-menu-class.open {
-    width: 100px;
-}
-
-.SideBar .menuBtn {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.SideBar .bi-chevron-right {
-    font-size: 18px;
-} */
-
-
-
-
-
-
 .SideBar {
     height: 100%;
     display: block;
     flex-direction: column;
-    background-color: #d49c6b;
-    transition: all 0.2s cubic-bezier(0.23, 1, 0.320, 1);
-}
+    border-radius: 4px;
+    margin-top: 25px;
 
-.SideBar.open {
-    min-width: 180px;
+    width: 180px;
+    transition-property: width;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+
+    border: 1px solid #8C3F0D;
 }
 
 .SideBar.closed {
     width: 0px;
+    border: transparent;
+}
+
+.SideBar .content-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.SideBar .my-menu-class {
+    display: block;
+    opacity: 100%;
+}
+
+.SideBar.closed .my-menu-class {
+    opacity: 0%;
 }
 
 .SideBar .toggleBtn {
-    /* 0.23, 1, 0.320, 1 */
-    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1)  
+    text-align: end;
+    display: inline-block;
 }
 
-.SideBar.open .toggleBtn {
-    transform: rotate(180deg);
+
+.SideBar .toggleBtn i {
+    height: 32px;
+
+    font-size: 32px;
+    font-weight: 400;
+    margin-right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    color: #254832;
+    /* border-color: #8C3F0D; */
+    /* background-color: transparent; */
+    box-shadow: none;
+
+    transition-property: marigin-right, margin-left, transform;
+    transition-duration: 0.2s, 0s, 0.2s;
+    transition-delay: 0.1s, 0.3s, 0s;
 }
 
-.cartTitle {
-    font-size: large;
+.SideBar .toggleBtn i:hover {
+    /* background-color: #47825b; */
+    color: #8C3F0D;
+    /* border-color: #47825b; */
 }
 
-.my-menu-class.closed {
-    display: none;
+.SideBar.closed .toggleBtn i {
+    margin-right: 0px;
+    margin-left: 30px;
 }

@@ -1,6 +1,32 @@
 .Calendar {
     margin: 10px;
-    margin-left: 20px;
-    border: 1px solid black;
-    height: 52.5vh;
+    padding: 20px;
+    border: 1px solid #B48125;
+    border-radius: 10px;
+    height: 28vh;
+    overflow-y: auto;
+}
+
+.Calendar .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    margin-bottom: 20px;
+}
+
+.Calendar .title .compName h6 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.Calendar .title .addBtn i  {
+    font-size: 25px;
+    color: #256a3c;
+}
+
+.Calendar .title .addBtn i:hover {
+    color: #2A3A30;
+    cursor: pointer;
 }

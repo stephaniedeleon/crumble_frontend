@@ -1,22 +1,89 @@
-.MainTab .card {
+.MainTab {
+    margin-top: 50px;
+    font-family: 'Hind Vadodara', sans-serif;
+}
+
+.MainTab .card-wrapper {
     width: 150px;
     height: 150px;
     transition: all 0.4s ease 0s;
-}
-
-.MainTab .card .closeBtn {
-    float: right;
-    padding: 5px;
-    padding-right: 8px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5px;
 }
 
 .MainTab .card a {
     text-decoration: none;
-    color:rgb(0, 115, 255);
+}
+
+.MainTab .card {
+    border: none;
 }
 
 .MainTab .card:hover {
+    border: none;
+}
+
+.MainTab .card-wrapper:hover {
     cursor: pointer;
-    border: 1px solid rgb(0, 115, 225);
+    border: 1px solid #B48125;
     transform: scale(1.04);
+}
+
+.MainTab .maintabName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #325D41;
+}
+
+.MainTab .card-title {
+    margin: 0;
+    color: #325D41;
+}
+
+.MainTab .maintab {
+    height: 100%;
+    background-color: #fffbf3;
+}
+
+
+/** Dropdown */
+
+.MainTab #dropdown-options {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    z-index: 1;
+
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+
+    color: rgb(109, 109, 109);
+    font-size: 22px;
+    float: right;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+.MainTab #dropdown-options:hover {
+    color: #8C3F0D;
+}
+
+.MainTab #dropdown-options:after {
+    display: none;
+}
+
+.MainTab #options {
+    background-color: #fffdf6;
+}
+
+.MainTab #option i {
+    margin-right: 4px;
+}
+
+.MainTab #option:hover {
+    color: #8C3F0D;
+    background-color: #fffbf3;
 }

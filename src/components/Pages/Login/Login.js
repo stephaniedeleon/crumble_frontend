@@ -27,6 +27,7 @@ export default function Login() {
               placeholder="user@email.com"
               onChange={handleOnTextChange}
               value={form.email}
+              autoFocus
               required
             />
           </FormGroup>
@@ -45,7 +46,7 @@ export default function Login() {
           </FormGroup>
 
           <Button type="submit" className="login-btn">
-            Login
+            login
           </Button>
         </Form>
         <div className="footer">

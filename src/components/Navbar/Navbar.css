@@ -1,28 +1,110 @@
-/* .NavBar .navbar {
-    height: 90px;
-} */
-
-/* #NavBarScroll {
-    background-color: rgb(255, 255, 248);
-} */
-
-.NavBar .links a {
-    margin: 0px 20px;
+.NavBar .navbar {
+    user-select: none;
 }
 
-.NavBar .login-link,
-.NavBar .register-link, 
-.NavBar .logout {
+.NavBar .links .linkText,
+.NavBar .links .linkBtn {
     font-family: "Varela", serif;
-    font-size: 15px;
+    font-size: 16.5px;
+    font-weight: 300;
+    color: #254832;
+    margin: 0;
+}
+
+
+/* this is temp until we have a logo */
+.NavBar h5 {
+    color: #254832;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* this is temp until we have a logo */
+.NavBar .logo {
+    color: #254832;
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.NavBar h6 {
+    padding: 6px 10px;
+}
+
+.NavBar .linkBtn {
+    padding: 6px 10px;
     border-radius: 4px;
-    /* padding: 8px 14px; */
     border: 1px solid #8C3F0D;
     transition: all 0.2s ease 0.2s;
 }
 
-.NavBar .login-link:hover,
-.NavBar .register-link:hover,
-.NavBar .logout:hover {
-    border-radius: 12px;
+.NavBar .linkBtn:hover {
+    background-color: #47825b;
+    color: white;
+    border-color: #47825b;
+}
+
+
+/* TIMER */
+
+.NavBar .timerContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.NavBar .base-timer {
+    height: 50px;
+    width: 50px;
+    display: grid;
+}
+
+.NavBar .base-timer-circle {
+    fill: none;
+    stroke: none;
+}
+
+.NavBar .base-timer-path-elapsed {
+    stroke-width: 10px;
+    stroke: currentColor;
+}
+
+.NavBar .base-timer-label {
+    transform: translateY(-12px);
+    font-size: 16px;
+}
+
+.NavBar .base-timer-path-remaining {
+
+    /* same as grey ring */
+    stroke-width: 10px;
+
+    /* makes sure animation starts at top of circle */
+    transform: rotate(90deg);
+    transform-origin: center;
+
+    transition: 1s linear all;
+
+    stroke: currentColor;
+}
+
+.NavBar .base-timer-path-remaining.green {
+    color: rgb(65, 184, 131);
+}
+
+.NavBar .base-timer-path-remaining.orange {
+    color: orange;
+}
+
+.NavBar .base-timer-path-remaining.red {
+    color: red;
+}
+
+.hidden {
+    display: none;
 }

@@ -5,9 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
 import { useContext } from "react";
 import apiClient from "services/apiClient";
+import TimerContext from "context/timer";
+import { useTimer } from "hooks/useTimer";
 
 export default function Navbar() {
-  const { setUser, authenticated, setAuthenticated, setMaintabs } = useContext(AuthContext);
+  const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents,  } = useContext(AuthContext);
+  const { timerVariables, formatTimeLeft, stopTimer } = useContext(TimerContext)
 
   const navigate = useNavigate()
 
@@ -16,44 +19,120 @@ export default function Navbar() {
       setUser({});
       setAuthenticated(false);
       setMaintabs([]); //clears maintabs
+      setSubtabs([]); //clears subtabs
+      setTasks([]); //clears tasks
+      setEvents([]); //clears calendar
+      stopTimer();  //clears timer
       await apiClient.logout();
       navigate("/")
   };
 
+  const RADIUS = 45
+
   return (
       <div className="NavBar">
-          <NavBar clasName="navbar" expand="md">
-              <Container>
-                  <NavBar.Brand as={Link} to="/">
-                    PlannerLogo
+          <NavBar expand="md">
+              <Container className="navbar">
+                  <NavBar.Brand as={Link} to="/" className="logo">
+                    <img src="https://img.icons8.com/bubbles/70/000000/edit.png" alt="planner logo" className="d-inline-block align-top" />
+                    Planner
                   </NavBar.Brand>
 
-                  <NavBar.Toggle aria-controls="NavBarScroll" />
+                  <NavBar.Toggle className="my-4" />
 
                   <NavBar.Collapse className="links" id="NavBarScroll">
-                      <Nav className="ml-auto" NavBarScroll>
-                          <Nav.Link className="reg-link" as={Link} to="/about">
-                            About
-                          </Nav.Link>
+                      <Nav className={`ml-auto ${timerVariables.timerStatus === "stopped" ? "hidden" : ""}`}>
+                        <Nav.Link as={Link} to="/timer">
+                          <div className="timerContainer">
+                            <div className="base-timer linkText">
+                              <svg
+                                className="base-timer-svg"
+                                viewBox="0 0 100 100"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g className="base-timer-circle">
+                                  <circle
+                                    className="base-timer-path-elapsed"
+                                    cx="50%"
+                                    cy="50%"
+                                    r={RADIUS.toString()}
+                                    style={timerVariables.timeLeft === 0 ? { color: "red" } : { color: "grey" }}
+                                  />
+                      
+                                  <path
+                                    strokeDasharray="283"
+                                    className={`base-timer-path-remaining ${timerVariables.remainingPathColor}`}
+                                    d="
+                                          M 50, 50
+                                          m -45, 0
+                                          a 45,45 0 1,0 90,0
+                                          a 45,45 0 1,0 -90,0
+                                      "
+                                    style={{
+                                      strokeDasharray: timerVariables.circleDasharray,
+                                      strokeLinecap: "none",
+                                    }}
+                                  ></path>
+                                </g>
+                              </svg>
+
+                              <span class="base-timer-label">
+                                {formatTimeLeft(timerVariables.timeLeft)}
+                              </span>
+                            </div>
+                          </div>
+                        </Nav.Link>
+                      </Nav>
+                      <Nav className="ml-auto py-4" NavBarScroll>
                           {authenticated ? (
                             <>
-                              <Nav.Link className="reg-link" as={Link} to="/home">
-                                Home
+                              <Nav.Link as={Link} to="/timer">
+                                {timerVariables.timerStatus === "started" || timerVariables.timerStatus === "paused" ?
+                                  <>
+                                  </>
+                                :
+                                  <h6 className="linkText">
+                                    Timer
+                                  </h6>
+                                }
                               </Nav.Link>
-                              <Nav.Link className="logout" onClick={handleOnLogout}>
-                                Log Out
+                              <Nav.Link as={Link} to="/home">
+                                <h6 className="linkText">
+                                  Home
+                                </h6>
+                              </Nav.Link>
+                              <Nav.Link as={Link} to="/about">
+                                <h6 className="linkText">
+                                  About
+                                </h6>
+                              </Nav.Link>
+                              <Nav.Link onClick={handleOnLogout}>
+                                <h6 className="linkBtn">
+                                  Log Out
+                                </h6>
                               </Nav.Link>
                             </>
                           ) : ( 
                             <>
-                              <Nav.Link className="login-link" as={Link} to="/login">
+                            <Nav.Link as={Link} to="/about">
+                              <h6 className="linkText">
+                                About
+                              </h6>
+                            </Nav.Link>
+                              <Nav.Link as={Link} to="/login">
+                                <h6 className="linkBtn">
                                   Login
+                                </h6>
                               </Nav.Link>
-                              <Nav.Link className="register-link" as={Link} to="/register">
-                                  Register
+                              <Nav.Link as={Link} to="/register">
+                                <h6 className="linkBtn">
+                                  Sign up
+                                </h6>
                               </Nav.Link>
                             </>
                           )}
+
+                          
                       </Nav>
                   </NavBar.Collapse>
               </Container>

@@ -1,14 +1,12 @@
 .App {
-    /* font-family: "Varela", serif; */
+    font-family: 'Hind Vadodara', sans-serif;
     text-align: center;
     justify-content: center;
-    max-width: 1300px;
+    /* max-width: 1300px; */
     margin-left: auto;
     margin-right: auto;
     height: 100%;
     min-height: 100vh;
     flex-direction: column;
-    /* position: relative; */
     background-color: rgb(255, 255, 248);
-    overflow-y: hidden;
 }

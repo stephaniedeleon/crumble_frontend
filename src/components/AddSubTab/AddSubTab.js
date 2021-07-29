@@ -7,7 +7,7 @@ import apiClient from "services/apiClient";
 
 export default function AddSubTab(props) {
 
-    const { setSubtabs, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setSubtabs, setErrors, setIsLoading  } = useContext(AuthContext);
 
     const [form, setForm] = useState({
         name: '',
@@ -16,7 +16,9 @@ export default function AddSubTab(props) {
     // adds a new a sutab to list of subtabs
     const addSubtab = (newSubtab) => {
         setSubtabs((oldSubtabs) => [newSubtab, ...oldSubtabs]);
+        props.updateDirectory("add", newSubtab);
     }
+
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
@@ -28,18 +30,32 @@ export default function AddSubTab(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        const { data, error } = await apiClient.createSubtabFromMain({
-            main_id: props.mainId,
-            subtab: {
-                name: form.name,
-            }
-        });
+        let result;
+
+        if (parseInt(props.subId) === 0) {
+            result = await apiClient.createSubtabFromMain({
+                main_id: parseInt(props.mainId),
+                subtab: {
+                    name: form.name,
+                }
+            });
+        } else {
+            result = await apiClient.createSubtabFromSub({
+                sub_id: parseInt(props.subId),
+                subtab: {
+                    name: form.name,
+                }
+            })
+        }
+
+        const { data, error } = result;
 
         if (error) {
             setErrors((e) => ({ ...e, form: error })); 
         } else {
             setErrors((e) => ({ ...e, form: null }));
             addSubtab(data.subtab);
+            setForm({name: ""});
         }
 
         setIsLoading(false);
@@ -52,7 +68,7 @@ export default function AddSubTab(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-        <Form onSubmit={handleOnSubmit}>
+        <Form onSubmit={handleOnSubmit} className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Create a new sub tab
@@ -72,11 +88,10 @@ export default function AddSubTab(props) {
                         required
                     />
                 </FormGroup>
+                <div className="modal-button">
+                    <Button type="submit" onClick={props.onHide} className="button">Add SubTab</Button>
+                </div>
             </Modal.Body>
-
-            <Modal.Footer> 
-                <Button type="submit" onClick={props.onHide}>Add SubTab</Button>
-            </Modal.Footer>
         </Form>
 
       </Modal>
