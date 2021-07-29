@@ -52,6 +52,10 @@
 .Register #agreeBox {
     cursor: pointer;
     box-shadow: none;
+    border-color: #325D41;
+}
+
+.Register #agreeBox:checked {
     background-color: #325D41;
     border-color: #325D41;
 }
