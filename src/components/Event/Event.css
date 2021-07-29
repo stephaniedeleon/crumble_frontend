@@ -10,6 +10,10 @@
     background-color: #fffdf6;
 }
 
+.Event .eventItem .details {
+    width: 100%;
+}
+
 .Event .eventItem .details:hover {
     cursor: pointer;
 }
@@ -28,12 +32,55 @@
     color: #256a3c;
 }
 
-.Event .eventItem .delete i {
-    font-size: 20px;
-    color: rgb(109, 109, 109);
+
+/** Hover effect */
+
+.Event .actions {
+    display: none;
 }
 
-.Event .eventItem .delete i:hover {
-    cursor: pointer;
+.Event .details:hover + .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Event .actions:hover {
+    display: contents;
+}
+
+
+/** Dropdown */
+
+.Event #dropdown-options {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-right: 5px;
+
+    color: rgb(109, 109, 109);
+    font-size: 19px;
+    float: right;
+}
+
+.Event #dropdown-options:hover {
     color: #8C3F0D;
+}
+
+.Event #dropdown-options:after {
+    display: none;
+}
+
+.Event #options {
+    background-color: #fffdf6;
+}
+
+.Event #option i {
+    margin-right: 4px;
+}
+
+.Event #option:hover {
+    color: #8C3F0D;
+    background-color: #fffbf3;
 }

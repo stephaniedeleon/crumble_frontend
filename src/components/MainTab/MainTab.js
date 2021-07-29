@@ -33,17 +33,17 @@ export default function MainTab({ key, maintab }) {
 
                         <Dropdown.Menu id="options">
                             <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                Edit
+                                <i class="bi-pencil-square"/> Edit
                             </Dropdown.Item>
                             <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                Delete
+                                <i class="bi-trash"/> Delete
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
 
                     <Link to={`/home/${maintab.id}/0`} onClick={prepareStack} >
                         <Card.Body className="maintabName">
-                            <Card.Title>{maintab.name}</Card.Title>
+                            <Card.Title> <i class="bi-folder"/>  {maintab.name}</Card.Title>
                         </Card.Body>
                     </Link>
 
