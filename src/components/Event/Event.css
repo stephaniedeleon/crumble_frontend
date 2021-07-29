@@ -10,6 +10,10 @@
     background-color: #fffdf6;
 }
 
+.Event .eventItem:hover {
+    background-color: #fffbf3;
+}
+
 .Event .eventItem .details {
     width: 100%;
 }

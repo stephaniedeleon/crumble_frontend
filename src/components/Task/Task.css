@@ -4,6 +4,10 @@
     justify-content: space-between;
 }
 
+.Task .task:hover {
+    background-color: #fffbf3;
+}
+
 
 /** Hover effect */
 
