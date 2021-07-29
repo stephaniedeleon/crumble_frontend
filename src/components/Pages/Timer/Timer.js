@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Timer.css";
 import TimerContext from "context/timer";
 
@@ -12,6 +12,15 @@ export default function Timer() {
     remainingPathColor,
     RADIUS,
   } = timerVariables;
+
+  const toggleButton = (event) => {
+    if (timerStatus === 'stopped' || timerStatus === 'paused') {
+      startTimer()
+    }
+    else if (timerStatus === 'started') {
+      pauseTimer()
+    }
+  }
 
 
   return (
@@ -48,35 +57,30 @@ export default function Timer() {
           </g>
         </svg>
 
-        <span class="base-timer-label">{formatTimeLeft(timeLeft)}</span>
+        <span class="base-timer-label" style={{ userSelect: 'none' }}>{formatTimeLeft(timeLeft)}</span>
 
-        <h6
-          className={`clockBtn startBtn ${
-            timerStatus === "started" ? "hidden" : ""
-          }`}
-          onClick={startTimer}
-        >
-          Start
-        </h6>
-        <h6
-          className={`clockBtn pauseBtn ${
-            timerStatus === "stopped" || timerStatus === "paused"
-              ? "hidden"
-              : ""
-          }`}
-          onClick={pauseTimer}
-        >
-          Pause
-        </h6>
-        <h6
-          className={`clockBtn stopBtn ${
-            timerStatus === "stopped" ? "hidden" : ""
-          }`}
-          onClick={stopTimer}
-        >
-          Stop
-        </h6>
+        <div className="controlBtns">
+          <h6
+            className={`clockBtn ${timerStatus}`}
+            onClick={toggleButton}
+            style={{ userSelect: 'none' }}
+          >
+            <div className="btnTextContainer">
+              {timerStatus === 'started' ?
+                "Pause"
+                :
+                "Start"
+              }
+            </div>
+          </h6>
+
+          <div className={`resetButton ${timerStatus}`}>
+            <i class="bi-skip-end-fill"></i>
+          </div>
+
+        </div>
       </div>
+      
     </div>
   );
 }

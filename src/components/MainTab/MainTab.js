@@ -23,29 +23,31 @@ export default function MainTab({ key, maintab }) {
     return (
         <div className="MainTab">
             <div className="card">
+            
+                <div className="card-wrapper">
+                    <Dropdown>
+                        <Dropdown.Toggle id="dropdown-options">
+                            <i class= "bi-three-dots-vertical"></i>
+                        </Dropdown.Toggle>
 
-                <Dropdown>
-                    <Dropdown.Toggle id="dropdown-options">
-                        <i class= "bi-three-dots-vertical"></i>
-                    </Dropdown.Toggle>
+                        <Dropdown.Menu id="options">
+                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
+                                <i class="bi-pencil-square"/> Edit
+                            </Dropdown.Item>
+                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                <i class="bi-trash"/> Delete
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
 
-                    <Dropdown.Menu id="options">
-                        <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                            <i class="bi-pencil-square"/> Edit
-                        </Dropdown.Item>
-                        <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                            <i class="bi-trash"/> Delete
-                        </Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-
-                <Link to={`/home/${maintab.id}/0`} onClick={prepareStack} className="maintab" >
-                    <Card>
-                            <Card.Body className="maintabName">
-                                <Card.Title> <i class="bi-folder"/>  {maintab.name}</Card.Title>
-                            </Card.Body>     
-                    </Card>
-                </Link>
+                    <Link to={`/home/${maintab.id}/0`} onClick={prepareStack} >
+                        <Card className="maintab">
+                                <Card.Body className="maintabName">
+                                    <Card.Title> <i class="bi-folder"/>  {maintab.name}</Card.Title>
+                                </Card.Body>     
+                        </Card>
+                    </Link>
+                </div>
 
                 <DeleteMaintab
                     show={deleteModalShow}
