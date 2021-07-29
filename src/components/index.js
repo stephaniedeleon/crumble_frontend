@@ -9,6 +9,7 @@ export { default as AddMainTab } from "./AddMainTab/AddMainTab";
 export { default as AddSubTab } from "./AddSubTab/AddSubTab";
 export { default as AddTask } from "./AddTask/AddTask";
 export { default as AddEvent } from "./AddEvent/AddEvent";
+export { default as AddNote } from "./AddNote/AddNote";
 
 export { default as DeleteMaintab } from "./Delete/DeleteMaintab/DeleteMaintab";
 export { default as DeleteEvent } from "./Delete/DeleteEvent/DeleteEvent";
@@ -24,6 +25,7 @@ export { default as Notes } from "./Notes/Notes";
 export { default as Task } from "./Task/Task";
 export { default as ToDo } from "./ToDo/ToDo";
 export { default as Calendar } from "./Calendar/Calendar";
+export { default as Note } from "./Note/Note";
 
 export { default as Event } from "./Event/Event";
 

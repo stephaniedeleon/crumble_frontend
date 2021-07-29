@@ -12,7 +12,6 @@
 
 .MainTab .card a {
     text-decoration: none;
-    color: #325D41;
 }
 
 .MainTab .card:hover {
@@ -22,10 +21,28 @@
 }
 
 .MainTab .maintabName {
-    padding-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #325D41;
 }
 
+.MainTab .card-title {
+    margin: 0;
+    color: #325D41;
+}
+
+
+/** Dropdown */
+
 .MainTab #dropdown-options {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    z-index: 1;
+
     background-color: transparent;
     border: none;
     box-shadow: none;
@@ -47,6 +64,10 @@
 
 .MainTab #options {
     background-color: #fffdf6;
+}
+
+.MainTab #option i {
+    margin-right: 4px;
 }
 
 .MainTab #option:hover {

@@ -62,7 +62,6 @@ export default function TabPage() {
   }, [mainId, setTabNavigationStack, subId, user]);
 
 
-
   return (
     <div className="TabPage">
       <PageHeader sectionName={tab?.name} />
@@ -95,7 +94,7 @@ export default function TabPage() {
               </Row>
             </Col>
             <Col md={8}>
-              <Notes />
+              <Notes mainId={mainId} subId={subId} />
             </Col>
           </Row>
         </div>
