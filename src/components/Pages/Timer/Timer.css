@@ -128,7 +128,7 @@
   color: #254832;
   cursor: pointer;
 
-  box-shadow: 1px 5.8px 0px 0px rgba(0,0,0,0.61);
+  box-shadow: 2px 5.8px 0px 0px rgba(0,0,0,0.61);
   
   transition: all 0.2s ease;
   /* transition-property: background-color, color, border-color, transform;
