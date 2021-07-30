@@ -1,10 +1,9 @@
 import "./MainTab.css"
 
 import { Card, Dropdown } from "react-bootstrap";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { DeleteMaintab, UpdateMaintab } from "components";
 import { Link } from 'react-router-dom';
-import AuthContext from "context/auth";
 
 
 export default function MainTab({ key, maintab }) {
@@ -13,12 +12,6 @@ export default function MainTab({ key, maintab }) {
     const [deleteModalShow, setDeleteModalShow] = useState(false);
     const [editModalShow, setEditModalShow] = useState(false);
 
-    const { setTabNavigationStack } = useContext(AuthContext)
-
-    //prepares the navigation stack for use
-    const prepareStack = () => {
-        setTabNavigationStack(['root'])
-    }
 
     return (
         <div className="MainTab">
@@ -32,7 +25,7 @@ export default function MainTab({ key, maintab }) {
 
                         <Dropdown.Menu id="options">
                             <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i class="bi-pencil-square"/> Edit
+                                <i class="bi-pencil-square"/> Rename
                             </Dropdown.Item>
                             <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
                                 <i class="bi-trash"/> Delete
@@ -40,7 +33,7 @@ export default function MainTab({ key, maintab }) {
                         </Dropdown.Menu>
                     </Dropdown>
 
-                    <Link to={`/home/${maintab.id}/0`} onClick={prepareStack} >
+                    <Link to={`/home/${maintab.id}/0`} >
                         <Card className="maintab">
                                 <Card.Body className="maintabName">
                                     <Card.Title> <i class="bi-folder"/>  {maintab.name}</Card.Title>

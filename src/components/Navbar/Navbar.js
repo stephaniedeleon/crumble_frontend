@@ -1,16 +1,15 @@
 import "./Navbar.css";
 
-import { Nav, Navbar as NavBar, Container, Button } from "react-bootstrap";
+import { Nav, Navbar as NavBar, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import apiClient from "services/apiClient";
 import TimerContext from "context/timer";
-import { useTimer } from "hooks/useTimer";
 
 export default function Navbar() {
   const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents,  } = useContext(AuthContext);
-  const { timerVariables, formatTimeLeft, stopTimer } = useContext(TimerContext)
+  const { timerVariables, formatTimeLeft, stopTimer, startTimer, pauseTimer } = useContext(TimerContext)
 
   const navigate = useNavigate()
 
@@ -29,6 +28,17 @@ export default function Navbar() {
 
   const RADIUS = 45
 
+  const handleOnPlayPauseClick = () => {
+    console.log(timerVariables.timerStatus)
+    if (timerVariables.timerStatus === 'paused') {
+        startTimer()
+    } else if (timerVariables.timerStatus === 'started') {
+        pauseTimer()
+    }
+  }
+
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
       <div className="NavBar">
           <NavBar expand="md">
@@ -40,9 +50,8 @@ export default function Navbar() {
 
                   <NavBar.Toggle className="my-4" />
 
-                  <NavBar.Collapse className="links" id="NavBarScroll">
-                      <Nav className={`ml-auto ${timerVariables.timerStatus === "stopped" ? "hidden" : ""}`}>
-                        <Nav.Link as={Link} to="/timer">
+                  <NavBar.Collapse id="NavBarScroll">
+                      <Nav className={`ml-auto mr-auto ${timerVariables.timerStatus === "stopped" ? "hidden" : ""}`}>
                           <div className="timerContainer">
                             <div className="base-timer linkText">
                               <svg
@@ -75,26 +84,30 @@ export default function Navbar() {
                                   ></path>
                                 </g>
                               </svg>
+                              
+                              <div onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}>
+                                <div className="base-timer-label">
+                                    <span className={`base-timer-value ${isHovered ? 'hidden' : ''}`}>
+                                      {formatTimeLeft(timerVariables.timeLeft)}
+                                    </span>
+                                    
+                                    <div className="button-play-pause">
+                                      <span className={` ${timerVariables.timerStatus === "paused" ? "paused" : "playing"} ${isHovered ? '' : 'hidden'}`} onClick={handleOnPlayPauseClick}></span>
+                                    </div>
+                                </div>
+                              </div>
 
-                              <span class="base-timer-label">
-                                {formatTimeLeft(timerVariables.timeLeft)}
-                              </span>
+
                             </div>
                           </div>
-                        </Nav.Link>
                       </Nav>
-                      <Nav className="ml-auto py-4" NavBarScroll>
+                      <Nav className={`links ${timerVariables.timerStatus === 'stopped' ? 'ml-auto' : ''} py-4`} NavBarScroll>
                           {authenticated ? (
                             <>
                               <Nav.Link as={Link} to="/timer">
-                                {timerVariables.timerStatus === "started" || timerVariables.timerStatus === "paused" ?
-                                  <>
-                                  </>
-                                :
-                                  <h6 className="linkText">
-                                    Timer
-                                  </h6>
-                                }
+                                <h6 className="linkText">
+                                  Timer
+                                </h6>
                               </Nav.Link>
                               <Nav.Link as={Link} to="/home">
                                 <h6 className="linkText">

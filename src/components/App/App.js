@@ -17,13 +17,14 @@ import {
   Footer,
   Timer,
 } from "components";
+import TimerAlert from "components/pages/TimerAlert/TimerAlert";
 
 
 
 
 function App() {
 
-  const { user, setUser, authenticated, setAuthenticated } = useApp();
+  const { user, setUser, authenticated, setAuthenticated, tabNavigationStack, setTabNavigationStack } = useApp();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -35,10 +36,6 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [events, setEvents] = useState([]);
   const [notes, setNotes] = useState([]);
-
-  /** TAB NAVIGATION */
-
-  const [tabNavigationStack, setTabNavigationStack] = useState([]);
 
   // adds id of subtab you are navigating into to stack
   const digIntoTab = (newId) => {
@@ -85,6 +82,7 @@ function App() {
         <div className="App">
           <BrowserRouter>
             <Navbar />
+            <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} />
 
             <Routes>
               <Route path="/" element={<LandingPage />} />

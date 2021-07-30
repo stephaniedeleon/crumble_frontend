@@ -13,7 +13,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
 
   const navigateToSubtab = (event, subId) => {
     event.preventDefault()
-    setTabNavigationStack((oldStack) => [...oldStack, subId])
+    // setTabNavigationStack((oldStack) => [...oldStack, subId])
     
     let correctSubid;
     if (subId === 'root')
