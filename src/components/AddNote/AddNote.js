@@ -66,6 +66,7 @@ export default function AddNote(props) {
             setErrors((e) => ({ ...e, form: null }));
             addNote(data?.note);
             setForm({ title: "", details: "" });
+            setEditorState(() => EditorState.createEmpty()); // clears editor when submitted
         }
 
         setIsLoading(false);

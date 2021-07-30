@@ -32,7 +32,7 @@ export default function MainTab({ key, maintab }) {
 
                         <Dropdown.Menu id="options">
                             <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i class="bi-pencil-square"/> Edit
+                                <i class="bi-pencil-square"/> Rename
                             </Dropdown.Item>
                             <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
                                 <i class="bi-trash"/> Delete
