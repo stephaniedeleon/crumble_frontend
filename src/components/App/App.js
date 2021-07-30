@@ -82,7 +82,7 @@ function App() {
         <div className="App">
           <BrowserRouter>
             <Navbar />
-            <TimerAlert show={/*timerVariables.timerAlertShow*/false} onHide={() => timerVariables.setTimerAlertShow(false)} />
+            <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} />
 
             <Routes>
               <Route path="/" element={<LandingPage />} />
