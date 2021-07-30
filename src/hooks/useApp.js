@@ -6,6 +6,10 @@ export const useApp = () => {
     const [user, setUser] = useState();
     const [errors, setErrors] = useState(null);
     const [authenticated, setAuthenticated] = useState(false);
+
+      /** TAB NAVIGATION */
+
+      const [tabNavigationStack, setTabNavigationStack] = useState(["root"]);
     
     //persists logged in user
     useEffect(() => {
@@ -30,8 +34,10 @@ export const useApp = () => {
         user,
         errors,
         authenticated,
+        tabNavigationStack,
         setAuthenticated,
         setErrors,
         setUser,
+        setTabNavigationStack,
     }
 }
