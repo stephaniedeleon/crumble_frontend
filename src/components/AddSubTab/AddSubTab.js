@@ -10,7 +10,7 @@ export default function AddSubTab(props) {
     const { setSubtabs, setErrors, setIsLoading  } = useContext(AuthContext);
 
     const [form, setForm] = useState({
-        name: '',
+        name: ""
     });
 
     // adds a new a sutab to list of subtabs
@@ -54,8 +54,8 @@ export default function AddSubTab(props) {
             setErrors((e) => ({ ...e, form: error })); 
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            addSubtab(data.subtab);
             setForm({name: ""});
+            addSubtab(data.subtab);
         }
 
         setIsLoading(false);

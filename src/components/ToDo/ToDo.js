@@ -73,8 +73,8 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
       action = action.toLowerCase()
       const configuredNewSubtab = directoryConfiguration(newSubtab)
 
-      const index = tabNavigationStack.length - 1
-      let currentSubtabId = tabNavigationStack[index]
+      const index = tabNavigationStack.length - 1;
+      let currentSubtabId = tabNavigationStack[index];
 
       switch (action) {
         case "add": 
