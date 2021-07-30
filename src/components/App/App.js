@@ -17,6 +17,7 @@ import {
   Footer,
   Timer,
 } from "components";
+import TimerAlert from "components/pages/TimerAlert/TimerAlert";
 
 
 
@@ -81,6 +82,7 @@ function App() {
         <div className="App">
           <BrowserRouter>
             <Navbar />
+            <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} />
 
             <Routes>
               <Route path="/" element={<LandingPage />} />

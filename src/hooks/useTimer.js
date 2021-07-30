@@ -4,7 +4,7 @@ export const useTimer = () => {
 
 
     // Starting Time
-    const [timeLimit, setTimeLimit] = useState(1500);
+    const [timeLimit, setTimeLimit] = useState(10);
     const [timePassed, setTimePassed] = useState(0);
     // Time Remaining
     const [timeLeft, setTimeLeft] = useState(0);
@@ -12,6 +12,8 @@ export const useTimer = () => {
     const [timerInterval, setTimerInterval] = useState(null);
     // Stores the timer state (started, paused, stopped)
     const [timerStatus, setTimerStatus] = useState("stopped");
+    // Stores state of timer alert
+    const [timerAlertShow, setTimerAlertShow] = useState(false)
 
     const [circleDasharray, setCircleDasharray] = useState("");
     const [remainingPathColor, setRemainingPathColor] = useState(`green`);
@@ -28,13 +30,15 @@ export const useTimer = () => {
         circleDasharray,
         remainingPathColor,
         RADIUS,
+        timerAlertShow,
         setTimeLimit,
         setTimePassed,
         setTimeLeft,
         setTimerInterval,
         setTimerStatus,
         setCircleDasharray,
-        setRemainingPathColor
+        setRemainingPathColor,
+        setTimerAlertShow,
       };
 
       /** Update the timer on page */
@@ -64,7 +68,11 @@ export const useTimer = () => {
         updateClock();
         setColor();
 
-        if (timeLeft <= 0) stopTimer();
+        if (timeLeft <= 0 && timerStatus === 'started') {
+          setTimerAlertShow(true);
+          stopTimer();
+        }
+
       }, [timeLimit, timeLeft, timePassed, LENGTH]);
 
 
