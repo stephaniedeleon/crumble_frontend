@@ -32,7 +32,7 @@ export default function DeleteSubtab(props) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            deleteSubtab(data.subtab);
+            deleteSubtab(subtab);
         }
 
         setIsLoading(false);
