@@ -34,8 +34,7 @@ function App() {
   const [subtabs, setSubtabs] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [events, setEvents] = useState([]);
-  const [notes, setNotes] = useState([])
-
+  const [notes, setNotes] = useState([]);
 
   // adds id of subtab you are navigating into to stack
   const digIntoTab = (newId) => {
