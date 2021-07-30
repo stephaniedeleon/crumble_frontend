@@ -38,6 +38,8 @@ export default function TabPage() {
             setError("Tab not found");
           }
 
+          setTabNavigationStack((oldStack) => [...oldStack, 'root'])
+
       } else {
 
           const { data } = await apiClient.getSubtab(parseInt(subId));
@@ -47,6 +49,8 @@ export default function TabPage() {
           } else {
             setError("Tab not found");
           }
+
+          setTabNavigationStack((oldStack) => [...oldStack, subId])
       }
       
       // Get directory data to use for sidebar

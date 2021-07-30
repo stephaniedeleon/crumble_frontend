@@ -107,7 +107,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   /** Finds and returns the object whose child must be added to */
   const findTargetSubtab = (searchObject, targetId) => {
 
-      const targetObject = searchObject.children.find(element => element.id === targetId)
+      const targetObject = searchObject.children.find(element => element.id === parseInt(targetId))
 
       if (targetObject !== undefined)
           return targetObject;
