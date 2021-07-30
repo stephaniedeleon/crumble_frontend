@@ -6,10 +6,10 @@
   display: grid;
   width: fit-content;
   margin: 25px 0px;
-  padding: 30px;
+  padding: 40px 50px;
 
-  border: 2px solid #8c3f0d;
-  border-radius: 5px;
+  border: 1px solid #8c3f0d;
+  border-radius: 15px;
 
   gap: 20px 0px;
   justify-self: center;
@@ -18,7 +18,7 @@
 
 .Timer .options-pagination {
   display: flex;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
 
   justify-content: space-around;
   border-bottom: 1px solid #8c3f0d;
@@ -128,7 +128,7 @@
   color: #254832;
   cursor: pointer;
 
-  box-shadow: 1px 5.8px 0px 0px rgba(0,0,0,0.61);
+  box-shadow: 2px 5.2px 0px 0px rgba(0,0,0,0.61);
   
   transition: all 0.2s ease;
   /* transition-property: background-color, color, border-color, transform;
