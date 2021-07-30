@@ -115,9 +115,11 @@ class ApiClient {
         return await this.request({ endpoint: "subtabs/unmark/"+subtabId, method: "PUT" });
     }
 
+    //Directory
+
     async getDirectoryData(maintabId) {
         const value = await this.request({ endpoint: "subtabs/"+maintabId+"/directory", method: "GET" })
-        return value.data
+        return value.data;
     }
 
     // Tasks
