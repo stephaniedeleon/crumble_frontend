@@ -2,6 +2,7 @@ import "./UpdateTask.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
+import { formatDateForInputDisplay } from "utils/format";
 import AuthContext from "context/auth";
 import apiClient from "services/apiClient";
 
@@ -13,6 +14,8 @@ export default function UpdateTask(props) {
 
     const [form, setForm] = useState({
         details: task.details,
+        priority: task.priority,
+        date: formatDateForInputDisplay(task.date),
     });
 
 
@@ -24,6 +27,9 @@ export default function UpdateTask(props) {
         if (form.details !== "") { //if details is empty, it will not change the details
             found.details = form.details;
         }
+
+        found.priority = form.priority;
+        found.date = form.date;
     }
 
 
@@ -41,8 +47,19 @@ export default function UpdateTask(props) {
         let result;
 
         if (form.details !== "") { //if details is empty, it will not change the details
-            result = await apiClient.updateTask(task.id, { 
-                details: form.details,
+            result = await apiClient.updateTask(task.id, {
+                task: {
+                    details: form.details,
+                    priority: form.priority,
+                    date: form.date,
+                }
+            });
+        } else {
+            result = await apiClient.updateTask(task.id, {
+                task: {
+                    priority: form.priority,
+                    date: form.date,
+                }
             });
         }
 
@@ -55,7 +72,9 @@ export default function UpdateTask(props) {
                 setErrors((e) => ({ ...e, form: error }));
             } else {
                 setErrors((e) => ({ ...e, form: null }));
-                setForm({ details: dbTask.details });
+                setForm({ details: dbTask.details,
+                          priority: dbTask.priority,
+                          date: formatDateForInputDisplay(dbTask.date) });
                 updateTask(task.id);
             } 
 
@@ -71,7 +90,8 @@ export default function UpdateTask(props) {
       <Modal
             {...props}
             size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
+            className="AddTask"
+            aria-labelledby="Update task modal"
             centered
       >
         <Form onSubmit={handleOnSubmit} className="modal-area">
@@ -88,10 +108,37 @@ export default function UpdateTask(props) {
                         type="text"
                         name="details"
                         className="input-field"
+                        aria-label="Input name of new task"
                         onChange={handleOnInputChange}
                         value={form.details}
                     />
+
+                    <FormLabel className="form-label"><div>Priority</div> &nbsp; <p>(optional)</p></FormLabel>
+                    <Form.Control
+                        as="select"
+                        name="priority"
+                        className="input-field"
+                        aria-label="Select priority"
+                        onChange={handleOnInputChange}
+                        value={form.priority}
+                        custom
+                    >
+                        <option selected></option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </Form.Control>
+
+                    <FormLabel className="form-label"><div>Due date</div> &nbsp; <p>(optional)</p></FormLabel>
+                    <Form.Control
+                        type="datetime-local"
+                        name="date"
+                        className="input-field"
+                        onChange={handleOnInputChange}
+                        value={form.date}
+                    />
                 </FormGroup>
+
                 <div className="modal-button">
                     <Button type="submit" onClick={props.onHide} className="button">Save</Button>
                 </div>

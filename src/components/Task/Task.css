@@ -40,12 +40,27 @@
     margin: 0;
     padding: 5px 0px;
 
+    justify-content: space-between;
+    
     color: #256a3c;
 }
 
-.Task .container h6 {
+.Task .container .details {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.Task .details .name {
+    text-align: right;
     margin-left: 25px;
     margin-bottom: 0;
+}
+
+.Task .priority {
+    color: #8C3F0D;
+    font-size: 13px;
+    padding-right: 30px;
 }
 
 /* Hide the browser's default checkbox */

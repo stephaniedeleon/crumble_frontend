@@ -4,6 +4,7 @@ import { useState } from 'react';
 import apiClient from "services/apiClient";
 import { DeleteTask, UpdateTask } from "components";
 import { Dropdown } from "react-bootstrap";
+import { formatDate } from "utils/format";
 
 export default function Task(props) {
 
@@ -30,7 +31,10 @@ export default function Task(props) {
                 <label class="container">
                     <input type="checkbox" checked={completed} onChange={handleChange} />
                     <span class="checkmark"></span>
-                    <h6>{task.details}</h6>
+                    <div className="details"> 
+                        <div className="name">{task.details}</div>
+                    </div>
+                    <div className="priority">{task.priority}</div>
                 </label>
 
                 <div class="actions">
