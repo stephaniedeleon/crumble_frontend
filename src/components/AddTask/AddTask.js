@@ -11,6 +11,8 @@ export default function AddTask(props) {
 
     const [form, setForm] = useState({
         details: "",
+        priority: "",
+        date: null,
     });
 
     // adds a new task to list of tasks
@@ -35,6 +37,8 @@ export default function AddTask(props) {
                 main_id: parseInt(props.mainId),
                 task: {
                     details: form.details,
+                    priority: form.priority,
+                    date: form.date,
                 }
             });
         } else {
@@ -42,6 +46,8 @@ export default function AddTask(props) {
                 sub_id: parseInt(props.subId),
                 task: {
                     details: form.details,
+                    priority: form.priority,
+                    date: form.date,
                 }
             })
         }
@@ -53,7 +59,9 @@ export default function AddTask(props) {
         } else {
             setErrors((e) => ({ ...e, form: null }));
             addTask(data?.task);
-            setForm({details: ""});
+            setForm({   details: "",
+                        priority: "",
+                        date: null, });
         }
 
         setIsLoading(false);
@@ -63,6 +71,8 @@ export default function AddTask(props) {
         <Modal
             {...props}
             size="lg"
+            className="AddTask"
+            aria-labelledby="Add task modal"
             centered
         >
             <Form onSubmit={handleOnSubmit} className="modal-area">
@@ -79,12 +89,39 @@ export default function AddTask(props) {
                             type="text"
                             name="details"
                             className="input-field"
-                            placeholder="Task Details"
+                            placeholder="Untitled"
+                            aria-label="Input name of new task"
                             onChange={handleOnInputChange}
                             value={form.details}
                             required
                         />
+
+                        <FormLabel className="form-label"><div>Priority</div> &nbsp; <p>(optional)</p></FormLabel>
+                        <Form.Control
+                            as="select"
+                            name="priority"
+                            className="input-field"
+                            aria-label="Select priority"
+                            onChange={handleOnInputChange}
+                            value={form.priority}
+                            custom
+                        >
+                            <option selected></option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </Form.Control>
+
+                        <FormLabel className="form-label"><div>Due date</div> &nbsp; <p>(optional)</p></FormLabel>
+                        <Form.Control
+                            type="datetime-local"
+                            name="date"
+                            className="input-field"
+                            onChange={handleOnInputChange}
+                            value={form.date}
+                        />
                     </FormGroup>
+
                     <div className="modal-button">
                         <Button type="submit" onClick={props.onHide} className="button">Add Task</Button>
                     </div>

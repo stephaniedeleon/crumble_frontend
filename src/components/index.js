@@ -30,6 +30,7 @@ export { default as Note } from "./Note/Note";
 export { default as Event } from "./Event/Event";
 
 export { default as Timer } from "./pages/Timer/Timer";
+export { default as TimerAlert } from "./pages/TimerAlert/TimerAlert"
 export { default as Home } from "./pages/Home/Home";
 export { default as About } from "./pages/About/About";
 export { default as LandingPage } from "./pages/LandingPage/LandingPage";

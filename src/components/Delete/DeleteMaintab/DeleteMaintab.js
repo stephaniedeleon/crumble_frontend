@@ -44,6 +44,7 @@ export default function DeleteMaintab(props) {
             backdrop="static"
             keyboard={false}
             className="delete-modal"
+            centered
         >
             <div className="modal-area">
                 <Modal.Header closeButton>
