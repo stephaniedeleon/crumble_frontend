@@ -4,11 +4,13 @@ import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import { formatDateForInputDisplay } from "utils/format";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 export default function UpdateTask(props) {
 
-    const { tasks, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { tasks } = useContext(GlobalContext);
 
     const task = props.task;
 

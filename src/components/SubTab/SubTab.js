@@ -2,7 +2,7 @@ import "./SubTab.css"
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import { useContext } from "react";
 import { DeleteSubtab, UpdateSubtab } from "components";
 import { Dropdown } from "react-bootstrap";
@@ -20,7 +20,7 @@ export default function SubTab(props) {
 
     }
 
-    const { digIntoTab } = useContext(AuthContext);
+    const { digIntoTab } = useContext(GlobalContext);
 
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);

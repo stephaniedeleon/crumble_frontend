@@ -4,12 +4,14 @@ import { Accordion } from 'react-bootstrap';
 import { AddNote, Note } from 'components';
 import React, { useContext, useState, useEffect } from 'react';
 import AuthContext from 'context/auth';
+import GlobalContext from "context/global";
 import apiClient from 'services/apiClient';
 
 // Has the list of notes
 
 export default function Notes({ mainId, subId }) {
-  const { notes, user, authenticated, setNotes } = useContext(AuthContext);
+  const { user, authenticated } = useContext(AuthContext);
+  const { notes, setNotes} = useContext(GlobalContext);
 
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);

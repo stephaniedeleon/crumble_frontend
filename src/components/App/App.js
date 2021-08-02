@@ -2,10 +2,11 @@ import "./App.css";
 
 import React, { useState } from "react";
 import AuthContext from "context/auth";
+import TimerContext from "context/timer";
+import GlobalContext from "context/global"
 import { TabPage } from "components/pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useApp } from "hooks/useApp";
-import TimerContext from "context/timer";
 import { useTimer } from "hooks/useTimer";
 import {
   Navbar,
@@ -60,6 +61,11 @@ function App() {
         setUser,
         authenticated,
         setAuthenticated,
+        setErrors,
+        setIsLoading,
+      }}
+    >
+      <GlobalContext.Provider value={{
         maintabs,
         setMaintabs,
         subtabs,
@@ -73,31 +79,29 @@ function App() {
         tabNavigationStack,
         setTabNavigationStack,
         digIntoTab,
-        moveOutTab,
-        setErrors,
-        setIsLoading,
-      }}
-    >
-      <TimerContext.Provider value={{ timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction }}>
-        <div className="App">
-          <BrowserRouter>
-            <Navbar />
-            <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} />
+        moveOutTab, 
+      }}>
+        <TimerContext.Provider value={{ timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction }}>
+          <div className="App">
+            <BrowserRouter>
+              <Navbar />
+              <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} />
 
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/timer" element={<Timer />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/home/:mainId/:subId" element={<TabPage />} />
-            </Routes>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/timer" element={<Timer />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/home/:mainId/:subId" element={<TabPage />} />
+              </Routes>
 
-            <Footer />
-          </BrowserRouter>
-        </div>
-      </TimerContext.Provider>
+              <Footer />
+            </BrowserRouter>
+          </div>
+        </TimerContext.Provider>
+      </GlobalContext.Provider>
     </AuthContext.Provider>
   );
 }
