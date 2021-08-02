@@ -3,11 +3,13 @@ import "./DeleteNote.css";
 import { Button, Modal } from 'react-bootstrap';
 import React, { useContext }  from "react";
 import AuthContext from 'context/auth';
+import GlobalContext from 'context/global';
 import apiClient from 'services/apiClient';
 
 export default function DeleteNote(props) {
 
-    const { notes, setNotes, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { notes, setNotes } = useContext(GlobalContext);
 
     const note = props.note;
     const note_id = parseInt(note.id);

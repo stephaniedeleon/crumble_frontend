@@ -12,7 +12,7 @@ import apiClient from 'services/apiClient';
 export default function UpdateNote(props) {
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { notes, setNotes } = useContext(GlobalContext);
+    const { setNotes } = useContext(GlobalContext);
 
     const note = props.note;
 
