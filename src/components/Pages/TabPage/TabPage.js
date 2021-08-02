@@ -52,8 +52,6 @@ export default function TabPage() {
           }
 
         }
-
-      digIntoTab(subId)
       
       // Get directory data to use for sidebar
       const result = await apiClient.getDirectoryData(mainId);
@@ -78,7 +76,7 @@ export default function TabPage() {
         }}
       >
         <div className="grid-item">
-            <Breadcrumbs />
+            <Breadcrumbs mainId={mainId} subId={subId} />
             <SideBar
               width={width}
               setWidth={setWidth}

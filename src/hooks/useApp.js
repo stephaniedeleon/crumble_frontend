@@ -40,8 +40,13 @@ export const useApp = () => {
       if (parseInt(newId) === 0)
         newId = 'root';
 
-      if (newId !== tabNavigationStack.stack[tabNavigationStack.stack.length - 1]) {
+      // proceed if the user is in different subtab and is at the front of the breadcrumb
+      if (newId !== tabNavigationStack.stack[tabNavigationStack.stack.length - 1] && tabNavigationStack.currentPosition === tabNavigationStack.stack.length - 1) {
         setTabNavigationStack((object) => ({ currentPosition: object.currentPosition + 1, stack: [...object.stack, newId]}));
+      } 
+      // if not at the front of breadcrumb, delete everything after current position in stack in order to start a new history
+      else if (newId !== tabNavigationStack.stack[tabNavigationStack.stack.length - 1]) {
+        setTabNavigationStack((object) => ({ currentPosition: object.currentPosition + 1, stack: [...object.stack.slice(0, object.currentPosition + 1), newId]}));
       }
     };
 
