@@ -36,8 +36,6 @@ export default function AddNote(props) {
 
         form.details = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
 
-        // console.log(convertFromRaw(test));
-
         let result;
 
         if (parseInt(props.subId) === 0) {

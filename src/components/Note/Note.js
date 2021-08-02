@@ -1,6 +1,7 @@
 import './Note.css';
 
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import AuthContext from "context/auth";
 import { Accordion, Card, Dropdown } from 'react-bootstrap';
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertFromRaw } from 'draft-js';
@@ -8,11 +9,25 @@ import { DeleteNote, UpdateNote } from 'components';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default function Note(props) {
+
     const note = props.note;
 
-    const details = convertFromRaw(note.details);
+    const { notes, setNotes } = useContext(AuthContext);
 
-    const [editorState, setEditorState] = useState(() => EditorState.createWithContent(details));
+    const [editorState, setEditorState] = useState();
+
+    useEffect(() => {
+
+        const fetchNewNote = async () => {
+
+            const details = convertFromRaw(note.details);
+            setEditorState(EditorState.createWithContent(details));
+        }
+    
+        fetchNewNote();
+
+    }, [setNotes, note.details]);
+
 
     // method to show modal for deleting confirmation and editing
     const [deleteModalShow, setDeleteModalShow] = useState(false);

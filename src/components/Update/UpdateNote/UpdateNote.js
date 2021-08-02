@@ -10,7 +10,7 @@ import apiClient from 'services/apiClient';
 
 export default function UpdateNote(props) {
 
-    const { notes, setErrors, setIsLoading } = useContext(AuthContext);
+    const { notes, setNotes, setErrors, setIsLoading } = useContext(AuthContext);
 
     const note = props.note;
 
@@ -20,16 +20,13 @@ export default function UpdateNote(props) {
 
     const [form, setForm] = useState({
         title: note.title,
-        details: "",
     })
 
     // update note in list of notes
-    const updateNote = (updatedId) => {
-        
-        let found = notes.find(foundNote => foundNote.id === updatedId);
+    const updateNote = (newNote) => {
 
-        found.title = form.title;
-        // found.details = form.details;
+        setNotes(oldNotes => oldNotes.map(oldNote => oldNote.id === newNote.id ? newNote : oldNote));
+
     }
 
     const handleOnInputChange = (event) => {
@@ -42,11 +39,9 @@ export default function UpdateNote(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        form.details = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-
         const result = await apiClient.updateNote(note.id, {
             title: form.title,
-            details: form.details,
+            details: convertToRaw(editorState.getCurrentContent()),
         });
 
         const  { data, error } = result;
@@ -57,8 +52,8 @@ export default function UpdateNote(props) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            setForm({ title: dbNote.title, details: dbNote.details });
-            updateNote(note.id);
+            setForm({ title: dbNote.title });
+            updateNote(dbNote);
         }
 
         setIsLoading(false);
