@@ -10,7 +10,7 @@ import apiClient from "services/apiClient";
 export default function UpdateTask(props) {
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { tasks, setTasks } = useContext(GlobalContext);
+    const { setTasks } = useContext(GlobalContext);
 
     const task = props.task;
 
@@ -22,8 +22,8 @@ export default function UpdateTask(props) {
 
 
     //update task in list of tasks
-    const updateTask = (task) => {
-        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === task.id ? task : oldTask))
+    const updateTask = (updatedTask) => {
+        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === updatedTask.id ? updatedTask : oldTask))
     }
 
     

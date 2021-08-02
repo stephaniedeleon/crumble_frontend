@@ -10,7 +10,7 @@ import apiClient from "services/apiClient";
 export default function UpdateEvent(props) {
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { events } = useContext(GlobalContext);
+    const { setEvents } = useContext(GlobalContext);
 
     const calEvent = props.event;
     const event_id = parseInt(calEvent.id);
@@ -22,24 +22,8 @@ export default function UpdateEvent(props) {
 
 
     //update event in list of events
-    const updateEvent = (updatedId) => {
-
-        let found = events.find(foundEvent => foundEvent.id === updatedId);
-
-        if (form.event_name !== "" && form.date !== "") {
-
-            found.event_name = form.event_name;
-            found.date = form.date;
-
-        } else if (form.event_name === "") { //if name is empty, it will not change the name
-
-            found.date = form.date;
-
-        } else if (form.date === "") { //if date is empty, it will not change the date
-            
-            found.event_name = form.event_name;
-
-        }
+    const updateEvent = (updatedEvent) => {
+        setEvents(oldEvents => oldEvents.map(oldEvent => oldEvent.id === updatedEvent.id ? updatedEvent : oldEvent))
     }
 
     const handleOnInputChange = (event) => {
@@ -89,7 +73,7 @@ export default function UpdateEvent(props) {
                 setForm ({  event_name: dbEvent.event_name,
                             date: formatDateForInputDisplay(calEvent.date)
                         });
-                updateEvent(event_id);
+                updateEvent(dbEvent);
             } 
         }
 
