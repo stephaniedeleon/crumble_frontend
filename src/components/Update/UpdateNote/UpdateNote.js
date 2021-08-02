@@ -6,11 +6,13 @@ import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import React, { useState, useContext } from 'react';
 import AuthContext from 'context/auth';
+import GlobalContext from 'context/global';
 import apiClient from 'services/apiClient';
 
 export default function UpdateNote(props) {
 
-    const { notes, setNotes, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { notes, setNotes } = useContext(GlobalContext);
 
     const note = props.note;
 
@@ -23,9 +25,9 @@ export default function UpdateNote(props) {
     })
 
     // update note in list of notes
-    const updateNote = (newNote) => {
+    const updateNote = (updatedNote) => {
 
-        setNotes(oldNotes => oldNotes.map(oldNote => oldNote.id === newNote.id ? newNote : oldNote));
+        setNotes(oldNotes => oldNotes.map(oldNote => oldNote.id === updatedNote.id ? updatedNote : oldNote));
 
     }
 

@@ -203,6 +203,10 @@ class ApiClient {
     async deleteNote(noteId) {
         return await this.request({ endpoint: "notes/"+noteId, method: "DELETE" });
     }
+
+    async updateNote(noteId, details) {
+        return await this.request({ endpoint: "notes/"+noteId, method: "PUT", data: details });
+    }
     
 }
 
