@@ -3,13 +3,15 @@ import "./ToDo.css";
 import { AddSubTab, SubTab, AddTask, Task } from "components";
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 // Has the list of subtabs and tasks
 
 export default function ToDo({ directory, setDirectory, mainId, subId }) {
-  const { subtabs, tasks, user, authenticated, setSubtabs, setTasks, tabNavigationStack } =
+  const { user, authenticated } =
     useContext(AuthContext);
+  const { subtabs, tasks, setSubtabs, setTasks, tabNavigationStack } = useContext(GlobalContext);
 
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
