@@ -10,7 +10,7 @@ import apiClient from "services/apiClient";
 export default function UpdateTask(props) {
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { tasks } = useContext(GlobalContext);
+    const { tasks, setTasks } = useContext(GlobalContext);
 
     const task = props.task;
 
@@ -22,19 +22,11 @@ export default function UpdateTask(props) {
 
 
     //update task in list of tasks
-    const updateTask = (updatedId) => {
-
-        let found = tasks.find(foundTask => foundTask.id === updatedId);
-
-        if (form.details !== "") { //if details is empty, it will not change the details
-            found.details = form.details;
-        }
-
-        found.priority = form.priority;
-        found.date = form.date;
+    const updateTask = (task) => {
+        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === task.id ? task : oldTask))
     }
 
-
+    
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     }
@@ -77,11 +69,11 @@ export default function UpdateTask(props) {
                 setForm({ details: dbTask.details,
                           priority: dbTask.priority,
                           date: formatDateForInputDisplay(dbTask.date) });
-                updateTask(task.id);
+                updateTask(dbTask);
             } 
 
         } else { //if details is empty, it will set the details in form to current task details
-            setForm ({  details: task.details });
+            setForm ({  details: task.details, });
         }
 
         setIsLoading(false);
