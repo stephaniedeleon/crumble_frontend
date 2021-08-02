@@ -3,11 +3,13 @@ import "./DeleteSubtab.css"
 import { Button, Modal } from "react-bootstrap";
 import React, { useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 export default function DeleteSubtab(props) {
 
-    const { subtabs, setSubtabs, setErrors, setIsLoading} = useContext(AuthContext);
+    const { setErrors, setIsLoading} = useContext(AuthContext);
+    const { subtabs, setSubtabs } = useContext(GlobalContext);
 
     const subtab = props.subtab;
     const subtab_id = parseInt(subtab.id);

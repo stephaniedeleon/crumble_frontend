@@ -4,12 +4,14 @@ import { Button } from "react-bootstrap";
 import { MainTab, AddMainTab } from "components";
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 
 export default function Home() {
 
-    const { maintabs, user, authenticated, setMaintabs } = useContext(AuthContext);
+    const { user, authenticated } = useContext(AuthContext);
+    const { maintabs, setMaintabs } = useContext(GlobalContext);
 
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);

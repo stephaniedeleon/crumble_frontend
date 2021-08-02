@@ -3,11 +3,13 @@ import "./AddMainTab.css"
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 export default function AddMaintab(props) {
 
-    const { setMaintabs, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { setMaintabs } = useContext(GlobalContext);
 
     const [form, setForm] = useState({
         name: "",

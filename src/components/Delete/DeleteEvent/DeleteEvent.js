@@ -3,13 +3,15 @@ import "./DeleteEvent.css"
 import { Button, Modal } from "react-bootstrap";
 import React, { useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 import { formatDate } from "utils/format";
 
 
 export default function DeleteEvent(props) {
 
-    const { events, setEvents, setErrors, setIsLoading} = useContext(AuthContext);
+    const { setErrors, setIsLoading} = useContext(AuthContext);
+    const { events, setEvents} = useContext(GlobalContext);
 
     const event = props.event;
     const event_id = parseInt(event.id);

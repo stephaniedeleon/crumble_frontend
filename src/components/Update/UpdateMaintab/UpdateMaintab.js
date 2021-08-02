@@ -3,11 +3,13 @@ import "./UpdateMaintab.css"
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 export default function UpdateMaintab(props) {
 
-    const { maintabs, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { maintabs } = useContext(GlobalContext);
 
     const maintab = props.maintab;
 

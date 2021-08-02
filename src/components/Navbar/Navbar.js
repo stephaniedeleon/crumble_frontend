@@ -3,12 +3,14 @@ import "./Navbar.css";
 import { Nav, Navbar as NavBar, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import { useContext, useState } from "react";
 import apiClient from "services/apiClient";
 import TimerContext from "context/timer";
 
 export default function Navbar() {
-  const { setUser, authenticated, setAuthenticated, setMaintabs, setSubtabs, setTasks, setEvents,  } = useContext(AuthContext);
+  const { setUser, authenticated, setAuthenticated,  } = useContext(AuthContext);
+  const { setMaintabs, setSubtabs, setTasks, setEvents} = useContext(GlobalContext);
   const { timerVariables, formatTimeLeft, stopTimer, startTimer, pauseTimer } = useContext(TimerContext)
 
   const navigate = useNavigate()

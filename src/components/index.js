@@ -15,13 +15,11 @@ export { default as DeleteMaintab } from "./Delete/DeleteMaintab/DeleteMaintab";
 export { default as DeleteEvent } from "./Delete/DeleteEvent/DeleteEvent";
 export { default as DeleteTask } from "./Delete/DeleteTask/DeleteTask";
 export { default as DeleteSubtab } from "./Delete/DeleteSubtab/DeleteSubtab";
-export { default as DeleteNote } from "./Delete/DeleteNote/DeleteNote";
 
 export { default as UpdateMaintab } from "./Update/UpdateMaintab/UpdateMaintab";
 export { default as UpdateSubtab } from "./Update/UpdateSubtab/UpdateSubtab";
 export { default as UpdateTask } from "./Update/UpdateTask/UpdateTask";
 export { default as UpdateEvent } from "./Update/UpdateEvent/UpdateEvent";
-export { default as UpdateNote } from "./Update/UpdateNote/UpdateNote";
 
 export { default as Notes } from "./Notes/Notes";
 export { default as Task } from "./Task/Task";
@@ -29,6 +27,7 @@ export { default as ToDo } from "./ToDo/ToDo";
 export { default as Calendar } from "./Calendar/Calendar";
 export { default as Note } from "./Note/Note";
 
+export { default as Breadcrumbs } from "./Breadcrumbs/Breadcrumbs"
 export { default as Event } from "./Event/Event";
 
 export { default as Timer } from "./pages/Timer/Timer";

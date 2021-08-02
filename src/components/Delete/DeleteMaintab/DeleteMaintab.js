@@ -3,12 +3,14 @@ import "./DeleteMaintab.css"
 import { Button, Modal } from "react-bootstrap";
 import React, { useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 
 export default function DeleteMaintab(props) {
 
-    const { maintabs, setMaintabs, setErrors, setIsLoading} = useContext(AuthContext);
+    const { setErrors, setIsLoading} = useContext(AuthContext);
+    const { maintabs, setMaintabs } = useContext(GlobalContext);
 
     const maintab = props.maintab;
 

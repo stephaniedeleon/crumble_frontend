@@ -3,11 +3,13 @@ import "./UpdateSubtab.css"
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 export default function UpdateSubtab(props) {
 
-    const { subtabs, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { subtabs } = useContext(GlobalContext);
 
     const subtab = props.subtab;
 

@@ -3,11 +3,13 @@ import "./DeleteTask.css"
 import { Button, Modal } from "react-bootstrap";
 import React, { useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 export default function DeleteTask(props) {
 
-    const { tasks, setTasks, setErrors, setIsLoading} = useContext(AuthContext);
+    const { setErrors, setIsLoading} = useContext(AuthContext);
+    const { tasks, setTasks } = useContext(GlobalContext);
 
     const task = props.task;
     const task_id = parseInt(task.id);

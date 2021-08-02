@@ -6,11 +6,13 @@ import { EditorState, convertToRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import React, { useState, useContext } from 'react';
 import AuthContext from 'context/auth';
+import GlobalContext from 'context/global';
 import apiClient from 'services/apiClient';
 
 export default function AddNote(props) {
     
-    const { setNotes, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { setNotes } = useContext(GlobalContext);
 
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 

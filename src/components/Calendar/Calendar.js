@@ -2,14 +2,15 @@ import "./Calendar.css";
 
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 import { AddEvent, Event } from "components";
 import { ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { Divider } from "@material-ui/core";
 
 export default function Calendar() {
-  const { events, setEvents, user, authenticated } = useContext(AuthContext);
+  const { user, authenticated } = useContext(AuthContext);
+  const { events, setEvents} = useContext(GlobalContext);
 
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
