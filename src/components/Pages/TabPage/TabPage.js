@@ -2,10 +2,12 @@ import "./TabPage.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 import { SideBar, PageHeader, Notes, ToDo, Calendar } from "components";
 import { Col, Row } from "react-bootstrap";
+import Breadcrumbs from "components/Breadcrumbs/Breadcrumbs";
 
 
 export default function TabPage() {
@@ -18,7 +20,8 @@ export default function TabPage() {
   const [directory, setDirectory] = useState({});
   
   const { mainId, subId } = useParams();
-  const { setTabNavigationStack, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const { setTabNavigationStack } = useContext(GlobalContext);
 
 
   // Getting tab details...
@@ -76,6 +79,7 @@ export default function TabPage() {
         }}
       >
         <div className="grid-item">
+            <Breadcrumbs />
             <SideBar
               width={width}
               setWidth={setWidth}

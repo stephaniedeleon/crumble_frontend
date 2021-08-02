@@ -4,11 +4,13 @@ import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import { formatDateForInputDisplay } from "utils/format";
 import AuthContext from "context/auth";
+import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
 
 export default function UpdateEvent(props) {
 
-    const { events, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { events } = useContext(GlobalContext);
 
     const calEvent = props.event;
     const event_id = parseInt(calEvent.id);

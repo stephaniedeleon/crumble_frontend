@@ -27,6 +27,7 @@ export { default as ToDo } from "./ToDo/ToDo";
 export { default as Calendar } from "./Calendar/Calendar";
 export { default as Note } from "./Note/Note";
 
+export { default as Breadcrumbs } from "./Breadcrumbs/Breadcrumbs"
 export { default as Event } from "./Event/Event";
 
 export { default as Timer } from "./pages/Timer/Timer";

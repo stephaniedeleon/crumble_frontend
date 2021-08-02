@@ -3,11 +3,13 @@ import './AddTask.css';
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext } from "react";
 import AuthContext from "context/auth";
+import GlobalContext from 'context/global';
 import apiClient from "services/apiClient";
 
 export default function AddTask(props) {
 
-    const { setTasks, setErrors, setIsLoading } = useContext(AuthContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { setTasks } = useContext(GlobalContext);
 
     const [form, setForm] = useState({
         details: "",
