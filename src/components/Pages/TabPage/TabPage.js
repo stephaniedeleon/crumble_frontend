@@ -21,7 +21,7 @@ export default function TabPage() {
   
   const { mainId, subId } = useParams();
   const { user } = useContext(AuthContext);
-  const { setTabNavigationStack } = useContext(GlobalContext);
+  const { setTabNavigationStack, digIntoTab } = useContext(GlobalContext);
 
 
   // Getting tab details...
@@ -41,8 +41,6 @@ export default function TabPage() {
             setError("Tab not found");
           }
 
-          setTabNavigationStack((oldStack) => [...oldStack, 'root'])
-
       } else {
 
           const { data } = await apiClient.getSubtab(parseInt(subId));
@@ -53,8 +51,9 @@ export default function TabPage() {
             setError("Tab not found");
           }
 
-          setTabNavigationStack((oldStack) => [...oldStack, subId])
-      }
+        }
+
+      digIntoTab(subId)
       
       // Get directory data to use for sidebar
       const result = await apiClient.getDirectoryData(mainId);

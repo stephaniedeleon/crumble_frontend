@@ -9,8 +9,12 @@ export const useApp = () => {
 
       /** TAB NAVIGATION */
 
-      const [tabNavigationStack, setTabNavigationStack] = useState(["root"]);
-    
+      const [tabNavigationStack, setTabNavigationStack] = useState({
+        currentPosition: 0,
+        stack: ["root"]
+      });
+
+      
     //persists logged in user
     useEffect(() => {
       const fetchAuthedUser = async () => {
@@ -29,12 +33,32 @@ export const useApp = () => {
       }
     }, []);
 
+      
+    // adds id of subtab you are navigating into to stack
+    const digIntoTab = (newId) => {
+
+      if (parseInt(newId) === 0)
+        newId = 'root';
+
+      if (newId !== tabNavigationStack.stack[tabNavigationStack.stack.length - 1]) {
+        setTabNavigationStack((object) => ({ currentPosition: object.currentPosition + 1, stack: [...object.stack, newId]}));
+      }
+    };
+
+    // removes id of subtab you are navigating out of from stack
+    const moveOutTab = (removeId) => {
+      const newStack = tabNavigationStack.filter((id) => id !== removeId);
+      setTabNavigationStack(newStack);
+    };
+
 
     return {
         user,
         errors,
         authenticated,
         tabNavigationStack,
+        digIntoTab,
+        moveOutTab,
         setAuthenticated,
         setErrors,
         setUser,

@@ -7,13 +7,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from "./SideBarStyles"
 
 
-export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId, setTabNavigationStack }) {
+export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId }) {
   const classes = useStyles()
   const navigate = useNavigate()
 
   const navigateToSubtab = (event, subId) => {
     event.preventDefault()
-    // setTabNavigationStack((oldStack) => [...oldStack, subId])
     
     let correctSubid;
     if (subId === 'root')
