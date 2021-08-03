@@ -6,16 +6,17 @@
     margin-top: 25px;
 
     width: 180px;
-    transition-property: width;
-    transition-duration: 0.5s;
+    transition-property: all;
+    transition-duration: 0s;
     transition-timing-function: ease-out;
 
     border: 1px solid #8C3F0D;
 }
 
 .SideBar.closed {
-    width: 0px;
-    border: transparent;
+    /* width: 0px;
+    border: transparent; */
+    transform: translateX(-9999999px);
 }
 
 .SideBar .content-wrapper {

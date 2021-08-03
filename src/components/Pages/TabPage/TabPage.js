@@ -69,25 +69,20 @@ export default function TabPage() {
   return (
     <div className="TabPage">
       <PageHeader sectionName={tab?.name} />
-      {/* <div
+      <div
         className="grid-container"
         style={{
           gridTemplateColumns: `${isMenuOpened ? `${width}px` : "0px"} auto`,
         }}
-      > */}
-        {/* <div className="grid-item">
-            <Breadcrumbs mainId={mainId} subId={subId} />
+      >
+        <div className="grid-item">
             <SideBar
-              width={width}
-              setWidth={setWidth}
               isMenuOpened={isMenuOpened}
               setIsMenuOpened={setIsMenuOpened}
               directory={directory}
-              setDirectory={setDirectory}
               mainId={mainId}
-              setTabNavigationStack={setTabNavigationStack}
             />
-        </div> */}
+        </div>
         <div className="tab-area">
           <Row>
             <Row className="my-1">
@@ -95,7 +90,6 @@ export default function TabPage() {
                 <div className="toggleBtn" onClick={() => setIsMenuOpened(!isMenuOpened)}>
                   {isMenuOpened ?
                     <>
-                    0
                     </>
 
                     :
@@ -119,7 +113,7 @@ export default function TabPage() {
             </Col>
           </Row>
         </div>
-      {/* </div> */}
+      </div>
     </div>
   );
 }
