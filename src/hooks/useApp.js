@@ -13,6 +13,13 @@ export const useApp = () => {
     stack: ["root"],
   });
 
+  const resetTabNavigationStack = () => {
+    setTabNavigationStack({
+      currentPosition: 0,
+      stack: ["root"],
+    })
+  }
+
   //persists logged in user
   useEffect(() => {
     const fetchAuthedUser = async () => {
@@ -74,6 +81,7 @@ export const useApp = () => {
     errors,
     authenticated,
     tabNavigationStack,
+    resetTabNavigationStack,
     digIntoTab,
     moveOutTab,
     setAuthenticated,

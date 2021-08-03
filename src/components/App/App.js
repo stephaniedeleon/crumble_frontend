@@ -25,7 +25,7 @@ import TimerAlert from "components/pages/TimerAlert/TimerAlert";
 
 function App() {
 
-  const { user, setUser, authenticated, setAuthenticated, tabNavigationStack, setTabNavigationStack, digIntoTab, moveOutTab, } = useApp();
+  const { user, setUser, authenticated, setAuthenticated, tabNavigationStack, setTabNavigationStack, resetTabNavigationStack, digIntoTab, moveOutTab, } = useApp();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -67,6 +67,7 @@ function App() {
         setNotes,
         tabNavigationStack,
         setTabNavigationStack,
+        resetTabNavigationStack,
         digIntoTab,
         moveOutTab, 
       }}>
