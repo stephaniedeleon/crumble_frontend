@@ -23,8 +23,6 @@ export default function DeleteTask(props) {
 
         //finds an event associated to the to be deleted task
         const toDeleteEvent = events.filter(filteredEvent => filteredEvent.task_id === deletedId)
-
-        console.log("toDeleteEvent", toDeleteEvent[0])
         
         //if it is found, it will also delete the event associated with it
         if(toDeleteEvent.length !== 0) {
@@ -35,8 +33,6 @@ export default function DeleteTask(props) {
 
     //deletes event associated with the task from list of events
     const deleteEvent = async () => {
-
-        console.log("inside Delete Event", toDeleteEventId)
 
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
