@@ -9,15 +9,48 @@ import apiClient from "services/apiClient";
 export default function DeleteTask(props) {
 
     const { setErrors, setIsLoading} = useContext(AuthContext);
-    const { tasks, setTasks } = useContext(GlobalContext);
+    const { tasks, setTasks, events, setEvents } = useContext(GlobalContext);
 
     const task = props.task;
     const task_id = parseInt(task.id);
 
+    let toDeleteEventId;
 
     //deletes a task from list of tasks
     const deleteTask = (deletedId) => {
+
         setTasks(tasks.filter(filteredTask => filteredTask.id !== deletedId));
+
+        //finds an event associated to the to be deleted task
+        const toDeleteEvent = events.filter(filteredEvent => filteredEvent.task_id === deletedId)
+
+        console.log("toDeleteEvent", toDeleteEvent[0])
+        
+        //if it is found, it will also delete the event associated with it
+        if(toDeleteEvent.length !== 0) {
+            toDeleteEventId = toDeleteEvent[0].id;
+            deleteEvent();
+        }
+    }
+
+    //deletes event associated with the task from list of events
+    const deleteEvent = async () => {
+
+        console.log("inside Delete Event", toDeleteEventId)
+
+        setIsLoading(true);
+        setErrors((e) => ({ ...e, form: null }));
+
+        const { data, error } = await apiClient.deleteEvent(toDeleteEventId);
+
+        if (error) {
+            setErrors((e) => ({ ...e, form: error }));
+        } else {
+            setErrors((e) => ({ ...e, form: null }));
+            setEvents(events.filter(filteredEvent => filteredEvent.id !== toDeleteEventId));
+        }
+
+        setIsLoading(false);
     }
     
 
