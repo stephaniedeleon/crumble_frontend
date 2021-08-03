@@ -101,11 +101,7 @@ export default function UpdateEvent(props) {
 
                 if (resultTask) {
 
-                    console.log("resultTask", resultTask);
-
                     const { data, error } = resultTask;
-
-                    console.log("resultTask data", data);
         
                     const dbTask = data.task;
         
