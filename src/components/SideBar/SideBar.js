@@ -5,15 +5,17 @@ import { useNavigate } from "react-router-dom";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from "./SideBarStyles"
+import GlobalContext from "context/global";
+import { useContext } from "react";
 
 
-export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId, setTabNavigationStack }) {
+export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId }) {
   const classes = useStyles()
   const navigate = useNavigate()
+  const { digIntoTab } = useContext(GlobalContext)
 
   const navigateToSubtab = (event, subId) => {
     event.preventDefault()
-    // setTabNavigationStack((oldStack) => [...oldStack, subId])
     
     let correctSubid;
     if (subId === 'root')
@@ -21,6 +23,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
     else 
       correctSubid = subId
        
+    digIntoTab(correctSubid)
     navigate(`/home/${parseInt(mainId)}/${correctSubid}`);
   }
 

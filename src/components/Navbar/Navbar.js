@@ -31,7 +31,6 @@ export default function Navbar() {
   const RADIUS = 45
 
   const handleOnPlayPauseClick = () => {
-    console.log(timerVariables.timerStatus)
     if (timerVariables.timerStatus === 'paused') {
         startTimer()
     } else if (timerVariables.timerStatus === 'started') {

@@ -10,7 +10,7 @@ import apiClient from "services/apiClient";
 
 export default function ToDo({ directory, setDirectory, mainId, subId }) {
   const { user, authenticated } = useContext(AuthContext);
-  const { subtabs, tasks, setSubtabs, setTasks, tabNavigationStack } = useContext(GlobalContext);
+  const { subtabs, tasks, setSubtabs, setTasks, tabNavigationStack, digIntoTab } = useContext(GlobalContext);
 
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
@@ -80,8 +80,8 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
       action = action.toLowerCase()
       const configuredNewSubtab = directoryConfiguration(newSubtab)
 
-      const index = tabNavigationStack.length - 1;
-      let currentSubtabId = tabNavigationStack[index];
+      const index = tabNavigationStack.stack.length - 1;
+      let currentSubtabId = tabNavigationStack.stack[index];
 
       switch (action) {
         case "add": 
@@ -190,7 +190,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
       <div className="task-area">
         {subtabs.map((subtab) => (
-          <SubTab key={subtab.id} subtab={subtab} mainId={mainId} updateDirectory={updateDirectory} />
+          <SubTab key={subtab.id} subtab={subtab} mainId={mainId} onClick={() => digIntoTab(subtab.id)} updateDirectory={updateDirectory} />
         ))}
         {/* {uncompletedTasks.map((task) => (
           <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
