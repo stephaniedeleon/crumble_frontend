@@ -10,10 +10,12 @@ import apiClient from "services/apiClient";
 export default function UpdateEvent(props) {
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { setEvents } = useContext(GlobalContext);
+    const { setEvents, setTasks } = useContext(GlobalContext);
 
     const calEvent = props.event;
     const event_id = parseInt(calEvent.id);
+
+
 
     const [form, setForm] = useState({
         event_name: calEvent.event_name,
@@ -26,6 +28,13 @@ export default function UpdateEvent(props) {
         setEvents(oldEvents => oldEvents.map(oldEvent => oldEvent.id === updatedEvent.id ? updatedEvent : oldEvent))
     }
 
+
+    // update task in list of tasks
+    const updateTask = (updatedTask) => {
+        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === updatedTask.id ? updatedTask : oldTask))
+    }
+
+
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     }
@@ -36,33 +45,47 @@ export default function UpdateEvent(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        let result;
+        let resultEvent;
+        let resultTask;
 
         if (form.event_name !== "" && form.date !== "") {
 
-            result = await apiClient.updateEvent(event_id, {
+            resultEvent = await apiClient.updateEvent(event_id, {
                 event_name: form.event_name,
                 date: form.date
             });
 
+            resultTask = await apiClient.updateTask(calEvent.task_id, {
+                task: {
+                    details: form.event_name,
+                    date: form.date,
+                }
+            });
+
         } else if (form.event_name === "") { //if name is empty, it will not change the name
 
-            result = await apiClient.updateEvent(event_id, {
+            resultEvent = await apiClient.updateEvent(event_id, {
                 date: form.date
+            });
+
+            resultTask = await apiClient.updateTask(calEvent.task_id, {
+                task: {
+                    date: form.date,
+                }
             });
 
         } else if (form.date === "") { //if date is empty, it will not change the date
 
-            result = await apiClient.updateEvent(event_id, {
+            resultEvent = await apiClient.updateEvent(event_id, {
                 event_name: form.event_name
             });
 
         }
 
         // runs if result is not null
-        if (result) {
+        if (resultEvent) {
 
-            const { data, error } = result;
+            const { data, error } = resultEvent;
 
             const dbEvent = data.event;
 
@@ -74,6 +97,25 @@ export default function UpdateEvent(props) {
                             date: formatDateForInputDisplay(calEvent.date)
                         });
                 updateEvent(dbEvent);
+
+
+                if (resultTask) {
+
+                    console.log("resultTask", resultTask);
+
+                    const { data, error } = resultTask;
+
+                    console.log("resultTask data", data);
+        
+                    const dbTask = data.task;
+        
+                    if (error) {
+                        setErrors((e) => ({ ...e, form: error }));
+                    } else {
+                        setErrors((e) => ({ ...e, form: null }));
+                        updateTask(dbTask);
+                    }
+                }
             } 
         }
 
