@@ -1,0 +1,12 @@
+.PageHeader {
+    width: 100%;
+    height: 80px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffdf6;
+    user-select: none;
+}

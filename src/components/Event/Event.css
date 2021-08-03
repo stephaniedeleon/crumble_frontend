@@ -1,0 +1,90 @@
+.Event .eventItem {
+    margin: 8px 0px;
+    border-radius: 5px;
+    padding: 4px 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #fffdf6;
+}
+
+.Event .eventItem:hover {
+    background-color: #fffbf3;
+}
+
+.Event .eventItem .details {
+    width: 100%;
+}
+
+.Event .eventItem .details:hover {
+    cursor: pointer;
+}
+
+.Event .eventItem .details p {
+    text-align: left;
+    margin: 0;
+}
+
+.Event .eventItem .details .eventName {
+    color: #8c3f0d;
+}
+
+.Event .eventItem .details .eventDate {
+    font-size: 14px;
+    color: #256a3c;
+}
+
+
+/** Hover effect */
+
+.Event .actions {
+    display: none;
+}
+
+.Event .details:hover + .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Event .actions:hover {
+    display: contents;
+}
+
+
+/** Dropdown */
+
+.Event #dropdown-options {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-right: 5px;
+
+    color: rgb(109, 109, 109);
+    font-size: 19px;
+    float: right;
+}
+
+.Event #dropdown-options:hover {
+    color: #8C3F0D;
+}
+
+.Event #dropdown-options:after {
+    display: none;
+}
+
+.Event #options {
+    background-color: #fffdf6;
+}
+
+.Event #option i {
+    margin-right: 4px;
+}
+
+.Event #option:hover {
+    color: #8C3F0D;
+    background-color: #fffbf3;
+}

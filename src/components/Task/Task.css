@@ -1,0 +1,158 @@
+.Task .task {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Task .task:hover {
+    background-color: #fffbf3;
+}
+
+
+/** Hover effect */
+
+.Task .actions {
+    display: none;
+}
+
+.Task .container:hover + .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Task .actions:hover {
+    display: contents;
+}
+
+
+/** Checkbox Component */
+
+/* The container */
+.Task .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+
+    margin: 0;
+    padding: 5px 0px;
+
+    justify-content: space-between;
+    
+    color: #256a3c;
+}
+
+.Task .container .details {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.Task .details .name {
+    text-align: right;
+    margin-left: 25px;
+    margin-bottom: 0;
+}
+
+.Task .priority {
+    color: #8C3F0D;
+    font-size: 13px;
+    padding-right: 30px;
+}
+
+/* Hide the browser's default checkbox */
+.Task .container input {
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.Task .checkmark {
+    position: absolute;
+    left: 0;
+    height: 16.45px;
+    width: 16.45px;
+
+    background-color: white;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 4px;
+}
+
+/* On mouse-over */
+.Task .container:hover input ~ .checkmark {
+    background-color: #fffbf3;
+}
+
+/* When the checkbox is checked */
+.Task .container input:checked ~ .checkmark {
+    border: 1px solid #47825b;
+    background-color: #47825b;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.Task .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.Task .container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.Task .container .checkmark:after {
+    left: 5px;
+    top: 1.8px;
+    width: 4.5px;
+    height: 7.5px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+/** Dropdown */
+
+.Task #dropdown-options {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-right: 5px;
+
+    color: rgb(109, 109, 109);
+    font-size: 19px;
+    float: right;
+}
+
+.Task #dropdown-options:hover {
+    color: #8C3F0D;
+}
+
+.Task #dropdown-options:after {
+    display: none;
+}
+
+.Task #options {
+    background-color: #fffdf6;
+}
+
+.Task #option i {
+    margin-right: 4px;
+}
+
+.Task #option:hover {
+    color: #8C3F0D;
+    background-color: #fffbf3;
+}
