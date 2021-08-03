@@ -1,13 +1,14 @@
+.Breadcrumbs {
+    display: inline-block;
+}
+
 .Breadcrumbs .backBtn, 
 .Breadcrumbs .forwardBtn {
     display: inline-block;
-    
-    height: 32px;
+    margin: 0px 2px;
 
     font-size: 32px;
     font-weight: 400;
-    margin-right: 10px;
-    border-radius: 4px;
     cursor: pointer;
 
     color: #254832;

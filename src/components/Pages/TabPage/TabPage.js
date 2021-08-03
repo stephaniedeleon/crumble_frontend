@@ -21,7 +21,7 @@ export default function TabPage() {
   
   const { mainId, subId } = useParams();
   const { user } = useContext(AuthContext);
-  const { setTabNavigationStack, digIntoTab } = useContext(GlobalContext);
+  const { setTabNavigationStack } = useContext(GlobalContext);
 
 
   // Getting tab details...
@@ -69,13 +69,13 @@ export default function TabPage() {
   return (
     <div className="TabPage">
       <PageHeader sectionName={tab?.name} />
-      <div
+      {/* <div
         className="grid-container"
         style={{
           gridTemplateColumns: `${isMenuOpened ? `${width}px` : "0px"} auto`,
         }}
-      >
-        <div className="grid-item">
+      > */}
+        {/* <div className="grid-item">
             <Breadcrumbs mainId={mainId} subId={subId} />
             <SideBar
               width={width}
@@ -87,9 +87,25 @@ export default function TabPage() {
               mainId={mainId}
               setTabNavigationStack={setTabNavigationStack}
             />
-        </div>
-        <div className="grid-item tab-area">
+        </div> */}
+        <div className="tab-area">
           <Row>
+            <Row className="my-1">
+              <Col className={`navigation-buttons`}>
+                <div className="toggleBtn" onClick={() => setIsMenuOpened(!isMenuOpened)}>
+                  {isMenuOpened ?
+                    <>
+                    0
+                    </>
+
+                    :
+
+                    <i class="bi-list"></i>
+                  }
+                </div>
+                <Breadcrumbs mainId={mainId} subId={subId} />
+              </Col>
+            </Row>
             <Col md={4}>
               <Row>
                 <ToDo mainId={mainId} subId={subId} directory={directory} />
@@ -103,7 +119,7 @@ export default function TabPage() {
             </Col>
           </Row>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 }

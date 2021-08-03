@@ -5,3 +5,27 @@
 .TabPage .grid-container {
     display: grid;
 }
+
+.TabPage .navigation-buttons {
+    text-align: left;
+}
+
+.TabPage .toggleBtn {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.TabPage .toggleBtn i {
+
+    font-size: 32px;
+    font-weight: 400;
+    border-radius: 4px;
+    cursor: pointer;
+
+    color: #254832;
+    box-shadow: none;
+}
+
+.TabPage .toggleBtn i:hover {
+    color: #8C3F0D;
+}
