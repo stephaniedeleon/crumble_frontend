@@ -8,8 +8,11 @@ import apiClient from "services/apiClient";
 
 export default function AddTask(props) {
 
+    const subId = parseInt(props.subId);
+    const mainId = props.mainId;
+
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { setTasks } = useContext(GlobalContext);
+    const { setTasks, setEvents } = useContext(GlobalContext);
 
     const [form, setForm] = useState({
         details: "",
@@ -22,6 +25,11 @@ export default function AddTask(props) {
         setTasks((oldTasks) => [...oldTasks, newTask]);
     }
 
+    // adds a new event to list of events
+    const addEvent = (newEvent) => {
+        setEvents((oldEvents) => [newEvent, ...oldEvents]);
+    }
+
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     }
@@ -32,10 +40,12 @@ export default function AddTask(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        let result;
+        let resultTask;
+        let resultEvent;
 
         if (parseInt(props.subId) === 0) {
-            result = await apiClient.createTaskFromMain({
+
+            resultTask = await apiClient.createTaskFromMain({
                 main_id: parseInt(props.mainId),
                 task: {
                     details: form.details,
@@ -43,8 +53,10 @@ export default function AddTask(props) {
                     date: form.date,
                 }
             });
+
         } else {
-            result = await apiClient.createTaskFromSub({
+
+            resultTask = await apiClient.createTaskFromSub({
                 sub_id: parseInt(props.subId),
                 task: {
                     details: form.details,
@@ -54,16 +66,68 @@ export default function AddTask(props) {
             })
         }
 
-        const { data, error } = result;
+
+        // adding a task
+        const { data, error } = resultTask;
+
+        const dbTask = data?.task;
 
         if (error) {
             setErrors((e) => ({ ...e, form: error }));
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            addTask(data?.task);
-            setForm({   details: "",
-                        priority: "",
-                        date: null, });
+            addTask(dbTask);
+
+
+            if (form.date !== null) {
+    
+                // if a date was added, then sync with calendar
+                if (parseInt(props.subId) === 0) {
+
+                    resultEvent = await apiClient.createEventForMain({ 
+                        main_id: mainId,
+                        event: {
+                            task_id: dbTask.id,
+                            event_name: form.details,
+                            date: form.date
+                        }
+                    });
+
+                } else {
+
+                    resultEvent = await apiClient.createEventForSub({ 
+                        sub_id: subId,
+                        event: {
+                            task_id: dbTask.id,
+                            event_name: form.details,
+                            date: form.date
+                        }
+                    });
+                }
+
+                // syncing with calendar, adding an event based on task
+                const { data, error } = resultEvent;
+
+                const dbEvent = data?.event;
+
+                if (error) {
+                    setErrors((e) => ({ ...e, form: error }));
+                } else {
+                    setErrors((e) => ({ ...e, form: null }));
+                    addEvent(dbEvent);
+                    setForm({   details: "",
+                                priority: "",
+                                date: null,  });
+                }
+
+
+            } else {
+
+                setForm({   details: "",
+                            priority: "",
+                            date: null,  });
+            }
+
         }
 
         setIsLoading(false);

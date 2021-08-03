@@ -13,7 +13,7 @@ export default function AddEvent(props) {
 
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { setEvents, } = useContext(GlobalContext);
+    const { setEvents } = useContext(GlobalContext);
 
     const [form, setForm] = useState({
         event_name: "",

@@ -11,15 +11,45 @@ import { formatDate } from "utils/format";
 export default function DeleteEvent(props) {
 
     const { setErrors, setIsLoading} = useContext(AuthContext);
-    const { events, setEvents} = useContext(GlobalContext);
+    const { events, setEvents, tasks, setTasks } = useContext(GlobalContext);
 
     const event = props.event;
+    const task_id = event.task_id;
     const event_id = parseInt(event.id);
 
+    let toDeleteTaskId;
 
     //deletes an event from list of events
     const deleteEvent = (deletedId) => {
+
         setEvents(events.filter(filteredEvent => filteredEvent.id !== deletedId));
+
+        //finds an event associated to the to be deleted task
+        const toDeleteTask = tasks.filter(filteredTask => filteredTask.id === task_id);
+        
+        //if it is found, it will also delete the event associated with it
+        if(toDeleteTask.length !== 0) {
+            toDeleteTaskId = toDeleteTask[0].id;
+            deleteTask();
+        }
+    }
+
+    //deletes event associated with the task from list of events
+    const deleteTask = async () => {
+
+        setIsLoading(true);
+        setErrors((e) => ({ ...e, form: null }));
+
+        const { data, error } = await apiClient.deleteTask(toDeleteTaskId);
+
+        if (error) {
+            setErrors((e) => ({ ...e, form: error }));
+        } else {
+            setErrors((e) => ({ ...e, form: null }));
+            setTasks(tasks.filter(filteredTask => filteredTask.id !== toDeleteTaskId));
+        }
+
+        setIsLoading(false);
     }
     
 
