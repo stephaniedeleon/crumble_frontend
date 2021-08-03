@@ -9,21 +9,35 @@ import apiClient from "services/apiClient";
 
 export default function UpdateTask(props) {
 
+    const subId = parseInt(props.subId);
+    const mainId = props.mainId;
+
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { setTasks } = useContext(GlobalContext);
+    const { setTasks, setEvents, events } = useContext(GlobalContext);
 
     const task = props.task;
 
     const [form, setForm] = useState({
         details: task.details,
         priority: task.priority,
-        date: formatDateForInputDisplay(task.date),
+        date: task.date === null ? null : formatDateForInputDisplay(task.date),
     });
 
 
-    //update task in list of tasks
+    // update task in list of tasks
     const updateTask = (updatedTask) => {
         setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === updatedTask.id ? updatedTask : oldTask))
+    }
+
+
+    // adds a new event to list of events
+    const addEvent = (newEvent) => {
+        setEvents((oldEvents) => [newEvent, ...oldEvents]);
+    }
+
+    // update event in list of events
+    const updateEvent = (updatedEvent) => {    
+        setEvents(oldEvents => oldEvents.map(oldEvent => oldEvent.id === updatedEvent.id ? updatedEvent : oldEvent))
     }
 
     
@@ -38,27 +52,108 @@ export default function UpdateTask(props) {
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        let result;
+        let resultTask;
+        let resultEvent;
+        let updatedEvent;
 
-        if (form.details !== "") { //if details is empty, it will not change the details
-            result = await apiClient.updateTask(task.id, {
+        if (form.details !== "") { //if details is not empty, it will change the details
+            resultTask = await apiClient.updateTask(task.id, {
                 task: {
                     details: form.details,
                     priority: form.priority,
                     date: form.date,
                 }
             });
-        } else {
-            result = await apiClient.updateTask(task.id, {
+
+            // if a date was added, then sync with calendar
+            if (form.date !== null) {
+
+                if (task.date !== null) { //If there was a previous date before, just update event...
+
+                    const event = events.filter(filteredEvent => filteredEvent.task_id === task.id);
+
+                    updatedEvent = await apiClient.updateEvent(event[0].id, {
+                        event_name: form.details,
+                        date: form.date
+                    });
+
+                } else { //If there was no previous date before, create a new event...
+
+                    if (subId === 0) {
+
+                        resultEvent = await apiClient.createEventForMain({ 
+                            main_id: mainId,
+                            event: {
+                                task_id: task.id,
+                                event_name: form.details,
+                                date: form.date
+                            }
+                        });
+    
+                    } else {
+    
+                        resultEvent = await apiClient.createEventForSub({ 
+                            sub_id: subId,
+                            event: {
+                                task_id: task.id,
+                                event_name: form.details,
+                                date: form.date
+                            }
+                        });
+                    }
+                }
+                
+            }
+
+        } else { //if details is empty, it will not change the details
+            resultTask = await apiClient.updateTask(task.id, {
                 task: {
                     priority: form.priority,
                     date: form.date,
                 }
             });
+
+            // if a date was added, then sync with calendar
+            if (form.date !== null) {
+
+                if (task.date !== null) { //If there was a previous date before, just update event...
+
+                    const event = events.filter(filteredEvent => filteredEvent.event_name === task.details);
+
+                    updatedEvent = await apiClient.updateEvent(event[0].id, {
+                        date: form.date
+                    });
+
+                } else { //If there was no previous date before, create a new event...
+
+                    if (subId === 0) {
+
+                        resultEvent = await apiClient.createEventForMain({ 
+                            main_id: mainId,
+                            event: {
+                                event_name: task.details,
+                                date: form.date
+                            }
+                        });
+    
+                    } else {
+    
+                        resultEvent = await apiClient.createEventForSub({ 
+                            sub_id: subId,
+                            event: {
+                                event_name: task.details,
+                                date: form.date
+                            }
+                        });
+                    }
+                }
+                
+            }
         }
 
-        if (result) {
-            const { data, error } = result;
+        // checks if a task was updated
+        if (resultTask) {
+            const { data, error } = resultTask;
 
             const dbTask = data.task;
 
@@ -70,11 +165,40 @@ export default function UpdateTask(props) {
                           priority: dbTask.priority,
                           date: formatDateForInputDisplay(dbTask.date) });
                 updateTask(dbTask);
-            } 
+
+                // checks if a new event was created (a due date was added to a task)
+                if (resultEvent) {
+                    const { data, error } = resultEvent;
+        
+                    if (error) {
+                        setErrors((e) => ({ ...e, form: error }));
+                    } else {
+                        setErrors((e) => ({ ...e, form: null }));
+                        addEvent(data?.event);
+                    }
+        
+                }
+
+                // checks if an event was updated (name or due date was changed in task)
+                if (updatedEvent) {
+                    const { data, error } = updatedEvent;
+                
+                    const dbEvent = data?.event;
+        
+                    if (error) {
+                        setErrors((e) => ({ ...e, form: error }));
+                    } else {
+                        setErrors((e) => ({ ...e, form: null }));
+                        updateEvent(dbEvent);
+                    }
+        
+                } 
+            }
 
         } else { //if details is empty, it will set the details in form to current task details
             setForm ({  details: task.details, });
         }
+        
 
         setIsLoading(false);
     }
