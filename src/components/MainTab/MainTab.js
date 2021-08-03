@@ -1,9 +1,10 @@
 import "./MainTab.css"
 
 import { Card, Dropdown } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { DeleteMaintab, UpdateMaintab } from "components";
 import { Link } from 'react-router-dom';
+import GlobalContext from "context/global";
 
 
 export default function MainTab({ key, maintab }) {
@@ -11,6 +12,7 @@ export default function MainTab({ key, maintab }) {
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);
     const [editModalShow, setEditModalShow] = useState(false);
+    const { resetTabNavigationStack } = useContext(GlobalContext)
 
 
     return (
@@ -34,7 +36,7 @@ export default function MainTab({ key, maintab }) {
                     </Dropdown>
 
                     <Link to={`/home/${maintab.id}/0`} >
-                        <Card className="maintab">
+                        <Card className="maintab" onClick={resetTabNavigationStack}>
                                 <Card.Body className="maintabName">
                                     <Card.Title> <i class="bi-folder"/>  {maintab.name}</Card.Title>
                                 </Card.Body>     

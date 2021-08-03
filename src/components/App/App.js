@@ -25,7 +25,7 @@ import TimerAlert from "components/pages/TimerAlert/TimerAlert";
 
 function App() {
 
-  const { user, setUser, authenticated, setAuthenticated, tabNavigationStack, setTabNavigationStack } = useApp();
+  const { user, setUser, authenticated, setAuthenticated, tabNavigationStack, setTabNavigationStack, resetTabNavigationStack, digIntoTab, moveOutTab, } = useApp();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -37,17 +37,6 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [events, setEvents] = useState([]);
   const [notes, setNotes] = useState([]);
-
-  // adds id of subtab you are navigating into to stack
-  const digIntoTab = (newId) => {
-    setTabNavigationStack((oldStack) => [...oldStack, newId]);
-  };
-
-  // removes id of subtab you are navigating out of from stack
-  const moveOutTab = (removeId) => {
-    const newStack = tabNavigationStack.filter((id) => id !== removeId);
-    setTabNavigationStack(newStack);
-  };
 
 
   /** TIMER VARIABLES */
@@ -78,6 +67,7 @@ function App() {
         setNotes,
         tabNavigationStack,
         setTabNavigationStack,
+        resetTabNavigationStack,
         digIntoTab,
         moveOutTab, 
       }}>
