@@ -39,6 +39,10 @@
     background-color: #fffbf1;
     color: #216036;
     user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .Notes .accordion>.card>.card-header:hover {
@@ -52,4 +56,67 @@
     border-top: 1px solid rgba(0,0,0,.125);
     color: #254832;
 }
+
+
+/** Actions */
+
+.Notes .card-body .actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Notes .card-body #options {
+    display: flex;
+    align-items: center;
+
+    color: rgb(109, 109, 109);
+}
+
+.Notes .card-body #option {
+    padding: 0px 10px;
+    font-size: 18px;
+}
+
+.Notes .card-body #option:hover {
+    color: #8C3F0D;
+    cursor: pointer;
+}
+
+
+/** Dropdown */
+
+/* .Notes .dropdown {
+    text-align: right;
+}
+
+.Notes .card-body #dropdown-options {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+
+    color: rgb(109, 109, 109);
+    font-size: 23px;
+}
+
+.Notes .card-body #dropdown-options:hover {
+    color: #8C3F0D;
+}
+
+.Notes .card-body #dropdown-options:after {
+    display: none;
+}
+
+.Notes .card-body #options {
+    background-color: #fffdf6;
+}
+
+.Notes .card-body #option i {
+    margin-right: 4px;
+}
+
+.Notes .card-body #option:hover {
+    color: #8C3F0D;
+    background-color: #fffbf3;
+} */
 
