@@ -36,7 +36,7 @@ export default function Note(props) {
         <>
             <Card>
                 <Accordion.Toggle as={Card.Header} eventKey={note.id}>
-                    <div class="details">
+                    <div className="details">
                         {note.title}
                     </div>
                 </Accordion.Toggle>
@@ -48,24 +48,24 @@ export default function Note(props) {
                         <div className="actions">
                             <div id="options">
                                 <div id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                    <i class="bi-trash"/>
+                                    <i className="bi-trash"/>
                                 </div>
                                 <div id="option" onClick={() => setEditModalShow(true)}>
-                                    <i class="bi-pencil-square"/>
+                                    <i className="bi-pencil-square"/>
                                 </div>
                             </div>
 
                             {/* <Dropdown>
                                 <Dropdown.Toggle id="dropdown-options">
-                                    <i class= "bi-three-dots-vertical"></i>
+                                    <i className= "bi-three-dots-vertical"></i>
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu id="options">
                                     <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                        <i class="bi-pencil-square"/> Edit
+                                        <i className="bi-pencil-square"/> Edit
                                     </Dropdown.Item>
                                     <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                        <i class="bi-trash"/> Delete
+                                        <i className="bi-trash"/> Delete
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown> */}

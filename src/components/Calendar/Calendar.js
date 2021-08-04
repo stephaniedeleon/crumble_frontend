@@ -54,7 +54,7 @@ export default function Calendar() {
         </div>
 
         <div className="addBtn">
-          <i class="bi-calendar-plus" onClick={() => setModalShow(true)}></i>
+          <i className="bi-calendar-plus" onClick={() => setModalShow(true)}></i>
         </div>
 
         <AddEvent

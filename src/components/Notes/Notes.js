@@ -51,7 +51,7 @@ export default function Notes({ mainId, subId }) {
         </div>
 
         <div className="addBtn" onClick={() => setModalShow(true)}>
-          <i class="bi-journal-plus"></i>
+          <i className="bi-journal-plus"></i>
         </div>
 
         <AddNote

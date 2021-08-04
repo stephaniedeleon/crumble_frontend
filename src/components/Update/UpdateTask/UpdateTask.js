@@ -1,7 +1,7 @@
 import "./UpdateTask.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { formatDateForInputDisplay } from "utils/format";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
@@ -17,11 +17,17 @@ export default function UpdateTask(props) {
 
     const task = props.task;
 
-    const [form, setForm] = useState({
-        details: task.details,
-        priority: task.priority,
-        date: task.date === null ? null : formatDateForInputDisplay(task.date),
-    });
+    const [form, setForm] = useState({});
+
+    useEffect(() => {
+        
+        setForm ({
+            details: task.details,
+            priority: task.priority,
+            date: task.date === null ? null : formatDateForInputDisplay(task.date),
+        });
+
+    }, [task]);
 
 
     // update task in list of tasks

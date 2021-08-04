@@ -135,7 +135,7 @@ export default function Timer() {
             </g>
           </svg>
 
-          <span class="base-timer-label" style={{ userSelect: "none" }}>
+          <span className="base-timer-label" style={{ userSelect: "none" }}>
             {formatTimeLeft(timeLeft)}
           </span>
         </div>
