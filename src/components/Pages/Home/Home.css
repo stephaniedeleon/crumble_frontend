@@ -14,7 +14,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    opacity: 80%;
+    opacity: 0.80;
 }
 
 .Home .caption {
@@ -24,7 +24,7 @@
 
 .Home .caption h3 {
     font-family: 'Playfair Display', serif;
-    opacity: 100%;
+    opacity: 1;
     font-weight: 600;
     font-size: 45px;
 }
