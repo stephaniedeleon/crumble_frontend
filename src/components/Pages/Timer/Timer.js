@@ -152,7 +152,7 @@ export default function Timer() {
           </h6>
 
           <div className={`resetButton ${timerStatus}`} onClick={handleResetBtnClick}>
-            <i class="bi-skip-end-fill"></i>
+            <i className="bi-skip-end-fill"></i>
           </div>
         </div>
       </div>
