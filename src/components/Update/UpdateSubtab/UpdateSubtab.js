@@ -9,7 +9,7 @@ import apiClient from "services/apiClient";
 export default function UpdateSubtab(props) {
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { subtabs } = useContext(GlobalContext);
+    const { setSubtabs } = useContext(GlobalContext);
 
     const subtab = props.subtab;
 
@@ -19,13 +19,8 @@ export default function UpdateSubtab(props) {
 
 
     //update subtab in list of subtabs
-    const updateSubtab = (updatedId) => {
-
-        let found = subtabs.find(foundSubtab => foundSubtab.id === updatedId);
-
-        if (form.name !== "") { //if name is empty, it will not change the name
-            found.name = form.name;
-        }
+    const updateSubtab = (updatedSubtab) => {
+        setSubtabs(oldSubtabs => oldSubtabs.map(oldSubtab => oldSubtab.id === updatedSubtab.id ? updatedSubtab : oldSubtab));
     }
 
 
@@ -44,7 +39,9 @@ export default function UpdateSubtab(props) {
 
         if (form.name !== "") { //if name is empty, it will not change the name
             result = await apiClient.updateSubtab(subtab.id, { 
-                name: form.name,
+                subtab: {
+                    name: form.name,
+                }
             });
         }
 
@@ -58,7 +55,7 @@ export default function UpdateSubtab(props) {
             } else {
                 setErrors((e) => ({ ...e, form: null }));
                 setForm({ name: dbSubtab.name });
-                updateSubtab(subtab.id);
+                updateSubtab(dbSubtab);
             } 
 
         } else { //if name is empty, it will set the name in form to current maintab name

@@ -37,6 +37,10 @@
     color: #325D41;
 }
 
+.MainTab .maintabName .bi-folder {
+    margin-right: 8px;
+}
+
 .MainTab .card-title {
     margin: 0;
     color: #325D41;

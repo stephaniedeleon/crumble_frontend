@@ -36,28 +36,43 @@ export default function Note(props) {
         <>
             <Card>
                 <Accordion.Toggle as={Card.Header} eventKey={note.id}>
-                    {note.title}
-                    <div class="actions">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-options">
-                            <i class= "bi-three-dots"></i>
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu id="options">
-                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i class="bi-pencil-square"/> Edit
-                            </Dropdown.Item>
-                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                <i class="bi-trash"/> Delete
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </div>
+                    <div className="details">
+                        {note.title}
+                    </div>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={note.id}>
                     <Card.Body>
+
                         <Editor toolbarHidden editorState={editorState} readOnly/>
+
+                        <div className="actions">
+                            <div id="options">
+                                <div id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                    <i className="bi-trash"/>
+                                </div>
+                                <div id="option" onClick={() => setEditModalShow(true)}>
+                                    <i className="bi-pencil-square"/>
+                                </div>
+                            </div>
+
+                            {/* <Dropdown>
+                                <Dropdown.Toggle id="dropdown-options">
+                                    <i className= "bi-three-dots-vertical"></i>
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu id="options">
+                                    <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
+                                        <i className="bi-pencil-square"/> Edit
+                                    </Dropdown.Item>
+                                    <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                        <i className="bi-trash"/> Delete
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown> */}
+                        </div>
+
                     </Card.Body>
+                    
                 </Accordion.Collapse>
             </Card>
 

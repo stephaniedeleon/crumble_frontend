@@ -9,14 +9,17 @@ import apiClient from "services/apiClient";
 // Has the list of subtabs and tasks
 
 export default function ToDo({ directory, setDirectory, mainId, subId }) {
-  const { user, authenticated } =
-    useContext(AuthContext);
+  const { user, authenticated } = useContext(AuthContext);
   const { subtabs, tasks, setSubtabs, setTasks, tabNavigationStack, digIntoTab } = useContext(GlobalContext);
 
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
 
-  // fetches subtabs
+  //new
+  const [completedTasks, setCompletedTasks] = useState([]);
+  const [uncompletedTasks, setUncompletedTasks] = useState([]);
+
+  // fetches subtabs and tasks
   useEffect(() => {
     const fetchSubtabs = async () => {
       setSubtabs([]); //clears
@@ -52,7 +55,9 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
       const { data, error } = result;
 
-      if (data) setTasks(data.tasks);
+      if (data) {
+        setTasks(data.tasks);
+      }
       if (error) setError(error);
 
       setIsFetching(false);
@@ -64,9 +69,9 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
     }
   }, [setSubtabs, setTasks, user, authenticated, mainId, subId]);
 
+
   const [modalShow, setModalShow] = useState(false);
   const [taskModalShow, setTaskModalShow] = useState(false);
-
 
 
     /** Adds subtab to front end directory (action: "add", "delete", "update") */
@@ -103,7 +108,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
         default:
           break;
-      } 
+      }
   }
 
   /** Finds and returns the object whose child must be added to */
@@ -136,6 +141,18 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
       }
   }
 
+
+  //newwww
+  useEffect(() => {
+    const separatingTasks = () => {
+      setCompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === true));
+      setUncompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === false));
+    } 
+    separatingTasks();
+
+  }, [setTasks, tasks]);
+
+
   return (
     <div className="ToDo">
       <div className="title">
@@ -145,11 +162,11 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
         <div className="addBtns">
           <div className="addSubBtn" onClick={() => setModalShow(true)}>
-            <i class="bi-folder-plus"></i>
+            <i className="bi-folder-plus"></i>
           </div>
           <div className="addTaskBtn" onClick={() => setTaskModalShow(true)}>
-            {/* <i class="bi-card-checklist"></i> */}
-            <i class="bi-check2-square"></i>
+            {/* <i className="bi-card-checklist"></i> */}
+            <i className="bi-check2-square"></i>
           </div>
         </div>
 
@@ -175,8 +192,14 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
         {subtabs.map((subtab) => (
           <SubTab key={subtab.id} subtab={subtab} mainId={mainId} onClick={() => digIntoTab(subtab.id)} updateDirectory={updateDirectory} />
         ))}
+        {/* {uncompletedTasks.map((task) => (
+          <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
+        ))}
+        {completedTasks.map((task) => (
+          <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
+        ))} */}
         {tasks.map((task) => (
-          <Task key={task.id} task={task} mainId={mainId} />
+          <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
         ))}
       </div>
     </div>

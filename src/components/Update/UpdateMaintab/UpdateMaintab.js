@@ -9,7 +9,7 @@ import apiClient from "services/apiClient";
 export default function UpdateMaintab(props) {
 
     const { setErrors, setIsLoading } = useContext(AuthContext);
-    const { maintabs } = useContext(GlobalContext);
+    const { setMaintabs } = useContext(GlobalContext);
 
     const maintab = props.maintab;
 
@@ -19,13 +19,8 @@ export default function UpdateMaintab(props) {
 
 
     //update maintab in list of maintabs
-    const updateMaintab = (updatedId) => {
-
-        let found = maintabs.find(foundMaintab => foundMaintab.id === updatedId);
-
-        if (form.name !== "") { //if name is empty, it will not change the name
-            found.name = form.name;
-        }
+    const updateMaintab = (updatedMaintab) => {
+        setMaintabs(oldMaintabs => oldMaintabs.map(oldMaintab => oldMaintab.id === updatedMaintab.id ? updatedMaintab : oldMaintab));
     }
 
     
@@ -58,7 +53,7 @@ export default function UpdateMaintab(props) {
             } else {
                 setErrors((e) => ({ ...e, form: null }));
                 setForm ({  name: dbMaintab.name });
-                updateMaintab(maintab.id);
+                updateMaintab(dbMaintab);
             } 
 
         } else { //if name is empty, it will set the name in form to current maintab name

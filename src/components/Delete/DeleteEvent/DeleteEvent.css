@@ -1,0 +1,8 @@
+/** Affects all modals */ 
+.delete-modal .deleteItem {
+    text-align: center;
+}
+
+.delete-modal .deleteNote {
+    color: rgb(94, 94, 94);
+}

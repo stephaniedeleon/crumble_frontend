@@ -73,12 +73,12 @@ export default function UpdateNote(props) {
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Edit Note
-                    </Modal.Title>s
+                    </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <FormGroup>
-                        <FormLabel className="form-label"> New title of note  </FormLabel>
+                        <FormLabel className="form-label"> Title of note  </FormLabel>
                         <Form.Control
                             type="text"
                             name="title"

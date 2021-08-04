@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import GlobalContext from "context/global";
 
 
-export default function MainTab({ key, maintab }) {
+export default function MainTab({ maintab }) {
 
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);
@@ -22,15 +22,15 @@ export default function MainTab({ key, maintab }) {
                 <div className="card-wrapper">
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-options">
-                            <i class= "bi-three-dots-vertical"></i>
+                            <i className= "bi-three-dots-vertical"></i>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu id="options">
                             <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i class="bi-pencil-square"/> Rename
+                                <i className="bi-pencil-square"/> Rename
                             </Dropdown.Item>
                             <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                <i class="bi-trash"/> Delete
+                                <i className="bi-trash"/> Delete
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -38,7 +38,7 @@ export default function MainTab({ key, maintab }) {
                     <Link to={`/home/${maintab.id}/0`} >
                         <Card className="maintab" onClick={resetTabNavigationStack}>
                                 <Card.Body className="maintabName">
-                                    <Card.Title> <i class="bi-folder"/>  {maintab.name}</Card.Title>
+                                    <Card.Title> <i className="bi-folder"/>{maintab.name}</Card.Title>
                                 </Card.Body>     
                         </Card>
                     </Link>

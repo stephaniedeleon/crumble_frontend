@@ -1,0 +1,85 @@
+/** Editor */
+
+.UpdateNote .editor {
+    border: 1px solid #47825b;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 25px;
+    min-height: 400px;
+}
+
+.UpdateNote .rdw-editor-main {
+    color: #254832;
+}
+
+/** Toolbar */
+
+.UpdateNote .rdw-editor-toolbar {
+    background-color: #fffdf6;
+    /* border-color: #8C3F0D; */
+    border-radius: 4px;
+    color: #2A3A30;
+    padding: 8px;
+}
+
+.UpdateNote .rdw-editor-toolbar input {
+    color: #325D41;
+}
+
+.UpdateNote .rdw-option-wrapper {
+    height: 26px;
+    width: 26px;
+}
+
+.UpdateNote .rdw-option-wrapper:hover,
+.UpdateNote .rdw-option-active {
+    border-color: #8C3F0D;
+    box-shadow: none;
+}
+
+.UpdateNote .rdw-dropdown-wrapper:hover {
+    border-color: #8C3F0D;
+    box-shadow: none;
+}
+
+.UpdateNote .rdw-editor-toolbar span {
+    color: #8C3F0D;
+}
+
+/** Color Picker */
+
+.UpdateNote .rdw-colorpicker-modal-options {
+    margin-left: 8px;
+}
+
+.UpdateNote .rdw-colorpicker-modal-style-label {
+    padding: 0;
+    padding-bottom: 5px;
+}
+
+.UpdateNote span .rdw-colorpicker-option {
+    box-shadow: none;
+}
+
+.UpdateNote span .rdw-colorpicker-cube {
+    transition: all 0.4s ease 0s;
+    box-shadow: none;
+}
+
+.UpdateNote span .rdw-colorpicker-cube:hover {
+    transform: scale(1.02);
+    border-color: #2A3A30;
+}
+
+/** Link */
+
+.UpdateNote .rdw-link-modal {
+    height: 240px;
+}
+
+/** Embedded Link */ 
+
+.UpdateNote .rdw-embedded-modal {
+    height: 210px;
+}
+
