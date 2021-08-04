@@ -92,7 +92,7 @@ export default function AddSubTab(props) {
                     />
                 </FormGroup>
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button">Add SubTab</Button>
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.name.trim())}>Add SubTab</Button>
                 </div>
             </Modal.Body>
         </Form>
