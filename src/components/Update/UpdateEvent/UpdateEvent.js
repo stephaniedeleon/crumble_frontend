@@ -1,7 +1,7 @@
 import "./UpdateEvent.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { formatDateForInputDisplay } from "utils/format";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
@@ -15,12 +15,16 @@ export default function UpdateEvent(props) {
     const calEvent = props.event;
     const event_id = parseInt(calEvent.id);
 
+    const [form, setForm] = useState({});
 
+    useEffect(() => {
+        
+        setForm ({
+            event_name: calEvent.event_name,
+            date: formatDateForInputDisplay(calEvent.date),
+        });
 
-    const [form, setForm] = useState({
-        event_name: calEvent.event_name,
-        date: formatDateForInputDisplay(calEvent.date),
-    });
+    }, [calEvent]);
 
 
     //update event in list of events
