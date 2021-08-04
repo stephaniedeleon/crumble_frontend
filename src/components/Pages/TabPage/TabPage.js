@@ -90,7 +90,7 @@ export default function TabPage() {
 
                     :
 
-                    <i class="bi-list"></i>
+                    <i className="bi-list"></i>
                   }
                 </div>
                 <Breadcrumbs mainId={mainId} subId={subId} />
