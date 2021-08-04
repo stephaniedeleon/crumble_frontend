@@ -84,6 +84,7 @@ export default function UpdateMaintab(props) {
                     <Form.Control
                         type="text"
                         name="name"
+                        maxLength={30}
                         className="input-field"
                         onChange={handleOnInputChange}
                         value={form.name}

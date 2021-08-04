@@ -152,6 +152,7 @@ export default function UpdateEvent(props) {
                         <Form.Control
                             type="text"
                             name="event_name"
+                            maxLength={20}
                             className="input-field"
                             onChange={handleOnInputChange}
                             value={form.event_name}
