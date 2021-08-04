@@ -85,16 +85,49 @@ export default function DeleteEvent(props) {
                     <Modal.Title>Delete Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure you want to delete the event: {event.event_name} on {formatDate(event.date)}?
-                    
-                    <div className="modal-button">
-                        <Button onClick={props.onHide} className="del-button">
-                            Cancel
-                        </Button>
-                        <Button type="submit" onClick={handleOnDelete} className="button">
-                            Delete {event.event_name}
-                        </Button>
-                    </div>
+                    {event.task_id ? (
+                        <>
+                            <div>
+                                Are you sure you want to delete the event:
+                            </div>
+                            <br/>
+                            <div className="deleteItem">
+                                {event.event_name} on {formatDate(event.date)}
+                            </div>
+                            <br/>
+                            <div className="deleteNote">
+                                Note: This will also delete the task associated with this event. 
+                            </div>
+                
+                            <div className="modal-button">
+                                <Button onClick={props.onHide} className="del-button">
+                                    Cancel
+                                </Button>
+                                <Button type="submit" onClick={handleOnDelete} className="button">
+                                    Delete Event and Task: {event.event_name}
+                                </Button>
+                            </div>
+                        </>
+                    ) : ( 
+                        <>
+                            <div>
+                                Are you sure you want to delete the event:
+                            </div>
+                            <br/>
+                            <div className="deleteItem">
+                                {event.event_name} on {formatDate(event.date)}
+                            </div>
+
+                            <div className="modal-button">
+                                <Button onClick={props.onHide} className="del-button">
+                                    Cancel
+                                </Button>
+                                <Button type="submit" onClick={handleOnDelete} className="button">
+                                    Delete Event: {event.event_name}
+                                </Button>
+                            </div>
+                        </>
+                    )}
                 </Modal.Body>
             </div>
         </Modal>

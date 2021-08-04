@@ -16,15 +16,15 @@ export default function DeleteTask(props) {
 
     let toDeleteEventId;
 
+    //finds an event associated to the to be deleted task
+    let toDeleteEvent = events.filter(filteredEvent => filteredEvent.task_id === task_id);
+
     //deletes a task from list of tasks
     const deleteTask = (deletedId) => {
 
         setTasks(tasks.filter(filteredTask => filteredTask.id !== deletedId));
-
-        //finds an event associated to the to be deleted task
-        const toDeleteEvent = events.filter(filteredEvent => filteredEvent.task_id === deletedId)
         
-        //if it is found, it will also delete the event associated with it
+        //if an event is found, it will also delete the event associated with it
         if(toDeleteEvent.length !== 0) {
             toDeleteEventId = toDeleteEvent[0].id;
             deleteEvent();
@@ -82,16 +82,51 @@ export default function DeleteTask(props) {
                     <Modal.Title>Delete Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure you want to delete the task: {task.details}?
-                    
-                    <div className="modal-button">
-                        <Button onClick={props.onHide} className="del-button">
-                            Cancel
-                        </Button>
-                        <Button type="submit" onClick={handleOnDelete} className="button">
-                            Delete {task.details}
-                        </Button>
-                    </div>
+
+                    { toDeleteEvent.length !== 0 ? (
+                        <>
+                            <div>
+                                Are you sure you want to delete the task:
+                            </div>
+                            <br/>
+                            <div className="deleteItem">
+                                {task.details}
+                            </div>
+                            <br/>
+                            <div className="deleteNote">
+                                Note: This will also delete the event associated with this task. 
+                            </div>
+                
+                            <div className="modal-button">
+                                <Button onClick={props.onHide} className="del-button">
+                                    Cancel
+                                </Button>
+                                <Button type="submit" onClick={handleOnDelete} className="button">
+                                    Delete Task and Event: {task.details}
+                                </Button>
+                            </div>
+                        </>
+                    ) : ( 
+                        <>
+                            <div>
+                                Are you sure you want to delete the event:
+                            </div>
+                            <br/>
+                            <div className="deleteItem">
+                                {task.details}
+                            </div>
+
+                            <div className="modal-button">
+                                <Button onClick={props.onHide} className="del-button">
+                                    Cancel
+                                </Button>
+                                <Button type="submit" onClick={handleOnDelete} className="button">
+                                    Delete Task: {task.details}
+                                </Button>
+                            </div>
+                        </>
+                    )}
+ 
                 </Modal.Body>
             </div>
         </Modal>

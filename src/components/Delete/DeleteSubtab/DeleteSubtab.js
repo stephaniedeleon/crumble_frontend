@@ -54,14 +54,20 @@ export default function DeleteSubtab(props) {
                     <Modal.Title>Delete Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure you want to delete the subtab: {subtab.name}?
+                    <div>
+                        Are you sure you want to delete the subtab: 
+                    </div>
+                    <br/> 
+                    <div className="deleteItem">
+                        {subtab.name}
+                    </div>
 
                     <div className="modal-button">
                         <Button onClick={props.onHide} className="del-button">
                             Cancel
                         </Button>
                         <Button type="submit" onClick={handleOnDelete} className="button">
-                            Delete {subtab.name}
+                            Delete Subtab: {subtab.name}
                         </Button>
                     </div>
                 </Modal.Body>
