@@ -61,6 +61,12 @@ export default function Timer() {
     }
   }
 
+  const handleResetBtnClick = () => {
+    if (timerStatus === 'started') {
+      stopTimer()
+    }
+  }
+
   return (
     <div className="Timer">
       <div className="timer-grid">
@@ -145,8 +151,8 @@ export default function Timer() {
             </div>
           </h6>
 
-          <div className={`resetButton ${timerStatus}`} onClick={stopTimer}>
-            <i className="bi-skip-end-fill"></i>
+          <div className={`resetButton ${timerStatus}`} onClick={handleResetBtnClick}>
+            <i class="bi-skip-end-fill"></i>
           </div>
         </div>
       </div>

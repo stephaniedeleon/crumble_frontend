@@ -8,7 +8,7 @@
     border-radius: 4px;
     margin-top: 25px;
 
-    opacity: 100%;
+    opacity: 1;
 
     transition-property: all;
     transition-duration: 0.4s;
@@ -20,10 +20,8 @@
 }
 
 .SideBar.closed {
-    /* width: 0px;
-    border: transparent; */
     transform: translateX(-180px);
-    opacity: 0%;
+    opacity: 0;
 }
 
 .SideBar .content-wrapper {
@@ -34,11 +32,14 @@
 
 .SideBar .my-menu-class {
     display: block;
-    opacity: 100%;
+    transition-property: all;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out;
+    opacity: 1;
 }
 
 .SideBar.closed .my-menu-class {
-    opacity: 0%;
+    opacity: 0;
 }
 
 .SideBar .toggleBtn {
