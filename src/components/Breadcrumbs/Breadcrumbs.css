@@ -1,3 +1,26 @@
-button {
+.Breadcrumbs {
     display: inline-block;
+}
+
+.Breadcrumbs .backBtn, 
+.Breadcrumbs .forwardBtn {
+    display: inline-block;
+    margin: 0px 2px;
+
+    font-size: 32px;
+    font-weight: 400;
+    cursor: pointer;
+
+    color: #254832;
+    box-shadow: none;
+}
+
+.Breadcrumbs .backBtn:hover,
+.Breadcrumbs .forwardBtn:hover {
+    color: #8C3F0D;
+}
+
+.Breadcrumbs .backBtn:active,
+.Breadcrumbs .forwardBtn:active {
+    transform: translateY(1px);
 }

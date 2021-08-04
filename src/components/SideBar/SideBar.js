@@ -46,7 +46,9 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
               {isMenuOpened ? 
                   <i class="bi-arrow-left-square" onClick={handleClick}></i>
               :
-                <i class="bi-list" onClick={handleClick}></i>
+              <>
+              </>
+                // <i class="bi-list" onClick={handleClick}></i>
                 // <i class="bi-arrow-right-square" onClick={handleClick}></i>
               }
             </div>
