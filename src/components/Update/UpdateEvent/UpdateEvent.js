@@ -22,6 +22,7 @@ export default function UpdateEvent(props) {
         setForm ({
             event_name: calEvent.event_name,
             date: formatDateForInputDisplay(calEvent.date),
+            notes: calEvent.notes,
         });
 
     }, [calEvent]);
@@ -56,32 +57,39 @@ export default function UpdateEvent(props) {
 
             resultEvent = await apiClient.updateEvent(event_id, {
                 event_name: form.event_name,
-                date: form.date
+                date: form.date,
+                notes: form.notes,
             });
 
-            resultTask = await apiClient.updateTask(calEvent.task_id, {
-                task: {
-                    details: form.event_name,
-                    date: form.date,
-                }
-            });
+            if (calEvent.task_id){
+                resultTask = await apiClient.updateTask(calEvent.task_id, {
+                    task: {
+                        details: form.event_name,
+                        date: form.date,
+                    }
+                });
+            }
 
         } else if (form.event_name === "") { //if name is empty, it will not change the name
 
             resultEvent = await apiClient.updateEvent(event_id, {
-                date: form.date
+                date: form.date,
+                notes: form.notes,
             });
 
-            resultTask = await apiClient.updateTask(calEvent.task_id, {
-                task: {
-                    date: form.date,
-                }
-            });
+            if (calEvent.task_id) {
+                resultTask = await apiClient.updateTask(calEvent.task_id, {
+                    task: {
+                        date: form.date,
+                    }
+                });
+            }
 
         } else if (form.date === "") { //if date is empty, it will not change the date
 
             resultEvent = await apiClient.updateEvent(event_id, {
-                event_name: form.event_name
+                event_name: form.event_name,
+                notes: form.notes,
             });
 
         }
@@ -127,6 +135,7 @@ export default function UpdateEvent(props) {
         <Modal
             {...props}
             size="lg"
+            className="UpdateEvent"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -155,6 +164,15 @@ export default function UpdateEvent(props) {
                             className="input-field"
                             onChange={handleOnInputChange}
                             value={form.date}
+                        />
+
+                        <FormLabel className="form-label"><div>Additional notes</div> &nbsp; <p>(optional)</p></FormLabel>
+                        <Form.Control
+                            type="text"
+                            name="notes"
+                            className="input-field"
+                            onChange={handleOnInputChange}
+                            value={form.notes}
                         />
                     </FormGroup>
                     <div className="modal-button">
