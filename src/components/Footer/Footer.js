@@ -14,7 +14,7 @@ export default function Footer() {
                         <i className="bi-linkedin"/> G
                         </ExternalLink>
                         <ExternalLink href="https://www.linkedin.com/in/stephanie-de-leon-a902b717a/"> 
-                            <i class="bi-linkedin"/> S
+                            <i className="bi-linkedin"/> S
                         </ExternalLink>
                         <ExternalLink href="https://www.linkedin.com/in/abhirajchatterjee/"> 
                             <i className="bi-linkedin"/> A
@@ -24,7 +24,7 @@ export default function Footer() {
                 <div id="footer-col-m" className="col-md-4">
                     <Link to="/about">
                         {/* <img src="images/favicon.ico" alt="Love, Panini small logo" style="max-height: 3.2rem;">
-                        <img class="signature" src="images/closing.png" alt="Love, Panini signature"
+                        <img className="signature" src="images/closing.png" alt="Love, Panini signature"
                             style="max-height: 4.3rem;"> */}
                         <div className="credits">Coded with care by G.S.A.</div>
 

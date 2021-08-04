@@ -41,6 +41,7 @@ export default function DeleteNote(props) {
     return (
         <Modal
             {...props}
+            centered
             backdrop="static"
             keyboard={false}
             className="delete-modal"
@@ -50,14 +51,20 @@ export default function DeleteNote(props) {
                     <Modal.Title> Delete Confirmation </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure you want to delete the note: {note.title}?
+                    <div>
+                        Are you sure you want to delete the note: 
+                    </div>
+                    <br/> 
+                    <div className="deleteItem">
+                        {note.title}
+                    </div>
 
                     <div className="modal-button">
                         <Button onClick={props.onHide} className="del-button">
                             Cancel
                         </Button>
                         <Button type="submit" onClick={handleOnDelete} className="button">
-                            Delete {note.title}
+                            Delete Note: {note.title}
                         </Button>
                     </div>
                 </Modal.Body>

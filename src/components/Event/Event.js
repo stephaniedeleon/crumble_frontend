@@ -6,7 +6,7 @@ import { DeleteEvent, UpdateEvent } from "components";
 import { formatDate } from "utils/format";
 
 
-export default function Event({ key, event }) {
+export default function Event({ event }) {
 
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);
@@ -20,18 +20,18 @@ export default function Event({ key, event }) {
                     <p className="eventDate">{formatDate(event.date)}</p>  
                 </div>
 
-                <div class="actions">
+                <div className="actions">
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-options">
-                            <i class= "bi-three-dots"></i>
+                            <i className= "bi-three-dots"></i>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu id="options">
                             <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i class="bi-pencil-square"/> Edit
+                                <i className="bi-pencil-square"/> Edit
                             </Dropdown.Item>
                             <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                <i class="bi-trash"/> Delete
+                                <i className="bi-trash"/> Delete
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

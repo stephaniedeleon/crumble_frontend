@@ -44,12 +44,12 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
         <div className={`content-wrapper`}>
             <div className="toggleBtn">
               {isMenuOpened ? 
-                  <i class="bi-arrow-left-square" onClick={handleClick}></i>
+                  <i className="bi-arrow-left-square" onClick={handleClick}></i>
               :
               <>
               </>
-                // <i class="bi-list" onClick={handleClick}></i>
-                // <i class="bi-arrow-right-square" onClick={handleClick}></i>
+                // <i className="bi-list" onClick={handleClick}></i>
+                // <i className="bi-arrow-right-square" onClick={handleClick}></i>
               }
             </div>
 
