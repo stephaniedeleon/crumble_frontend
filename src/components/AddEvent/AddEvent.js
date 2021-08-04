@@ -18,6 +18,7 @@ export default function AddEvent(props) {
     const [form, setForm] = useState({
         event_name: "",
         date: "",
+        notes: "",
     });
 
 
@@ -29,6 +30,7 @@ export default function AddEvent(props) {
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+        console.log({[event.target.name]: event.target.value})
     }
 
 
@@ -47,7 +49,8 @@ export default function AddEvent(props) {
                 main_id: mainId,
                 event: {
                     event_name: form.event_name,
-                    date: form.date
+                    date: form.date,
+                    notes: form.notes,
                 }
             }); 
 
@@ -58,7 +61,8 @@ export default function AddEvent(props) {
                 sub_id: subId,
                 event: {
                     event_name: form.event_name,
-                    date: form.date
+                    date: form.date,
+                    notes: form.notes,
                 }
             });
         }
@@ -72,7 +76,8 @@ export default function AddEvent(props) {
             setErrors((e) => ({ ...e, form: null }));
             addEvent(data?.event);
             setForm({ event_name: "",
-                        date: "",});
+                        date: "",
+                        notes: "",});
         } 
 
         setIsLoading(false);
@@ -83,6 +88,7 @@ export default function AddEvent(props) {
       <Modal
             {...props}
             size="lg"
+            className="AddEvent"
             aria-labelledby="contained-modal-title-vcenter"
             centered
       >
@@ -113,6 +119,15 @@ export default function AddEvent(props) {
                         onChange={handleOnInputChange}
                         value={form.date}
                         required
+                    />
+                    <FormLabel className="form-label"><div>Additional notes</div> &nbsp; <p>(optional)</p></FormLabel>
+                    <Form.Control
+                        type="text"
+                        name="notes"
+                        className="input-field"
+                        placeholder="..."
+                        onChange={handleOnInputChange}
+                        value={form.notes}
                     />
                 </FormGroup>
                 <div className="modal-button">

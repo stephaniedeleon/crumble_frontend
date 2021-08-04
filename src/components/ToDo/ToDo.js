@@ -162,11 +162,11 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
 
         <div className="addBtns">
           <div className="addSubBtn" onClick={() => setModalShow(true)}>
-            <i class="bi-folder-plus"></i>
+            <i className="bi-folder-plus"></i>
           </div>
           <div className="addTaskBtn" onClick={() => setTaskModalShow(true)}>
-            {/* <i class="bi-card-checklist"></i> */}
-            <i class="bi-check2-square"></i>
+            {/* <i className="bi-card-checklist"></i> */}
+            <i className="bi-check2-square"></i>
           </div>
         </div>
 

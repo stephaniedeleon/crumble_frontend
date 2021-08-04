@@ -129,7 +129,7 @@ export default function Timer() {
             </g>
           </svg>
 
-          <span class="base-timer-label" style={{ userSelect: "none" }}>
+          <span className="base-timer-label" style={{ userSelect: "none" }}>
             {formatTimeLeft(timeLeft)}
           </span>
         </div>
@@ -146,7 +146,7 @@ export default function Timer() {
           </h6>
 
           <div className={`resetButton ${timerStatus}`} onClick={stopTimer}>
-            <i class="bi-skip-end-fill"></i>
+            <i className="bi-skip-end-fill"></i>
           </div>
         </div>
       </div>

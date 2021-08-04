@@ -16,10 +16,10 @@ export default function Breadcrumbs ({mainId, subId}) {
     return (
         <div className="Breadcrumbs">
             <div className="backBtn">
-                <i class="bi-arrow-left-circle" onClick={handleBackClick}></i>
+                <i className="bi-arrow-left-circle" onClick={handleBackClick}></i>
             </div>
             <div className="forwardBtn">
-                <i class="bi-arrow-right-circle" onClick={handleForwardClick}></i>
+                <i className="bi-arrow-right-circle" onClick={handleForwardClick}></i>
             </div>
         </div>
     )

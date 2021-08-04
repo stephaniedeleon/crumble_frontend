@@ -39,7 +39,9 @@ export default function UpdateSubtab(props) {
 
         if (form.name !== "") { //if name is empty, it will not change the name
             result = await apiClient.updateSubtab(subtab.id, { 
-                name: form.name,
+                subtab: {
+                    name: form.name,
+                }
             });
         }
 
