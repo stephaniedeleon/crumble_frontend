@@ -68,14 +68,15 @@ export default function TabPage() {
 
   return (
     <div className="TabPage">
+
       <PageHeader sectionName={tab?.name} />
       <div
-        className="grid-container"
-        style={{
-          gridTemplateColumns: `${isMenuOpened ? `${width}px` : "0px"} auto`,
-        }}
+        className={`grid-container`}
+        // style={{
+        //   gridTemplateColumns: `${isMenuOpened ? `120px` : "0px"} auto`,
+        // }}
       >
-        <div className="grid-item">
+        <div className={`sidebar ${isMenuOpened ? "open" : ""}`}>
             <SideBar
               isMenuOpened={isMenuOpened}
               setIsMenuOpened={setIsMenuOpened}
