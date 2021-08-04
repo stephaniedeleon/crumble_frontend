@@ -85,6 +85,7 @@ export default function AddSubTab(props) {
                         name="name"
                         className="input-field"
                         placeholder="Sub Tab Name"
+                        maxLength={30}
                         onChange={handleOnInputChange}
                         value={form.name}
                         required

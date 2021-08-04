@@ -231,6 +231,7 @@ export default function UpdateTask(props) {
                     <Form.Control
                         type="text"
                         name="details"
+                        maxLength={40}
                         className="input-field"
                         aria-label="Input name of new task"
                         onChange={handleOnInputChange}

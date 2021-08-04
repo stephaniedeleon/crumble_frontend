@@ -88,6 +88,7 @@ export default function UpdateSubtab(props) {
                         type="text"
                         name="name"
                         className="input-field"
+                        maxLength={30}
                         onChange={handleOnInputChange}
                         value={form.name}
                     />

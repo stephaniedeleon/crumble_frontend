@@ -105,6 +105,7 @@ export default function AddEvent(props) {
                     <Form.Control
                         type="text"
                         name="event_name"
+                        maxLength={20}
                         className="input-field"
                         placeholder="Event Name"
                         onChange={handleOnInputChange}
