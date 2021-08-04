@@ -78,7 +78,7 @@ export default function UpdateNote(props) {
 
                 <Modal.Body>
                     <FormGroup>
-                        <FormLabel className="form-label"> New title of note  </FormLabel>
+                        <FormLabel className="form-label"> Title of note  </FormLabel>
                         <Form.Control
                             type="text"
                             name="title"
