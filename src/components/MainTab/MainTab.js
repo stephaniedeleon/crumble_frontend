@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import GlobalContext from "context/global";
 
 
-export default function MainTab({ key, maintab }) {
+export default function MainTab({ maintab }) {
 
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);

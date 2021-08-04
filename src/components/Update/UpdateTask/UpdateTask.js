@@ -17,8 +17,6 @@ export default function UpdateTask(props) {
 
     const task = props.task;
 
-    console.log({task})
-
     const [form, setForm] = useState({});
 
     useEffect(() => {

@@ -6,7 +6,7 @@ import { DeleteEvent, UpdateEvent } from "components";
 import { formatDate } from "utils/format";
 
 
-export default function Event({ key, event }) {
+export default function Event({ event }) {
 
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);
