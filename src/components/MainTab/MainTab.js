@@ -38,7 +38,7 @@ export default function MainTab({ maintab }) {
                     <Link to={`/home/${maintab.id}/0`} >
                         <Card className="maintab" onClick={resetTabNavigationStack}>
                                 <Card.Body className="maintabName">
-                                    <Card.Title> <i className="bi-folder"/>  {maintab.name}</Card.Title>
+                                    <Card.Title> <i className="bi-folder"/>{maintab.name}</Card.Title>
                                 </Card.Body>     
                         </Card>
                     </Link>
