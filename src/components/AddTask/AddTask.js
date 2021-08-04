@@ -154,6 +154,7 @@ export default function AddTask(props) {
                         <Form.Control
                             type="text"
                             name="details"
+                            maxLength={40}
                             className="input-field"
                             placeholder="Untitled"
                             aria-label="Input name of new task"

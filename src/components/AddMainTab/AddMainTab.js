@@ -70,6 +70,7 @@ export default function AddMaintab(props) {
                     <Form.Control
                         type="text"
                         name="name"
+                        maxLength={30}
                         className="input-field"
                         placeholder="Untitled"
                         onChange={handleOnInputChange}
