@@ -72,6 +72,7 @@ export default function DeleteTask(props) {
     return (
         <Modal
             {...props}
+            centered
             backdrop="static"
             keyboard={false}
             className="delete-modal"

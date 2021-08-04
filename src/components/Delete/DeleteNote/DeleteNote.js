@@ -41,6 +41,7 @@ export default function DeleteNote(props) {
     return (
         <Modal
             {...props}
+            centered
             backdrop="static"
             keyboard={false}
             className="delete-modal"

@@ -75,6 +75,7 @@ export default function DeleteEvent(props) {
     return (
         <Modal
             {...props}
+            centered
             backdrop="static"
             keyboard={false}
             className="delete-modal"
