@@ -210,4 +210,4 @@ class ApiClient {
     
 }
 
-export default new ApiClient("https://weplan-api.herokuapp.com/");
+export default new ApiClient("https://weplan-api.herokuapp.com");
