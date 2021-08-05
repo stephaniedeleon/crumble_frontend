@@ -4,7 +4,8 @@
 }
 
 .MainTab .card-wrapper {
-    width: 150px;
+    /* width: 150px; */
+    width: 250px;
     height: 150px;
     transition: all 0.4s ease 0s;
     border: 1px solid rgba(0,0,0,.125);
@@ -43,7 +44,12 @@
 
 .MainTab .card-title {
     margin: 0;
+    padding: 7px 0px;
     color: #325D41;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .MainTab .maintab {

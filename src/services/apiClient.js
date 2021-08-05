@@ -216,4 +216,4 @@ class ApiClient {
 }
 
 export default new ApiClient("http://localhost:3002");
-/** https://weplan-api.herokuapp.com */
+/** export default new ApiClient(https://weplan-api.herokuapp.com); */
