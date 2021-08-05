@@ -15,6 +15,7 @@ export default function UpdateSubtab(props) {
 
     const [form, setForm] = useState({
         name: subtab.name,
+        priority: subtab.priority,
     });
 
 
@@ -41,6 +42,7 @@ export default function UpdateSubtab(props) {
             result = await apiClient.updateSubtab(subtab.id, { 
                 subtab: {
                     name: form.name,
+                    priority: form.priority,
                 }
             });
         }
@@ -54,12 +56,14 @@ export default function UpdateSubtab(props) {
                 setErrors((e) => ({ ...e, form: error }));
             } else {
                 setErrors((e) => ({ ...e, form: null }));
-                setForm({ name: dbSubtab.name });
+                setForm({ name: dbSubtab.name,
+                          priority: dbSubtab.priority, });
                 updateSubtab(dbSubtab);
             } 
 
         } else { //if name is empty, it will set the name in form to current maintab name
-            setForm ({  name: subtab.name });
+            setForm ({  name: subtab.name,
+                        priority: subtab.priority, });
         }
 
 
@@ -71,6 +75,7 @@ export default function UpdateSubtab(props) {
       <Modal
             {...props}
             size="lg"
+            className="UpdateSubtab"
             aria-labelledby="contained-modal-title-vcenter"
             centered
       >
@@ -92,6 +97,22 @@ export default function UpdateSubtab(props) {
                         onChange={handleOnInputChange}
                         value={form.name}
                     />
+
+                    <FormLabel className="form-label"><div>Priority</div> &nbsp; <p>(optional)</p></FormLabel>
+                    <Form.Control
+                        as="select"
+                        name="priority"
+                        className="input-field"
+                        aria-label="Select priority"
+                        onChange={handleOnInputChange}
+                        value={form.priority}
+                        custom
+                    >
+                        <option selected></option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </Form.Control> 
                 </FormGroup>
                 <div className="modal-button">
                     <Button type="submit" onClick={props.onHide} className="button">Save</Button>
