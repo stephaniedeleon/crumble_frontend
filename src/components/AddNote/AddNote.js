@@ -10,65 +10,67 @@ import GlobalContext from 'context/global';
 import apiClient from 'services/apiClient';
 
 export default function AddNote(props) {
-  const { setErrors, setIsLoading } = useContext(AuthContext);
-  const { setNotes } = useContext(GlobalContext);
+    const { setErrors, setIsLoading } = useContext(AuthContext);
+    const { setNotes } = useContext(GlobalContext);
 
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-
-  const [form, setForm] = useState({
-    title: "",
-    details: "",
-  });
-
-  // adds a new note to list of notes
-  const addNote = (newNote) => {
-    setNotes((oldNotes) => [...oldNotes, newNote]);
-  };
-
-  const handleOnInputChange = (event) => {
-    setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
-  };
-
-  const handleOnSubmit = async (event) => {
-    event.preventDefault();
-    setIsLoading(true);
-    setErrors((e) => ({ ...e, form: null }));
-
-    form.details = JSON.stringify(
-      convertToRaw(editorState.getCurrentContent())
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createEmpty()
     );
 
-    let result;
+    const [form, setForm] = useState({
+        title: "",
+        details: "",
+    });
 
-    if (parseInt(props.subId) === 0) {
-      result = await apiClient.createNoteFromMain({
-        main_id: parseInt(props.mainId),
-        note: {
-          title: form.title,
-          details: form.details,
-        },
-      });
-    } else {
-      result = await apiClient.createNoteFromSub({
-        sub_id: parseInt(props.subId),
-        note: {
-          title: form.title,
-          details: form.details,
-        },
-      });
-    }
+    // adds a new note to list of notes
+    const addNote = (newNote) => {
+        setNotes((oldNotes) => [...oldNotes, newNote]);
+    };
 
-    const { data, error } = result;
+    const handleOnInputChange = (event) => {
+        setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+    };
 
-    if (error) {
-      setErrors((e) => ({ ...e, form: error }));
-    } else {
-      setErrors((e) => ({ ...e, form: null }));
-      addNote(data?.note);
-      setForm({ title: "", details: "" });
-      setEditorState(() => EditorState.createEmpty()); // clears editor when submitted
+    const handleOnSubmit = async (event) => {
+        event.preventDefault();
+        setIsLoading(true);
+        setErrors((e) => ({ ...e, form: null }));
+
+        form.details = JSON.stringify(
+        convertToRaw(editorState.getCurrentContent())
+        );
+
+        let result;
+
+        if (parseInt(props.subId) === 0) {
+            result = await apiClient.createNoteFromMain({
+                main_id: parseInt(props.mainId),
+                note: {
+                title: form.title,
+                details: form.details,
+                },
+            });
+
+        } else {
+            result = await apiClient.createNoteFromSub({
+                sub_id: parseInt(props.subId),
+                note: {
+                title: form.title,
+                details: form.details,
+                },
+            });
+        }
+
+        const { data, error } = result;
+
+        if (error) {
+            setErrors((e) => ({ ...e, form: error }));
+        } else {
+            setErrors((e) => ({ ...e, form: null }));
+            addNote(data?.note);
+            setForm({ title: "", details: "" });
+            setEditorState(() => EditorState.createEmpty()); // clears editor when submitted
+        }
     }
 
     /** autofocus */
@@ -114,5 +116,5 @@ export default function AddNote(props) {
                 </Modal.Body>
             </Form>
         </Modal>
-    )};
+    );
 }
