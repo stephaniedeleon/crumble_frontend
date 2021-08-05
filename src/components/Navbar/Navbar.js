@@ -120,6 +120,11 @@ export default function Navbar() {
                                   About
                                 </h6>
                               </Nav.Link>
+                              {/*<Nav.Link as={Link} to="/profile">
+                                <h6 className="linkText">
+                                  Profile
+                                </h6>
+                              </Nav.Link>*/}
                               <Nav.Link onClick={handleOnLogout}>
                                 <h6 className="linkBtn">
                                   Log Out

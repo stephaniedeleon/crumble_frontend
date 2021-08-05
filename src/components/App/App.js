@@ -15,6 +15,7 @@ import {
   Home,
   LandingPage,
   About,
+  Profile,
   Footer,
   Timer,
 } from "components";
@@ -84,6 +85,7 @@ function App() {
                 <Route path="/timer" element={<Timer />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/home/:mainId/:subId" element={<TabPage />} />
               </Routes>
 
