@@ -1,0 +1,11 @@
+.AddSubTab .form-label {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0;
+}
+
+.AddSubTab .form-label p {
+    font-size: 12px;
+    color: rgb(108, 108, 108);
+    margin: 0;
+}
