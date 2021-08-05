@@ -4,7 +4,7 @@ import { Modal, Form, FormGroup, FormLabel, Button } from 'react-bootstrap';
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from 'context/auth';
 import GlobalContext from 'context/global';
 import apiClient from 'services/apiClient';
@@ -72,6 +72,10 @@ export default function AddNote(props) {
         setIsLoading(false);
     }
 
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => innerRef.current && innerRef.current.focus());
+
     return (
         <Modal 
             {...props}
@@ -91,6 +95,7 @@ export default function AddNote(props) {
                         <FormLabel className="form-label">Title of new note</FormLabel>
                         <Form.Control
                             type="text"
+                            ref={innerRef}
                             name="title"
                             maxLength={20}
                             className="input-field"

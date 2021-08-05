@@ -130,6 +130,9 @@ export default function UpdateEvent(props) {
         setIsLoading(false);
     }
 
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => innerRef.current && innerRef.current.focus());
 
     return (
         <Modal
@@ -151,6 +154,7 @@ export default function UpdateEvent(props) {
                         <FormLabel className="form-label">Name of event</FormLabel>
                         <Form.Control
                             type="text"
+                            ref={innerRef}
                             name="event_name"
                             maxLength={20}
                             className="input-field"

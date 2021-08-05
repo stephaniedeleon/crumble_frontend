@@ -209,6 +209,9 @@ export default function UpdateTask(props) {
         setIsLoading(false);
     }
 
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => innerRef.current && innerRef.current.focus());
 
     return (
       <Modal
@@ -230,6 +233,7 @@ export default function UpdateTask(props) {
                     <FormLabel className="form-label">New details of task</FormLabel>
                     <Form.Control
                         type="text"
+                        ref={innerRef}
                         name="details"
                         maxLength={40}
                         className="input-field"
