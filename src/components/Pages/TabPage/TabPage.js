@@ -71,19 +71,30 @@ export default function TabPage() {
     setIsMiniMenu(false);
   }
 
+  const handleOnMouseOver = () => {
+    if (!isMenuOpened)
+      setIsMiniMenu(true)
+  }
+
+  const handleOnMouseOut = () => {
+    if (!isMenuOpened)
+      setIsMiniMenu(false)
+  }
+
   return (
     <div className="TabPage">
 
       <PageHeader sectionName={tab?.name} />
       <div className={`flex-container`} >
-        <div className={`sidebar ${isMenuOpened ? "open" : ""}`}>
-            <SideBar
-              isMenuOpened={isMenuOpened}
-              setIsMenuOpened={setIsMenuOpened}
-              directory={directory}
-              mainId={mainId}
-              miniMenu={isMiniMenu}
-            />
+        <div className={`sidebar ${isMenuOpened ? "open" : ""}`} onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
+          <SideBar
+            isMenuOpened={isMenuOpened}
+            setIsMenuOpened={setIsMenuOpened}
+            directory={directory}
+            mainId={mainId}
+            miniMenu={isMiniMenu}
+            setMiniMenu={setIsMiniMenu}
+          />
         </div>
         <div className="tab-area">
           <Row>
@@ -96,7 +107,7 @@ export default function TabPage() {
 
                     :
 
-                    <i className="bi-list" onMouseOver={() => setIsMiniMenu(true)} onMouseOut={() => setIsMiniMenu(false)}></i>
+                    <i className="bi-list" onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}></i>
                   }
                 </div>
                 <Breadcrumbs mainId={mainId} subId={subId} />
