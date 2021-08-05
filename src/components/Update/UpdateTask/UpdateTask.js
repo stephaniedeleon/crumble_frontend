@@ -269,7 +269,7 @@ export default function UpdateTask(props) {
                 </FormGroup>
 
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button">Save</Button>
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!form.details?.trim()}>Save</Button>
                 </div>
             </Modal.Body>
         </Form>

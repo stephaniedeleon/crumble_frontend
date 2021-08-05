@@ -36,6 +36,7 @@ export { default as Timer } from "./pages/Timer/Timer";
 export { default as TimerAlert } from "./pages/TimerAlert/TimerAlert"
 export { default as Home } from "./pages/Home/Home";
 export { default as About } from "./pages/About/About";
+export { default as Profile } from "./pages/Profile/Profile";
 export { default as LandingPage } from "./pages/LandingPage/LandingPage";
 export { default as TabPage } from "./pages/TabPage/TabPage";
 export { default as SideBar } from "./SideBar/SideBar";
