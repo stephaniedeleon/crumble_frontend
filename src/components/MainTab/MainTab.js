@@ -1,6 +1,6 @@
 import "./MainTab.css"
 
-import { Card, Dropdown } from "react-bootstrap";
+import { Card, Dropdown, OverlayTrigger, Tooltip } from "react-bootstrap";
 import React, { useContext, useState } from "react";
 import { DeleteMaintab, UpdateMaintab } from "components";
 import { Link } from 'react-router-dom';
@@ -14,12 +14,12 @@ export default function MainTab({ maintab }) {
     const [editModalShow, setEditModalShow] = useState(false);
     const { resetTabNavigationStack } = useContext(GlobalContext)
 
-
     return (
         <div className="MainTab">
             <div className="card">
             
                 <div className="card-wrapper">
+                
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-options">
                             <i className= "bi-three-dots-vertical"></i>
@@ -38,7 +38,17 @@ export default function MainTab({ maintab }) {
                     <Link to={`/home/${maintab.id}/0`} >
                         <Card className="maintab" onClick={resetTabNavigationStack}>
                                 <Card.Body className="maintabName">
-                                    <Card.Title> <i className="bi-folder"/>{maintab.name}</Card.Title>
+                                    <OverlayTrigger
+                                        placement="bottom"
+                                        delay={{ show: 150, hide: 150 }}
+                                        overlay={
+                                            <Tooltip className="title-tooltip">
+                                                {maintab.name}
+                                            </Tooltip>
+                                        }
+                                    >
+                                        <Card.Title> <i className="bi-folder"/>{maintab.name}</Card.Title>
+                                    </OverlayTrigger>
                                 </Card.Body>     
                         </Card>
                     </Link>
