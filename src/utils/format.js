@@ -7,7 +7,7 @@ export const formatDateForInputDisplay = (date) => {
 
 export const formatDate = (date) => {
   const d = new Date(date)
-  return moment(d).format("MMM DD [at] h:mm a")
+  return moment(d).format("MMM DD, YYYY [at] h:mm a")
 }
 
 export const formatTime = (date) => {
