@@ -115,7 +115,7 @@ export default function UpdateSubtab(props) {
                     </Form.Control> 
                 </FormGroup>
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button">Save</Button>
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!form.name?.trim()}>Save</Button>
                 </div>
             </Modal.Body>
         </Form>

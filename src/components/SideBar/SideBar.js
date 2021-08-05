@@ -9,7 +9,7 @@ import GlobalContext from "context/global";
 import { useContext } from "react";
 
 
-export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId }) {
+export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId, miniMenu, setMiniMenu }) {
   const classes = useStyles()
   const navigate = useNavigate()
   const { digIntoTab } = useContext(GlobalContext)
@@ -28,7 +28,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
   }
 
   const renderTree = (nodes) => (
-    <TreeItem className={`treeItem`} key={nodes?.id} nodeId={nodes?.id} label={nodes?.name} onLabelClick={(event) => navigateToSubtab(event, nodes?.id)} style={{ userSelect: "none" }}>
+    <TreeItem className={`treeItem ${nodes?.id}`} key={nodes?.id} nodeId={nodes?.id} label={nodes?.name} onLabelClick={(event) => navigateToSubtab(event, nodes?.id)} style={{ userSelect: "none" }}>
       {Array.isArray(nodes?.children) ? nodes.children.map((node) => renderTree(node)) : null}
     </TreeItem>
   );
@@ -38,20 +38,20 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
     setIsMenuOpened((isMenuOpened) => !isMenuOpened)
   }
 
-
   return (
-      <div className={`SideBar ${isMenuOpened ? "" : "closed"}`}>
+      <div className={`SideBar ${isMenuOpened ? "" : "closed"} ${miniMenu ? "miniMenu-open" : ""}`}>
+
         <div className={`content-wrapper`}>
-            <div className="toggleBtn">
-              {isMenuOpened ? 
-                  <i className="bi-arrow-left-square" onClick={handleClick}></i>
-              :
-              <>
-              </>
-                // <i className="bi-list" onClick={handleClick}></i>
-                // <i className="bi-arrow-right-square" onClick={handleClick}></i>
-              }
+
+          <div className="sidebar-header">
+            <div className="sidebar-title" onClick={(event) => navigateToSubtab(event, directory?.id)} style={miniMenu ? { paddingLeft: "0px" } : {}}>
+              {directory.name}
             </div>
+
+            <div className="toggleBtn" style={miniMenu ? {display: "none"} : {}}>
+                <i class="bi-arrow-left-square" onClick={handleClick}></i>
+            </div>
+          </div>
 
             <div className={`my-menu-class`}>
                 <div className="cartTitle"></div>
@@ -59,6 +59,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
                   className={classes.root}
                   defaultCollapseIcon={<ExpandMoreIcon />}
                   defaultExpandIcon={<ChevronRightIcon />}
+                  defaultExpanded={['root']}
                 >
                 {renderTree(directory)}
                 </TreeView>
