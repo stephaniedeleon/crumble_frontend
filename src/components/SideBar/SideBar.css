@@ -10,9 +10,9 @@
 
     opacity: 1;
 
-    transition-property: all;
-    transition-duration: 0.4s;
-    transition-timing-function: ease-out;
+    transition-property: all, height, margin-top;
+    transition-duration: 0.4s, 0s, 0s;
+    transition-timing-function: ease-out, linear, linear;
 
     border: 1px solid #8C3F0D;
     background-color: whitesmoke;
@@ -22,6 +22,13 @@
 .SideBar.closed {
     transform: translateX(-180px);
     opacity: 0;
+}
+
+.SideBar.miniMenu-open {
+    height: 75%;
+    margin-top: 120px;
+    transform: translateX(0px);
+    opacity: 1;
 }
 
 .SideBar .content-wrapper {
@@ -45,6 +52,7 @@
 .SideBar .toggleBtn {
     text-align: end;
     display: inline-block;
+    margin-top: 2px;
 }
 
 
@@ -53,7 +61,6 @@
 
     font-size: 32px;
     font-weight: 400;
-    margin-right: 10px;
     border-radius: 4px;
     cursor: pointer;
 
@@ -68,9 +75,7 @@
 }
 
 .SideBar .toggleBtn i:hover {
-    /* background-color: #47825b; */
     color: #8C3F0D;
-    /* border-color: #47825b; */
 }
 
 .SideBar.closed .toggleBtn i {

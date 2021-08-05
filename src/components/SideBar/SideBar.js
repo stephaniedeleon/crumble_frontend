@@ -9,7 +9,7 @@ import GlobalContext from "context/global";
 import { useContext } from "react";
 
 
-export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId }) {
+export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mainId, miniMenu }) {
   const classes = useStyles()
   const navigate = useNavigate()
   const { digIntoTab } = useContext(GlobalContext)
@@ -40,17 +40,10 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
 
 
   return (
-      <div className={`SideBar ${isMenuOpened ? "" : "closed"}`}>
+      <div className={`SideBar ${isMenuOpened ? "" : "closed"} ${miniMenu ? "miniMenu-open" : ""}`}>
         <div className={`content-wrapper`}>
             <div className="toggleBtn">
-              {isMenuOpened ? 
-                  <i className="bi-arrow-left-square" onClick={handleClick}></i>
-              :
-              <>
-              </>
-                // <i className="bi-list" onClick={handleClick}></i>
-                // <i className="bi-arrow-right-square" onClick={handleClick}></i>
-              }
+                <i class="bi-arrow-left-square" onClick={handleClick}></i>
             </div>
 
             <div className={`my-menu-class`}>

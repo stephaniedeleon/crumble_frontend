@@ -17,6 +17,7 @@ export default function TabPage() {
   const [error, setError] = useState(false);
   const [width, setWidth] = useState(180);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
+  const [isMiniMenu, setIsMiniMenu] = useState(false);
   const [directory, setDirectory] = useState({});
   
   const { mainId, subId } = useParams();
@@ -65,6 +66,10 @@ export default function TabPage() {
 
   }, [mainId, setTabNavigationStack, subId, user]);
 
+  const handleToggleButton = () => {
+    setIsMenuOpened(!isMenuOpened)
+    setIsMiniMenu(false);
+  }
 
   return (
     <div className="TabPage">
@@ -77,20 +82,21 @@ export default function TabPage() {
               setIsMenuOpened={setIsMenuOpened}
               directory={directory}
               mainId={mainId}
+              miniMenu={isMiniMenu}
             />
         </div>
         <div className="tab-area">
           <Row>
             <Row className="my-1">
               <Col className={`navigation-buttons`}>
-                <div className="toggleBtn" onClick={() => setIsMenuOpened(!isMenuOpened)}>
+                <div className="toggleBtn" onClick={handleToggleButton}>
                   {isMenuOpened ?
                     <>
                     </>
 
                     :
 
-                    <i className="bi-list"></i>
+                    <i className="bi-list" onMouseOver={() => setIsMiniMenu(true)} onMouseOut={() => setIsMiniMenu(false)}></i>
                   }
                 </div>
                 <Breadcrumbs mainId={mainId} subId={subId} />
