@@ -1,7 +1,7 @@
 import "./UpdateSubtab.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
@@ -70,6 +70,9 @@ export default function UpdateSubtab(props) {
         setIsLoading(false);
     }
 
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => innerRef.current && innerRef.current.focus());
 
     return (
       <Modal
@@ -91,6 +94,7 @@ export default function UpdateSubtab(props) {
                     <FormLabel className="form-label">New name of sub tab</FormLabel>
                     <Form.Control
                         type="text"
+                        ref={innerRef}
                         name="name"
                         className="input-field"
                         maxLength={30}

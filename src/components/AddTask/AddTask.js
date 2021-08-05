@@ -1,7 +1,7 @@
 import './AddTask.css';
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "context/auth";
 import GlobalContext from 'context/global';
 import apiClient from "services/apiClient";
@@ -133,6 +133,10 @@ export default function AddTask(props) {
         setIsLoading(false);
     }
 
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => innerRef.current && innerRef.current.focus());
+
     return (
         <Modal
             {...props}
@@ -153,6 +157,7 @@ export default function AddTask(props) {
                         <FormLabel className="form-label">Details of new task</FormLabel>
                         <Form.Control
                             type="text"
+                            ref={innerRef}
                             name="details"
                             maxLength={40}
                             className="input-field"

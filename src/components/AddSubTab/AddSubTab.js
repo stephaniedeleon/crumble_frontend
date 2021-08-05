@@ -1,7 +1,7 @@
 import './AddSubTab.css';
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "context/auth";
 import GlobalContext from 'context/global';
 import apiClient from "services/apiClient";
@@ -69,6 +69,10 @@ export default function AddSubTab(props) {
         setIsLoading(false);
     }
 
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => innerRef.current && innerRef.current.focus());
+
     return (
         <Modal
             {...props}
@@ -89,6 +93,7 @@ export default function AddSubTab(props) {
                     <FormLabel className="form-label">Name of new sub tab</FormLabel>
                     <Form.Control
                         type="text"
+                        ref={innerRef}
                         name="name"
                         className="input-field"
                         placeholder="Sub Tab Name"

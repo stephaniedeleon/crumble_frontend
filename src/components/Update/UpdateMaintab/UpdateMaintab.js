@@ -1,7 +1,7 @@
 import "./UpdateMaintab.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
@@ -63,6 +63,9 @@ export default function UpdateMaintab(props) {
         setIsLoading(false);
     }
 
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => innerRef.current && innerRef.current.focus());
 
     return (
       <Modal
@@ -83,6 +86,7 @@ export default function UpdateMaintab(props) {
                     <FormLabel className="form-label">New name of main tab</FormLabel>
                     <Form.Control
                         type="text"
+                        ref={innerRef}
                         name="name"
                         maxLength={30}
                         className="input-field"
