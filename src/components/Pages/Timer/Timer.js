@@ -9,7 +9,7 @@ export default function Timer() {
   const { timeLeft, timerStatus, circleDasharray, remainingPathColor, RADIUS } =
     timerVariables;
 
-  const [paginationButtonsStatus, setPaginationButtonsStatus] = useState([ ["promodoro", false], ["shortBreak", false], ["longBreak", false] ]);
+  const [paginationButtonsStatus, setPaginationButtonsStatus] = useState([ ["pomodoro", true], ["shortBreak", false], ["longBreak", false] ]);
 
 
 
@@ -41,10 +41,10 @@ export default function Timer() {
     
   };
 
-  /** Setting: "promodoro", "shortBreak", "longBreak" */
+  /** Setting: "pomodoro", "shortBreak", "longBreak" */
   const setTimerMode = (setting) => {
     switch (setting) {
-      case "promodoro":
+      case "pomodoro":
         timerVariables.setTimeLimit(1500)
         break;
 
@@ -73,13 +73,13 @@ export default function Timer() {
         <div className="options-pagination" style={{ userSelect: "none" }}>
 
           <div
-            name="promodoro"
+            name="pomodoro"
             className={`pagination-button ${
               paginationButtonsStatus[0][1] ? "clicked" : ""
             }`}
             onClick={togglePaginationBtn}
           >
-            Promodoro
+            Pomodoro
           </div>
 
           <div
