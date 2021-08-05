@@ -35,12 +35,13 @@ export default function SubTab(props) {
                 <label className="container">
                     <input type="checkbox" checked={completed} onChange={handleChange} />
                     <span className="checkmark"></span>
-                    <h6>
+                    <div className="details">
                         <i className="bi-folder"/>
-                        <Link to={`/home/${props.mainId}/${subtab.id}`} onClick={() => digIntoTab(subtab.id)} className="details" >
+                        <Link to={`/home/${props.mainId}/${subtab.id}`} onClick={() => digIntoTab(subtab.id)} className="name" >
                             {subtab.name}
                         </Link>
-                    </h6>
+                    </div>
+                    <div className="priority">{subtab.priority}</div>
                 </label>
 
                 <div className="actions">
@@ -51,7 +52,7 @@ export default function SubTab(props) {
 
                         <Dropdown.Menu id="options">
                             <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i className="bi-pencil-square"/> Rename
+                                <i className="bi-pencil-square"/> Edit
                             </Dropdown.Item>
                             <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
                                 <i className="bi-trash"/> Delete
