@@ -70,6 +70,7 @@ export default function AddMaintab(props) {
                     <Form.Control
                         type="text"
                         name="name"
+                        maxLength={30}
                         className="input-field"
                         placeholder="Untitled"
                         onChange={handleOnInputChange}
@@ -78,7 +79,7 @@ export default function AddMaintab(props) {
                     />
                 </FormGroup>
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button">Add MainTab</Button>
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.name.trim())}>Add MainTab</Button>
                 </div>
             </Modal.Body>
         </Form>

@@ -105,6 +105,7 @@ export default function AddEvent(props) {
                     <Form.Control
                         type="text"
                         name="event_name"
+                        maxLength={20}
                         className="input-field"
                         placeholder="Event Name"
                         onChange={handleOnInputChange}
@@ -131,7 +132,7 @@ export default function AddEvent(props) {
                     />
                 </FormGroup>
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button">Add Event</Button>
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.event_name.trim() && form.date)}>Add Event</Button>
                 </div>
             </Modal.Body>
         </Form>

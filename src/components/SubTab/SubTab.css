@@ -29,6 +29,7 @@
 
 /* The container */
 .SubTab .container {
+    width: 100%;
     display: flex;
     align-items: center;
     position: relative;
@@ -38,7 +39,8 @@
     margin: 0;
     padding: 5px 0px;
 
-    color: #256a3c;
+    justify-content: space-between;
+
 }
 
 .SubTab .bi-folder {
@@ -49,10 +51,16 @@
     color: #8C3F0D;
 }
 
-.SubTab .container h6 {
+.SubTab .container .details {
     color: #8C3F0D;
     margin-left: 25px;
     margin-bottom: 0;
+}
+
+.SubTab .container .priority {
+    color: #254832;
+    font-size: 13px;
+    padding-right: 30px;
 }
 
 /* Hide the browser's default checkbox */

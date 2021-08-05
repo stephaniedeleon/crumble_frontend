@@ -186,8 +186,9 @@
   margin-top: 6px;
   margin-left: 60px;
   border-radius: 100%;
-  opacity: 0%;
+  opacity: 0;
   position: relative;
+  cursor: default;
 
   display: inline-block;
   position: absolute;
@@ -197,10 +198,10 @@
 }
 
 .Timer .resetButton.started {
-  opacity: 100%;
+  opacity: 1;
 }
 
-.Timer .resetButton:hover {
+.Timer .resetButton.started:hover {
   cursor: pointer;
   background-color: rgb(216, 214, 214);
 }

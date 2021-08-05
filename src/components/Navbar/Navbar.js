@@ -105,14 +105,14 @@ export default function Navbar() {
                       <Nav className={`links ${timerVariables.timerStatus === 'stopped' ? 'ml-auto' : ''} py-4`} navbarScroll>
                           {authenticated ? (
                             <>
-                              <Nav.Link as={Link} to="/timer">
-                                <h6 className="linkText">
-                                  Timer
-                                </h6>
-                              </Nav.Link>
                               <Nav.Link as={Link} to="/home">
                                 <h6 className="linkText">
                                   Home
+                                </h6>
+                              </Nav.Link>
+                              <Nav.Link as={Link} to="/timer">
+                                <h6 className="linkText">
+                                  Timer
                                 </h6>
                               </Nav.Link>
                               <Nav.Link as={Link} to="/about">

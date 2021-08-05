@@ -154,6 +154,7 @@ export default function AddTask(props) {
                         <Form.Control
                             type="text"
                             name="details"
+                            maxLength={40}
                             className="input-field"
                             placeholder="Untitled"
                             aria-label="Input name of new task"
@@ -189,7 +190,7 @@ export default function AddTask(props) {
                     </FormGroup>
 
                     <div className="modal-button">
-                        <Button type="submit" onClick={props.onHide} className="button">Add Task</Button>
+                        <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.details.trim())}>Add Task</Button>
                     </div>
                 </Modal.Body>
             </Form> 

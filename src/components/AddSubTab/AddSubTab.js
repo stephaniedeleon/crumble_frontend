@@ -12,7 +12,8 @@ export default function AddSubTab(props) {
     const { setSubtabs, } = useContext(GlobalContext);
 
     const [form, setForm] = useState({
-        name: ""
+        name: "",
+        priority: "",
     });
 
     // adds a new a sutab to list of subtabs
@@ -39,6 +40,7 @@ export default function AddSubTab(props) {
                 main_id: parseInt(props.mainId),
                 subtab: {
                     name: form.name,
+                    priority: form.priority,
                 }
             });
         } else {
@@ -46,18 +48,22 @@ export default function AddSubTab(props) {
                 sub_id: parseInt(props.subId),
                 subtab: {
                     name: form.name,
+                    priority: form.priority,
                 }
             })
         }
 
         const { data, error } = result;
 
+        const dbSubtab = data?.subtab;
+
         if (error) {
             setErrors((e) => ({ ...e, form: error })); 
         } else {
             setErrors((e) => ({ ...e, form: null }));
-            setForm({name: ""});
-            addSubtab(data.subtab);
+            setForm({ name: "",
+                      priority: "" });
+            addSubtab(dbSubtab);
         }
 
         setIsLoading(false);
@@ -67,6 +73,7 @@ export default function AddSubTab(props) {
         <Modal
             {...props}
             size="lg"
+            className="AddSubTab"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -85,13 +92,30 @@ export default function AddSubTab(props) {
                         name="name"
                         className="input-field"
                         placeholder="Sub Tab Name"
+                        maxLength={30}
                         onChange={handleOnInputChange}
                         value={form.name}
                         required
                     />
+
+                    <FormLabel className="form-label"><div>Priority</div> &nbsp; <p>(optional)</p></FormLabel>
+                    <Form.Control
+                        as="select"
+                        name="priority"
+                        className="input-field"
+                        aria-label="Select priority"
+                        onChange={handleOnInputChange}
+                        value={form.priority}
+                        custom
+                    >
+                        <option selected></option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </Form.Control>
                 </FormGroup>
                 <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button">Add SubTab</Button>
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.name.trim())}>Add SubTab</Button>
                 </div>
             </Modal.Body>
         </Form>

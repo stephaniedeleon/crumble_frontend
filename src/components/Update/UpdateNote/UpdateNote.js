@@ -82,6 +82,7 @@ export default function UpdateNote(props) {
                         <Form.Control
                             type="text"
                             name="title"
+                            maxLength={20}
                             className="input-field"
                             placeholder="Note Title"
                             onChange={handleOnInputChange}
