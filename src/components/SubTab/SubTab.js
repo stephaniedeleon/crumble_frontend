@@ -10,13 +10,22 @@ import apiClient from "services/apiClient";
  
 export default function SubTab(props) {
 
+    const { setSubtabs } = useContext(GlobalContext);
+
+
     const [completed, setCompleted] = useState(props.subtab.completed);
 
     const handleChange = async (event) => {
 
-        if (completed) await apiClient.unmarkSubtab(props.subtab.id);
-        else await apiClient.markSubtab(props.subtab.id);
+        let dbData;
+
+        if (completed) dbData = await apiClient.unmarkSubtab(props.subtab.id);
+        else dbData = await apiClient.markSubtab(props.subtab.id);
         setCompleted(!completed);
+
+        const updatedSubtab = dbData.data.subtab
+
+        setSubtabs(oldSubtabs => oldSubtabs.map(oldSubtab => oldSubtab.id === updatedSubtab.id ? updatedSubtab : oldSubtab))
 
     }
 
