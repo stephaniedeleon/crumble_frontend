@@ -15,7 +15,7 @@ export const useLogin = () => {
 
   const handleOnTextChange = (evt) => {
     if (evt.target.name === "email") {
-      if (evt.target.value.indexOf("@") <= 0)
+      if (evt.target.value.indexOf("@") <= 0 && evt.target.value.indexOf(".") <= 0)
         setErrors((err) => ({ ...err, email: "Please enter a valid email." }));
       else setErrors((err) => ({ ...err, email: null }));
     }
