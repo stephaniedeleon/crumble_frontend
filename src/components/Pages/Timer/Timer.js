@@ -3,13 +3,11 @@ import "./Timer.css";
 import TimerContext from "context/timer";
 
 export default function Timer() {
-  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer } =
+  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, paginationButtonsStatus, setPaginationButtonsStatus } =
     useContext(TimerContext);
 
   const { timeLeft, timerStatus, circleDasharray, remainingPathColor, RADIUS } =
     timerVariables;
-
-  const [paginationButtonsStatus, setPaginationButtonsStatus] = useState([ ["pomodoro", true], ["shortBreak", false], ["longBreak", false] ]);
 
 
 
