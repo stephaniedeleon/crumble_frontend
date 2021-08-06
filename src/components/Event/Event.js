@@ -2,7 +2,7 @@ import "./Event.css"
 
 import { ListGroup, Dropdown } from "react-bootstrap";
 import React, { useState } from "react";
-import { DeleteEvent, UpdateEvent } from "components";
+import { DeleteEvent, UpdateEvent, ViewEvent } from "components";
 import { formatDate } from "utils/format";
 
 
@@ -11,11 +11,12 @@ export default function Event({ event }) {
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);
     const [editModalShow, setEditModalShow] = useState(false);
+    const [viewModalShow, setViewModalShow] = useState(false);
 
     return (
         <div className="Event">
             <ListGroup.Item className="eventItem">
-                <div className="details" onClick={() => setEditModalShow(true)}>
+                <div className="details" onClick={() => setViewModalShow(true)}>
                     <p className="eventName">{event.event_name}</p>
                     <p className="eventDate">{formatDate(event.date)}</p>  
                 </div>
@@ -48,7 +49,13 @@ export default function Event({ event }) {
                 show={editModalShow}
                 onHide={() => setEditModalShow(false)}
                 event={event}
-            />          
+            />   
+
+            <ViewEvent
+                show={viewModalShow}
+                onHide={() => setViewModalShow(false)}
+                event={event}
+            />     
         </div>
     );
 }
