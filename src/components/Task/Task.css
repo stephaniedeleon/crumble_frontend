@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
 
-    padding-left: 4px;
+    padding: 0 4px;
 }
 
 .Task .task:hover {
@@ -15,6 +15,9 @@
 
 .Task .actions {
     display: none;
+
+    color: rgb(109, 109, 109);
+    font-size: 19px;
 }
 
 .Task .container:hover + .actions {
@@ -25,6 +28,9 @@
 
 .Task .actions:hover {
     display: contents;
+
+    color: #8C3F0D;
+    cursor: pointer;
 }
 
 
@@ -119,41 +125,4 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-
-
-/** Dropdown */
-
-.Task #dropdown-options {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin-right: 5px;
-
-    color: rgb(109, 109, 109);
-    font-size: 19px;
-    float: right;
-}
-
-.Task #dropdown-options:hover {
-    color: #8C3F0D;
-}
-
-.Task #dropdown-options:after {
-    display: none;
-}
-
-.Task #options {
-    background-color: #fffdf6;
-}
-
-.Task #option i {
-    margin-right: 4px;
-}
-
-.Task #option:hover {
-    color: #8C3F0D;
-    background-color: #fffbf3;
 }

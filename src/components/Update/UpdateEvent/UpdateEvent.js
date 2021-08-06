@@ -145,7 +145,7 @@ export default function UpdateEvent(props) {
             <Form onSubmit={handleOnSubmit} className="modal-area">
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Event
+                        Edit Event
                     </Modal.Title>
                 </Modal.Header>
 

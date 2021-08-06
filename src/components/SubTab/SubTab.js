@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GlobalContext from "context/global";
 import { useContext } from "react";
-import { DeleteSubtab, UpdateSubtab } from "components";
-import { Dropdown } from "react-bootstrap";
+import { ViewSubtab } from "components";
 import apiClient from "services/apiClient";
  
 export default function SubTab(props) {
@@ -31,9 +30,8 @@ export default function SubTab(props) {
 
     const { digIntoTab } = useContext(GlobalContext);
 
-    //method to show modal for deleting confirmation and editing...
-    const [deleteModalShow, setDeleteModalShow] = useState(false);
-    const [editModalShow, setEditModalShow] = useState(false);
+    //method to show modal for viewing...
+    const [viewModalShow, setViewModalShow] = useState(false);
 
     const subtab = props.subtab;
 
@@ -53,37 +51,17 @@ export default function SubTab(props) {
                     <div className="priority">{subtab.priority}</div>
                 </label>
 
-                <div className="actions">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-options">
-                            <i className= "bi-three-dots"></i>
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu id="options">
-                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i className="bi-pencil-square"/> Edit
-                            </Dropdown.Item>
-                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                <i className="bi-trash"/> Delete
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                <div className="actions" onClick={() => setViewModalShow(true)}>                            
+                    <i className= "bi-three-dots"></i>
                 </div>
             </div>
 
-
-            <DeleteSubtab
-                show={deleteModalShow}
-                onHide={() => setDeleteModalShow(false)}
-                subtab={subtab}
-                updateDirectory={props.updateDirectory}
-            />
-
-            <UpdateSubtab
-                show={editModalShow}
-                onHide={() => setEditModalShow(false)}
+            <ViewSubtab
+                show={viewModalShow}
+                onHide={() => setViewModalShow(false)}
                 subtab={subtab}
             />
+
         </div>
     );
 } 

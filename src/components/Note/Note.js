@@ -47,28 +47,13 @@ export default function Note(props) {
 
                         <div className="actions">
                             <div id="options">
-                                <div id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                    <i className="bi-trash"/>
-                                </div>
                                 <div id="option" onClick={() => setEditModalShow(true)}>
                                     <i className="bi-pencil-square"/>
                                 </div>
+                                <div id="option" onClick={() => setDeleteModalShow(true)}>                    
+                                    <i className="bi-trash"/>
+                                </div>
                             </div>
-
-                            {/* <Dropdown>
-                                <Dropdown.Toggle id="dropdown-options">
-                                    <i className= "bi-three-dots-vertical"></i>
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu id="options">
-                                    <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                        <i className="bi-pencil-square"/> Edit
-                                    </Dropdown.Item>
-                                    <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                        <i className="bi-trash"/> Delete
-                                    </Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown> */}
                         </div>
 
                     </Card.Body>
