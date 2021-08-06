@@ -55,7 +55,7 @@ export default function About() {
 
       <Container>
         <div className="header">
-            <PageHeader sectionName="Meet G.S.A" />
+            <PageHeader sectionName="Meet G.S.A." />
         </div>
 
         <div className="meet-GSA flex-container">
