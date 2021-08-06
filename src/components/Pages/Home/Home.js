@@ -61,9 +61,26 @@ export default function Home() {
                 </div>
 
                 <div className="maintabs">
-                    {maintabs.map((maintab) => (
-                        <MainTab key={maintab.id} maintab={maintab} />
-                    ))}
+                    { maintabs.length === 0 ? (
+                        <>
+                            <h2 className="error-message"> No Maintabs Available! </h2>
+                            <Button onClick={() => setModalShow(true)}>
+                                Add MainTab
+                            </Button>
+
+                            <AddMainTab
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                            />
+                        </>
+                    ) : (
+                        <>
+                            {maintabs.map((maintab) => (
+                                <MainTab key={maintab.id} maintab={maintab} />
+                            ))}
+                        </>
+                    ) }
+                    
                 </div>
             </div>
         </div>
