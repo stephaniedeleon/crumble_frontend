@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Timer.css";
 import TimerContext from "context/timer";
 
 export default function Timer() {
-  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, paginationButtonsStatus, setPaginationButtonsStatus } =
+  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, paginationButtonsStatus,  togglePaginationBtn } =
     useContext(TimerContext);
 
   const { timeLeft, timerStatus, circleDasharray, remainingPathColor, RADIUS } =
@@ -18,46 +18,6 @@ export default function Timer() {
       pauseTimer();
     }
   };
-
-  const togglePaginationBtn = (event) => {
-    const btnName = event.target.getAttribute('name')
-
-    stopTimer()
-    setTimerMode(btnName)
-    const newArray = paginationButtonsStatus.map((element) => {
-      if (element[0] === btnName) {
-          element[1] = true
-      }
-      else {
-        element[1] = false
-      }
-      
-      return element;
-    })
-
-    setPaginationButtonsStatus(newArray)
-    
-  };
-
-  /** Setting: "pomodoro", "shortBreak", "longBreak" */
-  const setTimerMode = (setting) => {
-    switch (setting) {
-      case "pomodoro":
-        timerVariables.setTimeLimit(1500)
-        break;
-
-      case "shortBreak":
-        timerVariables.setTimeLimit(300)
-        break;
-
-      case "longBreak":
-        timerVariables.setTimeLimit(900)
-        break;
-
-      default:
-        break;
-    }
-  }
 
   const handleResetBtnClick = () => {
     if (timerStatus === 'started') {
@@ -75,7 +35,7 @@ export default function Timer() {
             className={`pagination-button ${
               paginationButtonsStatus[0][1] ? "clicked" : ""
             }`}
-            onClick={togglePaginationBtn}
+            onClick={() => togglePaginationBtn("pomodoro")}
           >
             Pomodoro
           </div>
@@ -85,7 +45,7 @@ export default function Timer() {
             className={`pagination-button ${
               paginationButtonsStatus[1][1] ? "clicked" : ""
             }`}
-            onClick={togglePaginationBtn}
+            onClick={() => togglePaginationBtn("shortBreak")}
           >
             Short Break
           </div>
@@ -95,7 +55,7 @@ export default function Timer() {
             className={`pagination-button ${
               paginationButtonsStatus[2][1] ? "clicked" : ""
             }`}
-            onClick={togglePaginationBtn}
+            onClick={() => togglePaginationBtn("longBreak")}
           >
             Long Break
           </div>

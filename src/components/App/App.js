@@ -42,7 +42,7 @@ function App() {
 
   /** TIMER VARIABLES */
 
-  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction, paginationButtonsStatus, setPaginationButtonsStatus } = useTimer();
+  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction, paginationButtonsStatus, setPaginationButtonsStatus, togglePaginationBtn } = useTimer();
 
   return (
     <AuthContext.Provider
@@ -72,7 +72,7 @@ function App() {
         digIntoTab,
         moveOutTab, 
       }}>
-        <TimerContext.Provider value={{ timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction, paginationButtonsStatus, setPaginationButtonsStatus }}>
+        <TimerContext.Provider value={{ timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction, paginationButtonsStatus, setPaginationButtonsStatus, togglePaginationBtn }}>
           <div className="App">
             <BrowserRouter>
               <Navbar />
