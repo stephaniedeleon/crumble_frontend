@@ -132,7 +132,7 @@ export default function UpdateEvent(props) {
 
     /** autofocus */
     const innerRef = React.useRef();
-    useEffect(() => innerRef.current && innerRef.current.focus());
+    useEffect(() => {innerRef.current && innerRef.current.focus()}, [props.show]);
 
     return (
         <Modal
