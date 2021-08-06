@@ -23,6 +23,7 @@ export { default as UpdateTask } from "./Update/UpdateTask/UpdateTask";
 export { default as UpdateEvent } from "./Update/UpdateEvent/UpdateEvent";
 export { default as UpdateNote } from "./Update/UpdateNote/UpdateNote";
 
+export { default as ViewProfile } from "./View/ViewProfile/ViewProfile"
 export { default as ViewTask } from "./View/ViewTask/ViewTask";
 export { default as ViewEvent } from "./View/ViewEvent/ViewEvent";
 
