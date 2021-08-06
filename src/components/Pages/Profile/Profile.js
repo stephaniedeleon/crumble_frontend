@@ -8,7 +8,7 @@ import apiClient from 'services/apiClient';
 
 export default function Profile() {
 
-    const { user, setUser, setErrors, setIsLoading } = useContext(AuthContext);
+    const { user, setErrors, setIsLoading } = useContext(AuthContext);
 
     console.log(user);
 

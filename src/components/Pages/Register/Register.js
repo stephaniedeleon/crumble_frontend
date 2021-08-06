@@ -12,7 +12,7 @@ import { useRegister } from "hooks/useRegister";
 import { Link } from "react-router-dom";
 
 export default function Register() {
-  const { form, errors, passwordStrength, determineStrength, handleOnTextChange, handleOnClickSubmit } =
+  const { form, errors, passwordStrength, handleOnTextChange, handleOnClickSubmit } =
     useRegister();
 
   return (
