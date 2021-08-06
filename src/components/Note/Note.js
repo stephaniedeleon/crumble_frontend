@@ -2,7 +2,7 @@ import './Note.css';
 
 import { useState, useEffect, useContext } from 'react';
 import AuthContext from "context/auth";
-import { Accordion, Card, Dropdown } from 'react-bootstrap';
+import { Accordion, Card } from 'react-bootstrap';
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertFromRaw } from 'draft-js';
 import { DeleteNote, UpdateNote } from 'components';
@@ -12,7 +12,7 @@ export default function Note(props) {
 
     const note = props.note;
 
-    const { notes, setNotes } = useContext(AuthContext);
+    const { setNotes } = useContext(AuthContext);
 
     const [editorState, setEditorState] = useState();
 

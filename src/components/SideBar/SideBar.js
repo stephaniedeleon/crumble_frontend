@@ -49,7 +49,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
             </div>
 
             <div className="toggleBtn" style={miniMenu ? {display: "none"} : {}}>
-                <i class="bi-arrow-left-square" onClick={handleClick}></i>
+                <i className="bi-arrow-left-square" onClick={handleClick}></i>
             </div>
           </div>
 

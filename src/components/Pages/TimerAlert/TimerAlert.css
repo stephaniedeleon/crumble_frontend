@@ -1,0 +1,8 @@
+.timerAlert .modal-body {
+    text-align: center;
+    font-size: 19px;
+}
+
+.timerAlert .modal-body p {
+    margin: 0;
+}

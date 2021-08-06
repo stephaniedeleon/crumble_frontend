@@ -21,7 +21,6 @@ export default function LandingPage() {
                 </div>
 
                 <div className="hero">
-                    {/* <img src="https://img.icons8.com/bubbles/400/000000/edit.png" alt="a fitbit" /> */}
                     <h1>Planner</h1>
                     <p>Helping you make planning bearable!</p>
                     <br />
