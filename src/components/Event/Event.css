@@ -41,6 +41,9 @@
 
 .Event .actions {
     display: none;
+
+    color: rgb(109, 109, 109);
+    font-size: 19px;
 }
 
 .Event .details:hover + .actions {
@@ -51,40 +54,7 @@
 
 .Event .actions:hover {
     display: contents;
-}
 
-
-/** Dropdown */
-
-.Event #dropdown-options {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin-right: 5px;
-
-    color: rgb(109, 109, 109);
-    font-size: 19px;
-    float: right;
-}
-
-.Event #dropdown-options:hover {
     color: #8C3F0D;
-}
-
-.Event #dropdown-options:after {
-    display: none;
-}
-
-.Event #options {
-    background-color: #fffdf6;
-}
-
-.Event #option i {
-    margin-right: 4px;
-}
-
-.Event #option:hover {
-    color: #8C3F0D;
-    background-color: #fffbf3;
+    cursor: pointer;
 }

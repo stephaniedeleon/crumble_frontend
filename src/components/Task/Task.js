@@ -2,7 +2,7 @@ import "./Task.css"
 
 import { useState, useContext } from 'react';
 import apiClient from "services/apiClient";
-import { DeleteTask, UpdateTask, ViewTask } from "components";
+import { ViewTask } from "components";
 import { Dropdown } from "react-bootstrap";
 import GlobalContext from "context/global";
 
@@ -29,9 +29,7 @@ export default function Task(props) {
         setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === updatedTask.id ? updatedTask : oldTask))
     }
 
-    //method to show modal for deleting confirmation and editing...
-    const [deleteModalShow, setDeleteModalShow] = useState(false);
-    const [editModalShow, setEditModalShow] = useState(false);
+    //method to show modal for viewing...
     const [viewModalShow, setViewModalShow] = useState(false);
 
     return (
@@ -47,39 +45,10 @@ export default function Task(props) {
                     <div className="priority">{task.priority}</div>
                 </label>
 
-                <div className="actions">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-options">
-                            <i className= "bi-three-dots"></i>
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu id="options">
-                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i className="bi-pencil-square"/> Edit
-                            </Dropdown.Item>
-                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                <i className="bi-trash"/> Delete
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                <div className="actions" onClick={() => setViewModalShow(true)}>
+                    <i className= "bi-three-dots"></i>
                 </div>
             </div>
-
-            <DeleteTask
-                show={deleteModalShow}
-                onHide={() => setDeleteModalShow(false)}
-                task={task}
-            />
-
-            <UpdateTask
-                show={editModalShow}
-                onHide={() => setEditModalShow(false)}
-                task={task}
-                mainId={mainId} 
-                subId={subId}
-            />
-
-            {/* onClick={() => setViewModalShow(true)} */}
 
             <ViewTask
                 show={viewModalShow}

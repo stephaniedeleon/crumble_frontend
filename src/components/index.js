@@ -26,6 +26,7 @@ export { default as UpdateNote } from "./Update/UpdateNote/UpdateNote";
 export { default as ViewProfile } from "./View/ViewProfile/ViewProfile"
 export { default as ViewTask } from "./View/ViewTask/ViewTask";
 export { default as ViewEvent } from "./View/ViewEvent/ViewEvent";
+export { default as ViewSubtab } from "./View/ViewSubtab/ViewSubtab";
 
 export { default as Notes } from "./Notes/Notes";
 export { default as Task } from "./Task/Task";

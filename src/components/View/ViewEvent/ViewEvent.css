@@ -1,0 +1,25 @@
+/** Affects a view modals */
+
+/** Actions */
+
+.modal-footer .actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-footer .actions #options {
+    display: flex;
+    align-items: center;
+
+    color: rgb(109, 109, 109);
+}
+
+.modal-footer .actions #option {
+    padding: 0px 10px;
+    font-size: 17px;
+}
+
+.modal-footer .actions #option:hover {
+    color: #8C3F0D;
+    cursor: pointer;
+}

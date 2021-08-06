@@ -1,25 +1,18 @@
-import "./ViewTask.css"
+import "./ViewSubtab.css"
 
 import { Modal, Form, FormGroup, FormLabel } from "react-bootstrap";
-import React, { useState, useEffect } from "react";
-import { DeleteTask, UpdateTask } from "components";
-import { formatDateForInputDisplay } from "utils/format";
+import React, { useState } from "react";
+import { DeleteSubtab, UpdateSubtab } from "components";
 
-export default function ViewTask(props) {
 
-    const task = props.task;
+export default function ViewSubtab(props) {
 
-    const [form, setForm] = useState({});
+    const subtab = props.subtab;
 
-    useEffect(() => {
-        
-        setForm ({
-            details: task.details,
-            priority: task.priority,
-            date: task.date === null ? null : formatDateForInputDisplay(task.date),
-        });
-
-    }, [task]);
+    const [form, setForm] = useState({
+        name: subtab.name,
+        priority: subtab.priority,
+    });
 
 
     //method to show modal for deleting confirmation and editing...
@@ -31,14 +24,14 @@ export default function ViewTask(props) {
       <Modal
             {...props}
             size="lg"
-            className="ViewTask"
-            aria-labelledby="Update task modal"
+            className="UpdateSubtab"
+            aria-labelledby="contained-modal-title-vcenter"
             centered
       >
         <Form className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {form.details}
+                    {form.name}
                 </Modal.Title>
             </Modal.Header>
 
@@ -58,18 +51,8 @@ export default function ViewTask(props) {
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
-                    </Form.Control>
-
-                    <FormLabel className="form-label">Due date</FormLabel>
-                    <Form.Control
-                        disabled
-                        type="datetime-local"
-                        name="date"
-                        className="input-field"
-                        value={form.date}
-                    />
+                    </Form.Control> 
                 </FormGroup>
-
             </Modal.Body>
 
             <Modal.Footer>
@@ -86,18 +69,17 @@ export default function ViewTask(props) {
             </Modal.Footer>
         </Form>
 
-        <DeleteTask
+        <DeleteSubtab
             show={deleteModalShow}
             onHide={() => setDeleteModalShow(false)}
-            task={task}
+            subtab={subtab}
+            updateDirectory={props.updateDirectory}
         />
 
-        <UpdateTask
+        <UpdateSubtab
             show={editModalShow}
             onHide={() => setEditModalShow(false)}
-            task={task}
-            mainId={props.mainId} 
-            subId={props.subId}
+            subtab={subtab}
         />
 
       </Modal>

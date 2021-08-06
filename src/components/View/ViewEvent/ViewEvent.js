@@ -2,6 +2,7 @@ import "./ViewEvent.css"
 
 import { Modal, Form, FormGroup, FormLabel } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
+import { DeleteEvent, UpdateEvent } from "components";
 import { formatDateForInputDisplay } from "utils/format";
 
 export default function ViewEvent(props) {
@@ -21,6 +22,15 @@ export default function ViewEvent(props) {
     }, [calEvent]);
 
 
+    //method to show modal for deleting confirmation and editing...
+    const [deleteModalShow, setDeleteModalShow] = useState(false);
+    const [editModalShow, setEditModalShow] = useState(false);
+
+    const showDeleteModal = () => {
+        setDeleteModalShow(true);
+        props.setViewModalShow(false);
+    }
+
     return (
         <Modal
             {...props}
@@ -38,17 +48,6 @@ export default function ViewEvent(props) {
 
                 <Modal.Body>
                     <FormGroup>
-                        {/* <FormLabel className="form-label">Name of event</FormLabel>
-                        <Form.Control
-                            readOnly
-                            type="text"
-                            name="event_name"
-                            maxLength={20}
-                            className="input-field"
-                            onChange={handleOnInputChange}
-                            value={form.event_name}
-                        /> */}
-
                         <FormLabel className="form-label">Date of event</FormLabel>
                         <Form.Control
                             disabled
@@ -67,8 +66,34 @@ export default function ViewEvent(props) {
                             value={form.notes}
                         />
                     </FormGroup>
+
                 </Modal.Body>
+
+                <Modal.Footer>
+                    <div className="actions">
+                        <div id="options">
+                            <div id="option" onClick={() => setEditModalShow(true)}>
+                                <i className="bi-pencil-square"/> Edit
+                            </div>
+                            <div id="option" onClick={showDeleteModal}>                    
+                                <i className="bi-trash"/> Delete
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Footer>
             </Form>
+
+            <DeleteEvent
+                show={deleteModalShow}
+                onHide={() => setDeleteModalShow(false)}
+                event={calEvent}
+            />
+
+            <UpdateEvent
+                show={editModalShow}
+                onHide={() => setEditModalShow(false)}
+                event={calEvent}
+            />  
 
         </Modal>
     );

@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
 
-    padding-left: 4px;
+    padding: 0 4px;
 }
 
 .SubTab .subtab:hover {
@@ -14,6 +14,9 @@
 
 .SubTab .actions {
     display: none;
+
+    color: rgb(109, 109, 109);
+    font-size: 19px;
 }
 
 .SubTab .container:hover + .actions {
@@ -24,6 +27,9 @@
 
 .SubTab .actions:hover {
     display: contents;
+
+    color: #8C3F0D;
+    cursor: pointer;
 }
 
 
@@ -120,41 +126,4 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-
-
-/** Dropdown */
-
-.SubTab #dropdown-options {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin-right: 5px;
-
-    color: rgb(109, 109, 109);
-    font-size: 19px;
-    float: right;
-}
-
-.SubTab #dropdown-options:hover {
-    color: #8C3F0D;
-}
-
-.SubTab #dropdown-options:after {
-    display: none;
-}
-
-.SubTab #options {
-    background-color: #fffdf6;
-}
-
-.SubTab #option i {
-    margin-right: 4px;
-}
-
-.SubTab #option:hover {
-    color: #8C3F0D;
-    background-color: #fffbf3;
 }
