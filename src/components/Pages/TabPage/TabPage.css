@@ -30,9 +30,13 @@
 .TabPage .toggleBtn {
     display: inline-block;
     margin-right: 10px;
+    position: relative;
+    z-index: 50;
 }
 
 .TabPage .toggleBtn i {
+    position: relative;
+    z-index: 50;
 
     font-size: 32px;
     font-weight: 400;

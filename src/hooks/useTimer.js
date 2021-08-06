@@ -88,6 +88,45 @@ export const useTimer = () => {
     
         return `${minutes}:${seconds}`;
       };
+
+      const togglePaginationBtn = (btnName) => {
+
+        stopTimer()
+        setTimerMode(btnName)
+        const newArray = paginationButtonsStatus.map((element) => {
+          if (element[0] === btnName) {
+              element[1] = true
+          }
+          else {
+            element[1] = false
+          }
+          
+          return element;
+        })
+    
+        setPaginationButtonsStatus(newArray)
+        
+      };
+    
+      /** Setting: "pomodoro", "shortBreak", "longBreak" */
+      const setTimerMode = (setting) => {
+        switch (setting) {
+          case "pomodoro":
+            timerVariables.setTimeLimit(1500)
+            break;
+    
+          case "shortBreak":
+            timerVariables.setTimeLimit(300)
+            break;
+    
+          case "longBreak":
+            timerVariables.setTimeLimit(900)
+            break;
+    
+          default:
+            break;
+        }
+      }
     
       const startTimer = () => {
         setTimerStatus("started");
@@ -120,6 +159,7 @@ export const useTimer = () => {
         paginationButtonsStatus,
         setPaginationButtonsStatus,
         formatTimeLeft,
+        togglePaginationBtn,
         startTimer,
         pauseTimer,
         stopTimer,

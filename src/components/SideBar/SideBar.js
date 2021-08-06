@@ -38,8 +38,20 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
     setIsMenuOpened((isMenuOpened) => !isMenuOpened)
   }
 
+  const handleOnMouseOver = () => {
+    if (!isMenuOpened)
+      setMiniMenu(true)
+  }
+
+  const handleOnMouseOut = () => {
+    if (!isMenuOpened)
+    setMiniMenu(false)
+  }
+
   return (
-      <div className={`SideBar ${isMenuOpened ? "" : "closed"} ${miniMenu ? "miniMenu-open" : ""}`}>
+      <div className={`SideBar ${isMenuOpened ? "open" : "closed"} ${miniMenu ? "miniMenu-open" : ""}`}>
+
+        <div className={`invisDiv`} onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}></div>
 
         <div className={`content-wrapper`}>
 
