@@ -18,11 +18,15 @@ export default function Task(props) {
 
     const handleChange = async (event) => {
 
-        if (completed) await apiClient.unmarkTask(task.id);
-        else await apiClient.markTask(task.id);
+        let dbData;
+
+        if (completed) dbData = await apiClient.unmarkTask(task.id);
+        else dbData = await apiClient.markTask(task.id);
         setCompleted(!completed);
 
-        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === task.id ? task : oldTask))
+        const updatedTask = dbData.data.task;
+
+        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === updatedTask.id ? updatedTask : oldTask))
     }
 
     //method to show modal for deleting confirmation and editing...

@@ -15,9 +15,11 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
 
-  //new
+  const [completedSubtabs, setCompletedSubtabs] = useState([]);
+  const [uncompletedSubtabs, setUncompletedSubtabs] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [uncompletedTasks, setUncompletedTasks] = useState([]);
+
 
   // fetches subtabs and tasks
   useEffect(() => {
@@ -142,15 +144,21 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   }
 
 
-  //newwww
   useEffect(() => {
-    const separatingTasks = () => {
-      setCompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === true));
-      setUncompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === false));
-    } 
-    separatingTasks();
+      const separatingTasks = () => {
+          setCompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === true));
+          setUncompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === false));
+      } 
 
-  }, [setTasks, tasks]);
+      const separatingSubtabs = () => {
+          setCompletedSubtabs(subtabs.filter(filteredSubtabs => filteredSubtabs.completed === true));
+          setUncompletedSubtabs(subtabs.filter(filteredSubtabs => filteredSubtabs.completed === false));
+      }       
+
+      separatingTasks();
+      separatingSubtabs();
+
+  }, [setTasks, tasks, setSubtabs, subtabs]);
 
 
   return (
@@ -189,16 +197,16 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
       </div>
 
       <div className="task-area">
-        {subtabs.map((subtab) => (
+        {uncompletedSubtabs.map((subtab) => (
           <SubTab key={subtab.id} subtab={subtab} mainId={mainId} onClick={() => digIntoTab(subtab.id)} updateDirectory={updateDirectory} />
         ))}
-        {/* {uncompletedTasks.map((task) => (
+        {completedSubtabs.map((subtab) => (
+          <SubTab key={subtab.id} subtab={subtab} mainId={mainId} onClick={() => digIntoTab(subtab.id)} updateDirectory={updateDirectory} />
+        ))}
+        {uncompletedTasks.map((task) => (
           <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
         ))}
         {completedTasks.map((task) => (
-          <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
-        ))} */}
-        {tasks.map((task) => (
           <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
         ))}
       </div>
