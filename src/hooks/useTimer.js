@@ -17,6 +17,8 @@ export const useTimer = () => {
 
     const [circleDasharray, setCircleDasharray] = useState("");
     const [remainingPathColor, setRemainingPathColor] = useState(`green`);
+
+    const [paginationButtonsStatus, setPaginationButtonsStatus] = useState([ ["pomodoro", true], ["shortBreak", false], ["longBreak", false] ]);
     
     const RADIUS = 45;
     const LENGTH = Math.round(2 * Math.PI * RADIUS);
@@ -115,6 +117,8 @@ export const useTimer = () => {
 
     return {
         timerVariables,
+        paginationButtonsStatus,
+        setPaginationButtonsStatus,
         formatTimeLeft,
         startTimer,
         pauseTimer,
