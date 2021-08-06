@@ -2,7 +2,7 @@ import "./Task.css"
 
 import { useState, useContext } from 'react';
 import apiClient from "services/apiClient";
-import { DeleteTask, UpdateTask } from "components";
+import { DeleteTask, UpdateTask, ViewTask } from "components";
 import { Dropdown } from "react-bootstrap";
 import GlobalContext from "context/global";
 
@@ -28,6 +28,7 @@ export default function Task(props) {
     //method to show modal for deleting confirmation and editing...
     const [deleteModalShow, setDeleteModalShow] = useState(false);
     const [editModalShow, setEditModalShow] = useState(false);
+    const [viewModalShow, setViewModalShow] = useState(false);
 
     return (
         <div className="Task">
@@ -69,6 +70,16 @@ export default function Task(props) {
             <UpdateTask
                 show={editModalShow}
                 onHide={() => setEditModalShow(false)}
+                task={task}
+                mainId={mainId} 
+                subId={subId}
+            />
+
+            {/* onClick={() => setViewModalShow(true)} */}
+
+            <ViewTask
+                show={viewModalShow}
+                onHide={() => setViewModalShow(false)}
                 task={task}
                 mainId={mainId} 
                 subId={subId}
