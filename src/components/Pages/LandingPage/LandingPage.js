@@ -1,5 +1,8 @@
 import "./LandingPage.css"
 
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 export default function LandingPage() {
 
     return (
@@ -21,6 +24,8 @@ export default function LandingPage() {
                     {/* <img src="https://img.icons8.com/bubbles/400/000000/edit.png" alt="a fitbit" /> */}
                     <h1>Planner</h1>
                     <p>Helping you make planning bearable!</p>
+                    <br />
+                    <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} className="startBtn"> Get Started! </Button>
                 </div>
 
                 <div className="tiles">
