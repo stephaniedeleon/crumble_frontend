@@ -22,7 +22,7 @@ export const useRegister = () => {
 
     switch(evt.target.name) {
       case "email":
-        if (evt.target.value.indexOf("@") <= 0)
+        if (evt.target.value.indexOf("@") <= 0 && evt.target.value.indexOf(".") <= 0)
           setErrors((err) => ({ ...err, email: "Please enter a valid email." }));
         else 
           setErrors((err) => ({ ...err, email: null }));
