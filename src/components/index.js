@@ -5,11 +5,11 @@ export { default as Register } from "./pages/Register/Register";
 export { default as MainTab } from "./MainTab/MainTab";
 export { default as SubTab } from "./SubTab/SubTab";
 
-export { default as AddMainTab } from "./AddMainTab/AddMainTab";
-export { default as AddSubTab } from "./AddSubTab/AddSubTab";
-export { default as AddTask } from "./AddTask/AddTask";
-export { default as AddEvent } from "./AddEvent/AddEvent";
-export { default as AddNote } from "./AddNote/AddNote";
+export { default as AddMainTab } from "./Add/AddMainTab/AddMainTab";
+export { default as AddSubTab } from "./Add/AddSubTab/AddSubTab";
+export { default as AddTask } from "./Add/AddTask/AddTask";
+export { default as AddEvent } from "./Add/AddEvent/AddEvent";
+export { default as AddNote } from "./Add/AddNote/AddNote";
 
 export { default as DeleteMaintab } from "./Delete/DeleteMaintab/DeleteMaintab";
 export { default as DeleteEvent } from "./Delete/DeleteEvent/DeleteEvent";
