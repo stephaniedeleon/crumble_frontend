@@ -134,6 +134,6 @@
     position: absolute;
     /* border: solid; */
     width: 120%;
-    height: 180%;
-    transform: translateY(-200px);
+    height: 120%;
+    transform: translateY(-60px);
 }
