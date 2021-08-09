@@ -23,6 +23,7 @@ export default function UpdateSubtab(props) {
     //update subtab in list of subtabs
     const updateSubtab = (updatedSubtab) => {
         setSubtabs(oldSubtabs => oldSubtabs.map(oldSubtab => oldSubtab.id === updatedSubtab.id ? updatedSubtab : oldSubtab));
+        props.updateDirectory("update", updatedSubtab);
     }
 
 
