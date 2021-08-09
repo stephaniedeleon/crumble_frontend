@@ -73,6 +73,7 @@ function App() {
         moveOutTab, 
       }}>
         <TimerContext.Provider value={{ timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction, paginationButtonsStatus, setPaginationButtonsStatus, togglePaginationBtn }}>
+          
           <div className="App">
             <BrowserRouter>
               <Navbar />
@@ -92,6 +93,7 @@ function App() {
               <Footer />
             </BrowserRouter>
           </div>
+
         </TimerContext.Provider>
       </GlobalContext.Provider>
     </AuthContext.Provider>

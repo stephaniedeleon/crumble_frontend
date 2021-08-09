@@ -56,12 +56,12 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
         <div className={`content-wrapper`}>
 
           <div className="sidebar-header">
-            <div className="sidebar-title" onClick={(event) => navigateToSubtab(event, directory?.id)} style={miniMenu ? { paddingLeft: "0px" } : {}}>
-              {directory.name}
+            <div className="toggleBtn" style={miniMenu ? {display: "none"} : {}}>
+                <i className="bi-x" onClick={handleClick}></i>
             </div>
 
-            <div className="toggleBtn" style={miniMenu ? {display: "none"} : {}}>
-                <i className="bi-arrow-left-square" onClick={handleClick}></i>
+            <div className="sidebar-title" onClick={(event) => navigateToSubtab(event, directory?.id)} style={miniMenu ? { paddingLeft: "0px" } : {}}>
+              {directory.name}
             </div>
           </div>
 
