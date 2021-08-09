@@ -76,7 +76,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   const [taskModalShow, setTaskModalShow] = useState(false);
 
 
-    /** Adds subtab to front end directory (action: "add", "delete", "update") */
+    /** Updates subtabs in front end directory (action: "add", "delete", "update") */
     const updateDirectory = (action, newSubtab) => {
 
       action = action.toLowerCase()
@@ -85,27 +85,37 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
       const index = tabNavigationStack.stack.length - 1;
       let currentSubtabId = tabNavigationStack.stack[index];
 
+      let targetObject;
+      if (currentSubtabId !== 'root')
+        targetObject = findTargetSubtab(directory, currentSubtabId);
+      else 
+        targetObject = directory;
+
       switch (action) {
         case "add": 
-
-          if (currentSubtabId !== 'root') {
-              const targetObject = findTargetSubtab(directory, currentSubtabId)
-              targetObject?.children.unshift(configuredNewSubtab)
-          } else { 
-              directory.children.unshift(configuredNewSubtab)
-          }
+          targetObject?.children.unshift(configuredNewSubtab);
           break;
 
         case "delete": 
-          if (currentSubtabId !== 'root') {
-              const targetObject = findTargetSubtab(directory, currentSubtabId)
-              targetObject?.children.splice(currentSubtabId, 1)
-          } else { 
-              directory.children.splice(currentSubtabId, 1)
+
+          for (let index = 0; index < targetObject?.children.length; index++) {
+              if (targetObject?.children[index].id === configuredNewSubtab.id) {
+                targetObject.children.splice(index, 1);
+                break;
+              }
           }
+
           break;
 
         case "update": 
+
+          for (let index = 0; index < targetObject?.children.length; index++) {
+              if (targetObject?.children[index].id === configuredNewSubtab.id) {
+                targetObject.children[index].name = configuredNewSubtab.name;
+                break;
+              }
+          }  
+
           break;
 
         default:
