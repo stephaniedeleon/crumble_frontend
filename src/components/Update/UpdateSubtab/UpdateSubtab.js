@@ -1,7 +1,8 @@
 import "./UpdateSubtab.css"
 
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import { DeleteSubtab } from "components";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
@@ -70,9 +71,9 @@ export default function UpdateSubtab(props) {
         setIsLoading(false);
     }
 
-    /** autofocus */
-    const innerRef = React.useRef();
-    useEffect(() => {innerRef.current && innerRef.current.focus()}, [props.show]);
+
+    //method to show modal for deleting confirmation...
+    const [deleteModalShow, setDeleteModalShow] = useState(false);
 
     return (
       <Modal
@@ -85,16 +86,15 @@ export default function UpdateSubtab(props) {
         <Form onSubmit={handleOnSubmit} className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit Subtab
+                    Subtab
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <FormGroup>
-                    <FormLabel className="form-label">New name of sub tab</FormLabel>
+                    <FormLabel className="form-label">Name of subtab</FormLabel>
                     <Form.Control
                         type="text"
-                        ref={innerRef}
                         name="name"
                         className="input-field"
                         maxLength={30}
@@ -118,11 +118,25 @@ export default function UpdateSubtab(props) {
                         <option value="Low">Low</option>
                     </Form.Control> 
                 </FormGroup>
-                <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button" disabled={!form.name?.trim()}>Save</Button>
-                </div>
             </Modal.Body>
+            <Modal.Footer>
+                <div id="option" onClick={() => setDeleteModalShow(true)}>                    
+                    <i className="bi-trash"/> Delete
+                </div>
+                <div className="modal-button">
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!form.name?.trim()}>
+                        Save
+                    </Button>
+                </div>
+            </Modal.Footer>
         </Form>
+
+        <DeleteSubtab
+            show={deleteModalShow}
+            onHide={() => setDeleteModalShow(false)}
+            subtab={subtab}
+            updateDirectory={props.updateDirectory}
+        />
 
       </Modal>
     );
