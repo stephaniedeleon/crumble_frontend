@@ -66,7 +66,20 @@
   font-family: "Hind Vadodara", sans-serif;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 788px) {
+
+  #footer-col-r .footer-links a {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .Footer .footer-links {
+    padding-top: 0px;
+  }
+
   #footer-col-l {
     border-top: 1px solid #b48125;
     padding-top: 60px;
@@ -96,10 +109,6 @@
   .Footer .row {
     padding: 0;
     padding-bottom: 20px;
-  }
-
-  .Footer .footer-links {
-    padding-top: 0px;
   }
 }
 
