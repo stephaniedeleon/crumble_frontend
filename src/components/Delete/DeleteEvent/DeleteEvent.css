@@ -1,4 +1,8 @@
 /** Affects all modals */ 
+.delete-modal {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
 .delete-modal .deleteItem {
     text-align: center;
 }
