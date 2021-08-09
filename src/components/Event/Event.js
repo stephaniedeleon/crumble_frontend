@@ -2,14 +2,14 @@ import "./Event.css"
 
 import { ListGroup } from "react-bootstrap";
 import React, { useState } from "react";
-import { ViewEvent } from "components";
+import { UpdateEvent } from "components";
 import { formatDate } from "utils/format";
 
 
 export default function Event({ event }) {
 
-    //method to show modal for viewing...
-    const [viewModalShow, setViewModalShow] = useState(false);
+    //method to show modal for viewing or editing...
+    const [editModalShow, setEditModalShow] = useState(false);
 
     return (
         <div className="Event">
@@ -19,17 +19,16 @@ export default function Event({ event }) {
                     <p className="eventDate">{formatDate(event.date)}</p>  
                 </div>
 
-                <div className="actions" onClick={() => setViewModalShow(true)}>
+                <div className="actions" onClick={() => setEditModalShow(true)}>
                     <i className= "bi-three-dots"></i>
                 </div>
             </ListGroup.Item> 
 
-            <ViewEvent
-                show={viewModalShow}
-                onHide={() => setViewModalShow(false)}
-                setViewModalShow={setViewModalShow}
+            <UpdateEvent
+                show={editModalShow}
+                onHide={() => setEditModalShow(false)}
                 event={event}
-            />
+            />  
 
         </div>
     );

@@ -13,7 +13,7 @@ export default function Footer() {
                         <ExternalLink href="https://www.linkedin.com/in/gevork-manukyan-235385199/"> 
                         <i className="bi-linkedin"/> G
                         </ExternalLink>
-                        <ExternalLink href="https://www.linkedin.com/in/stephanie-de-leon-a902b717a/"> 
+                        <ExternalLink href="https://www.linkedin.com/in/stephaniedeleon516/"> 
                             <i className="bi-linkedin"/> S
                         </ExternalLink>
                         <ExternalLink href="https://www.linkedin.com/in/abhirajchatterjee/"> 
@@ -34,7 +34,7 @@ export default function Footer() {
                     <h5>Looking for more?_</h5>
                     <div className="footer-links">
                         <ExternalLink href="https://github.com/CourseHeroGrp1/planner_api"> 
-                            <i className="bi-github"/> api
+                            <i className="bi-github"/> backend
                         </ExternalLink>
                         <ExternalLink href="https://github.com/CourseHeroGrp1/planner_frontend"> 
                             <i className="bi-github"/> frontend

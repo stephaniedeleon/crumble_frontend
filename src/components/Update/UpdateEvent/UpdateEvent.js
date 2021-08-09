@@ -3,6 +3,7 @@ import "./UpdateEvent.css"
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext, useEffect } from "react";
 import { formatDateForInputDisplay } from "utils/format";
+import { DeleteEvent } from "components";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
@@ -130,9 +131,9 @@ export default function UpdateEvent(props) {
         setIsLoading(false);
     }
 
-    /** autofocus */
-    const innerRef = React.useRef();
-    useEffect(() => {innerRef.current && innerRef.current.focus()}, [props.show]);
+
+    //method to show modal for deleting confirmation...
+    const [deleteModalShow, setDeleteModalShow] = useState(false);
 
     return (
         <Modal
@@ -145,7 +146,7 @@ export default function UpdateEvent(props) {
             <Form onSubmit={handleOnSubmit} className="modal-area">
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Edit Event
+                        Event
                     </Modal.Title>
                 </Modal.Header>
 
@@ -154,7 +155,6 @@ export default function UpdateEvent(props) {
                         <FormLabel className="form-label">Name of event</FormLabel>
                         <Form.Control
                             type="text"
-                            ref={innerRef}
                             name="event_name"
                             maxLength={20}
                             className="input-field"
@@ -180,11 +180,24 @@ export default function UpdateEvent(props) {
                             value={form.notes}
                         />
                     </FormGroup>
-                    <div className="modal-button">
-                        <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.event_name?.trim() && form.date)}>Save</Button>
-                    </div>
                 </Modal.Body>
+                <Modal.Footer>
+                    <div id="option" onClick={() => setDeleteModalShow(true)}>                    
+                        <i className="bi-trash"/> Delete
+                    </div>
+                    <div className="modal-button">
+                        <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.event_name?.trim() && form.date)}>
+                            Save
+                        </Button>
+                    </div>
+                </Modal.Footer>
             </Form>
+
+            <DeleteEvent
+                show={deleteModalShow}
+                onHide={() => setDeleteModalShow(false)}
+                event={calEvent}
+            />
 
         </Modal>
     );
