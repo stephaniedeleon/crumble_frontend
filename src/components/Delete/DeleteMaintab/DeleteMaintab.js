@@ -62,7 +62,7 @@ export default function DeleteMaintab(props) {
                     </div>
 
                     <div className="modal-button">
-                        <Button onClick={props.onHide} className="del-button">
+                        <Button onClick={props.onHide} className="cancel-button">
                             Cancel
                         </Button>
                         <Button type="submit" onClick={handleOnDelete} className="button">

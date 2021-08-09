@@ -77,7 +77,7 @@ function App() {
           <div className="App">
             <BrowserRouter>
               <Navbar />
-              <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} paginationButtonsStatus={paginationButtonsStatus}/>
+              <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} paginationButtonsStatus={paginationButtonsStatus} togglePaginationBtn={togglePaginationBtn} startTimer={startTimer} />
 
               <Routes>
                 <Route path="/" element={<LandingPage />} />

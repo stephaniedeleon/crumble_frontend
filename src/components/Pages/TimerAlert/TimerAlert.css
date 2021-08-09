@@ -6,3 +6,13 @@
 .timerAlert .modal-body p {
     margin: 0;
 }
+
+.timerAlert .modal-button.breaktime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timerAlert .modal-button .button.exit{
+    margin: 0;
+}

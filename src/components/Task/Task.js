@@ -2,8 +2,7 @@ import "./Task.css"
 
 import { useState, useContext } from 'react';
 import apiClient from "services/apiClient";
-import { ViewTask } from "components";
-import { Dropdown } from "react-bootstrap";
+import { UpdateTask } from "components";
 import GlobalContext from "context/global";
 
 export default function Task(props) {
@@ -29,8 +28,8 @@ export default function Task(props) {
         setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === updatedTask.id ? updatedTask : oldTask))
     }
 
-    //method to show modal for viewing...
-    const [viewModalShow, setViewModalShow] = useState(false);
+    //method to show modal for viewing or editing...
+    const [editModalShow, setEditModalShow] = useState(false);
 
     return (
         <div className="Task">
@@ -45,16 +44,16 @@ export default function Task(props) {
                     <div className="priority">{task.priority}</div>
                 </label>
 
-                <div className="actions" onClick={() => setViewModalShow(true)}>
+                <div className="actions" onClick={() => setEditModalShow(true)}>
                     <i className= "bi-three-dots"></i>
                 </div>
             </div>
 
-            <ViewTask
-                show={viewModalShow}
-                onHide={() => setViewModalShow(false)}
+            <UpdateTask
+                show={editModalShow}
+                onHide={() => setEditModalShow(false)}
                 task={task}
-                mainId={mainId} 
+                mainId={mainId}
                 subId={subId}
             />
         </div>
