@@ -1,5 +1,7 @@
 .Breadcrumbs {
     display: inline-block;
+    position: relative;
+    z-index: 25;
 }
 
 .Breadcrumbs .backBtn, 

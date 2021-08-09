@@ -49,7 +49,7 @@ export default function SideBar( { isMenuOpened, setIsMenuOpened, directory, mai
   }
 
   return (
-      <div className={`SideBar ${isMenuOpened ? "open" : "closed"} ${miniMenu ? "miniMenu-open" : ""}`}>
+      <div className={`SideBar ${isMenuOpened ? "open" : ""} ${miniMenu ? "miniMenu-open" : ""}`}>
 
         <div className={`invisDiv`} onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}></div>
 
