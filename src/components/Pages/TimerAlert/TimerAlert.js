@@ -48,16 +48,16 @@ export default function TimerAlert (props) {
                         </Modal.Body>
                         <Modal.Footer>
                             <div className="modal-button breaktime">
-                                <Button onClick={props.onHide} className="button exit">
+                                <Button onClick={props.onHide} className="cancel-button exit">
                                     I'm done for today
                                 </Button>
-                                <Button onClick={startPomodoro} className="button">
+                                <Button onClick={startPomodoro} className="button pomodoro">
                                     Skip break
                                 </Button>
-                                <Button onClick={takeShort} className="button">
+                                <Button onClick={takeShort} className="button short-break">
                                     Take a short break
                                 </Button>
-                                <Button onClick={takeLong} className="button">
+                                <Button onClick={takeLong} className="button long-break">
                                     Take a long break
                                 </Button>
                             </div>
@@ -74,10 +74,10 @@ export default function TimerAlert (props) {
                         </Modal.Body>                
                         <Modal.Footer>
                             <div className="modal-button">
-                                <Button onClick={props.onHide} className="button">
+                                <Button onClick={props.onHide} className="cancel-button">
                                     I'm done for today
                                 </Button>
-                                <Button onClick={startPomodoro} className="button">
+                                <Button onClick={startPomodoro} className="button pomodoro">
                                     Start working
                                 </Button>
                             </div>

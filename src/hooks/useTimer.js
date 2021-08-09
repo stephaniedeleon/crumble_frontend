@@ -58,13 +58,14 @@ export const useTimer = () => {
         };
 
         const setColor = () => {
-          if (timeLeft <= Math.max(timeLimit * 0.04)) setRemainingPathColor("red");
+          if (timeLeft <= Math.max(timeLimit * 0.25)) setRemainingPathColor("red");
           else if (
-            timeLeft > Math.max(timeLimit * 0.04) &&
-            timeLeft <= Math.max(timeLimit * 0.2)
+            timeLeft > Math.max(timeLimit * 0.25) &&
+            timeLeft <= Math.max(timeLimit * 0.5)
           )
             setRemainingPathColor("orange");
-          else setRemainingPathColor("green");
+          else 
+            setRemainingPathColor("green");
         };
 
         updateClock();
