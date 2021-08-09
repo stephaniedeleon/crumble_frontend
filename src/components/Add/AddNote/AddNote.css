@@ -5,11 +5,16 @@
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 25px;
-  min-height: 400px;
+  min-height: 300px;
 }
 
 .AddNote .rdw-editor-main {
   color: #254832;
+}
+
+.public-DraftEditor-content {
+  min-height: 200px;
+  display: block;
 }
 
 /** Toolbar */
@@ -80,9 +85,4 @@
 
 .AddNote .rdw-embedded-modal {
   height: 210px;
-}
-
-.public-DraftEditor-content {
-  min-height: 260px;
-  display: block;
 }

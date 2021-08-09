@@ -1,10 +1,10 @@
 .Notes {
     margin: 10px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     padding: 20px 40px;
     border: 1px solid #B48125;
     border-radius: 10px;
-    height: 59vh;
+    height: 58.2vh;
     overflow-y: auto;
 }
 
@@ -80,5 +80,15 @@
 .Notes .card-body #option:hover {
     color: #8C3F0D;
     cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .Notes {
+        width: 100%;
+    }
+
+    .col {
+        padding: 0;
+    }
 }
 

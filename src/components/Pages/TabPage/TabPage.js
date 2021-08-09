@@ -121,7 +121,7 @@ export default function TabPage() {
                 <Calendar />
               </Row>
             </Col>
-            <Col md={8}>
+            <Col>
               <Notes mainId={mainId} subId={subId} />
             </Col>
           </Row>

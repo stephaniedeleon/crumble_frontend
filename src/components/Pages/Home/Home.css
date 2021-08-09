@@ -35,15 +35,15 @@
   align-items: center;
 }
 
-.Home .title .addBtn {
+.Home .addBtn {
   box-shadow: none;
   background-color: transparent;
   color: #254832;
   border-color: #8c3f0d;
 }
 
-.Home .title .addBtn:hover,
-.Home .title .addBtn:active {
+.Home .addBtn:hover,
+.Home .addBtn:active {
   background-color: #47825b;
   color: white;
   border-color: #47825b;
@@ -60,6 +60,25 @@
   margin: 40px 110px;
 }
 
+/** No Maintabs yet */
+.Home .home-default {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.Home .default-message {
+  user-select: none;
+  font-size: 25px;
+  color: rgb(109, 109, 109);
+  padding-bottom: 15px;
+}
+
+/** Maintabs */
+
 .Home .home-area .maintabs {
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -67,23 +86,25 @@
   justify-items: center;
 }
 
-.Home .error-message {
-  padding-top: 4rem;
-}
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1260px) {
   .Home .home-area .maintabs {
     grid-template-columns: auto auto auto;
   }
 }
 
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 1030px) {
   .Home .home-area .maintabs {
     grid-template-columns: auto auto;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
+  .Home .home-area {
+    margin: 40px 60px;
+  }
+}
+
+@media screen and (max-width: 750px) {
   .Home .home-area .maintabs {
     grid-template-columns: auto;
   }
@@ -106,5 +127,10 @@
   .Home .title h3 {
     margin-bottom: 20px;
     font-size: 28px;
+  }
+
+  /** No Maintabs yet */
+  .Home .home-default {
+    margin-top: 0px;
   }
 }
