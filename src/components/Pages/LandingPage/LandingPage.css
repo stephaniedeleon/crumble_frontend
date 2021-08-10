@@ -1,6 +1,6 @@
-/* .LandingPage {
+.LandingPage {
   transform: translateY(-100px);
-} */
+}
 
 .LandingPage .hero {
   width: 55%;
@@ -52,7 +52,7 @@
 }
 
 .LandingPage .tiles .tile:hover {
-  /* cursor: pointer; */
+  cursor: pointer;
   color: #8c3f0d;
   transform: scale(1.1);
 }
@@ -83,6 +83,6 @@
   margin-top: 0 !important;
 }
 
-/* .LandingPage .summary-section {
-  background-color: black;
-} */
+.LandingPage .stock-image {
+  border-radius: 250px;
+}

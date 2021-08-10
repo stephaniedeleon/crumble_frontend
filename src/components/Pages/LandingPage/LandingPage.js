@@ -17,11 +17,11 @@ export default function LandingPage() {
                         <div className="section hero-section">
                             <div className="main">
                                 <div className="tiles">
-                                    <div className="tile" >
+                                    <div className="tile" onClick={() => fullpageApi.moveTo(3, 0)} >
                                         <img src="https://img.icons8.com/bubbles/100/000000/checklist.png" alt="todo list icon"/>
                                         <p>ToDo List</p>
                                     </div>
-                                    <div className="tile">
+                                    <div className="tile" onClick={() => fullpageApi.moveTo(4, 0)}>
                                         <img src="https://img.icons8.com/bubbles/100/000000/timeline-week.png" alt="calendar icon"/>
                                         <p>Calendar</p>
                                     </div>
@@ -36,11 +36,11 @@ export default function LandingPage() {
                                 </div>
 
                                 <div className="tiles">
-                                    <div className="tile">
+                                    <div className="tile" onClick={() => fullpageApi.moveTo(6, 0)}>
                                         <img src="https://img.icons8.com/bubbles/100/000000/notes-app.png" alt="notes icon"/>                    
                                         <p>Notes</p>
                                     </div>
-                                    <div className="tile">
+                                    <div className="tile" onClick={() => fullpageApi.moveTo(5, 0)}>
                                         <img src="https://img.icons8.com/bubbles/100/000000/watches-front-view--v1.png" alt="pomodoro timer icon"/>
                                         <p>Pomodoro Timer</p>
                                     </div>
@@ -57,10 +57,100 @@ export default function LandingPage() {
                                         <h1> Summary </h1>
                                         <br />
                                         <p>
-                                            
+                                            Managing large-scale projects or assignments is difficult due to complex scope and competing priorities. 
+                                            The purpose of this app is to provide users a platform that helps users be more productive and at 
+                                            the same time reminds them to take breaks while working.
                                         </p>
+                                        <br />
+                                        <Button as={Link} to="/about" className="startBtn"> Learn More </Button>
                                     </Col>
-                                    <Col></Col>
+                                    <Col>
+                                        <img src="https://previews.123rf.com/images/njnightsky/njnightsky0709/njnightsky070900032/1599802-a-yellow-pencil-on-a-day-planner.jpg" alt="study" height="350" width="350" className="stock-image" />
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </div>
+                        <div className="section todo-section">
+                            <Container>
+                                <Row>
+                                    <Col>
+                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
+                                    </Col>
+                                    <Col>
+                                        <h1> ToDo List </h1>
+                                        <br />
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
+                                            sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
+                                            nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
+                                            congue nisl id, blandit lacus. 
+                                        </p>
+                                        <br />
+                                        <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} className="startBtn"> <em>Check</em> It Out! </Button>
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </div>
+                        <div className="section calendar-section">
+                            <Container>
+                                <Row>
+                                    <Col>
+                                        <h1> Calendar </h1>
+                                        <br />
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
+                                            sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
+                                            nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
+                                            congue nisl id, blandit lacus. 
+                                        </p>
+                                        <br />
+                                        <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} className="startBtn"> <em>Plan</em> It Out! </Button>
+                                    </Col>
+                                    <Col>
+                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </div>
+                        <div className="section timer-section">
+                            <Container>
+                                <Row>
+                                    <Col>
+                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
+                                    </Col>
+                                    <Col>
+                                        <h1> Pomodoro Timer </h1>
+                                        <br />
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
+                                            sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
+                                            nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
+                                            congue nisl id, blandit lacus. 
+                                        </p>
+                                        <br />
+                                        <Button as={Link} to={localStorage.getItem('token') ? "/timer" : "/login"} className="startBtn"> <em>Time</em> It Out! </Button>
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </div>
+                        <div className="section notes-section">
+                            <Container>
+                                <Row>
+                                    <Col>
+                                        <h1> Notes </h1>
+                                        <br />
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
+                                            sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
+                                            nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
+                                            congue nisl id, blandit lacus. 
+                                        </p>
+                                        <br />
+                                        <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} className="startBtn"> <em>Write</em> It Out! </Button>
+                                    </Col>
+                                    <Col>
+                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
+                                    </Col>
                                 </Row>
                             </Container>
                         </div>
