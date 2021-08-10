@@ -22,7 +22,7 @@
 /* this is temp until we have a logo */
 .NavBar .logo {
     color: #254832;
-    font-family: "Playfair Display", serif;
+    font-family: 'Gloria Hallelujah', cursive;
     font-size: 23px;
     font-weight: 600;
     margin: 0;
@@ -31,6 +31,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.NavBar a.logo.navbar-brand {
+    padding: 5px 120px 5px 0px;
 }
 
 
