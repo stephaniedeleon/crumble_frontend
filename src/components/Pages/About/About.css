@@ -3,19 +3,151 @@
 }
 
 .About p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
+    /* font-family: 'Playfair Display', serif; */
+    font-size: 19px;
     line-height: 48px;
+    margin: 0;
 }
 
 .About .header {
     margin-bottom: 25px;
 }
 
+.About .subtitle {
+    text-align: left;
+}
+
+.About .subtitle h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+}
+
+
+/** About Us */
+
+.About .about {
+    /* margin-top: 50px; */
+    margin-bottom: 100px;
+}
+
 .About .aboutus-paragraph {
-    text-align: start;
+    max-width: 570px;
+    text-align: justify;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .crumble {
+    font-size: 28px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.About .crumbling {
+    font-size: 24px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.About .about-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
     margin-bottom: 45px;
 }
+
+.About .about-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .about-logo.inspiration {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.About .about-logo .left {
+    width: 260px;
+    text-align: left;
+}
+
+.About .about-logo .right {
+    width: 260px;
+    text-align: right;
+}
+
+@media screen and (max-width: 440px) {
+    .About .about-logo.inspiration img {
+        width: 110px;
+    }
+
+}
+
+
+/** Crumble Definition */
+
+.About .definition {
+    max-width: fit-content;
+    padding: 38px 60px;
+    border: 2px solid #254832;
+    border-radius: 20px;
+
+    background-color: #fffbf1;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    text-align: left;
+}
+
+.About .definition h5 {
+    font-size: 40px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.About .definition h6 {
+    font-size: 20px;
+}
+
+.About .definition h6 ::marker {
+    font-size: 15px;
+}
+
+.About .word {
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 991px) {
+    .About .about-logo.inspiration {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+
+        margin-bottom: 50px;
+    }
+
+    .About .about-logo .left {
+        width: auto;
+        text-align: center;
+    }
+    
+    .About .about-logo .right {
+        width: auto;
+        text-align: center;
+    }
+
+    .About .definition {
+        margin-bottom: 70px;
+    }
+}
+
+
+
+/** Meet GSA */
 
 .About .flex-container {
     display: flex;
@@ -24,16 +156,19 @@
 }
 
 .About .meet-GSA {
-    margin-bottom: 45px;
+    margin-bottom: 100px;
 }
 
 .About .person {
-    border: solid #8C3F0D;
+    /* border: 1px solid #47825b;
+    border-radius: 10px; */
     margin: 15px 25px;
 
     height: 320px;
     width: 320px;
     cursor: pointer;
+
+    user-select: none;
 
 
     /* display: inline-block; */
@@ -48,7 +183,7 @@
 }
 
 .About .person:hover {
-    box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.5); */
     -webkit-transform: scale(1.025);
     transform: scale(1.025);
 
@@ -57,14 +192,12 @@
 
 .About .card {
     height: 100%;
+    /* border-radius: 10px; */
+    background-color: transparent;
+    border: none;
 }
 
 .About .card-body {
-    
-}
-
-.About .card-title {
-    font-weight: bold;
 }
 
 .About .card-text {
@@ -72,7 +205,46 @@
     font-size: 1.2rem;
 }
 
+/* Profile */
+
+.About .profile-pic {
+    height: 250px;
+    width: 250px;
+    border-radius: 400px;
+}
+
+.About .profile-name {
+    margin-top: 10px;
+    height: 25px;
+}
+
+.About .profile-position {
+    font-size: 15px;
+    height: 25px;
+}
+
+.About .social-medias {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.About .social-medias a {
+    cursor: pointer;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    color: rgb(48, 48, 164);
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.About .social-medias a:hover {
+    color: rgb(116, 116, 203);
+}
+
+/** Our Mission */
 
 .About .our-mission {
     margin-bottom: 45px;
+    text-align: justify;
 }

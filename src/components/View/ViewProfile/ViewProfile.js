@@ -2,8 +2,6 @@ import "./ViewProfile.css"
 import { Modal, Button } from "react-bootstrap";
 
 
-
-
 export default function ViewProfile (props) {
 
     return (
@@ -25,9 +23,6 @@ export default function ViewProfile (props) {
                 {props.text}
             </Modal.Body>
 
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
         </Modal>
     )
 }
