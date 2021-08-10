@@ -50,9 +50,16 @@ export default function Home() {
             <div className="home-area">
                 <div className="title">
                     <h3>{user?.firstName + `'s MainTabs`}</h3>
-                    <Button className="addBtn" onClick={() => setModalShow(true)}>
-                        Add MainTab
-                    </Button>
+                    { maintabs.length === 0 ? (
+                        <>
+                        </>
+                    ) : (
+                        <>
+                            <Button className="addBtn" onClick={() => setModalShow(true)}>
+                                Add MainTab
+                            </Button>
+                        </>
+                    ) }
 
                     <AddMainTab
                         show={modalShow}
@@ -60,13 +67,19 @@ export default function Home() {
                     />
                 </div>
 
-                <div className="maintabs">
+                <div>
                     { maintabs.length === 0 ? (
                         <>
-                            <h2 className="error-message"> No Maintabs Available! </h2>
-                            <Button onClick={() => setModalShow(true)}>
-                                Add MainTab
-                            </Button>
+                            <div className="home-default">
+                                <div className="default-message">                            
+                                    Add a MainTab to get started!
+                                </div>
+                                <div>
+                                    <Button onClick={() => setModalShow(true)} className="addBtn">
+                                        Add MainTab
+                                    </Button>
+                                </div>
+                            </div>
 
                             <AddMainTab
                                 show={modalShow}
@@ -75,12 +88,13 @@ export default function Home() {
                         </>
                     ) : (
                         <>
-                            {maintabs.map((maintab) => (
-                                <MainTab key={maintab.id} maintab={maintab} />
-                            ))}
+                            <div className="maintabs">
+                                {maintabs.map((maintab) => (
+                                    <MainTab key={maintab.id} maintab={maintab} />
+                                ))}
+                            </div>
                         </>
                     ) }
-                    
                 </div>
             </div>
         </div>

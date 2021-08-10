@@ -32,7 +32,7 @@ export default function Timer() {
 
           <div
             name="pomodoro"
-            className={`pagination-button ${
+            className={`pagination-button pomodoro ${
               paginationButtonsStatus[0][1] ? "clicked" : ""
             }`}
             onClick={() => togglePaginationBtn("pomodoro")}
@@ -42,7 +42,7 @@ export default function Timer() {
 
           <div
             name="shortBreak"
-            className={`pagination-button ${
+            className={`pagination-button short-break ${
               paginationButtonsStatus[1][1] ? "clicked" : ""
             }`}
             onClick={() => togglePaginationBtn("shortBreak")}
@@ -52,7 +52,7 @@ export default function Timer() {
 
           <div
             name="longBreak"
-            className={`pagination-button ${
+            className={`pagination-button long-break ${
               paginationButtonsStatus[2][1] ? "clicked" : ""
             }`}
             onClick={() => togglePaginationBtn("longBreak")}

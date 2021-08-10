@@ -8,12 +8,12 @@ export default function Footer() {
         <div className="Footer">
             <div className="row align-items-center">
                 <div id="footer-col-l" className="col-md-4">
-                    <h5>Let's get acquainted_</h5>
+                    <h5>Let's get acquainted</h5>
                     <div className="footer-links">
                         <ExternalLink href="https://www.linkedin.com/in/gevork-manukyan-235385199/"> 
                         <i className="bi-linkedin"/> G
                         </ExternalLink>
-                        <ExternalLink href="https://www.linkedin.com/in/stephanie-de-leon-a902b717a/"> 
+                        <ExternalLink href="https://www.linkedin.com/in/stephaniedeleon516/"> 
                             <i className="bi-linkedin"/> S
                         </ExternalLink>
                         <ExternalLink href="https://www.linkedin.com/in/abhirajchatterjee/"> 
@@ -31,13 +31,13 @@ export default function Footer() {
                     </Link>
                 </div>
                 <div id="footer-col-r" className="col-md-4">
-                    <h5>Looking for more?_</h5>
+                    <h5>Looking for more?</h5>
                     <div className="footer-links">
                         <ExternalLink href="https://github.com/CourseHeroGrp1/planner_api"> 
-                            <i className="bi-github"/> api
+                            <i className="bi-github"/>&nbsp;backend
                         </ExternalLink>
                         <ExternalLink href="https://github.com/CourseHeroGrp1/planner_frontend"> 
-                            <i className="bi-github"/> frontend
+                            <i className="bi-github"/>&nbsp;frontend
                         </ExternalLink>
                     </div>
                 </div>

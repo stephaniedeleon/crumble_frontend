@@ -3,6 +3,11 @@
 .modal-area {
     background-color: rgb(255, 255, 248);
     color: #2A3A30;
+    border-radius: 10px;
+}
+
+.modal-content {
+    border-radius: 10px;
 }
 
 .modal-header .close {
@@ -27,12 +32,30 @@
     margin-bottom: 15px;
 }
 
+.modal .input-field:hover {
+    border: 2px solid #47825b;
+}
+
 .modal-button {
    text-align: right;
 }
 
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-footer #option {
+    padding: 0px 10px;
+    font-size: 17px;
+}
+
+.modal-footer #option:hover {
+    color: #8C3F0D;
+    cursor: pointer;
+}
+
 .modal-button .button {
-    /* width: 120px; */
     margin-left: 10px;
     border-radius: 4px;
     cursor: pointer;
@@ -53,17 +76,34 @@
     border-color: #47825b;
 }
 
-.modal-button .del-button {
+/** Cancel Button */
+.modal-button .cancel-button {
     background-color: transparent;
     color: rgb(101, 101, 101);
     border-color: rgb(109, 109, 109);
+}
+
+.modal-button .cancel-button:hover,
+.modal-button .cancel-button:active,
+.modal-button .cancel-button:focus, 
+.modal-button .cancel-button:focus:active {
+    background-color: rgb(109, 109, 109);
+    color: white;
+    border-color: rgb(109, 109, 109);
+}
+
+/** Delete Button */
+.modal-button .del-button {
+    color: #254832;
+    border-color: #8C3F0D;
+    background-color: transparent;
 }
 
 .modal-button .del-button:hover,
 .modal-button .del-button:active,
 .modal-button .del-button:focus, 
 .modal-button .del-button:focus:active {
-    background-color: rgb(109, 109, 109);
+    background-color: #a01515;
     color: white;
-    border-color: rgb(109, 109, 109);
+    border-color: #d02828;
 }

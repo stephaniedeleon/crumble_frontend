@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GlobalContext from "context/global";
 import { useContext } from "react";
-import { ViewSubtab } from "components";
+import { UpdateSubtab } from "components";
 import apiClient from "services/apiClient";
  
 export default function SubTab(props) {
@@ -28,10 +28,11 @@ export default function SubTab(props) {
 
     }
 
+    
     const { digIntoTab } = useContext(GlobalContext);
 
-    //method to show modal for viewing...
-    const [viewModalShow, setViewModalShow] = useState(false);
+    //method to show modal for viewing or editing...
+    const [editModalShow, setEditModalShow] = useState(false);
 
     const subtab = props.subtab;
 
@@ -51,15 +52,16 @@ export default function SubTab(props) {
                     <div className="priority">{subtab.priority}</div>
                 </label>
 
-                <div className="actions" onClick={() => setViewModalShow(true)}>                            
+                <div className="actions" onClick={() => setEditModalShow(true)}>                            
                     <i className= "bi-three-dots"></i>
                 </div>
             </div>
 
-            <ViewSubtab
-                show={viewModalShow}
-                onHide={() => setViewModalShow(false)}
+            <UpdateSubtab
+                show={editModalShow}
+                onHide={() => setEditModalShow(false)}
                 subtab={subtab}
+                updateDirectory={props.updateDirectory}
             />
 
         </div>
