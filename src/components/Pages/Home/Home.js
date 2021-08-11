@@ -16,7 +16,7 @@ export default function Home() {
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
 
-    const name = user?.firstName.charAt(0).toUpperCase() + user?.firstName.substring(1)
+    const name = user?.firstName?.charAt(0).toUpperCase() + user?.firstName?.substring(1)
     const welcome = "Welcome " + name + "!";
   
     //fetches maintabs
