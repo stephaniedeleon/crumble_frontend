@@ -5,7 +5,6 @@
 .LandingPage .hero {
   width: 55%;
   flex-direction: column;
-  font-family: "Playfair Display", serif;
 }
 
 .LandingPage .main,
@@ -17,15 +16,16 @@
   margin-top: 0 !important;
 }
 
-.LandingPage .hero h1 {
+.LandingPage .hero h2 {
   font-size: 60px;
-  font-weight: 400;
   color: #254832;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
-.LandingPage .hero p {
+.LandingPage .hero h3 {
   font-size: 24px;
   font-weight: 300;
+  font-family: "Playfair Display", serif;
   color: #325d41;
 }
 
@@ -57,15 +57,20 @@
   transform: scale(1.1);
 }
 
+@media screen and (max-width: 499px) {
+    .LandingPage .tiles {
+      display: none;
+    }
+}
+
 .LandingPage .startBtn {
   padding: 6px 10px;
-  border-radius: 4px;
+  border-radius: 15px;
   border: 1px solid #8c3f0d;
   transition: all 0.2s ease;
-  background-color: white;
+  background-color: #fffbf1;
   color: black;
-  letter-spacing: 0.15rem;
-  font-size: 1.25rem;
+  font-size: 19px;
 }
 
 .LandingPage .startBtn:hover,
@@ -75,6 +80,7 @@
   background-color: #47825b;
   color: white;
   border-color: #47825b;
+
   outline: none !important;
   box-shadow: none !important;
 }
@@ -85,4 +91,14 @@
 
 .LandingPage .stock-image {
   border-radius: 250px;
+}
+
+.LandingPage .section h1 {
+  font-family: "Playfair Display", serif;
+  color: #325d41;
+}
+
+.LandingPage .section p {
+  text-align: justify;
+  font-size: 19px;
 }

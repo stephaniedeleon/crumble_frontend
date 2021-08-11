@@ -11,7 +11,7 @@ export default function Footer() {
                     <h5>Let's get acquainted</h5>
                     <div className="footer-links">
                         <ExternalLink href="https://www.linkedin.com/in/gevork-manukyan-235385199/"> 
-                        <i className="bi-linkedin"/> G
+                            <i className="bi-linkedin"/> G
                         </ExternalLink>
                         <ExternalLink href="https://www.linkedin.com/in/stephaniedeleon516/"> 
                             <i className="bi-linkedin"/> S

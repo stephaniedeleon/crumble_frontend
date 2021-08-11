@@ -1,6 +1,7 @@
 .NavBar {
   position: relative;
   z-index: 1;
+  background-color: rgb(255, 255, 248);
 }
 
 .NavBar .navbar {
@@ -9,33 +10,28 @@
 
 .NavBar .links .linkText,
 .NavBar .links .linkBtn {
-  font-family: "Varela", serif;
-  font-size: 16.5px;
-  font-weight: 300;
+  font-family: 'Hind Vadodara', sans-serif;
+  font-size: 18px;
   color: #254832;
   margin: 0;
 }
 
-/* this is temp until we have a logo */
-.NavBar h5 {
-  color: #254832;
-  font-weight: 400;
-  margin: 0;
-}
 
 /* this is temp until we have a logo */
 .NavBar .logo {
-  color: #254832;
-  font-family: "Playfair Display", serif;
-  font-size: 23px;
-  font-weight: 600;
-  margin: 0;
-  padding-right: 175px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 25px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.NavBar a.logo.navbar-brand {
+    color: #254832;
+    padding: 5px 90px 5px 0px;
+}
+
 
 .NavBar h6 {
   padding: 6px 10px;
@@ -52,6 +48,17 @@
   background-color: #47825b;
   color: white;
   border-color: #47825b;
+}
+
+
+.navbar-light .navbar-toggler {
+  background-color: #fffbf1;
+  box-shadow: none !important;
+}
+
+.navbar-light .navbar-toggler:hover {
+  background-color: white;
+  border-color: #8c3f0d;
 }
 
 /* TIMER */
