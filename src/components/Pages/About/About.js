@@ -42,9 +42,9 @@ export default function About() {
 
   return (
     <div className="About">
-        <div className="header">
-            <PageHeader sectionName="About Us" />
-        </div>
+      <div className="header">
+          <PageHeader sectionName="About Us" />
+      </div>
 
       <Container className="section">
 
@@ -134,7 +134,7 @@ export default function About() {
                 <div className="features">
                   <ul>
                     <li>A Pomodoro Timer to manage distractions and control your time</li>
-                    <li>MainTabs and subtabs to <span className="crumbling">"crumble"</span> tasks</li>
+                    <li>Maintabs and Subtabs to <span className="crumbling">"crumble"</span> tasks</li>
                     <li>A SideBar to navigate through your tab pages</li>
                     <li>Tab pages containing a todo list side by side with a calendar, a notes section, and a mini pomodoro timer</li>
                   </ul>

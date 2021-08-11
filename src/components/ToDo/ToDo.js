@@ -82,7 +82,7 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
       action = action.toLowerCase()
       const configuredNewSubtab = directoryConfiguration(newSubtab)
 
-      const index = tabNavigationStack.stack.length - 1;
+      const index = tabNavigationStack.currentPosition;
       let currentSubtabId = tabNavigationStack.stack[index];
 
       let targetObject;
