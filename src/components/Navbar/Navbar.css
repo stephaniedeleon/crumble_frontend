@@ -1,6 +1,7 @@
 .NavBar {
   position: relative;
   z-index: 1;
+  background-color: rgb(255, 255, 248);
 }
 
 .NavBar .navbar {
@@ -38,7 +39,7 @@
 }
 
 .NavBar a.logo.navbar-brand {
-    padding: 5px 120px 5px 0px;
+    padding: 5px 90px 5px 0px;
 }
 
 

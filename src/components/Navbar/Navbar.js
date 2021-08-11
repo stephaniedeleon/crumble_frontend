@@ -45,7 +45,7 @@ export default function Navbar() {
           <NavBar expand="lg">
               <Container className="navbar">
                   <NavBar.Brand as={Link} to="/" className="logo">
-                    <img src="https://img.icons8.com/bubbles/70/000000/edit.png" alt="planner logo" className="d-inline-block align-top" />
+                    <img src="https://img.icons8.com/bubbles/70/000000/edit.png" alt="crumble logo" className="d-inline-block align-top" />
                     Crumble
                   </NavBar.Brand>
 
