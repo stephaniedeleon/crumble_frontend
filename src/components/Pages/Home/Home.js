@@ -44,7 +44,7 @@ export default function Home() {
             <div className="parallax">
                 <div className="caption">
                     <h3>{welcome}</h3>
-                    <h4>What's your focus today?</h4>
+                    <h4>What are you "crumbling" today?</h4>
                 </div>
             </div>
 

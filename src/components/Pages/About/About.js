@@ -42,9 +42,9 @@ export default function About() {
 
   return (
     <div className="About">
-        <div className="header">
-            <PageHeader sectionName="About Us" />
-        </div>
+      <div className="header">
+          <PageHeader sectionName="About Us" />
+      </div>
 
       <Container className="section">
 
