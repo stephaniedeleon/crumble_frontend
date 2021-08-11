@@ -1,52 +1,124 @@
+.LandingPage {
+  transform: translateY(-100px);
+}
+
 .LandingPage .hero {
-    width: 55%;
-    flex-direction: column;
-    font-family: 'Playfair Display', serif;
+  width: 55%;
+  flex-direction: column;
 }
 
-.LandingPage .main, .LandingPage .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
+.LandingPage .main,
+.LandingPage .hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  margin-top: 0 !important;
 }
 
-.LandingPage .hero h1 {
-    font-size: 60px;
-    font-weight: 400;
-    color: #254832;
+.LandingPage .hero h2 {
+  font-size: 60px;
+  color: #254832;
+  font-family: "Gloria Hallelujah", cursive;
 }
 
-.LandingPage .hero p {
-    font-size: 24px;
-    font-weight: 300;
-    color: #325D41;
+.LandingPage .hero h3 {
+  font-size: 24px;
+  font-weight: 300;
+  font-family: "Playfair Display", serif;
+  color: #325d41;
 }
 
 .LandingPage .tiles {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .LandingPage .tiles .tile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 60px;
-    margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
 
-    color: #254832;
+  color: #254832;
 
-    border-radius: 10px;
-    padding: 10px 25px 0px 25px;
-    transition: all 0.2s ease 0s;
+  border-radius: 10px;
+  padding: 10px 25px 0px 25px;
+  transition: all 0.2s ease 0s;
 }
 
 .LandingPage .tiles .tile:hover {
-    cursor: pointer;
-    color: #8C3F0D;
-    transform: scale(1.1);
+  cursor: pointer;
+  color: #8c3f0d;
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 499px) {
+  .LandingPage .tiles {
+    display: none;
+  }
+}
+
+.LandingPage .startBtn {
+  padding: 6px 10px;
+  border-radius: 15px;
+  border: 1px solid #8c3f0d;
+  transition: all 0.2s ease;
+  background-color: #fffbf1;
+  color: black;
+  font-size: 19px;
+}
+
+.LandingPage .startBtn:hover,
+.LandingPage .startBtn:active,
+.LandingPage .startBtn:focus,
+.LandingPage .startBtn:focus:active {
+  background-color: #47825b;
+  color: white;
+  border-color: #47825b;
+
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.LandingPage .main {
+  margin-top: 0 !important;
+}
+
+.LandingPage .section h1 {
+  font-family: "Playfair Display", serif;
+  color: #325d41;
+}
+
+.LandingPage .crumbleHeader {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.LandingPage .section p {
+  text-align: justify;
+  line-height: 40px;
+  font-size: 19px;
+}
+
+.LandingPage .crumble {
+  font-size: 24px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.LandingPage .crumbling {
+  font-size: 20px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.LandingPage .moveToTop {
+  font-size: 25px;
+}
+
+.LandingPage .moveToTop:hover {
+  cursor: pointer;
+  color: #8c3f0d;
 }

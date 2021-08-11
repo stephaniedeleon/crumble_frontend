@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    padding: 0 4px;
 }
 
 .SubTab .subtab:hover {
@@ -12,6 +14,9 @@
 
 .SubTab .actions {
     display: none;
+
+    color: rgb(109, 109, 109);
+    font-size: 19px;
 }
 
 .SubTab .container:hover + .actions {
@@ -22,6 +27,9 @@
 
 .SubTab .actions:hover {
     display: contents;
+
+    color: #8C3F0D;
+    cursor: pointer;
 }
 
 
@@ -29,6 +37,7 @@
 
 /* The container */
 .SubTab .container {
+    width: 100%;
     display: flex;
     align-items: center;
     position: relative;
@@ -38,7 +47,8 @@
     margin: 0;
     padding: 5px 0px;
 
-    color: #256a3c;
+    justify-content: space-between;
+
 }
 
 .SubTab .bi-folder {
@@ -49,10 +59,16 @@
     color: #8C3F0D;
 }
 
-.SubTab .container h6 {
+.SubTab .container .details {
     color: #8C3F0D;
     margin-left: 25px;
     margin-bottom: 0;
+}
+
+.SubTab .container .priority {
+    color: #254832;
+    font-size: 13px;
+    padding-right: 30px;
 }
 
 /* Hide the browser's default checkbox */
@@ -110,41 +126,4 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-
-
-/** Dropdown */
-
-.SubTab #dropdown-options {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin-right: 5px;
-
-    color: rgb(109, 109, 109);
-    font-size: 19px;
-    float: right;
-}
-
-.SubTab #dropdown-options:hover {
-    color: #8C3F0D;
-}
-
-.SubTab #dropdown-options:after {
-    display: none;
-}
-
-.SubTab #options {
-    background-color: #fffdf6;
-}
-
-.SubTab #option i {
-    margin-right: 4px;
-}
-
-.SubTab #option:hover {
-    color: #8C3F0D;
-    background-color: #fffbf3;
 }

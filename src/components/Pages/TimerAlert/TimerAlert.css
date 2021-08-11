@@ -1,0 +1,33 @@
+.timerAlert .modal-body {
+    text-align: center;
+    font-size: 19px;
+}
+
+.timerAlert .modal-body p {
+    margin: 0;
+}
+
+.timerAlert .modal-button.breaktime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timerAlert .modal-button .button.exit{
+    margin: 0;
+}
+
+.timerAlert .button.pomodoro:hover { 
+    background-color: #007A5C;
+    border-color: #007A5C;
+}
+
+.timerAlert .button.short-break:hover {
+    background-color: #E0A800;
+    border-color: #E0A800;
+}
+
+.timerAlert .button.long-break:hover {
+    background-color: #2364AA;
+    border-color: #2364AA;
+}

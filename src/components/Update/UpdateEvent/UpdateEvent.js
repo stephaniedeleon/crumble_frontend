@@ -3,6 +3,7 @@ import "./UpdateEvent.css"
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext, useEffect } from "react";
 import { formatDateForInputDisplay } from "utils/format";
+import { DeleteEvent } from "components";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
@@ -131,6 +132,9 @@ export default function UpdateEvent(props) {
     }
 
 
+    //method to show modal for deleting confirmation...
+    const [deleteModalShow, setDeleteModalShow] = useState(false);
+
     return (
         <Modal
             {...props}
@@ -176,11 +180,24 @@ export default function UpdateEvent(props) {
                             value={form.notes}
                         />
                     </FormGroup>
-                    <div className="modal-button">
-                        <Button type="submit" onClick={props.onHide} className="button">Save</Button>
-                    </div>
                 </Modal.Body>
+                <Modal.Footer>
+                    <div id="option" onClick={() => setDeleteModalShow(true)}>                    
+                        <i className="bi-trash"/> Delete
+                    </div>
+                    <div className="modal-button">
+                        <Button type="submit" onClick={props.onHide} className="button" disabled={!(form.event_name?.trim() && form.date)}>
+                            Save
+                        </Button>
+                    </div>
+                </Modal.Footer>
             </Form>
+
+            <DeleteEvent
+                show={deleteModalShow}
+                onHide={() => setDeleteModalShow(false)}
+                event={calEvent}
+            />
 
         </Modal>
     );

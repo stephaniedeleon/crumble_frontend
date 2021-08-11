@@ -17,6 +17,7 @@ export default function TabPage() {
   const [error, setError] = useState(false);
   const [width, setWidth] = useState(180);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
+  const [isMiniMenu, setIsMiniMenu] = useState(false);
   const [directory, setDirectory] = useState({});
   
   const { mainId, subId } = useParams();
@@ -65,32 +66,48 @@ export default function TabPage() {
 
   }, [mainId, setTabNavigationStack, subId, user]);
 
+  const handleToggleButton = () => {
+    setIsMenuOpened(!isMenuOpened)
+    setIsMiniMenu(false);
+  }
+
+  const handleOnMouseOver = () => {
+    if (!isMenuOpened)
+      setIsMiniMenu(true)
+  }
+
+  const handleOnMouseOut = () => {
+    if (!isMenuOpened)
+      setIsMiniMenu(false)
+  }
 
   return (
     <div className="TabPage">
 
       <PageHeader sectionName={tab?.name} />
       <div className={`flex-container`} >
-        <div className={`sidebar ${isMenuOpened ? "open" : ""}`}>
-            <SideBar
-              isMenuOpened={isMenuOpened}
-              setIsMenuOpened={setIsMenuOpened}
-              directory={directory}
-              mainId={mainId}
-            />
+        <div className={`sidebar ${isMenuOpened ? "open" : ""}`} onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
+          <SideBar
+            isMenuOpened={isMenuOpened}
+            setIsMenuOpened={setIsMenuOpened}
+            directory={directory}
+            mainId={mainId}
+            miniMenu={isMiniMenu}
+            setMiniMenu={setIsMiniMenu}
+          />
         </div>
         <div className="tab-area">
           <Row>
             <Row className="my-1">
               <Col className={`navigation-buttons`}>
-                <div className="toggleBtn" onClick={() => setIsMenuOpened(!isMenuOpened)}>
+                <div className="toggleBtn" onClick={handleToggleButton}>
                   {isMenuOpened ?
                     <>
                     </>
 
                     :
 
-                    <i className="bi-list"></i>
+                    <i className="bi-list" onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}></i>
                   }
                 </div>
                 <Breadcrumbs mainId={mainId} subId={subId} />
@@ -104,7 +121,7 @@ export default function TabPage() {
                 <Calendar />
               </Row>
             </Col>
-            <Col md={8}>
+            <Col>
               <Notes mainId={mainId} subId={subId} />
             </Col>
           </Row>

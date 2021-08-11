@@ -1,148 +1,153 @@
+.NavBar {
+  position: relative;
+  z-index: 1;
+  background-color: rgb(255, 255, 248);
+}
+
 .NavBar .navbar {
-    user-select: none;
+  user-select: none;
 }
 
 .NavBar .links .linkText,
 .NavBar .links .linkBtn {
-    font-family: "Varela", serif;
-    font-size: 16.5px;
-    font-weight: 300;
-    color: #254832;
-    margin: 0;
+  font-family: 'Hind Vadodara', sans-serif;
+  font-size: 18px;
+  color: #254832;
+  margin: 0;
 }
 
-
-/* this is temp until we have a logo */
-.NavBar h5 {
-    color: #254832;
-    font-weight: 400;
-    margin: 0;
-}
 
 /* this is temp until we have a logo */
 .NavBar .logo {
-    color: #254832;
-    font-family: "Playfair Display", serif;
-    font-size: 23px;
-    font-weight: 600;
-    margin: 0;
-    padding-right: 175px;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 25px;
     
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.NavBar a.logo.navbar-brand {
+    color: #254832;
+    padding: 5px 90px 5px 0px;
+}
+
 
 .NavBar h6 {
-    padding: 6px 10px;
+  padding: 6px 10px;
 }
 
 .NavBar .linkBtn {
-    padding: 6px 10px;
-    border-radius: 4px;
-    border: 1px solid #8C3F0D;
-    transition: all 0.2s ease;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #8c3f0d;
+  transition: all 0.2s ease;
 }
 
 .NavBar .linkBtn:hover {
-    background-color: #47825b;
-    color: white;
-    border-color: #47825b;
+  background-color: #47825b;
+  color: white;
+  border-color: #47825b;
 }
 
+
+.navbar-light .navbar-toggler {
+  background-color: #fffbf1;
+  box-shadow: none !important;
+}
+
+.navbar-light .navbar-toggler:hover {
+  background-color: white;
+  border-color: #8c3f0d;
+}
 
 /* TIMER */
 
 .NavBar .timerContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .NavBar .base-timer {
-    height: 70px;
-    width: 70px;
-    display: grid;
+  height: 70px;
+  width: 70px;
+  display: grid;
 }
 
 .NavBar .base-timer-circle {
-    fill: none;
-    stroke: none;
+  fill: none;
+  stroke: none;
 }
 
 .NavBar .base-timer-path-elapsed {
-    stroke-width: 10px;
-    stroke: currentColor;
+  stroke-width: 10px;
+  stroke: currentColor;
 }
 
 .NavBar .base-timer-label {
-    height: 70px;
-    width: 70px;
-    font-size: 20px;
+  height: 70px;
+  width: 70px;
+  font-size: 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
 .NavBar .button-play-pause {
-    /* margin: 0 30px; */
-    height: 70px;
-    width: 70px;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* margin: 0 30px; */
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .NavBar .button-play-pause span {
-    /* display: block; */
-    /* box-sizing: border-box; */
-    width: 0%;
-    /* height: 75px; */
-    height: 20px;
-    border-color: transparent transparent transparent black;
-    cursor: pointer;
-    border-style: double;
-    border-width: 0 0 0 14px;
-    transition: 100ms all ease;
+  /* display: block; */
+  /* box-sizing: border-box; */
+  width: 0%;
+  /* height: 75px; */
+  height: 20px;
+  border-color: transparent transparent transparent black;
+  cursor: pointer;
+  border-style: double;
+  border-width: 0 0 0 14px;
+  transition: 100ms all ease;
 }
 
 .button-play-pause span.paused {
-    border-style: solid;
-    border-width: 10px 0 10px 19px;
-    transform: translateX(4px);
+  border-style: solid;
+  border-width: 10px 0 10px 19px;
+  transform: translateX(4px);
 }
 
-
-
 .NavBar .base-timer-path-remaining {
+  /* same as grey ring */
+  stroke-width: 10px;
 
-    /* same as grey ring */
-    stroke-width: 10px;
+  /* makes sure animation starts at top of circle */
+  transform: rotate(90deg);
+  transform-origin: center;
 
-    /* makes sure animation starts at top of circle */
-    transform: rotate(90deg);
-    transform-origin: center;
+  transition: 1s linear all;
 
-    transition: 1s linear all;
-
-    stroke: currentColor;
+  stroke: currentColor;
 }
 
 .NavBar .base-timer-path-remaining.green {
-    color: rgb(65, 184, 131);
+  color: rgb(65, 184, 131);
 }
 
 .NavBar .base-timer-path-remaining.orange {
-    color: orange;
+  color: orange;
 }
 
 .NavBar .base-timer-path-remaining.red {
-    color: red;
+  color: red;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }

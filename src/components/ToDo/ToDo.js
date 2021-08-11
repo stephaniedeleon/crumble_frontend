@@ -15,9 +15,11 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
 
-  //new
+  const [completedSubtabs, setCompletedSubtabs] = useState([]);
+  const [uncompletedSubtabs, setUncompletedSubtabs] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [uncompletedTasks, setUncompletedTasks] = useState([]);
+
 
   // fetches subtabs and tasks
   useEffect(() => {
@@ -74,36 +76,46 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   const [taskModalShow, setTaskModalShow] = useState(false);
 
 
-    /** Adds subtab to front end directory (action: "add", "delete", "update") */
+    /** Updates subtabs in front end directory (action: "add", "delete", "update") */
     const updateDirectory = (action, newSubtab) => {
 
       action = action.toLowerCase()
       const configuredNewSubtab = directoryConfiguration(newSubtab)
 
-      const index = tabNavigationStack.stack.length - 1;
+      const index = tabNavigationStack.currentPosition;
       let currentSubtabId = tabNavigationStack.stack[index];
+
+      let targetObject;
+      if (currentSubtabId !== 'root')
+        targetObject = findTargetSubtab(directory, currentSubtabId);
+      else 
+        targetObject = directory;
 
       switch (action) {
         case "add": 
-
-          if (currentSubtabId !== 'root') {
-              const targetObject = findTargetSubtab(directory, currentSubtabId)
-              targetObject?.children.unshift(configuredNewSubtab)
-          } else { 
-              directory.children.unshift(configuredNewSubtab)
-          }
+          targetObject?.children.unshift(configuredNewSubtab);
           break;
 
         case "delete": 
-          if (currentSubtabId !== 'root') {
-              const targetObject = findTargetSubtab(directory, currentSubtabId)
-              targetObject?.children.splice(currentSubtabId, 1)
-          } else { 
-              directory.children.splice(currentSubtabId, 1)
+
+          for (let index = 0; index < targetObject?.children.length; index++) {
+              if (targetObject?.children[index].id === configuredNewSubtab.id) {
+                targetObject.children.splice(index, 1);
+                break;
+              }
           }
+
           break;
 
         case "update": 
+
+          for (let index = 0; index < targetObject?.children.length; index++) {
+              if (targetObject?.children[index].id === configuredNewSubtab.id) {
+                targetObject.children[index].name = configuredNewSubtab.name;
+                break;
+              }
+          }  
+
           break;
 
         default:
@@ -142,15 +154,21 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
   }
 
 
-  //newwww
   useEffect(() => {
-    const separatingTasks = () => {
-      setCompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === true));
-      setUncompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === false));
-    } 
-    separatingTasks();
+      const separatingTasks = () => {
+          setCompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === true));
+          setUncompletedTasks(tasks.filter(filteredTasks => filteredTasks.completed === false));
+      } 
 
-  }, [setTasks, tasks]);
+      const separatingSubtabs = () => {
+          setCompletedSubtabs(subtabs.filter(filteredSubtabs => filteredSubtabs.completed === true));
+          setUncompletedSubtabs(subtabs.filter(filteredSubtabs => filteredSubtabs.completed === false));
+      }       
+
+      separatingTasks();
+      separatingSubtabs();
+
+  }, [setTasks, tasks, setSubtabs, subtabs]);
 
 
   return (
@@ -189,16 +207,16 @@ export default function ToDo({ directory, setDirectory, mainId, subId }) {
       </div>
 
       <div className="task-area">
-        {subtabs.map((subtab) => (
+        {uncompletedSubtabs.map((subtab) => (
           <SubTab key={subtab.id} subtab={subtab} mainId={mainId} onClick={() => digIntoTab(subtab.id)} updateDirectory={updateDirectory} />
         ))}
-        {/* {uncompletedTasks.map((task) => (
+        {completedSubtabs.map((subtab) => (
+          <SubTab key={subtab.id} subtab={subtab} mainId={mainId} onClick={() => digIntoTab(subtab.id)} updateDirectory={updateDirectory} />
+        ))}
+        {uncompletedTasks.map((task) => (
           <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
         ))}
         {completedTasks.map((task) => (
-          <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
-        ))} */}
-        {tasks.map((task) => (
           <Task key={task.id} task={task} mainId={mainId} subId={subId}/>
         ))}
       </div>

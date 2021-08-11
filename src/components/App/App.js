@@ -15,6 +15,7 @@ import {
   Home,
   LandingPage,
   About,
+  Profile,
   Footer,
   Timer,
 } from "components";
@@ -41,7 +42,7 @@ function App() {
 
   /** TIMER VARIABLES */
 
-  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction } = useTimer();
+  const { timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction, paginationButtonsStatus, setPaginationButtonsStatus, togglePaginationBtn } = useTimer();
 
   return (
     <AuthContext.Provider
@@ -71,25 +72,28 @@ function App() {
         digIntoTab,
         moveOutTab, 
       }}>
-        <TimerContext.Provider value={{ timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction }}>
+        <TimerContext.Provider value={{ timerVariables, formatTimeLeft, startTimer, pauseTimer, stopTimer, calculateTimeFraction, paginationButtonsStatus, setPaginationButtonsStatus, togglePaginationBtn }}>
+          
           <div className="App">
             <BrowserRouter>
-              <Navbar />
-              <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} />
+                <Navbar />
+                <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} paginationButtonsStatus={paginationButtonsStatus} togglePaginationBtn={togglePaginationBtn} startTimer={startTimer} />
 
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/timer" element={<Timer />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/home/:mainId/:subId" element={<TabPage />} />
-              </Routes>
+                <Routes>
+                  <Route path="/" element={<LandingPage />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/timer" element={<Timer />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/home/:mainId/:subId" element={<TabPage />} />
+                </Routes>
 
-              <Footer />
+                <Footer />
             </BrowserRouter>
           </div>
+
         </TimerContext.Provider>
       </GlobalContext.Provider>
     </AuthContext.Provider>

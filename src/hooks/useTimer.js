@@ -17,6 +17,8 @@ export const useTimer = () => {
 
     const [circleDasharray, setCircleDasharray] = useState("");
     const [remainingPathColor, setRemainingPathColor] = useState(`green`);
+
+    const [paginationButtonsStatus, setPaginationButtonsStatus] = useState([ ["pomodoro", true], ["shortBreak", false], ["longBreak", false] ]);
     
     const RADIUS = 45;
     const LENGTH = Math.round(2 * Math.PI * RADIUS);
@@ -56,13 +58,14 @@ export const useTimer = () => {
         };
 
         const setColor = () => {
-          if (timeLeft <= Math.max(timeLimit * 0.04)) setRemainingPathColor("red");
+          if (timeLeft <= Math.max(timeLimit * 0.25)) setRemainingPathColor("red");
           else if (
-            timeLeft > Math.max(timeLimit * 0.04) &&
-            timeLeft <= Math.max(timeLimit * 0.2)
+            timeLeft > Math.max(timeLimit * 0.25) &&
+            timeLeft <= Math.max(timeLimit * 0.5)
           )
             setRemainingPathColor("orange");
-          else setRemainingPathColor("green");
+          else 
+            setRemainingPathColor("green");
         };
 
         updateClock();
@@ -86,6 +89,45 @@ export const useTimer = () => {
     
         return `${minutes}:${seconds}`;
       };
+
+      const togglePaginationBtn = (btnName) => {
+
+        stopTimer()
+        setTimerMode(btnName)
+        const newArray = paginationButtonsStatus.map((element) => {
+          if (element[0] === btnName) {
+              element[1] = true
+          }
+          else {
+            element[1] = false
+          }
+          
+          return element;
+        })
+    
+        setPaginationButtonsStatus(newArray)
+        
+      };
+    
+      /** Setting: "pomodoro", "shortBreak", "longBreak" */
+      const setTimerMode = (setting) => {
+        switch (setting) {
+          case "pomodoro":
+            timerVariables.setTimeLimit(1500)
+            break;
+    
+          case "shortBreak":
+            timerVariables.setTimeLimit(300)
+            break;
+    
+          case "longBreak":
+            timerVariables.setTimeLimit(900)
+            break;
+    
+          default:
+            break;
+        }
+      }
     
       const startTimer = () => {
         setTimerStatus("started");
@@ -115,7 +157,10 @@ export const useTimer = () => {
 
     return {
         timerVariables,
+        paginationButtonsStatus,
+        setPaginationButtonsStatus,
         formatTimeLeft,
+        togglePaginationBtn,
         startTimer,
         pauseTimer,
         stopTimer,

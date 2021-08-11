@@ -2,8 +2,7 @@ import "./Task.css"
 
 import { useState, useContext } from 'react';
 import apiClient from "services/apiClient";
-import { DeleteTask, UpdateTask } from "components";
-import { Dropdown } from "react-bootstrap";
+import { UpdateTask } from "components";
 import GlobalContext from "context/global";
 
 export default function Task(props) {
@@ -18,15 +17,18 @@ export default function Task(props) {
 
     const handleChange = async (event) => {
 
-        if (completed) await apiClient.unmarkTask(task.id);
-        else await apiClient.markTask(task.id);
+        let dbData;
+
+        if (completed) dbData = await apiClient.unmarkTask(task.id);
+        else dbData = await apiClient.markTask(task.id);
         setCompleted(!completed);
 
-        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === task.id ? task : oldTask))
+        const updatedTask = dbData.data.task;
+
+        setTasks(oldTasks => oldTasks.map(oldTask => oldTask.id === updatedTask.id ? updatedTask : oldTask))
     }
 
-    //method to show modal for deleting confirmation and editing...
-    const [deleteModalShow, setDeleteModalShow] = useState(false);
+    //method to show modal for viewing or editing...
     const [editModalShow, setEditModalShow] = useState(false);
 
     return (
@@ -42,35 +44,16 @@ export default function Task(props) {
                     <div className="priority">{task.priority}</div>
                 </label>
 
-                <div className="actions">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-options">
-                            <i className= "bi-three-dots"></i>
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu id="options">
-                            <Dropdown.Item id="option" onClick={() => setEditModalShow(true)}>
-                                <i className="bi-pencil-square"/> Edit
-                            </Dropdown.Item>
-                            <Dropdown.Item id="option" onClick={() => setDeleteModalShow(true)}>                    
-                                <i className="bi-trash"/> Delete
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                <div className="actions" onClick={() => setEditModalShow(true)}>
+                    <i className= "bi-three-dots"></i>
                 </div>
             </div>
-
-            <DeleteTask
-                show={deleteModalShow}
-                onHide={() => setDeleteModalShow(false)}
-                task={task}
-            />
 
             <UpdateTask
                 show={editModalShow}
                 onHide={() => setEditModalShow(false)}
                 task={task}
-                mainId={mainId} 
+                mainId={mainId}
                 subId={subId}
             />
         </div>

@@ -5,7 +5,7 @@
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 25px;
-    min-height: 400px;
+    min-height: 300px;
 }
 
 .UpdateNote .rdw-editor-main {
@@ -16,7 +16,6 @@
 
 .UpdateNote .rdw-editor-toolbar {
     background-color: #fffdf6;
-    /* border-color: #8C3F0D; */
     border-radius: 4px;
     color: #2A3A30;
     padding: 8px;

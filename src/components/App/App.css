@@ -9,4 +9,16 @@
     min-height: 100vh;
     flex-direction: column;
     background-color: rgb(255, 255, 248);
+
+    padding-bottom: 196px;
+    position: relative;
+
+}
+
+
+@media all and (max-width: 770px) {
+    .App {
+        padding-bottom: 262px;
+    }
+    
 }

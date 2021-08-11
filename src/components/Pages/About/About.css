@@ -1,0 +1,306 @@
+.About {
+    
+}
+
+.About p {
+    font-size: 19px;
+    line-height: 48px;
+    margin: 0;
+}
+
+.About .header {
+    margin-bottom: 25px;
+}
+
+.About .subtitle {
+    text-align: left;
+}
+
+.About .subtitle h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+}
+
+
+/** About Us */
+
+.About .section {
+    margin-bottom: 100px;
+}
+
+.About .about-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 45px;
+}
+
+.About .aboutus-paragraph {
+    max-width: 570px;
+    text-align: justify;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .crumble {
+    font-size: 28px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.About .crumbling {
+    font-size: 24px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.About .about-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .about-logo.inspiration {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.About .about-logo .left {
+    width: 260px;
+    text-align: left;
+}
+
+.About .about-logo .right {
+    width: 260px;
+    text-align: right;
+}
+
+@media screen and (max-width: 440px) {
+    .About .about-logo.inspiration img {
+        width: 110px;
+    }
+
+}
+
+
+/** Crumble Definition */
+
+.About .definition {
+    max-width: fit-content;
+    padding: 38px 60px;
+    border: 2px solid #254832;
+    border-radius: 20px;
+
+    background-color: #fffbf1;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 90px;
+    text-align: left;
+}
+
+.About .definition h5 {
+    font-size: 40px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.About .definition h6 {
+    font-size: 20px;
+}
+
+.About .definition h6 ::marker {
+    font-size: 15px;
+}
+
+.About .word {
+    margin-bottom: 20px;
+}
+
+
+
+/** Our Mission */
+
+.About .our-mission {
+    margin-bottom: 45px;
+}
+
+.About .mission {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.About .mission-paragraph.unique {
+    max-width: 380px;
+    text-align: justify;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .mission-paragraph.features {
+    max-width: 500px;
+    text-align: justify;
+
+    padding: 15px 30px;
+    border: 2px solid #254832;
+    border-radius: 20px;
+
+    background-color: #fffbf1;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .mission-paragraph.features li {
+    line-height: 35px;
+}
+
+.About .mission-paragraph li::marker{
+    font-size: 15px;
+}
+
+.About .mission-paragraph .features{
+    margin-left: 10px;
+}
+
+
+/** Meet GSA */
+
+.About .flex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.About .person {
+    margin: 15px 25px;
+
+    height: fit-content;
+    width: 320px;
+
+    user-select: none;
+
+    transition: all 0.4s ease 0s;
+}
+
+.About .person:hover {
+    transform: scale(1.03);
+}
+
+.About .card {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.About .card-body {
+}
+
+.About .card-text {
+    text-align: center;
+}
+
+
+/* Profile */
+
+.About .profile-pic {
+    cursor: pointer;
+    height: 250px;
+    width: 250px;
+    border-radius: 400px;
+}
+
+.About .profile-name {
+    margin-top: 10px;
+    height: 45px;
+
+    font-size: 24px;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #325d41;
+}
+
+.About .profile-position {
+    font-size: 18px;
+    height: 25px;
+}
+
+.About .social-medias {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.About .social-medias a {
+    cursor: pointer;
+    padding-left: 3%;
+    padding-right: 3%;
+
+    color: #325d41;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.About .social-medias a:hover {
+    color: #8c3f0d;
+}
+
+
+/** Responsiveness */
+
+
+@media screen and (max-width: 991px) {
+
+    .About .subtitle.intro h4 {
+        margin-bottom: 30px;
+    }
+
+    .About .about-logo.intro img {
+        margin-top: 20px;
+        width: 180px;
+    }
+
+    .About .about-logo.inspiration {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+
+        margin-top: 50px;
+    }
+
+    .About .about-logo .left {
+        width: auto;
+        text-align: center;
+    }
+    
+    .About .about-logo .right {
+        width: auto;
+        text-align: center;
+    }
+
+    .About .definition {
+        margin-bottom: 70px;
+    }
+
+    .About .about-us.inspiration {
+        display: flex;
+        flex-direction: column-reverse;
+    
+        margin-bottom: 45px;
+    }
+
+    .About .mission-paragraph.unique {
+        max-width: 570px;
+    }
+
+    .About .mission-paragraph.features {
+        max-width: 589.84px;
+        margin-top: 60px;
+    }
+}

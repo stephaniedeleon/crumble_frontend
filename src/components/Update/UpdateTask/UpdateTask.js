@@ -3,6 +3,7 @@ import "./UpdateTask.css"
 import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useContext, useEffect } from "react";
 import { formatDateForInputDisplay } from "utils/format";
+import { DeleteTask } from "components";
 import AuthContext from "context/auth";
 import GlobalContext from "context/global";
 import apiClient from "services/apiClient";
@@ -210,6 +211,9 @@ export default function UpdateTask(props) {
     }
 
 
+    //method to show modal for deleting confirmation...
+    const [deleteModalShow, setDeleteModalShow] = useState(false);
+
     return (
       <Modal
             {...props}
@@ -221,13 +225,13 @@ export default function UpdateTask(props) {
         <Form onSubmit={handleOnSubmit} className="modal-area">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit Task
+                    Task
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <FormGroup>
-                    <FormLabel className="form-label">New details of task</FormLabel>
+                    <FormLabel className="form-label">Details of task</FormLabel>
                     <Form.Control
                         type="text"
                         name="details"
@@ -263,12 +267,24 @@ export default function UpdateTask(props) {
                         value={form.date}
                     />
                 </FormGroup>
-
-                <div className="modal-button">
-                    <Button type="submit" onClick={props.onHide} className="button">Save</Button>
-                </div>
             </Modal.Body>
+            <Modal.Footer>
+                <div id="option" onClick={() => setDeleteModalShow(true)}>                    
+                    <i className="bi-trash"/> Delete
+                </div>
+                <div className="modal-button">
+                    <Button type="submit" onClick={props.onHide} className="button" disabled={!form.details?.trim()}>
+                        Save
+                    </Button>
+                </div>
+            </Modal.Footer>
         </Form>
+
+        <DeleteTask
+            show={deleteModalShow}
+            onHide={() => setDeleteModalShow(false)}
+            task={task}
+        />
 
       </Modal>
     );

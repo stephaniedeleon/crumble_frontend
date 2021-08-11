@@ -8,6 +8,7 @@
   margin: 25px 0px;
   padding: 40px 50px;
 
+  background-color: #fffbf1;
   border: 1px solid #8c3f0d;
   border-radius: 15px;
 
@@ -45,6 +46,25 @@
 .Timer .pagination-button.clicked {
   transform: translateY(3px);
   box-shadow: none;
+}
+
+.Timer .pagination-button:active.pomodoro,
+.Timer .pagination-button.clicked.pomodoro {
+  background-color: #007A5C;
+  color: #fffbf1;
+}
+
+.Timer .pagination-button:active.short-break,
+.Timer .pagination-button.clicked.short-break {
+  background-color: #E0A800;
+  color: #fffbf1;
+}
+
+.Timer .pagination-button:active.long-break,
+.Timer .pagination-button.clicked.long-break {
+  background-color: #2364AA;
+
+  color: #fffbf1;
 }
 
 .Timer .base-timer {
@@ -131,11 +151,6 @@
   box-shadow: 2px 5.2px 0px 0px rgba(0,0,0,0.61);
   
   transition: all 0.2s ease;
-  /* transition-property: background-color, color, border-color, transform;
-  transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
-  transition-timing-function: ease, ease, ease, ease;
-  transition-delay: 0s, 0s, 0s, 0.2s; */
-  /* transition: all 0.2s ease; */
 }
 
 

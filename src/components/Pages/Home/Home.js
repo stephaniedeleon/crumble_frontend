@@ -16,7 +16,8 @@ export default function Home() {
     const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
 
-    const welcome = "Welcome " + user?.firstName + "!";
+    const name = user?.firstName?.charAt(0).toUpperCase() + user?.firstName?.substring(1)
+    const welcome = "Welcome " + name + "!";
   
     //fetches maintabs
     useEffect(() => {
@@ -43,16 +44,23 @@ export default function Home() {
             <div className="parallax">
                 <div className="caption">
                     <h3>{welcome}</h3>
-                    <h4>What's your focus today?</h4>
+                    <h4>What are you "crumbling" today?</h4>
                 </div>
             </div>
 
             <div className="home-area">
                 <div className="title">
-                    <h3>{user?.firstName + `'s MainTabs`}</h3>
-                    <Button className="addBtn" onClick={() => setModalShow(true)}>
-                        Add MainTab
-                    </Button>
+                    <h3>{name + `'s MainTabs`}</h3>
+                    { maintabs.length === 0 ? (
+                        <>
+                        </>
+                    ) : (
+                        <>
+                            <Button className="addBtn" onClick={() => setModalShow(true)}>
+                                Add MainTab
+                            </Button>
+                        </>
+                    ) }
 
                     <AddMainTab
                         show={modalShow}
@@ -60,10 +68,34 @@ export default function Home() {
                     />
                 </div>
 
-                <div className="maintabs">
-                    {maintabs.map((maintab) => (
-                        <MainTab key={maintab.id} maintab={maintab} />
-                    ))}
+                <div>
+                    { maintabs.length === 0 ? (
+                        <>
+                            <div className="home-default">
+                                <div className="default-message">                            
+                                    Add a MainTab to get started!
+                                </div>
+                                <div>
+                                    <Button onClick={() => setModalShow(true)} className="addBtn">
+                                        Add MainTab
+                                    </Button>
+                                </div>
+                            </div>
+
+                            <AddMainTab
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <div className="maintabs">
+                                {maintabs.map((maintab) => (
+                                    <MainTab key={maintab.id} maintab={maintab} />
+                                ))}
+                            </div>
+                        </>
+                    ) }
                 </div>
             </div>
         </div>

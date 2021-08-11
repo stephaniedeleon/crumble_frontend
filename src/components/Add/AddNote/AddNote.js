@@ -1,20 +1,21 @@
-import './AddNote.css';
+import "./AddNote.css";
 
-import { Modal, Form, FormGroup, FormLabel, Button } from 'react-bootstrap';
+import { Modal, Form, FormGroup, FormLabel, Button } from "react-bootstrap";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from 'context/auth';
 import GlobalContext from 'context/global';
 import apiClient from 'services/apiClient';
 
 export default function AddNote(props) {
-    
     const { setErrors, setIsLoading } = useContext(AuthContext);
     const { setNotes } = useContext(GlobalContext);
 
-    const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createEmpty()
+    );
 
     const [form, setForm] = useState({
         title: "",
@@ -24,19 +25,20 @@ export default function AddNote(props) {
     // adds a new note to list of notes
     const addNote = (newNote) => {
         setNotes((oldNotes) => [...oldNotes, newNote]);
-    }
+    };
 
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
-    }
+    };
 
     const handleOnSubmit = async (event) => {
-
         event.preventDefault();
         setIsLoading(true);
         setErrors((e) => ({ ...e, form: null }));
 
-        form.details = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+        form.details = JSON.stringify(
+        convertToRaw(editorState.getCurrentContent())
+        );
 
         let result;
 
@@ -44,18 +46,19 @@ export default function AddNote(props) {
             result = await apiClient.createNoteFromMain({
                 main_id: parseInt(props.mainId),
                 note: {
-                    title: form.title,
-                    details: form.details,
-                }
+                title: form.title,
+                details: form.details,
+                },
             });
+
         } else {
             result = await apiClient.createNoteFromSub({
                 sub_id: parseInt(props.subId),
                 note: {
-                    title: form.title,
-                    details: form.details,
-                }
-            })
+                title: form.title,
+                details: form.details,
+                },
+            });
         }
 
         const { data, error } = result;
@@ -68,9 +71,11 @@ export default function AddNote(props) {
             setForm({ title: "", details: "" });
             setEditorState(() => EditorState.createEmpty()); // clears editor when submitted
         }
-
-        setIsLoading(false);
     }
+
+    /** autofocus */
+    const innerRef = React.useRef();
+    useEffect(() => {innerRef.current && innerRef.current.focus()}, [props.show]);
 
     return (
         <Modal 
@@ -91,6 +96,7 @@ export default function AddNote(props) {
                         <FormLabel className="form-label">Title of new note</FormLabel>
                         <Form.Control
                             type="text"
+                            ref={innerRef}
                             name="title"
                             maxLength={20}
                             className="input-field"
@@ -105,7 +111,7 @@ export default function AddNote(props) {
                         <Editor editorState={editorState} onEditorStateChange={setEditorState} />
                     </div>
                     <div className="modal-button">
-                        <Button type="submit" onClick={props.onHide} className="button"> Add Note </Button>
+                        <Button type="submit" onClick={props.onHide} className="button" disabled={!form.title.trim()}> Add Note </Button>
                     </div>
                 </Modal.Body>
             </Form>
