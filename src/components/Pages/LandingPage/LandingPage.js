@@ -28,8 +28,8 @@ export default function LandingPage() {
                                 </div>
 
                                 <div className="hero">
-                                    <h1>Planner</h1>
-                                    <p>Helping you make planning bearable!</p>
+                                    <h2>Crumble</h2>
+                                    <h3>Helping you make planning bearable!</h3>
                                     <br />
                                     {/* as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} */}
                                     <Button onClick={() => fullpageApi.moveSectionDown()} className="startBtn"> Get Started! </Button>
@@ -54,12 +54,11 @@ export default function LandingPage() {
                             <Container>
                                 <Row>
                                     <Col>
-                                        <h1> Summary </h1>
+                                        <h1> About Crumble </h1>
                                         <br />
                                         <p>
                                             Managing large-scale projects or assignments is difficult due to complex scope and competing priorities. 
-                                            The purpose of this app is to provide users a platform that helps users be more productive and at 
-                                            the same time reminds them to take breaks while working.
+                                            Our purpose is to provide users a platform that helps them be more productive, motivated, and less overwhelmed.
                                         </p>
                                         <br />
                                         <Button as={Link} to="/about" className="startBtn"> Learn More </Button>
