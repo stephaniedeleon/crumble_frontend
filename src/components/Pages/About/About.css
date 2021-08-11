@@ -25,9 +25,17 @@
 
 /** About Us */
 
-.About .about {
-    /* margin-top: 50px; */
+.About .section {
     margin-bottom: 100px;
+}
+
+.About .about-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 45px;
 }
 
 .About .aboutus-paragraph {
@@ -46,15 +54,6 @@
 .About .crumbling {
     font-size: 24px;
     font-family: 'Gloria Hallelujah', cursive;
-}
-
-.About .about-us {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 45px;
 }
 
 .About .about-logo {
@@ -99,7 +98,7 @@
 
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 100px;
+    margin-bottom: 90px;
     text-align: left;
 }
 
@@ -121,13 +120,160 @@
 }
 
 
+
+/** Our Mission */
+
+.About .our-mission {
+    margin-bottom: 45px;
+}
+
+.About .mission {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.About .mission-paragraph.unique {
+    max-width: 380px;
+    text-align: justify;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .mission-paragraph.features {
+    max-width: 500px;
+    text-align: justify;
+
+    padding: 15px 30px;
+    border: 2px solid #254832;
+    border-radius: 20px;
+
+    background-color: #fffbf1;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.About .mission-paragraph.features li {
+    line-height: 35px;
+}
+
+.About .mission-paragraph li::marker{
+    font-size: 15px;
+}
+
+.About .mission-paragraph .features{
+    margin-left: 10px;
+}
+
+
+/** Meet GSA */
+
+.About .flex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.About .person {
+    margin: 15px 25px;
+
+    height: fit-content;
+    width: 320px;
+
+    user-select: none;
+
+    transition: all 0.4s ease 0s;
+}
+
+.About .person:hover {
+    transform: scale(1.03);
+}
+
+.About .card {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.About .card-body {
+}
+
+.About .card-text {
+    text-align: center;
+    /* font-size: 1.2rem; */
+}
+
+
+/* Profile */
+
+.About .profile-pic {
+    cursor: pointer;
+    height: 250px;
+    width: 250px;
+    border-radius: 400px;
+}
+
+.About .profile-name {
+    margin-top: 10px;
+    height: 45px;
+
+    font-size: 24px;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #325d41;
+}
+
+.About .profile-position {
+    font-size: 18px;
+    height: 25px;
+}
+
+.About .social-medias {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.About .social-medias a {
+    cursor: pointer;
+    padding-left: 3%;
+    padding-right: 3%;
+
+    color: #325d41;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.About .social-medias a:hover {
+    color: #8c3f0d;
+}
+
+
+/** Responsiveness */
+
+
 @media screen and (max-width: 991px) {
+
+    .About .subtitle.intro h4 {
+        margin-bottom: 30px;
+    }
+
+    .About .about-logo.intro img {
+        margin-top: 20px;
+        width: 180px;
+    }
+
     .About .about-logo.inspiration {
         display: flex;
         justify-content: space-evenly;
         flex-direction: row;
 
-        margin-bottom: 50px;
+        margin-top: 50px;
     }
 
     .About .about-logo .left {
@@ -143,108 +289,20 @@
     .About .definition {
         margin-bottom: 70px;
     }
-}
 
+    .About .about-us.inspiration {
+        display: flex;
+        flex-direction: column-reverse;
+    
+        margin-bottom: 45px;
+    }
 
+    .About .mission-paragraph.unique {
+        max-width: 570px;
+    }
 
-/** Meet GSA */
-
-.About .flex-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.About .meet-GSA {
-    margin-bottom: 100px;
-}
-
-.About .person {
-    /* border: 1px solid #47825b;
-    border-radius: 10px; */
-    margin: 15px 25px;
-
-    height: 320px;
-    width: 320px;
-    cursor: pointer;
-
-    user-select: none;
-
-
-    /* display: inline-block; */
-    /* vertical-align: middle; */
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(194, 66, 66, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: box-shadow, transform;
-    transition-property: box-shadow, transform;
-}
-
-.About .person:hover {
-    /* box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.5); */
-    -webkit-transform: scale(1.025);
-    transform: scale(1.025);
-
-    border-color: #254832;
-}
-
-.About .card {
-    height: 100%;
-    /* border-radius: 10px; */
-    background-color: transparent;
-    border: none;
-}
-
-.About .card-body {
-}
-
-.About .card-text {
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-/* Profile */
-
-.About .profile-pic {
-    height: 250px;
-    width: 250px;
-    border-radius: 400px;
-}
-
-.About .profile-name {
-    margin-top: 10px;
-    height: 25px;
-}
-
-.About .profile-position {
-    font-size: 15px;
-    height: 25px;
-}
-
-.About .social-medias {
-    padding-top: 10px;
-    text-align: center;
-}
-
-.About .social-medias a {
-    cursor: pointer;
-    padding-left: 5%;
-    padding-right: 5%;
-
-    color: rgb(48, 48, 164);
-    font-size: 18px;
-    text-decoration: none;
-}
-
-.About .social-medias a:hover {
-    color: rgb(116, 116, 203);
-}
-
-/** Our Mission */
-
-.About .our-mission {
-    margin-bottom: 45px;
-    text-align: justify;
+    .About .mission-paragraph.features {
+        max-width: 589.84px;
+        margin-top: 60px;
+    }
 }

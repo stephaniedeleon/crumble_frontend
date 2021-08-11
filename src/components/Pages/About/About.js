@@ -1,15 +1,13 @@
 import "./About.css";
-import gevork from "./images/gevork-profile.jpg";
-import stephanie from "./images/stephanie-profile.jpg";
-import abhiraj from "./images/abhiraj-profile.JPG";
 import { ExternalLink } from 'react-external-link';
 import { Card } from "react-bootstrap";
-import { PageHeader } from "components";
+import { PageHeader, gevork, stephanie, abhiraj } from "components";
 import { Container } from "react-bootstrap";
 import ViewProfile from "components/View/ViewProfile/ViewProfile";
 import { useState } from "react";
 
 export default function About() {
+
   const [viewModalShow, setViewModalShow] = useState(false);
   const [currentProfile, setCurrentProfile] = useState({
     name: "",
@@ -17,22 +15,25 @@ export default function About() {
   });
 
   const Gevork = {
-    name: "Gevork",
+    name: "Gevork Manukyan",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   };
 
   const Stephanie = {
-    name: "Stephanie",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    name: "Stephanie De Leon",
+    text: "Hello, world! I'm a third-year undergraduate student at California State Polytechnic University, Pomona, graduating in 2023 with a Bachelor's Degree in Computer Science. My passion for helping others has continuously driven me to find opportunities to grow and expand my knowledge and experience. I'm excited that our app will increase productivity and motivation as we continue to improve Crumble!",
   };
 
   const Abhiraj = {
-    name: "Abhiraj",
+    name: "Abhiraj Chatterjee",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   };
 
   const handleClickProfile = (profileObject) => {
     setViewModalShow(true);
+
+    console.log(profileObject)
+
     setCurrentProfile({
       name: profileObject.name,
       text: profileObject.text,
@@ -45,9 +46,9 @@ export default function About() {
             <PageHeader sectionName="About Us" />
         </div>
 
-      <Container className="about">
+      <Container className="section">
 
-        <div className="subtitle">
+        <div className="subtitle intro">
           <h4>Our story</h4>
         </div>
 
@@ -61,7 +62,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="about-logo">
+          <div className="about-logo intro">
             <img src="https://img.icons8.com/bubbles/320/000000/edit.png" alt="crumble logo"/>
           </div>
 
@@ -72,11 +73,10 @@ export default function About() {
             <h5>crum·ble</h5>
             <h6>/ˈkrəmbəl/</h6>
           </div>
-          {/* <h6>verb</h6> */}            
           <h6>cause (something) to break apart into small fragments.</h6>
         </div>
 
-        <div className="about-us">
+        <div className="about-us inspiration">
 
           <div className="about-logo inspiration">
             <div className="left">
@@ -104,27 +104,53 @@ export default function About() {
       </Container>
 
 
-      <Container>
+      <Container className="section">
         <div className="subtitle">
-          <h4>What we're creating</h4>
+          <h4>What make us unique?</h4>
         </div>
 
         <div className="our-mission">
-            <p>
-            Managing large-scale projects or assignments is difficult due to complex scope and competing priorities. 
-            The purpose of this app is to provide users a platform that helps users be more productive and at 
-            the same time reminds them to take breaks while working. Key features include adding main tabs and 
-            subtabs for each different category of work and using the pomodoro timer to further increase productivity. 
-            Each tab contains a calendar side by side with daily/weekly to-do lists, a notes section, and a running 
-            timer for the pomodoro in nav bar.
-            </p>
+          <div className="mission">
+            
+            <div className="mission-paragraph unique">
+              <p>
+                {/* Managing large-scale projects or assignments is difficult due to complex scope and competing priorities.
+                <br/> */}
+                <span className="crumble">Crumble</span>'s purpose is to help users by providing a platform that solely 
+                focuses on <span className="crumbling">"crumbling"</span> overwhelming assignments into more bearable pieces, at the same time, 
+                reminding them to take breaks to ensure maximum productivity.
+
+                {/* <span className="crumble">Crumble</span>'s purpose is to help users be more productive by providing a platform that
+                solely focuses on breaking down complex assignments into smaller, more bearable pieces. At the same time, reminding them 
+                to take breaks to ensure maximum productivity. */}
+              </p>
+
+            </div>
+
+            <div className="mission-paragraph features">
+              <p>
+                Key features include:                
+                
+                <div className="features">
+                  <ul>
+                    <li>A Pomodoro Timer to manage distractions and control your time</li>
+                    <li>MainTabs and subtabs to <span className="crumbling">"crumble"</span> tasks</li>
+                    <li>A SideBar to navigate through your tab pages</li>
+                    <li>Tab pages containing a todo list side by side with a calendar, a notes section, and a mini pomodoro timer</li>
+                  </ul>
+                </div>
+              </p>
+
+            </div>
+
+          </div>
         </div>
       </Container>
 
 
       {/** Meet GSA */}
 
-      <Container>
+      <Container className="section">
         <div className="subtitle">
           <h4>Meet G.S.A.</h4>
         </div>
@@ -139,7 +165,7 @@ export default function About() {
               <Card.Body className="person-card-body">
                 <img src={gevork} alt="picture of gevork" className="profile-pic" onClick={() => handleClickProfile(Gevork)}/>
                 <Card.Text className="person-card-text">
-                  <div className="profile-name">Gevork</div>
+                  <div className="profile-name">Gevork Manukyan</div>
                   <div className="profile-position">Co-Creator</div>
                   <div className="social-medias">
                     <ExternalLink href="https://www.linkedin.com/in/gevork-manukyan-235385199/"> 
@@ -162,7 +188,7 @@ export default function About() {
               <Card.Body className="person-card-body">
                 <img src={stephanie} alt="picture of stephanie" className="profile-pic" onClick={() => handleClickProfile(Stephanie)}/>
                 <Card.Text className="person-card-text">    
-                  <div className="profile-name">Stephanie</div>
+                  <div className="profile-name">Stephanie De Leon</div>
                   <div className="profile-position">Co-Creator</div>
                   <div className="social-medias">
                     <ExternalLink href="https://www.linkedin.com/in/stephaniedeleon516/"> 
@@ -185,7 +211,7 @@ export default function About() {
               <Card.Body className="person-card-body">
                 <img src={abhiraj} alt="picture of abhiraj" className="profile-pic" onClick={() => handleClickProfile(Abhiraj)} />
                 <Card.Text className="person-card-text">
-                  <div className="profile-name">Abhiraj</div>
+                  <div className="profile-name">Abhiraj Chatterjee</div>
                   <div className="profile-position">Co-Creator</div>
                   <div className="social-medias">
                     <ExternalLink href="https://www.linkedin.com/in/abhirajchatterjee/"> 
