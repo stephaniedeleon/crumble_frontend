@@ -16,7 +16,7 @@ export default function About() {
 
   const Gevork = {
     name: "Gevork Manukyan",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    text: "Greetings! I am currently a junior undergraduate student at California State University, Northridge, and I am on track to graduate in Spring 2023 with a Bachelor's Degree in Computer Science. I have always been obsessed with staying organized, preparing many steps ahead, and having control over my plans. It's for these reasons and more that I am excited to work on Crumble and to bring the power of organization to others!",
   };
 
   const Stephanie = {

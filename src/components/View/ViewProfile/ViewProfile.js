@@ -1,5 +1,5 @@
 import "./ViewProfile.css"
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { gevork, stephanie, abhiraj } from "components";
 
 
