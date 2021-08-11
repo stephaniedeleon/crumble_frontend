@@ -26,7 +26,7 @@ export default function About() {
 
   const Abhiraj = {
     name: "Abhiraj Chatterjee",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    text: "Hello, world! I'm a third-year undergraduate student at Penn State University, graduating in 2023 with a Bachelor's Degree in Computer Science. My passion for helping others has continuously driven me to find opportunities to grow and expand my knowledge and experience. I'm excited that our app will increase productivity and motivation as we continue to improve Crumble!",
   };
 
   const handleClickProfile = (profileObject) => {
