@@ -76,21 +76,21 @@ function App() {
           
           <div className="App">
             <BrowserRouter>
-              <Navbar />
-              <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} paginationButtonsStatus={paginationButtonsStatus} togglePaginationBtn={togglePaginationBtn} startTimer={startTimer} />
+                <Navbar />
+                <TimerAlert show={timerVariables.timerAlertShow} onHide={() => timerVariables.setTimerAlertShow(false)} paginationButtonsStatus={paginationButtonsStatus} togglePaginationBtn={togglePaginationBtn} startTimer={startTimer} />
 
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/timer" element={<Timer />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/home/:mainId/:subId" element={<TabPage />} />
-              </Routes>
+                <Routes>
+                  <Route path="/" element={<LandingPage />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/timer" element={<Timer />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/home/:mainId/:subId" element={<TabPage />} />
+                </Routes>
 
-              <Footer />
+                <Footer />
             </BrowserRouter>
           </div>
 
