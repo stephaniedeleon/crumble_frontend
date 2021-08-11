@@ -45,3 +45,8 @@ export { default as SideBar } from "./SideBar/SideBar";
 export { default as Footer } from "./Footer/Footer";
 
 export { default as PageHeader } from "./pages/PageHeader/PageHeader";
+
+
+export { default as gevork } from "./pages/About/images/gevork-profile.jpg";
+export { default as stephanie } from "./pages/About/images/stephanie-profile.jpg";
+export { default as abhiraj } from "./pages/About/images/abhiraj-profile.JPG";

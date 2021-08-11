@@ -43,10 +43,24 @@
 }
 
 .Home .addBtn:hover,
-.Home .addBtn:active {
+.Home .addBtn:active,
+.Home .addBtn:focus,
+.Home .addBtn:focus:active {
   background-color: #47825b;
   color: white;
   border-color: #47825b;
+}
+
+
+.LandingPage .startBtn:hover,
+.LandingPage .startBtn:active,
+.LandingPage .startBtn:focus,
+.LandingPage .startBtn:focus:active {
+  background-color: #47825b;
+  color: white;
+  border-color: #47825b;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .Home .title h3 {
