@@ -52,7 +52,7 @@ export default function LandingPage() {
                                 <Container>
                                     <Row>
                                         <Col>
-                                            <h1> About Crumble </h1>
+                                            <h1> About <span className="crumbleHeader">Crumble</span> </h1>
                                             <br />
                                             <p>
                                                 Managing large-scale projects or assignments is difficult due to complex scope and competing priorities. 
@@ -66,7 +66,7 @@ export default function LandingPage() {
                                         </Col>
                                     </Row>
                                 </Container>
-                                <button onClick={() => fullpageApi.moveTo(1)}> Move To Top </button>
+                                <div className="moveToTop" onClick={() => fullpageApi.moveTo(1)}><i class="bi-chevron-double-up"></i></div>
                             </div>
                             <div className="section todo-section">
                                 <Container>
@@ -78,17 +78,15 @@ export default function LandingPage() {
                                             <h1> ToDo List </h1>
                                             <br />
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
-                                                sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
-                                                nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
-                                                congue nisl id, blandit lacus. 
+                                                <span className="crumble">Crumble's</span> ToDo List is what allows you to <span className="crumbling">"crumble"</span>. 
+                                                Here, you can add subtabs and tasks; and check them off as you go. You can assign priority and due dates as well. 
                                             </p>
                                             <br />
                                             <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} onClick={() => fullpageApi.moveTo(1)} className="startBtn"> <em>Check</em> It Out! </Button>
                                         </Col>
                                     </Row>
                                 </Container>
-                                <button onClick={() => fullpageApi.moveTo(1)}> Move To Top </button>
+                                <div className="moveToTop" onClick={() => fullpageApi.moveTo(1)}><i class="bi-chevron-double-up"></i></div>
                             </div>
                             <div className="section calendar-section">
                                 <Container>
@@ -97,10 +95,8 @@ export default function LandingPage() {
                                             <h1> Calendar </h1>
                                             <br />
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
-                                                sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
-                                                nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
-                                                congue nisl id, blandit lacus. 
+                                                <span className="crumble">Crumble's</span> Calendar allows you to add events/due dates. It is synced with the ToDo list as well. If you assign a due date 
+                                                to a task, it will automatically add it as an event to your calendar.
                                             </p>
                                             <br />
                                             <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} onClick={() => fullpageApi.moveTo(1)} className="startBtn"> <em>Plan</em> It Out! </Button>
@@ -110,7 +106,7 @@ export default function LandingPage() {
                                         </Col>
                                     </Row>
                                 </Container>
-                                <button onClick={() => fullpageApi.moveTo(1)}> Move To Top </button>
+                                <div className="moveToTop" onClick={() => fullpageApi.moveTo(1)}><i class="bi-chevron-double-up"></i></div>
                             </div>
                             <div className="section timer-section">
                                 <Container>
@@ -122,17 +118,15 @@ export default function LandingPage() {
                                             <h1> Pomodoro Timer </h1>
                                             <br />
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
-                                                sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
-                                                nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
-                                                congue nisl id, blandit lacus. 
+                                                <span className="crumble">Crumble's</span> Pomodoro timer reminds you when to work or when to take a breather. 
+                                                With the timer accessible from anywhere you go, you have more flexibility on how you manage your time.
                                             </p>
                                             <br />
                                             <Button as={Link} to={localStorage.getItem('token') ? "/timer" : "/login"} onClick={() => fullpageApi.moveTo(1)} className="startBtn"> <em>Time</em> It Out! </Button>
                                         </Col>
                                     </Row>
                                 </Container>
-                                <button onClick={() => fullpageApi.moveTo(1)}> Move To Top </button>
+                                <div className="moveToTop" onClick={() => fullpageApi.moveTo(1)}><i class="bi-chevron-double-up"></i></div>
                             </div>
                             <div className="section notes-section">
                                 <Container>
@@ -141,10 +135,8 @@ export default function LandingPage() {
                                             <h1> Notes </h1>
                                             <br />
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada nisl sed massa venenatis, 
-                                                sit amet efficitur felis dapibus. Aliquam bibendum, risus a bibendum porta, libero nulla mollis 
-                                                nibh, eget hendrerit orci lorem vitae augue. Mauris in interdum augue. Vivamus vel metus facilisis, 
-                                                congue nisl id, blandit lacus. 
+                                                <span className="crumble">Crumble's</span> Notes gives you a space for note-taking or brain dumping. 
+                                                With the ability to have your notes automatically assigned to specific tasks or projects, taking notes has never been easier.
                                             </p>
                                             <br />
                                             <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} onClick={() => fullpageApi.moveTo(1)} className="startBtn"> <em>Write</em> It Out! </Button>
@@ -154,7 +146,7 @@ export default function LandingPage() {
                                         </Col>
                                     </Row>
                                 </Container>
-                                <button onClick={() => fullpageApi.moveTo(1)}> Move To Top </button>
+                                <div className="moveToTop" onClick={() => fullpageApi.moveTo(1)}><i class="bi-chevron-double-up"></i></div>
                             </div>
                         </ReactFullpage.Wrapper>
                     );
