@@ -19,7 +19,7 @@
 .LandingPage .hero h2 {
   font-size: 60px;
   color: #254832;
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: "Gloria Hallelujah", cursive;
 }
 
 .LandingPage .hero h3 {
@@ -58,9 +58,9 @@
 }
 
 @media screen and (max-width: 499px) {
-    .LandingPage .tiles {
-      display: none;
-    }
+  .LandingPage .tiles {
+    display: none;
+  }
 }
 
 .LandingPage .startBtn {
