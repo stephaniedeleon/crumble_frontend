@@ -64,7 +64,7 @@ export default function LandingPage() {
                                         <Button as={Link} to="/about" className="startBtn"> Learn More </Button>
                                     </Col>
                                     <Col>
-                                        <img src="https://previews.123rf.com/images/njnightsky/njnightsky0709/njnightsky070900032/1599802-a-yellow-pencil-on-a-day-planner.jpg" alt="study" height="350" width="350" className="stock-image" />
+                                        <img src="https://img.icons8.com/bubbles/350/000000/edit.png" alt="crumble logo"/>
                                     </Col>
                                 </Row>
                             </Container>
@@ -73,8 +73,7 @@ export default function LandingPage() {
                             <Container>
                                 <Row>
                                     <Col>
-                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
-                                    </Col>
+                                        <img src="https://img.icons8.com/bubbles/350/000000/checklist.png" alt="todo list icon"/>                                    </Col>
                                     <Col>
                                         <h1> ToDo List </h1>
                                         <br />
@@ -106,7 +105,7 @@ export default function LandingPage() {
                                         <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} className="startBtn"> <em>Plan</em> It Out! </Button>
                                     </Col>
                                     <Col>
-                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
+                                        <img src="https://img.icons8.com/bubbles/350/000000/timeline-week.png" alt="calendar icon"/>
                                     </Col>
                                 </Row>
                             </Container>
@@ -115,7 +114,7 @@ export default function LandingPage() {
                             <Container>
                                 <Row>
                                     <Col>
-                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
+                                        <img src="https://img.icons8.com/bubbles/350/000000/watches-front-view--v1.png" alt="pomodoro timer icon"/>
                                     </Col>
                                     <Col>
                                         <h1> Pomodoro Timer </h1>
@@ -148,7 +147,7 @@ export default function LandingPage() {
                                         <Button as={Link} to={localStorage.getItem('token') ? "/home" : "/login"} className="startBtn"> <em>Write</em> It Out! </Button>
                                     </Col>
                                     <Col>
-                                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2704&q=80" alt="todo" height="350" width="350" className="stock-image" />
+                                        <img src="https://img.icons8.com/bubbles/350/000000/notes-app.png" alt="notes icon"/>                    
                                     </Col>
                                 </Row>
                             </Container>
