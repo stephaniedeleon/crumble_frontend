@@ -23,11 +23,11 @@
 }
 
 .timerAlert .button.short-break:hover {
-    background-color: #497E83;
-    border-color: #497E83;
+    background-color: #E0A800;
+    border-color: #E0A800;
 }
 
 .timerAlert .button.long-break:hover {
-    background-color: #E0A800;
-    border-color: #E0A800;
+    background-color: #2364AA;
+    border-color: #2364AA;
 }

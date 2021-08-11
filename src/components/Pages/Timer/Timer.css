@@ -56,13 +56,13 @@
 
 .Timer .pagination-button:active.short-break,
 .Timer .pagination-button.clicked.short-break {
-  background-color: #497E83;
+  background-color: #E0A800;
   color: #fffbf1;
 }
 
 .Timer .pagination-button:active.long-break,
 .Timer .pagination-button.clicked.long-break {
-  background-color: #E0A800;
+  background-color: #2364AA;
 
   color: #fffbf1;
 }
