@@ -3,7 +3,6 @@
 }
 
 .About p {
-    /* font-family: 'Playfair Display', serif; */
     font-size: 19px;
     line-height: 48px;
     margin: 0;
@@ -207,7 +206,6 @@
 
 .About .card-text {
     text-align: center;
-    /* font-size: 1.2rem; */
 }
 
 

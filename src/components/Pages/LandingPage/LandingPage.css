@@ -89,16 +89,36 @@
   margin-top: 0 !important;
 }
 
-.LandingPage .stock-image {
-  border-radius: 250px;
-}
-
 .LandingPage .section h1 {
   font-family: "Playfair Display", serif;
   color: #325d41;
 }
 
+.LandingPage .crumbleHeader {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
 .LandingPage .section p {
   text-align: justify;
+  line-height: 40px;
   font-size: 19px;
+}
+
+.LandingPage .crumble {
+  font-size: 24px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.LandingPage .crumbling {
+  font-size: 20px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.LandingPage .moveToTop {
+  font-size: 25px;
+}
+
+.LandingPage .moveToTop:hover {
+  cursor: pointer;
+  color: #8c3f0d;
 }
