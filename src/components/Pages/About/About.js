@@ -21,7 +21,7 @@ export default function About() {
 
   const Stephanie = {
     name: "Stephanie De Leon",
-    text: "Hello, world! I'm a third-year undergraduate student at California State Polytechnic University, Pomona, graduating in 2023 with a Bachelor's Degree in Computer Science. My passion for helping others has continuously driven me to find opportunities to grow and expand my knowledge and experience. I'm excited that our app will increase productivity and motivation as we continue to improve Crumble!",
+    text: "Hello, world! I'm currently a third-year undergraduate student at California State Polytechnic University, Pomona, graduating in 2023 with a Bachelor's Degree in Computer Science. My passion for helping others has continuously driven me to find opportunities to grow and expand my knowledge & experience. I also love planning and organizing, and I'm so excited that our app will increase productivity and motivation for others as we continue to improve Crumble!",
   };
 
   const Abhiraj = {
