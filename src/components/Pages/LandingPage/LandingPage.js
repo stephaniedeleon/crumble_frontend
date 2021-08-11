@@ -95,7 +95,7 @@ export default function LandingPage() {
                                             <h1> Calendar </h1>
                                             <br />
                                             <p>
-                                                <span className="crumble">Crumble's</span> Calendar allows you to add events/due dates. It is synced with the ToDo list as well. If you assign a due date 
+                                                <span className="crumble">Crumble's</span> Calendar allows you to add events/due dates. It syncs with the ToDo list as well. If you assign a due date 
                                                 to a task, it will automatically add it as an event to your calendar.
                                             </p>
                                             <br />
